@@ -11,7 +11,8 @@
     "dev": "turbo run dev",
     "check-types": "turbo run check-types",
     "check": "ultracite check",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "registry:build": "node scripts/generate-registry.mjs"
   },
   "private": true,
   "packageManager": "pnpm@9.0.0"

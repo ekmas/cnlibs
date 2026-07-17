@@ -10,6 +10,14 @@
       "enabled": false
     }
   },
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedKeys": "off",
+        "useSortedAttributes": "off"
+      }
+    }
+  },
   "overrides": [
     {
       "includes": ["**/public/**"],
@@ -18,6 +26,25 @@
       },
       "linter": {
         "enabled": false
+      }
+    },
+    {
+      "includes": ["**/components/ui/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNestedComponentDefinitions": "off"
+          },
+          "nursery": {
+            "useSortedClasses": "off"
+          },
+          "performance": {
+            "noNamespaceImport": "off"
+          },
+          "suspicious": {
+            "noShadow": "off"
+          }
+        }
       }
     }
   ]

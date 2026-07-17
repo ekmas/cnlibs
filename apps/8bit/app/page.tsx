@@ -1,4 +1,17 @@
 import Image from "next/image";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 
 export default function Home() {
   return (
@@ -58,6 +71,38 @@ export default function Home() {
           >
             Documentation
           </a>
+        </div>
+        <div className="flex w-full flex-col items-center gap-8 border-zinc-200 border-t pt-12 sm:items-start dark:border-zinc-800">
+          <h2 className="font-semibold text-xl text-zinc-950 dark:text-zinc-50">
+            shadcn/ui components
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            <Button variant="default">Default</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="destructive">Destructive</Button>
+            <Button variant="link">Link</Button>
+          </div>
+          <AlertDialog>
+            <AlertDialogTrigger render={<Button variant="outline" />}>
+              Open alert dialog
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This is just a demo of the
+                  installed AlertDialog component.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+          <Calendar className="rounded-lg border" mode="single" />
         </div>
       </main>
     </div>

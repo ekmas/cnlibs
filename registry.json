@@ -1,0 +1,91 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "cnlibs",
+  "homepage": "https://github.com/ekmas/cnlibs",
+  "items": [
+    {
+      "name": "8bit/alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Alert Dialog component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/alert-dialog.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Calendar component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "react-day-picker",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/calendar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    }
+  ]
+}
