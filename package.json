@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@biomejs/biome": "2.5.3",
+    "turbo": "^2.10.5",
+    "typescript": "5.9.2",
+    "ultracite": "7.9.4"
+  },
+  "name": "cnlibs",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "check-types": "turbo run check-types",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
+  },
+  "private": true,
+  "packageManager": "pnpm@9.0.0"
+}
