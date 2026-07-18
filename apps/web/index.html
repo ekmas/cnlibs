@@ -6,50 +6,95 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>cnlibs</title>
   <meta content="A collection of small, focused libraries." name="description">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --fg: #1a1a1a;
+      --fg: #000;
       --bg: #ffffff;
       --muted: #666666;
-      --border: #e5e5e5;
-      --accent: #2563eb;
       color-scheme: light dark;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --fg: #f0f0f0;
-        --bg: #111111;
+        --fg: #fff;
+        --bg: #000;
         --muted: #999999;
-        --border: #2a2a2a;
-        --accent: #60a5fa;
       }
     }
 
     * {
       box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
     }
 
     body {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       min-height: 100vh;
-      padding: 1.5rem;
+      padding: 50px;
       margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
       color: var(--fg);
       background: var(--bg);
     }
 
+    @media (max-width: 600px) {
+      body {
+        padding: 24px;
+      }
+    }
+
     main {
       width: 100%;
-      max-width: 40rem;
+      max-width: 600px;
     }
 
     h1 {
-      margin: 0 0 0.5rem;
+      margin: 0;
       font-size: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .navlinks a {
+      display: flex;
+      color: #000000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .navlinks a {
+        color: #ffffff;
+      }
+    }
+
+    .navlinks svg {
+      width: 1.25rem;
+      height: 1.25rem;
     }
 
     p.tagline {
@@ -60,65 +105,219 @@
     ul.libraries {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 1rem;
       padding: 0;
-      margin: 0;
+      margin-top: 50px;
       list-style: none;
     }
 
     ul.libraries li {
-      padding: 1rem 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 2rem;
     }
 
-    footer {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+    ul.libraries li:not(.bit) {
+      border: 1px solid var(--muted);
+      border-radius: 1rem;
     }
 
-    footer a {
-      color: inherit;
-    }
-
-    ul.libraries a {
-      font-weight: 600;
+    ul.libraries p {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
       color: var(--accent);
       text-decoration: none;
     }
 
-    ul.libraries a:hover {
-      text-decoration: underline;
+    ul.libraries li button {
+      padding: 0.5rem 1rem;
+      font: inherit;
+      color: var(--bg);
+      cursor: not-allowed;
+      background: var(--muted);
+      border: none;
+      border-radius: 1rem;
     }
 
-    ul.libraries p {
-      margin: 0.25rem 0 0;
-      font-size: 0.9rem;
-      color: var(--muted);
+    ul.libraries .bit {
+      position: relative;
+    }
+
+    ul.libraries .bit .left {
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      width: 5px;
+      height: calc(100% - 20px);
+      background: var(--fg);
+    }
+
+    ul.libraries .bit .right {
+      position: absolute;
+      top: 10px;
+      right: 0px;
+      width: 5px;
+      height: calc(100% - 20px);
+      background: var(--fg);
+    }
+
+    ul.libraries .bit .top {
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: 5px;
+      background: var(--fg);
+    }
+
+    ul.libraries .bit .bottom {
+      position: absolute;
+      bottom: 0px;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: 5px;
+      background: var(--fg);
+    }
+
+    ul.libraries .bit .top-left,
+    .top-right,
+    .bottom-left,
+    .bottom-right {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--fg);
+    }
+
+    ul.libraries .bit .top-left {
+      top: 5px;
+      left: 5px;
+    }
+
+    ul.libraries .bit .top-right {
+      top: 5px;
+      right: 5px;
+    }
+
+    ul.libraries .bit .bottom-left {
+      bottom: 5px;
+      left: 5px;
+    }
+
+    ul.libraries .bit .bottom-right {
+      right: 5px;
+      bottom: 5px;
+    }
+
+    ul.libraries .bit a {
+      --px: var(--pixel-size, 3px);
+      --px2: calc(var(--pixel-size, 3px) * 2);
+      --pixel-clip: polygon(0 var(--px2),
+          var(--px) var(--px2),
+          var(--px) var(--px),
+          var(--px2) var(--px),
+          var(--px2) 0,
+          calc(100% - var(--px2)) 0,
+          calc(100% - var(--px2)) var(--px),
+          calc(100% - var(--px)) var(--px),
+          calc(100% - var(--px)) var(--px2),
+          100% var(--px2),
+          100% calc(100% - var(--px2)),
+          calc(100% - var(--px)) calc(100% - var(--px2)),
+          calc(100% - var(--px)) calc(100% - var(--px)),
+          calc(100% - var(--px2)) calc(100% - var(--px)),
+          calc(100% - var(--px2)) 100%,
+          var(--px2) 100%,
+          var(--px2) calc(100% - var(--px)),
+          var(--px) calc(100% - var(--px)),
+          var(--px) calc(100% - var(--px2)),
+          0 calc(100% - var(--px2)));
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      background: transparent;
+      isolation: isolate;
+      clip-path: var(--pixel-clip);
+    }
+
+    ul.libraries .bit a:focus-visible {
+      outline: none;
+      background: #2563eb;
+    }
+
+    ul.libraries .bit a::after {
+      position: absolute;
+      inset: 3px;
+      z-index: -1;
+      content: "";
+      background: #000;
+      clip-path: var(--pixel-clip);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      ul.libraries .bit a {
+        color: #000;
+      }
+
+      ul.libraries .bit a::after {
+        background: #fff;
+      }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h1>cnlibs</h1>
-    <p class="tagline">A collection of small, focused libraries.</p>
+    <nav class="navbar">
+      <h1>cnlibs</h1>
+      <ul class="navlinks">
+        <li>
+          <a href="https://github.com/ekmas/cnlibs" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .32.21.67.8.56A10.53 10.53 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/ekmas" aria-label="X" rel="noopener noreferrer" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M18.24 2H21l-6.6 7.54L22.2 22h-6.87l-5.38-7.03L3.8 22H1l7.06-8.07L1.13 2h7.04l4.87 6.44L18.24 2Zm-1.2 18.17h1.9L7.05 3.75H5l12.04 16.42Z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <p class="tagline">cnlibs is a collection of ui libraries based on shadcn/ui.</p>
 
     <ul class="libraries">
-      <li>
-        <a href="https://8bit.cnlibs.com">8bit</a>
-        <p>Coming soon.</p>
+      <li class="bit">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="top-left"></div>
+        <div class="top-right"></div>
+        <div class="bottom-left"></div>
+        <div class="bottom-right"></div>
+        <p>8bit</p>
+        <a target="_blank" href="https://8bit.cnlibs.com">Visit</a>
       </li>
       <li>
-        <a href="https://ascii.cnlibs.com">ascii</a>
-        <p>Coming soon.</p>
+        <p>???</p>
+        <button disabled type="button">Coming soon</button>
+      </li>
+      <li>
+        <p>???</p>
+        <button disabled type="button">Coming soon</button>
       </li>
     </ul>
-
-    <footer>
-      <a href="https://github.com/ekmas/cnlibs">Source on GitHub</a>
-    </footer>
   </main>
 </body>
 
