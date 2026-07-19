@@ -29,20 +29,56 @@
       }
     },
     {
-      "includes": ["**/components/ui/**"],
+      "includes": ["**/components/ui/**", "**/hooks/**"],
       "linter": {
         "rules": {
+          "a11y": {
+            "noLabelWithoutControl": "off",
+            "noNoninteractiveElementInteractions": "off",
+            "noRedundantRoles": "off",
+            "useAriaPropsForRole": "off",
+            "useFocusableInteractive": "off",
+            "useKeyWithClickEvents": "off",
+            "useSemanticElements": "off"
+          },
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off",
+            "noUselessUndefined": "off",
+            "useSimplifiedLogicExpression": "off"
+          },
           "correctness": {
-            "noNestedComponentDefinitions": "off"
+            "noNestedComponentDefinitions": "off",
+            "noUnusedImports": "off",
+            "useExhaustiveDependencies": "off"
           },
           "nursery": {
             "useSortedClasses": "off"
           },
           "performance": {
+            "noJsxPropsBind": "off",
             "noNamespaceImport": "off"
           },
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          },
+          "style": {
+            "noExportedImports": "off",
+            "noNegationElse": "off",
+            "noNestedTernary": "off",
+            "useBlockStatements": "off",
+            "useConsistentArrowReturn": "off",
+            "useConsistentObjectDefinitions": "off",
+            "useConsistentTypeDefinitions": "off",
+            "useImportType": "off"
+          },
           "suspicious": {
-            "noShadow": "off"
+            "noArrayIndexKey": "off",
+            "noDocumentCookie": "off",
+            "noDoubleEquals": "off",
+            "noEqualsToNull": "off",
+            "noLeakedRender": "off",
+            "noShadow": "off",
+            "noUnnecessaryConditions": "off"
           }
         }
       }

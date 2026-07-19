@@ -4,12 +4,212 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* 8-bit pixel corners. Pixel size is controlled with --pixel-size.
+
+   Each px-rounded-* utility publishes its silhouette polygon as --px-shape
+   so px-border and px-ring pseudo-elements can reuse the same geometry. */
+
+/* A single square notch cut from each corner (total cut = 1x --pixel-size). */
+@utility px-rounded-sm {
+  --px: var(--pixel-size, 3px);
+  --px-shape: polygon(
+    0 var(--px),
+    var(--px) var(--px),
+    var(--px) 0,
+    calc(100% - var(--px)) 0,
+    calc(100% - var(--px)) var(--px),
+    100% var(--px),
+    100% calc(100% - var(--px)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px)) 100%,
+    var(--px) 100%,
+    var(--px) calc(100% - var(--px)),
+    0 calc(100% - var(--px))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* A two-step staircase cut into each corner (total cut = 2x --pixel-size). */
+@utility px-rounded-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 var(--px2),
+    var(--px) var(--px2),
+    var(--px) var(--px),
+    var(--px2) var(--px),
+    var(--px2) 0,
+    calc(100% - var(--px2)) 0,
+    calc(100% - var(--px2)) var(--px),
+    calc(100% - var(--px)) var(--px),
+    calc(100% - var(--px)) var(--px2),
+    100% var(--px2),
+    100% calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) 100%,
+    var(--px2) 100%,
+    var(--px2) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px2)),
+    0 calc(100% - var(--px2))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* A border drawn around the element's edge that follows the pixel corners
+   at any thickness. It is a pseudo-element "frame" (outer silhouette minus
+   the same silhouette inset by the border width), painted above the
+   element's background and below its content. Pair px-border-sm with
+   px-rounded-sm and px-border-md with px-rounded-md.
+   Thickness: --px-border-width (2px). Color: --px-border-color.
+   --px-border-offset (0px) insets the whole border from the element edge;
+   set it to --px-ring-width to have px-ring's focus ring sit around the
+   border instead of over it. */
+@utility px-border-sm {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 var(--px),
+      var(--px) var(--px),
+      var(--px) 0,
+      calc(100% - var(--px)) 0,
+      calc(100% - var(--px)) var(--px),
+      100% var(--px),
+      100% calc(100% - var(--px)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px)) 100%,
+      var(--px) 100%,
+      var(--px) calc(100% - var(--px)),
+      0 calc(100% - var(--px)),
+      0 var(--px),
+      /* inner edge, counter-clockwise */ var(--pw) var(--pxw),
+      var(--pw) calc(100% - var(--pxw)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--pxw) calc(100% - var(--pw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pw)) var(--pxw),
+      calc(100% - var(--pxw)) var(--pxw),
+      calc(100% - var(--pxw)) var(--pw),
+      var(--pxw) var(--pw),
+      var(--pxw) var(--pxw),
+      var(--pw) var(--pxw)
+    );
+  }
+}
+
+@utility px-border-md {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 var(--px2),
+      var(--px) var(--px2),
+      var(--px) var(--px),
+      var(--px2) var(--px),
+      var(--px2) 0,
+      calc(100% - var(--px2)) 0,
+      calc(100% - var(--px2)) var(--px),
+      calc(100% - var(--px)) var(--px),
+      calc(100% - var(--px)) var(--px2),
+      100% var(--px2),
+      100% calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) 100%,
+      var(--px2) 100%,
+      var(--px2) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px2)),
+      0 calc(100% - var(--px2)),
+      0 var(--px2),
+      /* inner edge, counter-clockwise */ var(--pw) var(--px2w),
+      var(--pw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pw),
+      var(--px2w) var(--pw),
+      var(--px2w) var(--pxw),
+      var(--pxw) var(--pxw),
+      var(--pxw) var(--px2w),
+      var(--pw) var(--px2w)
+    );
+  }
+}
+
+/* Focus ring around the element. The element box is the ring layer: its
+   own background paints the ring (only the outer --px-ring-width gutter of
+   it stays visible) on focus. The visible face is the ::after pseudo, inset
+   by --px-face-offset (defaults to the ring width) and clipped to
+   --px-shape.
+   IMPORTANT: on px-ring elements set the face color with --px-bg, not with
+   bg-* utilities — the element's own background is reserved for the ring.
+   Ring color: --px-ring-color.
+   The face sits at z-index -2, below the px-border frame (-1): on bordered
+   elements keep --px-face-offset equal to --px-border-offset so the face
+   extends under the border with no antialiasing seam between them. */
+@utility px-ring {
+  position: relative;
+  isolation: isolate;
+  &:focus-visible {
+    background-color: var(--px-ring-color, var(--ring));
+  }
+  &::after {
+    position: absolute;
+    inset: var(--px-face-offset, var(--px-ring-width, 2px));
+    z-index: -2;
+    pointer-events: none;
+    content: "";
+    background: var(--px-bg, transparent);
+    clip-path: var(--px-shape, none);
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-pixel);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-pixel: var(--font-pixel);
+  --font-heading: var(--font-pixel);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,75 +246,159 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --radius: 0.5rem;
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+  --tracking-normal: var(--tracking-normal);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-md: var(--shadow-md);
+  --shadow: var(--shadow);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-2xs: var(--shadow-2xs);
+  --spacing: var(--spacing);
+  --letter-spacing: var(--letter-spacing);
+  --shadow-offset-y: var(--shadow-offset-y);
+  --shadow-offset-x: var(--shadow-offset-x);
+  --shadow-spread: var(--shadow-spread);
+  --shadow-blur: var(--shadow-blur);
+  --shadow-opacity: var(--shadow-opacity);
+  --color-shadow-color: var(--shadow-color);
+  --color-destructive-foreground: var(--destructive-foreground);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --background: oklch(0.9818 0.0054 95.0986);
+  --foreground: oklch(0.3438 0.0269 95.7226);
+  --card: oklch(0.9818 0.0054 95.0986);
+  --card-foreground: oklch(0.1908 0.002 106.5859);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --popover-foreground: oklch(0.2671 0.0196 98.939);
+  --primary: oklch(0.6171 0.1375 39.0427);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9245 0.0138 92.9892);
+  --secondary-foreground: oklch(0.4334 0.0177 98.6048);
+  --muted: oklch(0.9341 0.0153 90.239);
+  --muted-foreground: oklch(0.6059 0.0075 97.4233);
+  --accent: oklch(0.9245 0.0138 92.9892);
+  --accent-foreground: oklch(0.2671 0.0196 98.939);
+  --destructive: oklch(0.1908 0.002 106.5859);
+  --border: oklch(0.8847 0.0069 97.3627);
+  --input: oklch(0.7621 0.0156 98.3528);
+  --ring: oklch(0.6171 0.1375 39.0427);
+  --chart-1: oklch(0.5583 0.1276 42.9956);
+  --chart-2: oklch(0.6898 0.1581 290.4107);
+  --chart-3: oklch(0.8816 0.0276 93.128);
+  --chart-4: oklch(0.8822 0.0403 298.1792);
+  --chart-5: oklch(0.5608 0.1348 42.0584);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.9663 0.008 98.8792);
+  --sidebar-foreground: oklch(0.359 0.0051 106.6524);
+  --sidebar-primary: oklch(0.6171 0.1375 39.0427);
+  --sidebar-primary-foreground: oklch(0.9881 0 0);
+  --sidebar-accent: oklch(0.9245 0.0138 92.9892);
+  --sidebar-accent-foreground: oklch(0.325 0 0);
+  --sidebar-border: oklch(0.9401 0 0);
+  --sidebar-ring: oklch(0.7731 0 0);
+  --destructive-foreground: oklch(1 0 0);
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --shadow-color: oklch(0 0 0);
+  --shadow-opacity: 0.1;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0;
+  --shadow-offset-y: 1px;
+  --letter-spacing: 0em;
+  --spacing: 0.25rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: oklch(0.2679 0.0036 106.6427);
+  --foreground: oklch(0.8074 0.0142 93.0137);
+  --card: oklch(0.2679 0.0036 106.6427);
+  --card-foreground: oklch(0.9818 0.0054 95.0986);
+  --popover: oklch(0.3085 0.0035 106.6039);
+  --popover-foreground: oklch(0.9211 0.004 106.4781);
+  --primary: oklch(0.6724 0.1308 38.7559);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9818 0.0054 95.0986);
+  --secondary-foreground: oklch(0.3085 0.0035 106.6039);
+  --muted: oklch(0.2213 0.0038 106.707);
+  --muted-foreground: oklch(0.7713 0.0169 99.0657);
+  --accent: oklch(0.213 0.0078 95.4245);
+  --accent-foreground: oklch(0.9663 0.008 98.8792);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --border: oklch(0.3618 0.0101 106.8928);
+  --input: oklch(0.4336 0.0113 100.2195);
+  --ring: oklch(0.6724 0.1308 38.7559);
+  --chart-1: oklch(0.5583 0.1276 42.9956);
+  --chart-2: oklch(0.6898 0.1581 290.4107);
+  --chart-3: oklch(0.213 0.0078 95.4245);
+  --chart-4: oklch(0.3074 0.0516 289.323);
+  --chart-5: oklch(0.5608 0.1348 42.0584);
+  --sidebar: oklch(0.2357 0.0024 67.7077);
+  --sidebar-foreground: oklch(0.8074 0.0142 93.0137);
+  --sidebar-primary: oklch(0.325 0 0);
+  --sidebar-primary-foreground: oklch(0.9881 0 0);
+  --sidebar-accent: oklch(0.168 0.002 106.6177);
+  --sidebar-accent-foreground: oklch(0.8074 0.0142 93.0137);
+  --sidebar-border: oklch(0.9401 0 0);
+  --sidebar-ring: oklch(0.7731 0 0);
+  --destructive-foreground: oklch(1 0 0);
+  --radius: 0.5rem;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --shadow-color: oklch(0 0 0);
+  --shadow-opacity: 0.1;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0;
+  --shadow-offset-y: 1px;
+  --letter-spacing: 0em;
+  --spacing: 0.25rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+  --shadow-lg:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+  --shadow-xl:
+    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 }
 
 @layer base {
@@ -122,9 +406,10 @@
     @apply border-border outline-ring/50;
   }
   body {
+    letter-spacing: var(--tracking-normal);
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-pixel;
   }
 }
