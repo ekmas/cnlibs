@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "type": "registry:ui",
+  "title": "Native Select",
+  "description": "Native Select component from the 8bit UI library.",
+  "dependencies": [
+    "clsx",
+    "lucide-react",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "apps/8bit/components/ui/native-select.tsx",
+      "content": "import { ChevronDownIcon } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype NativeSelectProps = Omit<React.ComponentProps<\"select\">, \"size\"> & {\n  size?: \"sm\" | \"default\";\n};\n\nfunction NativeSelect({\n  className,\n  size = \"default\",\n  ...props\n}: NativeSelectProps) {\n  return (\n    <div\n      className={cn(\n        \"group/native-select relative w-fit px-rounded-sm px-border-sm [--pixel-size:3px] [--px-border-color:var(--input)] has-[select:focus-visible]:[--px-border-color:var(--ring)] has-[select:disabled]:opacity-50 has-[select[aria-invalid=true]]:[--px-border-color:var(--destructive)]\",\n        className\n      )}\n      data-slot=\"native-select-wrapper\"\n      data-size={size}\n    >\n      <select\n        data-slot=\"native-select\"\n        data-size={size}\n        className=\"h-9 w-full min-w-0 appearance-none bg-transparent py-1 pr-8 pl-2.5 text-sm transition-[color] outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8\"\n        {...props}\n      />\n      <ChevronDownIcon\n        className=\"pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none\"\n        aria-hidden=\"true\"\n        data-slot=\"native-select-icon\"\n      />\n    </div>\n  );\n}\n\nfunction NativeSelectOption({\n  className,\n  ...props\n}: React.ComponentProps<\"option\">) {\n  return (\n    <option\n      data-slot=\"native-select-option\"\n      className={cn(\"bg-[Canvas] text-[CanvasText]\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction NativeSelectOptGroup({\n  className,\n  ...props\n}: React.ComponentProps<\"optgroup\">) {\n  return (\n    <optgroup\n      data-slot=\"native-select-optgroup\"\n      className={cn(\"bg-[Canvas] text-[CanvasText]\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { NativeSelect, NativeSelectOptGroup, NativeSelectOption };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/native-select.tsx"
+    },
+    {
+      "path": "apps/8bit/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": "~/lib/utils.ts"
+    }
+  ]
+}

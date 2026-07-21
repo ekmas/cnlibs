@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Badge component from the 8bit UI library.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "apps/8bit/components/ui/badge.tsx",
+      "content": "import { mergeProps } from \"@base-ui/react/merge-props\";\nimport { useRender } from \"@base-ui/react/use-render\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = cva(\n  \"group/badge px-rounded-sm [--pixel-size:2px] px-ring inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:[--px-ring-color:var(--destructive)] [&>svg]:pointer-events-none [&>svg]:size-3!\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"[--px-bg:var(--primary)] text-primary-foreground [a]:hover:[--px-bg:color-mix(in_oklab,var(--primary)_80%,transparent)]\",\n        secondary:\n          \"[--px-bg:var(--secondary)] text-secondary-foreground [a]:hover:[--px-bg:color-mix(in_oklch,var(--secondary),var(--foreground)_5%)]\",\n        destructive:\n          \"[--px-bg:color-mix(in_oklab,var(--destructive)_10%,transparent)] text-destructive [--px-ring-color:color-mix(in_oklab,var(--destructive)_40%,transparent)] [a]:hover:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] dark:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] dark:[a]:hover:[--px-bg:color-mix(in_oklab,var(--destructive)_30%,transparent)]\",\n        outline:\n          \"px-border-sm [--px-bg:transparent] text-foreground [a]:hover:[--px-bg:var(--muted)] [a]:hover:text-muted-foreground\",\n        ghost:\n          \"[--px-bg:transparent] hover:[--px-bg:var(--muted)] hover:text-muted-foreground dark:hover:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)]\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n);\n\nfunction Badge({\n  className,\n  variant = \"default\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants>) {\n  return useRender({\n    defaultTagName: \"span\",\n    props: mergeProps<\"span\">(\n      {\n        className: cn(badgeVariants({ variant }), className),\n      },\n      props\n    ),\n    render,\n    state: {\n      slot: \"badge\",\n      variant,\n    },\n  });\n}\n\nexport { Badge, badgeVariants };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/badge.tsx"
+    },
+    {
+      "path": "apps/8bit/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": "~/lib/utils.ts"
+    }
+  ]
+}

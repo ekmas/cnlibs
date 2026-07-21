@@ -4,6 +4,30 @@
   "homepage": "https://github.com/ekmas/cnlibs",
   "items": [
     {
+      "name": "8bit/accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Accordion component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/accordion.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
       "name": "8bit/alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
@@ -24,6 +48,182 @@
           "path": "apps/8bit/components/ui/button.tsx",
           "type": "registry:ui",
           "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert component from the 8bit UI library.",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/alert.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Attachment component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/attachment.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/attachment.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/avatar.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/badge.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/breadcrumb.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Bubble component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/bubble.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/bubble.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Button Group component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/button-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button-group.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
         },
         {
           "path": "apps/8bit/lib/utils.ts",
@@ -79,6 +279,1197 @@
           "path": "apps/8bit/components/ui/button.tsx",
           "type": "registry:ui",
           "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/card.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "embla-carousel-react",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/carousel.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/carousel.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "recharts",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/chart.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/chart.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/checkbox.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "cmdk",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/command.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/command.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dialog.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-group.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Context Menu component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/context-menu.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Dialog component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dialog.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Drawer component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/drawer.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Dropdown Menu component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dropdown-menu.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty component from the 8bit UI library.",
+      "dependencies": [
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/empty.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/empty.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/field.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/label.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/hover-card.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input Group component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-group.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Input Otp component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "input-otp",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-otp.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Item component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/item.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/item.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Kbd component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/kbd.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/kbd.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/label.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Marker component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/marker.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/marker.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Menubar component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/menubar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dropdown-menu.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "Message Scroller component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "@shadcn/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/message-scroller.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/message-scroller.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Message component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/message.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/message.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Native Select component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/native-select.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/native-select.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Navigation Menu component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/navigation-menu.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/pagination.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/popover.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/progress.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio Group component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/radio-group.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "react-resizable-panels",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/resizable.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/resizable.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scroll Area component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/scroll-area.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/select.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sheet.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sidebar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sheet.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/skeleton.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/skeleton.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/slider.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Sonner component from the 8bit UI library.",
+      "dependencies": [
+        "lucide-react",
+        "next-themes",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/sonner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sonner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Spinner component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/spinner.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Switch component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/switch.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/table.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tabs.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea component from the 8bit UI library.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/textarea.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Toggle Group component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toggle-group.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toggle.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Toggle component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toggle.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tooltip.tsx"
         },
         {
           "path": "apps/8bit/lib/utils.ts",

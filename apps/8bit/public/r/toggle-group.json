@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "type": "registry:ui",
+  "title": "Toggle Group",
+  "description": "Toggle Group component from the 8bit UI library.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "apps/8bit/components/ui/toggle-group.tsx",
+      "content": "\"use client\";\n\nimport { Toggle as TogglePrimitive } from \"@base-ui/react/toggle\";\nimport { ToggleGroup as ToggleGroupPrimitive } from \"@base-ui/react/toggle-group\";\nimport { type VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\nimport { toggleVariants } from \"@/components/ui/toggle\";\nimport { cn } from \"@/lib/utils\";\n\nconst ToggleGroupContext = React.createContext<\n  VariantProps<typeof toggleVariants> & {\n    spacing?: number;\n    orientation?: \"horizontal\" | \"vertical\";\n  }\n>({\n  size: \"default\",\n  variant: \"default\",\n  spacing: 2,\n  orientation: \"horizontal\",\n});\n\nfunction ToggleGroup({\n  className,\n  variant,\n  size,\n  spacing = 2,\n  orientation = \"horizontal\",\n  children,\n  ...props\n}: ToggleGroupPrimitive.Props &\n  VariantProps<typeof toggleVariants> & {\n    spacing?: number;\n    orientation?: \"horizontal\" | \"vertical\";\n  }) {\n  return (\n    <ToggleGroupPrimitive\n      data-slot=\"toggle-group\"\n      data-variant={variant}\n      data-size={size}\n      data-spacing={spacing}\n      data-orientation={orientation}\n      style={{ \"--gap\": spacing } as React.CSSProperties}\n      className={cn(\n        \"group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md data-[spacing=0]:data-[variant=outline]:shadow-xs data-vertical:flex-col data-vertical:items-stretch\",\n        className\n      )}\n      {...props}\n    >\n      <ToggleGroupContext.Provider\n        value={{ variant, size, spacing, orientation }}\n      >\n        {children}\n      </ToggleGroupContext.Provider>\n    </ToggleGroupPrimitive>\n  );\n}\n\nfunction ToggleGroupItem({\n  className,\n  children,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {\n  const context = React.useContext(ToggleGroupContext);\n\n  return (\n    <TogglePrimitive\n      data-slot=\"toggle-group-item\"\n      data-variant={context.variant || variant}\n      data-size={context.size || size}\n      data-spacing={context.spacing}\n      className={cn(\n        \"shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:shadow-none focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pr-1.5 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:pl-1.5 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-md data-[state=on]:bg-muted group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t\",\n        toggleVariants({\n          variant: context.variant || variant,\n          size: context.size || size,\n        }),\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </TogglePrimitive>\n  );\n}\n\nexport { ToggleGroup, ToggleGroupItem };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/toggle-group.tsx"
+    },
+    {
+      "path": "apps/8bit/components/ui/toggle.tsx",
+      "content": "\"use client\";\n\nimport { Toggle as TogglePrimitive } from \"@base-ui/react/toggle\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst toggleVariants = cva(\n  \"group/toggle px-rounded-sm [--pixel-size:3px] px-ring inline-flex items-center justify-center gap-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] outline-none hover:[--px-bg:var(--muted)] hover:text-foreground disabled:pointer-events-none disabled:opacity-50 aria-invalid:[--px-ring-color:var(--destructive)] aria-pressed:[--px-bg:var(--muted)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"[--px-bg:transparent]\",\n        outline:\n          \"px-border-sm [--px-border-offset:2px] [--px-bg:transparent] hover:[--px-bg:var(--muted)]\",\n      },\n      size: {\n        default:\n          \"h-9 min-w-9 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        sm: \"h-8 min-w-8 px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5\",\n        lg: \"h-10 min-w-10 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n);\n\nfunction Toggle({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {\n  return (\n    <TogglePrimitive\n      data-slot=\"toggle\"\n      className={cn(toggleVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { Toggle, toggleVariants };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/toggle.tsx"
+    },
+    {
+      "path": "apps/8bit/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "type": "registry:lib",
+      "target": "~/lib/utils.ts"
+    }
+  ]
+}
