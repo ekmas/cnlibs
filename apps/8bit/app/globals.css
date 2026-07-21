@@ -60,6 +60,62 @@
   clip-path: var(--px-shape);
 }
 
+/* Single-corner notch variants of px-rounded-md, for elements that sit flush
+   against their neighbors on every side but one — e.g. the first/last tab
+   in a tab strip, which should only round off their outer top corner. */
+@utility px-rounded-tl-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 var(--px2),
+    var(--px) var(--px2),
+    var(--px) var(--px),
+    var(--px2) var(--px),
+    var(--px2) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+@utility px-rounded-tr-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 0,
+    calc(100% - var(--px2)) 0,
+    calc(100% - var(--px2)) var(--px),
+    calc(100% - var(--px)) var(--px),
+    calc(100% - var(--px)) var(--px2),
+    100% var(--px2),
+    100% 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* Bottom-only notch variant of px-rounded-sm, for panels that sit flush
+   under something above them (e.g. a tab strip) and should keep a sharp,
+   unrounded top edge while still rounding off their bottom corners. */
+@utility px-rounded-b-sm {
+  --px: var(--pixel-size, 3px);
+  --px-shape: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--px)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px)) 100%,
+    var(--px) 100%,
+    var(--px) calc(100% - var(--px)),
+    0 calc(100% - var(--px))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
 /* A border drawn around the element's edge that follows the pixel corners
    at any thickness. It is a pseudo-element "frame" (outer silhouette minus
    the same silhouette inset by the border width), painted above the
@@ -109,6 +165,45 @@
       var(--pxw) var(--pw),
       var(--pxw) var(--pxw),
       var(--pw) var(--pxw)
+    );
+  }
+}
+
+/* Border variant matching px-rounded-b-sm's silhouette: a normal, full
+   4-sided frame, but only the bottom two corners are notched — the top
+   edge stays a plain straight line since the top corners are sharp.
+   Pair with px-rounded-b-sm. */
+@utility px-border-b-sm {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 0,
+      100% 0,
+      100% calc(100% - var(--px)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px)) 100%,
+      var(--px) 100%,
+      var(--px) calc(100% - var(--px)),
+      0 calc(100% - var(--px)),
+      0 0,
+      /* inner edge, counter-clockwise */ var(--pw) var(--pw),
+      var(--pw) calc(100% - var(--pxw)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--pxw) calc(100% - var(--pw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pw)) var(--pw)
     );
   }
 }
