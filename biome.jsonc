@@ -29,6 +29,17 @@
       }
     },
     {
+      // Docs scaffolds keep a fragment wrapper so more examples can be added.
+      "includes": ["**/content/docs/**"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noUselessFragments": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["**/components/ui/**", "**/hooks/**"],
       "linter": {
         "rules": {

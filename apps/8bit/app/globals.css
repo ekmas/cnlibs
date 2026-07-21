@@ -4,6 +4,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* A thin, always-reserved scrollbar (never an invisible overlay one) for
+   scrollable code blocks, so it's obvious there's more content to scroll to. */
+@utility code-scrollbar {
+  scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+  }
+}
+
 /* 8-bit pixel corners. Pixel size is controlled with --pixel-size.
 
    Each px-rounded-* utility publishes its silhouette polygon as --px-shape
