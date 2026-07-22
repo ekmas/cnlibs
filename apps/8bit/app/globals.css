@@ -138,6 +138,118 @@
   clip-path: var(--px-shape);
 }
 
+/* Top-only notch variant of px-rounded-sm, for the first item in a flush
+   vertical stack (e.g. a dropdown menu list) that should round off its top
+   corners while keeping a sharp, unrounded bottom edge. */
+@utility px-rounded-t-sm {
+  --px: var(--pixel-size, 3px);
+  --px-shape: polygon(
+    0 var(--px),
+    var(--px) var(--px),
+    var(--px) 0,
+    calc(100% - var(--px)) 0,
+    calc(100% - var(--px)) var(--px),
+    100% var(--px),
+    100% 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* Top-only two-step staircase variant of px-rounded-md, combining
+   px-rounded-tl-md and px-rounded-tr-md into a single utility for the first
+   item in a flush vertical stack. */
+@utility px-rounded-t-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 var(--px2),
+    var(--px) var(--px2),
+    var(--px) var(--px),
+    var(--px2) var(--px),
+    var(--px2) 0,
+    calc(100% - var(--px2)) 0,
+    calc(100% - var(--px2)) var(--px),
+    calc(100% - var(--px)) var(--px),
+    calc(100% - var(--px)) var(--px2),
+    100% var(--px2),
+    100% 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* Bottom-only two-step staircase variant of px-rounded-md, mirroring
+   px-rounded-t-md for the last item in a flush vertical stack. */
+@utility px-rounded-b-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) 100%,
+    var(--px2) 100%,
+    var(--px2) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px2)),
+    0 calc(100% - var(--px2))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* Left-only two-step staircase variant of px-rounded-md, for the first item
+   in a flush horizontal row (e.g. a button group). */
+@utility px-rounded-l-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 var(--px2),
+    var(--px) var(--px2),
+    var(--px) var(--px),
+    var(--px2) var(--px),
+    var(--px2) 0,
+    100% 0,
+    100% 100%,
+    var(--px2) 100%,
+    var(--px2) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px2)),
+    0 calc(100% - var(--px2))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+/* Right-only two-step staircase variant of px-rounded-md, mirroring
+   px-rounded-l-md for the last item in a flush horizontal row. */
+@utility px-rounded-r-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 0,
+    calc(100% - var(--px2)) 0,
+    calc(100% - var(--px2)) var(--px),
+    calc(100% - var(--px)) var(--px),
+    calc(100% - var(--px)) var(--px2),
+    100% var(--px2),
+    100% calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
 /* A border drawn around the element's edge that follows the pixel corners
    at any thickness. It is a pseudo-element "frame" (outer silhouette minus
    the same silhouette inset by the border width), painted above the
@@ -225,7 +337,8 @@
       calc(100% - var(--pxw)) calc(100% - var(--pw)),
       calc(100% - var(--pxw)) calc(100% - var(--pxw)),
       calc(100% - var(--pw)) calc(100% - var(--pxw)),
-      calc(100% - var(--pw)) var(--pw)
+      calc(100% - var(--pw)) var(--pw),
+      var(--pw) var(--pw)
     );
   }
 }
@@ -288,6 +401,363 @@
       var(--pxw) var(--pxw),
       var(--pxw) var(--px2w),
       var(--pw) var(--px2w)
+    );
+  }
+}
+
+/* Partial-edge companions to px-border-md, for items in a flush group where
+   only the outer edges keep their staircase corners. px-border-square draws a
+   plain rectangular frame (no notches) for middle items; the l/r/t/b variants
+   notch only the named edge's corners. Pair each with the matching
+   px-rounded-{l,r,t,b}-md (or no shape for square). */
+@utility px-border-square {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --pw: var(--px-border-width, 2px);
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 0,
+      /* inner edge, counter-clockwise */ var(--pw) var(--pw),
+      var(--pw) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) var(--pw),
+      var(--pw) var(--pw)
+    );
+  }
+}
+
+@utility px-border-l-md {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 var(--px2),
+      var(--px) var(--px2),
+      var(--px) var(--px),
+      var(--px2) var(--px),
+      var(--px2) 0,
+      100% 0,
+      100% 100%,
+      var(--px2) 100%,
+      var(--px2) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px2)),
+      0 calc(100% - var(--px2)),
+      0 var(--px2),
+      /* inner edge, counter-clockwise */ var(--pw) var(--px2w),
+      var(--pw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) var(--pw),
+      var(--px2w) var(--pw),
+      var(--px2w) var(--pxw),
+      var(--pxw) var(--pxw),
+      var(--pxw) var(--px2w),
+      var(--pw) var(--px2w)
+    );
+  }
+}
+
+@utility px-border-r-md {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 0,
+      calc(100% - var(--px2)) 0,
+      calc(100% - var(--px2)) var(--px),
+      calc(100% - var(--px)) var(--px),
+      calc(100% - var(--px)) var(--px2),
+      100% var(--px2),
+      100% calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) 100%,
+      0 100%,
+      0 0,
+      /* inner edge, counter-clockwise */ var(--pw) var(--pw),
+      var(--pw) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pw),
+      var(--pw) var(--pw)
+    );
+  }
+}
+
+@utility px-border-t-md {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 var(--px2),
+      var(--px) var(--px2),
+      var(--px) var(--px),
+      var(--px2) var(--px),
+      var(--px2) 0,
+      calc(100% - var(--px2)) 0,
+      calc(100% - var(--px2)) var(--px),
+      calc(100% - var(--px)) var(--px),
+      calc(100% - var(--px)) var(--px2),
+      100% var(--px2),
+      100% 100%,
+      0 100%,
+      0 var(--px2),
+      /* inner edge, counter-clockwise */ var(--pw) var(--px2w),
+      var(--pw) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pw),
+      var(--px2w) var(--pw),
+      var(--px2w) var(--pxw),
+      var(--pxw) var(--pxw),
+      var(--pxw) var(--px2w),
+      var(--pw) var(--px2w)
+    );
+  }
+}
+
+@utility px-border-b-md {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      /* outer edge, clockwise */ 0 0,
+      100% 0,
+      100% calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) 100%,
+      var(--px2) 100%,
+      var(--px2) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px2)),
+      0 calc(100% - var(--px2)),
+      0 0,
+      /* inner edge, counter-clockwise */ var(--pw) var(--pw),
+      var(--pw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) var(--pw),
+      var(--pw) var(--pw)
+    );
+  }
+}
+
+/* Open-edge frames for items inside a flush group: the edge shared with the
+   previous item is omitted entirely so adjacent frames never double up.
+   h = horizontal groups (open left edge), v = vertical groups (open top
+   edge); mid = square frame for middle items, end = staircase corners on the
+   far edge for the last item. These are simple (non-ring) polygons since one
+   edge is missing. */
+@utility px-border-h-mid {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --pw: var(--px-border-width, 2px);
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 calc(100% - var(--pw)),
+      calc(100% - var(--pw)) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) var(--pw),
+      0 var(--pw)
+    );
+  }
+}
+
+@utility px-border-h-end {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--px2)) 0,
+      calc(100% - var(--px2)) var(--px),
+      calc(100% - var(--px)) var(--px),
+      calc(100% - var(--px)) var(--px2),
+      100% var(--px2),
+      100% calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) 100%,
+      0 100%,
+      0 calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--px2w),
+      calc(100% - var(--pxw)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pxw),
+      calc(100% - var(--px2w)) var(--pw),
+      0 var(--pw)
+    );
+  }
+}
+
+@utility px-border-v-mid {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --pw: var(--px-border-width, 2px);
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      0 0,
+      var(--pw) 0,
+      var(--pw) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) calc(100% - var(--pw)),
+      calc(100% - var(--pw)) 0,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+  }
+}
+
+@utility px-border-v-end {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    --px: var(--pixel-size, 3px);
+    --px2: calc(var(--pixel-size, 3px) * 2);
+    --pw: var(--px-border-width, 2px);
+    --pxw: calc(var(--px) + var(--pw));
+    --px2w: calc(var(--px2) + var(--pw));
+    position: absolute;
+    inset: var(--px-border-offset, 0px);
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background: var(--px-border-color, var(--border));
+    clip-path: polygon(
+      0 0,
+      var(--pw) 0,
+      var(--pw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--px2w)),
+      var(--pxw) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pxw)),
+      var(--px2w) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pw)),
+      calc(100% - var(--px2w)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--pxw)),
+      calc(100% - var(--pxw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) calc(100% - var(--px2w)),
+      calc(100% - var(--pw)) 0,
+      100% 0,
+      100% calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px2)),
+      calc(100% - var(--px)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) calc(100% - var(--px)),
+      calc(100% - var(--px2)) 100%,
+      var(--px2) 100%,
+      var(--px2) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px)),
+      var(--px) calc(100% - var(--px2)),
+      0 calc(100% - var(--px2))
     );
   }
 }
@@ -390,39 +860,60 @@
 }
 
 :root {
-  --background: oklch(0.9818 0.0054 95.0986);
-  --foreground: oklch(0.3438 0.0269 95.7226);
-  --card: oklch(0.9818 0.0054 95.0986);
-  --card-foreground: oklch(0.1908 0.002 106.5859);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2671 0.0196 98.939);
-  --primary: oklch(0.6171 0.1375 39.0427);
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9245 0.0138 92.9892);
-  --secondary-foreground: oklch(0.4334 0.0177 98.6048);
-  --muted: oklch(0.9341 0.0153 90.239);
-  --muted-foreground: oklch(0.6059 0.0075 97.4233);
-  --accent: oklch(0.9245 0.0138 92.9892);
-  --accent-foreground: oklch(0.2671 0.0196 98.939);
-  --destructive: oklch(0.1908 0.002 106.5859);
-  --border: oklch(0.8847 0.0069 97.3627);
-  --input: oklch(0.7621 0.0156 98.3528);
-  --ring: oklch(0.6171 0.1375 39.0427);
-  --chart-1: oklch(0.5583 0.1276 42.9956);
-  --chart-2: oklch(0.6898 0.1581 290.4107);
-  --chart-3: oklch(0.8816 0.0276 93.128);
-  --chart-4: oklch(0.8822 0.0403 298.1792);
-  --chart-5: oklch(0.5608 0.1348 42.0584);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.9663 0.008 98.8792);
-  --sidebar-foreground: oklch(0.359 0.0051 106.6524);
-  --sidebar-primary: oklch(0.6171 0.1375 39.0427);
-  --sidebar-primary-foreground: oklch(0.9881 0 0);
-  --sidebar-accent: oklch(0.9245 0.0138 92.9892);
-  --sidebar-accent-foreground: oklch(0.325 0 0);
-  --sidebar-border: oklch(0.9401 0 0);
-  --sidebar-ring: oklch(0.7731 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.44 0 0);
+  --accent: oklch(0.94 0 0);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.63 0.19 23.03);
   --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.94 0 0);
+  --ring: oklch(0 0 0);
+  --chart-1: oklch(0.81 0.17 75.35);
+  --chart-2: oklch(0.55 0.22 264.53);
+  --chart-3: oklch(0.72 0 0);
+  --chart-4: oklch(0.92 0 0);
+  --chart-5: oklch(0.56 0 0);
+  --sidebar: oklch(0.99 0 0);
+  --sidebar-foreground: oklch(0 0 0);
+  --sidebar-primary: oklch(0 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0 0);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.94 0 0);
+  --sidebar-ring: oklch(0 0 0);
+  --radius: 0.5rem;
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.18;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
+  --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
+  --shadow-sm:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 1px 2px -1px hsl(0 0% 0% / 0.18);
+  --shadow:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 1px 2px -1px hsl(0 0% 0% / 0.18);
+  --shadow-md:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 2px 4px -1px hsl(0 0% 0% / 0.18);
+  --shadow-lg:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 4px 6px -1px hsl(0 0% 0% / 0.18);
+  --shadow-xl:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 8px 10px -1px hsl(0 0% 0% / 0.18);
+  --shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.45);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -431,63 +922,64 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --shadow-color: oklch(0 0 0);
-  --shadow-opacity: 0.1;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-offset-x: 0;
-  --shadow-offset-y: 1px;
-  --letter-spacing: 0em;
-  --spacing: 0.25rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0em;
 }
 
 .dark {
-  --background: oklch(0.2679 0.0036 106.6427);
-  --foreground: oklch(0.8074 0.0142 93.0137);
-  --card: oklch(0.2679 0.0036 106.6427);
-  --card-foreground: oklch(0.9818 0.0054 95.0986);
-  --popover: oklch(0.3085 0.0035 106.6039);
-  --popover-foreground: oklch(0.9211 0.004 106.4781);
-  --primary: oklch(0.6724 0.1308 38.7559);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9818 0.0054 95.0986);
-  --secondary-foreground: oklch(0.3085 0.0035 106.6039);
-  --muted: oklch(0.2213 0.0038 106.707);
-  --muted-foreground: oklch(0.7713 0.0169 99.0657);
-  --accent: oklch(0.213 0.0078 95.4245);
-  --accent-foreground: oklch(0.9663 0.008 98.8792);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --border: oklch(0.3618 0.0101 106.8928);
-  --input: oklch(0.4336 0.0113 100.2195);
-  --ring: oklch(0.6724 0.1308 38.7559);
-  --chart-1: oklch(0.5583 0.1276 42.9956);
-  --chart-2: oklch(0.6898 0.1581 290.4107);
-  --chart-3: oklch(0.213 0.0078 95.4245);
-  --chart-4: oklch(0.3074 0.0516 289.323);
-  --chart-5: oklch(0.5608 0.1348 42.0584);
-  --sidebar: oklch(0.2357 0.0024 67.7077);
-  --sidebar-foreground: oklch(0.8074 0.0142 93.0137);
-  --sidebar-primary: oklch(0.325 0 0);
-  --sidebar-primary-foreground: oklch(0.9881 0 0);
-  --sidebar-accent: oklch(0.168 0.002 106.6177);
-  --sidebar-accent-foreground: oklch(0.8074 0.0142 93.0137);
-  --sidebar-border: oklch(0.9401 0 0);
-  --sidebar-ring: oklch(0.7731 0 0);
-  --destructive-foreground: oklch(1 0 0);
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.14 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(1 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.23 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.32 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.69 0.2 23.91);
+  --destructive-foreground: oklch(0 0 0);
+  --border: oklch(0.26 0 0);
+  --input: oklch(0.32 0 0);
+  --ring: oklch(0.72 0 0);
+  --chart-1: oklch(0.81 0.17 75.35);
+  --chart-2: oklch(0.58 0.21 260.84);
+  --chart-3: oklch(0.56 0 0);
+  --chart-4: oklch(0.44 0 0);
+  --chart-5: oklch(0.92 0 0);
+  --sidebar: oklch(0.18 0 0);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(1 0 0);
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: oklch(0.32 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.32 0 0);
+  --sidebar-ring: oklch(0.72 0 0);
+  --font-sans: Geist, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Geist Mono, monospace;
   --radius: 0.5rem;
+  --shadow-x: 0px;
+  --shadow-y: 1px;
+  --shadow-blur: 2px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.18;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
+  --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
+  --shadow-sm:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 1px 2px -1px hsl(0 0% 0% / 0.18);
+  --shadow:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 1px 2px -1px hsl(0 0% 0% / 0.18);
+  --shadow-md:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 2px 4px -1px hsl(0 0% 0% / 0.18);
+  --shadow-lg:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 4px 6px -1px hsl(0 0% 0% / 0.18);
+  --shadow-xl:
+    0px 1px 2px 0px hsl(0 0% 0% / 0.18), 0px 8px 10px -1px hsl(0 0% 0% / 0.18);
+  --shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.45);
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -496,26 +988,6 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  --shadow-color: oklch(0 0 0);
-  --shadow-opacity: 0.1;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-offset-x: 0;
-  --shadow-offset-y: 1px;
-  --letter-spacing: 0em;
-  --spacing: 0.25rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 }
 
 @layer base {
