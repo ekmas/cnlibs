@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { DocsSearch } from "@/components/docs/docs-search";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -34,7 +35,7 @@ export function SiteHeader({ leading }: { leading?: ReactNode }) {
   return (
     <header className="sticky top-0 z-20 flex h-14 w-full shrink-0 items-center gap-4 border-b bg-background px-4 sm:px-6">
       {leading}
-      <Link className="font-semibold tracking-tight" href="/">
+      <Link className="font-medium tracking-tight" href="/">
         8bit
       </Link>
       <nav className="flex items-center gap-4 text-sm">
@@ -65,6 +66,7 @@ export function SiteHeader({ leading }: { leading?: ReactNode }) {
           </a>
         ))}
       </nav>
+      <ThemeToggle />
     </header>
   );
 }

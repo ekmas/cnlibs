@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -39,7 +40,6 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
       className={cn(
         "h-full",
         "antialiased",
@@ -49,14 +49,18 @@ export default function RootLayout({
         inter.variable,
         myFont.variable
       )}
+      lang="en"
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
-        <TooltipProvider>
-          <div className="flex flex-1">
-            <div className="flex min-w-0 flex-1 flex-col">{children}</div>
-          </div>
-        </TooltipProvider>
-        <Toaster />
+        <ThemeProvider attribute="class" disableTransitionOnChange enableSystem>
+          <TooltipProvider>
+            <div className="flex flex-1">
+              <div className="flex min-w-0 flex-1 flex-col">{children}</div>
+            </div>
+          </TooltipProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
