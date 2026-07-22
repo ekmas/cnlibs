@@ -9,16 +9,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "[--px-bg:var(--primary)] text-primary-foreground hover:[--px-bg:color-mix(in_oklab,var(--primary)_80%,transparent)]",
+          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-border-color:transparent] [--px-bg:var(--primary)] text-primary-foreground hover:[--px-bg:color-mix(in_oklab,var(--primary)_80%,transparent)] dark:focus-visible:[--px-border-color:var(--ring)] dark:focus-visible:[--px-ring-color:transparent]",
         outline:
-          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-bg:var(--background)] hover:[--px-bg:var(--border)] hover:text-foreground aria-expanded:[--px-bg:var(--border)] aria-expanded:text-foreground dark:[--px-border-color:var(--input)] dark:[--px-bg:color-mix(in_oklab,var(--input)_30%,transparent)] dark:hover:[--px-bg:var(--input)]",
+          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-border-color:var(--border)]! [--px-bg:var(--background)] hover:[--px-bg:var(--border)] hover:text-foreground aria-expanded:[--px-bg:var(--border)] aria-expanded:text-foreground dark:[--px-border-color:var(--input)]! dark:[--px-bg:color-mix(in_oklab,var(--input)_30%,transparent)] dark:hover:[--px-bg:var(--input)] dark:focus-visible:[--px-border-color:var(--ring)] dark:focus-visible:[--px-ring-color:transparent]",
         secondary:
-          "[--px-bg:var(--secondary)] text-secondary-foreground hover:[--px-bg:color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:[--px-bg:var(--secondary)] aria-expanded:text-secondary-foreground",
+          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-border-color:transparent] [--px-bg:var(--secondary)] text-secondary-foreground hover:[--px-bg:color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:[--px-bg:var(--secondary)] aria-expanded:text-secondary-foreground dark:focus-visible:[--px-border-color:var(--ring)] dark:focus-visible:[--px-ring-color:transparent]",
         ghost:
-          "hover:[--px-bg:var(--muted)] hover:text-foreground aria-expanded:[--px-bg:var(--muted)] aria-expanded:text-foreground dark:hover:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)]",
+          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-border-color:transparent] [--px-bg:var(--background)] hover:[--px-bg:var(--border)] hover:text-foreground aria-expanded:[--px-bg:var(--border)] aria-expanded:text-foreground dark:[--px-bg:color-mix(in_oklab,var(--input)_30%,transparent)] dark:hover:[--px-bg:var(--input)] dark:focus-visible:[--px-border-color:var(--ring)] dark:focus-visible:[--px-ring-color:transparent]",
         destructive:
-          "[--px-bg:color-mix(in_oklab,var(--destructive)_10%,transparent)] text-destructive [--px-ring-color:color-mix(in_oklab,var(--destructive)_40%,transparent)] hover:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] dark:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] dark:hover:[--px-bg:color-mix(in_oklab,var(--destructive)_30%,transparent)]",
-        link: "text-primary underline-offset-4 hover:underline",
+          "px-border-md [--px-border-offset:2px] [--px-face-offset:2px] [--px-border-color:transparent] [--px-bg:color-mix(in_oklab,var(--destructive)_10%,transparent)] text-destructive hover:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] focus-visible:[--px-border-color:color-mix(in_oklab,var(--destructive)_40%,transparent)] focus-visible:[--px-ring-color:transparent] dark:[--px-bg:color-mix(in_oklab,var(--destructive)_20%,transparent)] dark:hover:[--px-bg:color-mix(in_oklab,var(--destructive)_30%,transparent)]",
       },
       size: {
         default: "h-9 gap-1.5 px-4 in-data-[slot=button-group]:rounded-md",
@@ -49,6 +48,7 @@ function Button({
   return (
     <ButtonPrimitive
       data-slot="button"
+      data-variant={variant}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />

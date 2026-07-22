@@ -12,7 +12,7 @@ function Card({
       data-slot="card"
       data-size={size}
       className={cn(
-        "group/card flex flex-col gap-(--card-spacing) overflow-hidden px-rounded-md px-border-md [--pixel-size:6px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)] bg-card py-(--card-spacing) text-sm text-card-foreground [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)]",
+        "group/card flex flex-col gap-(--card-spacing) overflow-hidden px-rounded-md px-border-md [--pixel-size:5px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)] bg-card py-(--card-spacing) text-sm text-card-foreground [--card-spacing:--spacing(6)] has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)]",
         className
       )}
       {...props}

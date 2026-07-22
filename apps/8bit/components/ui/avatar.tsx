@@ -17,7 +17,7 @@ function Avatar({
       data-slot="avatar"
       data-size={size}
       className={cn(
-        "group/avatar relative flex size-8 shrink-0 px-rounded-sm [--pixel-size:2px] select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken after:[clip-path:var(--px-shape)] data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
+        "group/avatar relative flex size-8 shrink-0 px-rounded-md [--pixel-size:2px] select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken after:[clip-path:var(--px-shape)] data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
         className
       )}
       {...props}
@@ -75,7 +75,7 @@ function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="avatar-group"
       className={cn(
-        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:border-2 *:data-[slot=avatar]:border-background",
+        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:border-2 *:data-[slot=avatar]:border-background *:data-[slot=avatar]:[clip-path:none]! *:data-[slot=avatar]:before:absolute *:data-[slot=avatar]:before:inset-0 *:data-[slot=avatar]:before:bg-background *:data-[slot=avatar]:before:content-['']",
         className
       )}
       {...props}
@@ -91,7 +91,7 @@ function AvatarGroupCount({
     <div
       data-slot="avatar-group-count"
       className={cn(
-        "relative flex size-8 shrink-0 items-center justify-center px-rounded-sm [--pixel-size:2px] bg-muted text-sm text-muted-foreground border-2 border-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3",
+        "relative isolate flex size-8 shrink-0 items-center justify-center px-rounded-md [--pixel-size:2px] [clip-path:none]! bg-background text-sm text-muted-foreground border-2 border-background before:absolute before:-z-10 before:inset-0 before:bg-muted before:content-[''] before:[clip-path:var(--px-shape)] after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken after:[clip-path:var(--px-shape)] group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3 dark:after:mix-blend-lighten",
         className
       )}
       {...props}

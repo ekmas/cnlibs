@@ -55,7 +55,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger px-rounded-sm [--pixel-size:3px] px-ring [--px-bg:transparent] inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all outline-none hover:[--px-bg:var(--muted)] focus:[--px-bg:var(--muted)] disabled:pointer-events-none disabled:opacity-50 data-popup-open:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-popup-open:hover:[--px-bg:var(--muted)] data-open:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-open:hover:[--px-bg:var(--muted)] data-open:focus:[--px-bg:var(--muted)]"
+  "group/navigation-menu-trigger px-rounded-md [--pixel-size:3px] px-ring [--px-bg:transparent] inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all outline-none hover:[--px-bg:var(--muted)] focus:[--px-bg:var(--muted)] disabled:pointer-events-none disabled:opacity-50 data-popup-open:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-popup-open:hover:[--px-bg:var(--muted)] data-open:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-open:hover:[--px-bg:var(--muted)] data-open:focus:[--px-bg:var(--muted)]"
 );
 
 function NavigationMenuTrigger({
@@ -131,7 +131,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "px-rounded-sm [--pixel-size:3px] px-ring [--px-bg:transparent] flex items-center gap-1.5 p-2 text-sm transition-all outline-none hover:[--px-bg:var(--muted)] focus:[--px-bg:var(--muted)] in-data-[slot=navigation-menu-content]:[--pixel-size:2px] data-[active=true]:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-[active=true]:hover:[--px-bg:var(--muted)] data-[active=true]:focus:[--px-bg:var(--muted)] [&_svg:not([class*='size-'])]:size-4",
+        "px-rounded-md [--pixel-size:3px] px-ring [--px-bg:transparent] flex items-center gap-1.5 p-2 text-sm transition-all outline-none hover:[--px-bg:var(--muted)] focus:[--px-bg:var(--muted)] in-data-[slot=navigation-menu-content]:[--pixel-size:5px] in-data-[slot=navigation-menu-content]:not-first:not-last:[--px-shape:none]! in-data-[slot=navigation-menu-content]:not-first:not-last:[clip-path:none]! in-data-[slot=navigation-menu-content]:first:not-only:px-rounded-t-md! in-data-[slot=navigation-menu-content]:last:not-only:px-rounded-b-md! data-[active=true]:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)] data-[active=true]:hover:[--px-bg:var(--muted)] data-[active=true]:focus:[--px-bg:var(--muted)] [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

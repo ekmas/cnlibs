@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const attachmentVariants = cva(
-  "group/attachment relative flex w-fit max-w-full min-w-0 shrink-0 flex-wrap px-rounded-md px-border-md [--pixel-size:6px] bg-card text-card-foreground transition-colors focus-within:[--px-border-color:var(--ring)] has-[>a,>button]:hover:bg-muted/50 data-[state=error]:[--px-border-color:color-mix(in_oklab,var(--destructive)_30%,transparent)]",
+  "group/attachment relative flex w-fit max-w-full min-w-0 shrink-0 flex-wrap px-rounded-md px-border-md [--pixel-size:5px] bg-card text-card-foreground transition-colors focus-within:[--px-border-color:color-mix(in_oklab,var(--ring)_50%,transparent)] has-[>a,>button]:hover:bg-muted/50 data-[state=error]:[--px-border-color:color-mix(in_oklab,var(--destructive)_30%,transparent)]",
   {
     variants: {
       size: {

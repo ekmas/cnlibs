@@ -5,14 +5,19 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 const buttonGroupVariants = cva(
-  "flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
+  "flex w-fit items-stretch *:focus-visible:relative *:focus-visible:z-10 has-[>[data-slot=button-group]]:gap-2 [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>[data-slot=input-wrapper]]:flex-1 [&>[data-slot][data-variant=outline]]:[--px-border-color:var(--border)] dark:[&>[data-slot][data-variant=outline]]:[--px-border-color:var(--input)] [&>[data-slot]]:[--px-border-offset:0px]! [&>[data-slot]]:[--px-face-offset:0px]! [&>[data-slot]:focus-visible]:[--px-border-color:var(--ring)]! [&>[data-slot]:focus-visible]:[--px-ring-color:transparent]!",
   {
     variants: {
       orientation: {
+        // Middle items lose their pixel shape and get a square border frame
+        // with the shared (leading) edge omitted so adjacent frames never
+        // double up; the first/last items keep staircase corners on their
+        // outer edge only. On focus-visible the open frame is swapped for its
+        // closed counterpart so the ring border surrounds all four sides.
         horizontal:
-          "*:data-slot:rounded-r-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-r-md! [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0",
+          "[&>[data-slot]]:[--px-shape:none]! [&>[data-slot]]:[clip-path:none]! [&>[data-slot]]:px-border-h-mid! [&>[data-slot]:first-child]:px-rounded-l-md! [&>[data-slot]:first-child]:px-border-l-md! [&>[data-slot]:not(:has(~[data-slot]))]:px-rounded-r-md! [&>[data-slot]:not(:has(~[data-slot]))]:px-border-h-end! [&>[data-slot]:first-child:not(:has(~[data-slot]))]:px-rounded-md! [&>[data-slot]:first-child:not(:has(~[data-slot]))]:px-border-md! [&>[data-slot]:focus-visible]:px-border-square! [&>[data-slot]:first-child:focus-visible]:px-border-l-md! [&>[data-slot]:not(:has(~[data-slot])):focus-visible]:px-border-r-md! [&>[data-slot]:first-child:not(:has(~[data-slot])):focus-visible]:px-border-md!",
         vertical:
-          "flex-col *:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-md! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0",
+          "flex-col [&>[data-slot]]:[--px-shape:none]! [&>[data-slot]]:[clip-path:none]! [&>[data-slot]]:px-border-v-mid! [&>[data-slot]:first-child]:px-rounded-t-md! [&>[data-slot]:first-child]:px-border-t-md! [&>[data-slot]:not(:has(~[data-slot]))]:px-rounded-b-md! [&>[data-slot]:not(:has(~[data-slot]))]:px-border-v-end! [&>[data-slot]:first-child:not(:has(~[data-slot]))]:px-rounded-md! [&>[data-slot]:first-child:not(:has(~[data-slot]))]:px-border-md! [&>[data-slot]:focus-visible]:px-border-square! [&>[data-slot]:first-child:focus-visible]:px-border-t-md! [&>[data-slot]:not(:has(~[data-slot])):focus-visible]:px-border-b-md! [&>[data-slot]:first-child:not(:has(~[data-slot])):focus-visible]:px-border-md!",
       },
     },
     defaultVariants: {
@@ -47,7 +52,7 @@ function ButtonGroupText({
     props: mergeProps<"div">(
       {
         className: cn(
-          "flex items-center gap-2 rounded-md border bg-muted px-2.5 text-sm font-medium shadow-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+          "flex items-center gap-2 px-rounded-md px-border-md [--pixel-size:4px] [--px-border-color:var(--input)] bg-muted px-2.5 text-sm font-medium [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
           className
         ),
       },
