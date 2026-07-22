@@ -44,11 +44,11 @@ export default async function DocPage({ params }: DocPageProps) {
   const usageCode = firstVariant?.code;
   const tocItems = [
     { id: "installation", title: "Installation" },
+    ...(usageCode ? [{ id: "usage", title: "Usage" }] : []),
     ...restVariants.map((variant) => ({
       id: variant.id,
       title: variant.title,
     })),
-    ...(usageCode ? [{ id: "usage", title: "Usage" }] : []),
   ];
 
   return (
@@ -56,9 +56,7 @@ export default async function DocPage({ params }: DocPageProps) {
       <article className="mx-auto flex w-full min-w-0 max-w-3xl flex-col gap-10">
         <header className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <h1 className="font-semibold text-3xl tracking-tight">
-              {doc.title}
-            </h1>
+            <h1 className="font-medium text-3xl tracking-tight">{doc.title}</h1>
             <p className="text-muted-foreground">{doc.description}</p>
           </div>
           {doc.links?.shadcn ? (
@@ -88,10 +86,10 @@ export default async function DocPage({ params }: DocPageProps) {
           <h2 className="font-medium text-xl tracking-tight">Installation</h2>
           <InstallSection manualCode={manualCode} slug={slug} />
         </section>
+        {usageCode ? <UsageSection code={usageCode} /> : null}
         {restVariants.map((variant) => (
           <VariantSection key={variant.id} variant={variant} />
         ))}
-        {usageCode ? <UsageSection code={usageCode} /> : null}
         <DocsPager next={next} prev={prev} />
       </article>
       {tocItems.length > 1 ? (

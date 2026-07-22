@@ -18,9 +18,7 @@ export default function DocsIndexPage() {
     <article className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
       <header className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <h1 className="font-semibold text-3xl tracking-tight">
-            Introduction
-          </h1>
+          <h1 className="font-medium text-3xl tracking-tight">Introduction</h1>
           <p className="text-muted-foreground">
             8bit is a collection of pixel-cornered, retro-styled components for
             shadcn/ui, built on Base UI. Pick a component from the sidebar to

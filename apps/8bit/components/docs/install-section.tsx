@@ -10,20 +10,10 @@ export function InstallSection({
   slug: string;
 }) {
   return (
-    <Tabs className="gap-0" defaultValue="cli">
-      <TabsList className="group-data-horizontal/tabs:w-full" variant="line">
-        <TabsTrigger
-          className="py-2 text-base group-data-[variant=line]/tabs-list:[--pixel-size:5px]"
-          value="cli"
-        >
-          Shadcn CLI
-        </TabsTrigger>
-        <TabsTrigger
-          className="py-2 text-base group-data-[variant=line]/tabs-list:[--pixel-size:5px]"
-          value="manual"
-        >
-          Manual
-        </TabsTrigger>
+    <Tabs defaultValue="cli">
+      <TabsList variant="line">
+        <TabsTrigger value="cli">Shadcn CLI</TabsTrigger>
+        <TabsTrigger value="manual">Manual</TabsTrigger>
       </TabsList>
       <TabsContent value="cli">
         <InstallTabs slug={slug} />

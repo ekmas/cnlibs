@@ -22,18 +22,10 @@ export function InstallTabs({ slug }: { slug: string }) {
   );
 
   return (
-    <Tabs
-      className="gap-0"
-      onValueChange={handleValueChange}
-      value={packageManager}
-    >
-      <TabsList className="group-data-horizontal/tabs:w-full" variant="line">
+    <Tabs onValueChange={handleValueChange} value={packageManager}>
+      <TabsList variant="line">
         {Object.keys(COMMANDS).map((id) => (
-          <TabsTrigger
-            className="py-2 text-base first:[--px-shape:none]! last:[--px-shape:none]! group-data-[variant=line]/tabs-list:[--pixel-size:5px]"
-            key={id}
-            value={id}
-          >
+          <TabsTrigger key={id} value={id}>
             {id}
           </TabsTrigger>
         ))}

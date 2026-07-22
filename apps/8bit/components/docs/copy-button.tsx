@@ -16,7 +16,10 @@ export function CopyButton({
 
   return (
     <Button
-      className={cn("shrink-0", className)}
+      className={cn(
+        "shrink-0 [transition-property:color]! focus-visible:[--px-bg:var(--muted)] dark:focus-visible:[--px-bg:color-mix(in_oklab,var(--muted)_50%,transparent)]",
+        className
+      )}
       onClick={copy}
       size="icon-sm"
       variant="ghost"

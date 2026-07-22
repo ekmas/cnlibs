@@ -23,20 +23,10 @@ export function VariantSection({
           ) : null}
         </>
       ) : null}
-      <Tabs className="gap-0" defaultValue="preview">
-        <TabsList className="group-data-horizontal/tabs:w-full" variant="line">
-          <TabsTrigger
-            className="py-2 text-base group-data-[variant=line]/tabs-list:[--pixel-size:5px]"
-            value="preview"
-          >
-            Preview
-          </TabsTrigger>
-          <TabsTrigger
-            className="py-2 text-base group-data-[variant=line]/tabs-list:[--pixel-size:5px]"
-            value="code"
-          >
-            Code
-          </TabsTrigger>
+      <Tabs defaultValue="preview">
+        <TabsList variant="line">
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
           <div className="mx-0.5 flex min-h-36 flex-wrap items-center justify-center gap-4 p-10 px-border-b-sm px-rounded-b-sm">
