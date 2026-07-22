@@ -17,7 +17,7 @@ export const variants: DocVariant[] = [
 export function BubbleDemo() {
   return (
     <BubbleGroup className="w-full max-w-md">
-      <Bubble align="start" variant="muted">
+      <Bubble align="start" variant="secondary">
         <BubbleContent>
           Hey! Are we still on for the demo tomorrow?
         </BubbleContent>
@@ -33,7 +33,7 @@ export function BubbleDemo() {
     id: "default",
     preview: (
       <BubbleGroup className="w-full max-w-md">
-        <Bubble align="start" variant="muted">
+        <Bubble align="start" variant="secondary">
           <BubbleContent>
             Hey! Are we still on for the demo tomorrow?
           </BubbleContent>
@@ -54,7 +54,7 @@ export function BubbleDemo() {
 
 export function BubbleWithReactionsDemo() {
   return (
-    <Bubble align="start" className="mb-3" variant="muted">
+    <Bubble align="start" className="mb-3" variant="secondary">
       <BubbleContent>Nice work on the release!</BubbleContent>
       <BubbleReactions>🎉 2</BubbleReactions>
     </Bubble>
@@ -63,7 +63,7 @@ export function BubbleWithReactionsDemo() {
     description: "Attach a reactions pill to the bottom of a bubble.",
     id: "with-reactions",
     preview: (
-      <Bubble align="start" className="mb-3" variant="muted">
+      <Bubble align="start" className="mb-3" variant="secondary">
         <BubbleContent>Nice work on the release!</BubbleContent>
         <BubbleReactions>🎉 2</BubbleReactions>
       </Bubble>

@@ -33,17 +33,11 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-56 gap-1">
-              <li>
-                <NavigationMenuLink href="#">Introduction</NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink href="#">Installation</NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink href="#">Theming</NavigationMenuLink>
-              </li>
-            </ul>
+            <div className="flex w-56 flex-col">
+              <NavigationMenuLink href="#">Introduction</NavigationMenuLink>
+              <NavigationMenuLink href="#">Installation</NavigationMenuLink>
+              <NavigationMenuLink href="#">Theming</NavigationMenuLink>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -62,17 +56,11 @@ export function NavigationMenuDemo() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-56 gap-1">
-                <li>
-                  <NavigationMenuLink href="#">Introduction</NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink href="#">Installation</NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink href="#">Theming</NavigationMenuLink>
-                </li>
-              </ul>
+              <div className="flex w-56 flex-col">
+                <NavigationMenuLink href="#">Introduction</NavigationMenuLink>
+                <NavigationMenuLink href="#">Installation</NavigationMenuLink>
+                <NavigationMenuLink href="#">Theming</NavigationMenuLink>
+              </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>

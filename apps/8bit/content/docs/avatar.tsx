@@ -50,18 +50,18 @@ export function AvatarDemo() {
 export function AvatarGroupDemo() {
   return (
     <AvatarGroup>
-      <Avatar>
+      <Avatar className="z-10">
         <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <Avatar>
+      <Avatar className="z-20">
         <AvatarImage alt="@vercel" src="https://github.com/vercel.png" />
         <AvatarFallback>VC</AvatarFallback>
       </Avatar>
-      <Avatar>
+      <Avatar className="z-30">
         <AvatarFallback>KL</AvatarFallback>
       </Avatar>
-      <AvatarGroupCount>+3</AvatarGroupCount>
+      <AvatarGroupCount className="z-40">+3</AvatarGroupCount>
     </AvatarGroup>
   );
 }`,
@@ -69,18 +69,18 @@ export function AvatarGroupDemo() {
     id: "group",
     preview: (
       <AvatarGroup>
-        <Avatar>
+        <Avatar className="z-10">
           <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <Avatar>
+        <Avatar className="z-20">
           <AvatarImage alt="@vercel" src="https://github.com/vercel.png" />
           <AvatarFallback>VC</AvatarFallback>
         </Avatar>
-        <Avatar>
+        <Avatar className="z-30">
           <AvatarFallback>KL</AvatarFallback>
         </Avatar>
-        <AvatarGroupCount>+3</AvatarGroupCount>
+        <AvatarGroupCount className="z-40">+3</AvatarGroupCount>
       </AvatarGroup>
     ),
     title: "Group",

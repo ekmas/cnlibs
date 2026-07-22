@@ -1,17 +1,4 @@
-import { CollapsibleDemo } from "@/components/docs/examples/collapsible-demo";
-import type { DocVariant } from "@/content/docs/registry";
-
-export const title = "Collapsible";
-export const description =
-  "An interactive component which expands and collapses a panel.";
-
-export const links = {
-  shadcn: "https://ui.shadcn.com/docs/components/collapsible",
-};
-
-export const variants: DocVariant[] = [
-  {
-    code: `"use client";
+"use client";
 
 import { ChevronsUpDownIcon } from "lucide-react";
 import { useState } from "react";
@@ -58,11 +45,4 @@ export function CollapsibleDemo() {
       </CollapsibleContent>
     </Collapsible>
   );
-}`,
-    description:
-      "An order summary panel with a toggle to reveal shipping and item details.",
-    id: "default",
-    preview: <CollapsibleDemo />,
-    title: "Default",
-  },
-];
+}

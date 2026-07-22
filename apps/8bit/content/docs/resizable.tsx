@@ -23,18 +23,18 @@ export const variants: DocVariant[] = [
 export function ResizableDemo() {
   return (
     <ResizablePanelGroup
-      className="h-48 w-full max-w-md px-rounded-sm px-border-sm [--pixel-size:3px]"
+      className="h-48 w-full max-w-md px-rounded-md px-border-md [--pixel-size:5px]"
       orientation="horizontal"
     >
       <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold text-sm">One</span>
+          <span className="font-medium text-sm">One</span>
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold text-sm">Two</span>
+          <span className="font-medium text-sm">Two</span>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
@@ -45,18 +45,18 @@ export function ResizableDemo() {
     id: "default",
     preview: (
       <ResizablePanelGroup
-        className="h-48 w-full max-w-md px-border-sm px-rounded-sm [--pixel-size:3px]"
+        className="h-48 w-full max-w-md px-border-md px-rounded-md [--pixel-size:5px]"
         orientation="horizontal"
       >
         <ResizablePanel defaultSize={50}>
           <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold text-sm">One</span>
+            <span className="font-medium text-sm">One</span>
           </div>
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={50}>
           <div className="flex h-full items-center justify-center p-6">
-            <span className="font-semibold text-sm">Two</span>
+            <span className="font-medium text-sm">Two</span>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

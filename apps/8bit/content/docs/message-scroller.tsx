@@ -47,7 +47,7 @@ export function MessageScrollerDemo() {
                   </Avatar>
                 </MessageAvatar>
                 <MessageContent>
-                  <Bubble variant="muted">
+                  <Bubble variant="secondary">
                     <BubbleContent>Welcome! Ask me anything.</BubbleContent>
                   </Bubble>
                 </MessageContent>
@@ -70,7 +70,7 @@ export function MessageScrollerDemo() {
                   </Avatar>
                 </MessageAvatar>
                 <MessageContent>
-                  <Bubble variant="muted">
+                  <Bubble variant="secondary">
                     <BubbleContent>
                       Drag the handle between the Resizable panels.
                     </BubbleContent>
@@ -101,7 +101,7 @@ export function MessageScrollerDemo() {
                     </Avatar>
                   </MessageAvatar>
                   <MessageContent>
-                    <Bubble variant="muted">
+                    <Bubble variant="secondary">
                       <BubbleContent>Welcome! Ask me anything.</BubbleContent>
                     </Bubble>
                   </MessageContent>
@@ -124,7 +124,7 @@ export function MessageScrollerDemo() {
                     </Avatar>
                   </MessageAvatar>
                   <MessageContent>
-                    <Bubble variant="muted">
+                    <Bubble variant="secondary">
                       <BubbleContent>
                         Drag the handle between the Resizable panels.
                       </BubbleContent>

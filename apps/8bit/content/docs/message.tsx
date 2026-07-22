@@ -33,7 +33,7 @@ export function MessageDemo() {
         </MessageAvatar>
         <MessageContent>
           <MessageHeader>Assistant</MessageHeader>
-          <Bubble variant="muted">
+          <Bubble variant="secondary">
             <BubbleContent>
               Here's a summary of the pull request you asked for.
             </BubbleContent>
@@ -69,7 +69,7 @@ export function MessageDemo() {
           </MessageAvatar>
           <MessageContent>
             <MessageHeader>Assistant</MessageHeader>
-            <Bubble variant="muted">
+            <Bubble variant="secondary">
               <BubbleContent>
                 Here's a summary of the pull request you asked for.
               </BubbleContent>

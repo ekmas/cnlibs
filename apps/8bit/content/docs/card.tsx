@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import type { DocVariant } from "@/content/docs/registry";
 
 export const title = "Card";
@@ -19,51 +21,6 @@ export const links = {
 
 export const variants: DocVariant[] = [
   {
-    code: `import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-export function CardDemo() {
-  return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>
-          Deploy your new project in one click.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground text-sm">
-          Projects include a database, auth, and storage out of the box.
-        </p>
-      </CardContent>
-    </Card>
-  );
-}`,
-    description: "A basic card with a header, title, description, and body.",
-    id: "default",
-    preview: (
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Create project</CardTitle>
-          <CardDescription>
-            Deploy your new project in one click.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground text-sm">
-            Projects include a database, auth, and storage out of the box.
-          </p>
-        </CardContent>
-      </Card>
-    ),
-    title: "Default",
-  },
-  {
     code: `import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -74,60 +31,109 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-export function CardWithFooterDemo() {
+export function CardDemo() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Team plan</CardTitle>
-        <CardDescription>Billed monthly, cancel anytime.</CardDescription>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>
+          Enter your email below to login to your account
+        </CardDescription>
         <CardAction>
-          <Button size="sm" variant="outline">
-            Edit
-          </Button>
+          <Button variant="ghost">Sign Up</Button>
         </CardAction>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground text-sm">
-          Up to 10 members with shared workspaces and priority support.
-        </p>
+        <form>
+          <div className="flex flex-col gap-6">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <button
+                  type="button"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                >
+                  Forgot your password?
+                </button>
+              </div>
+              <Input id="password" type="password" required />
+            </div>
+          </div>
+        </form>
       </CardContent>
-      <CardFooter className="gap-2">
-        <Button className="w-full" variant="outline">
-          Cancel
+      <CardFooter className="flex-col gap-2">
+        <Button type="submit" className="w-full">
+          Login
         </Button>
-        <Button className="w-full">Upgrade</Button>
+        <Button variant="outline" className="w-full">
+          Login with Google
+        </Button>
       </CardFooter>
     </Card>
   );
 }`,
-    description:
-      "Add a CardAction next to the header and actions in the footer.",
-    id: "with-footer",
+    description: "A login card with a header, form fields, and footer actions.",
+    id: "default",
     preview: (
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Team plan</CardTitle>
-          <CardDescription>Billed monthly, cancel anytime.</CardDescription>
+          <CardTitle>Login to your account</CardTitle>
+          <CardDescription>
+            Enter your email below to login to your account
+          </CardDescription>
           <CardAction>
-            <Button size="sm" variant="outline">
-              Edit
-            </Button>
+            <Button variant="ghost">Sign Up</Button>
           </CardAction>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-sm">
-            Up to 10 members with shared workspaces and priority support.
-          </p>
+          <form>
+            <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="card-demo-email">Email</Label>
+                <Input
+                  id="card-demo-email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <div className="flex items-center">
+                  <Label htmlFor="card-demo-password">Password</Label>
+                  <button
+                    type="button"
+                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  >
+                    Forgot your password?
+                  </button>
+                </div>
+                <Input id="card-demo-password" type="password" required />
+              </div>
+            </div>
+          </form>
         </CardContent>
-        <CardFooter className="gap-2">
-          <Button className="w-full" variant="outline">
-            Cancel
+        <CardFooter className="flex-col gap-2">
+          <Button type="submit" className="w-full">
+            Login
           </Button>
-          <Button className="w-full">Upgrade</Button>
+          <Button variant="outline" className="w-full">
+            Login with Google
+          </Button>
         </CardFooter>
       </Card>
     ),
-    title: "With Footer",
+    title: "Default",
   },
 ];

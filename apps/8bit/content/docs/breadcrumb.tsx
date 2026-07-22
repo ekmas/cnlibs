@@ -7,6 +7,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import type { DocVariant } from "@/content/docs/registry";
 
 export const title = "Breadcrumb";
@@ -28,6 +35,13 @@ export const variants: DocVariant[] = [
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function BreadcrumbDemo() {
   return (
@@ -38,7 +52,19 @@ export function BreadcrumbDemo() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbEllipsis />
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              aria-label="Toggle menu"
+              render={<Button size="icon-sm" variant="ghost" />}
+            >
+              <BreadcrumbEllipsis />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem>Documentation</DropdownMenuItem>
+              <DropdownMenuItem>Themes</DropdownMenuItem>
+              <DropdownMenuItem>GitHub</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -53,7 +79,7 @@ export function BreadcrumbDemo() {
   );
 }`,
     description:
-      "Use BreadcrumbEllipsis to collapse intermediate items on a long path.",
+      "Wrap BreadcrumbEllipsis in a DropdownMenu to reveal collapsed items on click.",
     id: "default",
     preview: (
       <Breadcrumb>
@@ -63,7 +89,19 @@ export function BreadcrumbDemo() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbEllipsis />
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                aria-label="Toggle menu"
+                render={<Button size="icon-sm" variant="ghost" />}
+              >
+                <BreadcrumbEllipsis />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Themes</DropdownMenuItem>
+                <DropdownMenuItem>GitHub</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

@@ -33,13 +33,13 @@ const slides = [1, 2, 3, 4, 5];
 
 export function CarouselDemo() {
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel className="w-full max-w-40">
       <CarouselContent>
         {slides.map((slide) => (
           <CarouselItem key={slide}>
             <Card>
-              <CardContent className="flex aspect-square items-center justify-center p-6">
-                <span className="font-semibold text-4xl">{slide}</span>
+              <CardContent className="flex aspect-square items-center justify-center p-3">
+                <span className="font-medium text-2xl">{slide}</span>
               </CardContent>
             </Card>
           </CarouselItem>
@@ -53,13 +53,13 @@ export function CarouselDemo() {
     description: "Swipe or use the arrow buttons to move between slides.",
     id: "default",
     preview: (
-      <Carousel className="w-full max-w-xs">
+      <Carousel className="w-full max-w-40">
         <CarouselContent>
           {slides.map((slide) => (
             <CarouselItem key={slide}>
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="font-semibold text-4xl">{slide}</span>
+                <CardContent className="flex aspect-square items-center justify-center p-3">
+                  <span className="font-medium text-2xl">{slide}</span>
                 </CardContent>
               </Card>
             </CarouselItem>

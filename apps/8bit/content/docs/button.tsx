@@ -1,4 +1,4 @@
-import { ChevronRightIcon, Loader2Icon } from "lucide-react";
+import { ChevronRightIcon, Loader2Icon, PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { DocVariant } from "@/content/docs/registry";
 
@@ -67,15 +67,55 @@ export function ButtonDestructiveDemo() {
     title: "Destructive",
   },
   {
-    code: `import { Button } from "@/components/ui/button";
+    code: `import { PlusIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export function ButtonLinkDemo() {
-  return <Button variant="link">Link</Button>;
+export function ButtonSizesDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <Button size="xs">Extra Small</Button>
+      <Button size="sm">Small</Button>
+      <Button size="default">Default</Button>
+      <Button size="lg">Large</Button>
+      <Button size="icon-xs">
+        <PlusIcon />
+      </Button>
+      <Button size="icon-sm">
+        <PlusIcon />
+      </Button>
+      <Button size="icon">
+        <PlusIcon />
+      </Button>
+      <Button size="icon-lg">
+        <PlusIcon />
+      </Button>
+    </div>
+  );
 }`,
-    description: "A button that looks and behaves like an inline link.",
-    id: "link",
-    preview: <Button variant="link">Link</Button>,
-    title: "Link",
+    description:
+      "Every button size, from extra small to large, with matching icon-only sizes.",
+    id: "sizes",
+    preview: (
+      <div className="flex flex-wrap items-center gap-3">
+        <Button size="xs">Extra Small</Button>
+        <Button size="sm">Small</Button>
+        <Button size="default">Default</Button>
+        <Button size="lg">Large</Button>
+        <Button size="icon-xs">
+          <PlusIcon />
+        </Button>
+        <Button size="icon-sm">
+          <PlusIcon />
+        </Button>
+        <Button size="icon">
+          <PlusIcon />
+        </Button>
+        <Button size="icon-lg">
+          <PlusIcon />
+        </Button>
+      </div>
+    ),
+    title: "Sizes",
   },
   {
     code: `import { ChevronRightIcon } from "lucide-react";
