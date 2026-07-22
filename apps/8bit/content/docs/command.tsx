@@ -44,7 +44,7 @@ import {
 
 export function CommandDemo() {
   return (
-    <Command className="w-full max-w-md border">
+    <Command className="w-full max-w-md">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -78,7 +78,7 @@ export function CommandDemo() {
       "A static command list grouped into sections, with a search input and keyboard shortcuts.",
     id: "default",
     preview: (
-      <Command className="w-full max-w-md border">
+      <Command className="w-full max-w-md">
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

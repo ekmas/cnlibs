@@ -21,7 +21,7 @@ function Command({
     <CommandPrimitive
       data-slot="command"
       className={cn(
-        "flex size-full flex-col overflow-hidden px-rounded-md! [--pixel-size:6px] bg-popover p-1 text-popover-foreground",
+        "flex size-full flex-col overflow-hidden px-rounded-md! px-border-md [--pixel-size:5px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)] in-data-[slot=dialog-content]:[--px-border-color:transparent] bg-popover p-1 py-2 text-popover-foreground",
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ function CommandDialog({
       </DialogHeader>
       <DialogContent
         className={cn(
-          "top-1/3 translate-y-0 overflow-hidden px-rounded-md! [--pixel-size:6px] p-0",
+          "top-1/3 translate-y-0 overflow-hidden px-rounded-md! [--pixel-size:5px] p-0",
           className
         )}
         showCloseButton={showCloseButton}
@@ -152,7 +152,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-muted data-selected:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-foreground",
+        "group/command-item relative flex cursor-default items-center gap-2 px-rounded-sm! [--pixel-size:3px] px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:px-rounded-md! in-data-[slot=dialog-content]:[--pixel-size:5px] data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-muted data-selected:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-foreground",
         className
       )}
       {...props}
