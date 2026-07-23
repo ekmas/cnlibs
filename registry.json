@@ -404,6 +404,51 @@
       ]
     },
     {
+      "name": "8bit/combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/combobox.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/combobox.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-group.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
       "name": "8bit/command",
       "type": "registry:ui",
       "title": "Command",
@@ -475,6 +520,99 @@
           "path": "apps/8bit/lib/utils.ts",
           "type": "registry:lib",
           "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Data Table component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "@tanstack/react-table",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/data-table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/data-table.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dropdown-menu.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/select.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "8bit/date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Date Picker component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "date-fns",
+        "lucide-react",
+        "react-day-picker",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/date-picker.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/calendar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/popover.tsx"
         }
       ]
     },
@@ -1295,7 +1433,6 @@
       "description": "Spinner component from the 8bit UI library.",
       "dependencies": [
         "clsx",
-        "lucide-react",
         "tailwind-merge"
       ],
       "files": [
