@@ -1,17 +1,4 @@
-import { SidebarApplicationDemo } from "@/components/docs/examples/sidebar-application-demo";
-import type { DocVariant } from "@/content/docs/registry";
-
-export const title = "Sidebar";
-export const description =
-  "A composable, themeable and customizable sidebar component.";
-
-export const links = {
-  shadcn: "https://ui.shadcn.com/docs/components/sidebar",
-};
-
-export const variants: DocVariant[] = [
-  {
-    code: `"use client";
+"use client";
 
 import {
   AudioWaveform,
@@ -439,11 +426,4 @@ export function SidebarApplicationDemo() {
       </SidebarProvider>
     </div>
   );
-}`,
-    description:
-      "A full application shell: a team switcher, collapsible nested navigation, a projects list with per-item actions, and a user menu, collapsing to icons with a keyboard shortcut (⌘/Ctrl+B) and a draggable rail.",
-    id: "default",
-    preview: <SidebarApplicationDemo />,
-    title: "Default",
-  },
-];
+}

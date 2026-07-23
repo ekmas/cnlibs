@@ -38,16 +38,18 @@ export function DrawerDemo() {
     <Drawer>
       <DrawerTrigger render={<Button variant="outline">Open Drawer</Button>} />
       <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Edit profile</DrawerTitle>
-          <DrawerDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter>
-          <Button>Save changes</Button>
-          <DrawerClose render={<Button variant="outline">Cancel</Button>} />
-        </DrawerFooter>
+        <div className="mx-auto flex w-full max-w-sm flex-col gap-4">
+          <DrawerHeader>
+            <DrawerTitle>Edit profile</DrawerTitle>
+            <DrawerDescription>
+              Make changes to your profile here. Click save when you're done.
+            </DrawerDescription>
+          </DrawerHeader>
+          <DrawerFooter>
+            <Button>Save changes</Button>
+            <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+          </DrawerFooter>
+        </div>
       </DrawerContent>
     </Drawer>
   );
@@ -61,16 +63,19 @@ export function DrawerDemo() {
           render={<Button variant="outline">Open Drawer</Button>}
         />
         <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Edit profile</DrawerTitle>
-            <DrawerDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DrawerDescription>
-          </DrawerHeader>
-          <DrawerFooter>
-            <Button>Save changes</Button>
-            <DrawerClose render={<Button variant="outline">Cancel</Button>} />
-          </DrawerFooter>
+          <div className="mx-auto flex w-full max-w-sm flex-col gap-4">
+            <DrawerHeader>
+              <DrawerTitle>Edit profile</DrawerTitle>
+              <DrawerDescription>
+                Make changes to your profile here. Click save when you're
+                done.
+              </DrawerDescription>
+            </DrawerHeader>
+            <DrawerFooter>
+              <Button>Save changes</Button>
+              <DrawerClose render={<Button variant="outline">Cancel</Button>} />
+            </DrawerFooter>
+          </div>
         </DrawerContent>
       </Drawer>
     ),
