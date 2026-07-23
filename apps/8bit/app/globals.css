@@ -26,6 +26,43 @@
   }
 }
 
+/* An 8-bit pulse: holds at each opacity level and jumps between them, like a
+   caret-blink, instead of Tailwind's animate-pulse smooth ease in/out. */
+@utility animate-pixel-pulse {
+  animation: pixel-pulse 1s linear infinite;
+}
+
+@keyframes pixel-pulse {
+  0%,
+  45%,
+  100% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0.5;
+  }
+}
+
+/* A ring-chase spinner: each pixel is either fully lit or invisible,
+   staggered with a negative animation-delay per pixel, so the lit pixels
+   read as one solid line sweeping around the ring instead of a smooth circle
+   spinning or dots blinking independently. */
+@utility animate-pixel-spin-dot {
+  animation: pixel-spin-dot 900ms linear infinite;
+}
+
+@keyframes pixel-spin-dot {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  58%,
+  100% {
+    opacity: 0;
+  }
+}
+
 /* 8-bit pixel corners. Pixel size is controlled with --pixel-size.
 
    Each px-rounded-* utility publishes its silhouette polygon as --px-shape
