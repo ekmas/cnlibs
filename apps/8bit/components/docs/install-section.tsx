@@ -1,6 +1,7 @@
 import { CodeBlock } from "@/components/docs/code-block";
 import { InstallTabs } from "@/components/docs/install-tabs";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SITE_URL } from "@/lib/site";
 
 export function InstallSection({
   manualCode,
@@ -16,7 +17,7 @@ export function InstallSection({
         <TabsTrigger value="manual">Manual</TabsTrigger>
       </TabsList>
       <TabsContent value="cli">
-        <InstallTabs slug={slug} />
+        <InstallTabs url={`${SITE_URL}/r/${slug}.json`} />
       </TabsContent>
       <TabsContent value="manual">
         {manualCode ? (

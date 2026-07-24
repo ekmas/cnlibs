@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -12,6 +12,14 @@ const LIBRARIES = [
     name: "8bit",
     root: "apps/8bit",
     uiDir: "apps/8bit/components/ui",
+  },
+];
+
+const THEME_REGISTRIES = [
+  {
+    name: "8bit",
+    themesModule: "apps/8bit/registry/themes.ts",
+    outputDir: "apps/8bit/public/r/themes",
   },
 ];
 
@@ -108,7 +116,28 @@ const builtItems = LIBRARIES.flatMap((library) => {
   return fileNames.map((fileName) => buildItem(library, fileName));
 });
 
-const items = builtItems.map(({ componentName, ...item }) => item);
+async function buildThemeItems(themeRegistry) {
+  const modulePath = path.join(REPO_ROOT, themeRegistry.themesModule);
+  const { THEMES } = await import(pathToFileURL(modulePath).href);
+  return THEMES.map((theme) => ({
+    name: `${themeRegistry.name}/themes/${theme.slug}`,
+    slug: theme.slug,
+    outputDir: themeRegistry.outputDir,
+    type: "registry:theme",
+    title: theme.title,
+    description: theme.description,
+    cssVars: theme.cssVars,
+  }));
+}
+
+const builtThemeItems = (
+  await Promise.all(THEME_REGISTRIES.map(buildThemeItems))
+).flat();
+
+const items = [
+  ...builtItems.map(({ componentName, ...item }) => item),
+  ...builtThemeItems.map(({ slug, outputDir, ...item }) => item),
+];
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -149,3 +178,24 @@ for (const item of builtItems) {
 }
 
 console.log(`Built ${builtItems.length} item(s) into apps/8bit/public/r`);
+
+for (const item of builtThemeItems) {
+  const dir = path.join(REPO_ROOT, item.outputDir);
+  fs.mkdirSync(dir, { recursive: true });
+  const compiled = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: item.slug,
+    type: item.type,
+    title: item.title,
+    description: item.description,
+    cssVars: item.cssVars,
+  };
+  fs.writeFileSync(
+    path.join(dir, `${item.slug}.json`),
+    `${JSON.stringify(compiled, null, 2)}\n`
+  );
+}
+
+console.log(
+  `Built ${builtThemeItems.length} theme(s) into apps/8bit/public/r/themes`
+);

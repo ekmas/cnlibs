@@ -12,7 +12,7 @@
     "check-types": "turbo run check-types",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "registry:build": "node scripts/generate-registry.mjs"
+    "registry:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs"
   },
   "private": true,
   "packageManager": "pnpm@9.0.0"
