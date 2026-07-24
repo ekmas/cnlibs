@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { ThemePresetSync } from "@/components/theme-preset-sync";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -54,6 +55,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" disableTransitionOnChange enableSystem>
+          <ThemePresetSync />
           <TooltipProvider>
             <div className="flex flex-1">
               <div className="flex min-w-0 flex-1 flex-col">{children}</div>

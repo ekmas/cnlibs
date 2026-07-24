@@ -15,10 +15,10 @@ export function CodeBlock({
   return (
     <div
       className={cn(
-        "relative bg-muted/50",
+        "relative bg-muted/50 [--pixel-size:4px]",
         roundedTop
-          ? "px-border-sm px-rounded-sm"
-          : "mx-0.5 px-border-b-sm px-rounded-b-sm"
+          ? "px-border-md px-rounded-md"
+          : "mx-0.5 px-border-b-md px-rounded-b-md"
       )}
     >
       <pre className="code-scrollbar max-h-[300px] overflow-auto p-4">

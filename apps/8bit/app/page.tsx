@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex min-h-svh flex-col">
+    <div className="flex min-h-full flex-col bg-background px-rounded-md [--pixel-size:10px]">
       <SiteHeader />
       <main className="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-16 text-center">
         <h1 className="font-medium text-4xl tracking-tight sm:text-5xl">

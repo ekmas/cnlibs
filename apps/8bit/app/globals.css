@@ -156,6 +156,45 @@
   clip-path: var(--px-shape);
 }
 
+/* Single-corner notch variants of px-rounded-md for the bottom edge,
+   mirroring px-rounded-tl-md / px-rounded-tr-md. For elements that sit
+   flush against neighbors on every side but one bottom corner — e.g. a
+   sidebar or content pane that only owns one outer corner of a
+   page-level frame. */
+@utility px-rounded-bl-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--px2) 100%,
+    var(--px2) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px2)),
+    0 calc(100% - var(--px2))
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
+@utility px-rounded-br-md {
+  --px: var(--pixel-size, 3px);
+  --px2: calc(var(--pixel-size, 3px) * 2);
+  --px-shape: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px2)),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) calc(100% - var(--px)),
+    calc(100% - var(--px2)) 100%,
+    0 100%
+  );
+  border-radius: 0;
+  clip-path: var(--px-shape);
+}
+
 /* Bottom-only notch variant of px-rounded-sm, for panels that sit flush
    under something above them (e.g. a tab strip) and should keep a sharp,
    unrounded top edge while still rounding off their bottom corners. */
@@ -1032,8 +1071,9 @@
     @apply border-border outline-ring/50;
   }
   body {
+    padding: 25px;
     letter-spacing: var(--tracking-normal);
-    @apply bg-background text-foreground;
+    @apply bg-secondary text-foreground;
   }
   html {
     @apply font-pixel;

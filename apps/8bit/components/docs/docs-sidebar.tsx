@@ -21,7 +21,7 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="top-14 bottom-0 h-auto">
+    <Sidebar className="static h-full px-rounded-bl-md [--pixel-size:10px]">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Getting Started</SidebarGroupLabel>

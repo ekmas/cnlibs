@@ -18,6 +18,16 @@ const NAV_LINKS = [
     isActive: (pathname: string) => pathname.startsWith("/docs/"),
     label: "Components",
   },
+  {
+    href: "/theme",
+    isActive: (pathname: string) => pathname === "/theme",
+    label: "Theme",
+  },
+  {
+    href: "/charts",
+    isActive: (pathname: string) => pathname === "/charts",
+    label: "Charts",
+  },
 ];
 
 const EXTERNAL_LINKS = [
@@ -29,11 +39,22 @@ const EXTERNAL_LINKS = [
   { href: "https://x.com/ekmas", label: "X" },
 ];
 
-export function SiteHeader({ leading }: { leading?: ReactNode }) {
+export function SiteHeader({
+  leading,
+  className,
+}: {
+  leading?: ReactNode;
+  className?: string;
+}) {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 w-full shrink-0 items-center gap-4 border-b bg-background px-4 sm:px-6">
+    <header
+      className={cn(
+        "flex h-14 w-full shrink-0 items-center gap-4 border-b bg-background px-4 sm:px-6",
+        className
+      )}
+    >
       {leading}
       <Link className="font-medium tracking-tight" href="/">
         8bit

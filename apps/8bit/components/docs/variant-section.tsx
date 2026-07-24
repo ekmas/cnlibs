@@ -29,7 +29,7 @@ export function VariantSection({
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
-          <div className="mx-0.5 flex min-h-36 flex-wrap items-center justify-center gap-4 p-10 px-border-b-sm px-rounded-b-sm">
+          <div className="mx-0.5 flex min-h-36 flex-wrap items-center justify-center gap-4 p-10 px-border-b-md px-rounded-b-md">
             {variant.preview ?? (
               <span className="text-muted-foreground text-sm">
                 Example coming soon
@@ -41,7 +41,7 @@ export function VariantSection({
           {variant.code ? (
             <CodeBlock code={variant.code} roundedTop={false} />
           ) : (
-            <div className="mx-0.5 flex min-h-36 items-center justify-center p-10 px-border-b-sm px-rounded-b-sm">
+            <div className="mx-0.5 flex min-h-36 items-center justify-center p-10 px-border-b-md px-rounded-b-md">
               <span className="text-muted-foreground text-sm">
                 Code coming soon
               </span>

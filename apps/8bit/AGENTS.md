@@ -24,12 +24,14 @@ Every notched "8-bit" corner is a `clip-path: polygon(...)` silhouette, not `bor
 ## Project structure
 
 - `components/ui/*` — vendored shadcn components (Base UI primitive + `cva` variants + `cn`), each with a matching registry entry.
-- `registry.json` (repo root) + `public/r/*.json` — the self-hosted registry consumed by `shadcn add`. **Regenerate after touching anything in `components/ui/`**: `pnpm registry:build` from the repo root (runs `scripts/generate-registry.mjs`, which walks imports to resolve each item's files/dependencies).
+- `registry.json` (repo root) + `public/r/*.json` — the self-hosted registry consumed by `shadcn add`/`shadcn init`. **Regenerate after touching anything in `components/ui/` or `registry/themes.ts`**: `pnpm registry:build` from the repo root (runs `scripts/generate-registry.mjs`, which walks component imports to resolve each item's files/dependencies, and separately compiles theme entries).
+- `registry/themes.ts` — the theme registry's single source of truth: one `ThemeRegistryEntry` per theme (`slug`, `title`, `description`, `cssVars: { theme?, light, dark }`), matching shadcn's `registry-item` `cssVars` shape directly. Feeds three things: the live preview/select on `/theme`, the compiled `registry:theme` items in `public/r/themes/{slug}.json`, and `registry.json`. Fully self-hosted — no runtime or build-time dependency on an external theme source. Add a theme by appending an entry here, then re-running `pnpm registry:build`.
 - `content/docs/*.tsx` — one module per documented component, exporting `title`, `description`, optional `links`, and `variants: DocVariant[]` (each variant has a `preview` node and a `code` string shown in the docs' Preview/Code tabs). Registered in `lib/docs.ts`'s `docs` map and `content/docs/manifest.ts`'s nav.
 - `app/docs/` — the docs routes (`/docs`, `/docs/[slug]`) that render `content/docs/*` via `lib/docs.ts`.
+- `app/theme/` + `components/theme/` — the `/theme` page: pick a registry theme, preview it live across components (`ThemePreview`), and copy a `shadcn add` (existing project) or `shadcn init` (scaffold new project) command for it (`ThemeInstallCommand`). Selection persists via `lib/theme-preset.ts` (localStorage) and is applied by `components/theme-preset-sync.tsx` (sets CSS vars directly on `<html>`).
 - `components/docs/` — docs-only UI: code blocks, install tabs, sidebar, search, pager, copy buttons.
 - `components/site-header.tsx` / `site-footer.tsx` — shared chrome across the marketing page, docs, and other routes.
-- `lib/` — `utils.ts` (`cn`), `site.ts` (`SITE_URL`, used to build install commands), `docs.ts`, `package-manager.ts` (persisted npm/pnpm/yarn/bun choice), `use-copy-to-clipboard.ts`.
+- `lib/` — `utils.ts` (`cn`), `site.ts` (`SITE_URL`, used to build install commands), `docs.ts`, `package-manager.ts` (persisted npm/pnpm/yarn/bun choice), `theme-preset.ts` (persisted `/theme` selection), `use-copy-to-clipboard.ts`.
 
 ## Conventions
 
@@ -52,4 +54,4 @@ Every notched "8-bit" corner is a `clip-path: polygon(...)` silhouette, not `bor
 - `pnpm check-types` — `tsc --noEmit`
 - `pnpm lint` / `pnpm format` — Biome, scoped to this app
 - `pnpm check` / `pnpm fix` (repo root) — Ultracite, repo-wide
-- `pnpm registry:build` (repo root) — regenerate `registry.json` + `public/r/*.json` from `components/ui/*.tsx`
+- `pnpm registry:build` (repo root) — regenerate `registry.json` + `public/r/*.json` from `components/ui/*.tsx` and `public/r/themes/*.json` from `registry/themes.ts`
