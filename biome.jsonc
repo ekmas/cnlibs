@@ -29,6 +29,17 @@
       }
     },
     {
+      // Vendored as-is from the dither-kit registry (tripwire.sh) — keep its
+      // own style so future `shadcn add` re-installs stay a clean diff.
+      "includes": ["**/components/dither-kit/**"],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "enabled": false
+      }
+    },
+    {
       // Docs scaffolds keep a fragment wrapper so more examples can be added.
       "includes": ["**/content/docs/**"],
       "linter": {
