@@ -26,6 +26,51 @@
   }
 }
 
+/* An 8-bit take on a wavy underline: a blocky zigzag (flat-bottom, step up,
+   flat-top, step down, repeat) instead of a smooth sine curve — shown by
+   default, and switched off on hover instead of the usual underline-on-hover
+   convention. 2x2px blocks, 2 tiles (levels) tall — one tile thinner than
+   the 3-tile pass before it.
+
+   The mask lives on an absolutely-positioned ::after, not on the link
+   itself: `mask-image` needs a well-defined single box to compute against,
+   and an <a> is naturally `display: inline` — masking it directly either
+   silently fails (leaving the raw background-color fully unmasked, which
+   made the text unreadable) or just doesn't render, depending on the
+   browser. `position: absolute` always computes to a block box regardless
+   of the element's own display value, so the pseudo-element is a reliable
+   target no matter what the link itself is. */
+@utility px-underline {
+  --px-underline-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4'%3E%3Crect width='2' height='2' x='0' y='2' fill='black'/%3E%3Crect width='2' height='2' x='2' y='2' fill='black'/%3E%3Crect width='2' height='2' x='4' y='0' fill='black'/%3E%3Crect width='2' height='2' x='6' y='0' fill='black'/%3E%3C/svg%3E");
+  position: relative;
+  padding-bottom: 4px;
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    content: "";
+    image-rendering: pixelated;
+    background-color: var(--foreground);
+    -webkit-mask-image: var(--px-underline-shape);
+    mask-image: var(--px-underline-shape);
+    mask-mode: alpha;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+    -webkit-mask-size: 8px 4px;
+    mask-size: 8px 4px;
+  }
+
+  &:hover::after {
+    background-color: transparent;
+  }
+}
+
 /* An 8-bit pulse: holds at each opacity level and jumps between them, like a
    caret-blink, instead of Tailwind's animate-pulse smooth ease in/out. */
 @utility animate-pixel-pulse {
