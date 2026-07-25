@@ -1,3 +1,10 @@
+export const gettingStartedNav = [
+  { href: "/docs", title: "Introduction" },
+  { href: "/docs/installation", title: "Installation" },
+  { href: "/docs/styling", title: "Styling" },
+  { href: "/docs/components", title: "Components" },
+] as const;
+
 export const docsNav = [
   { slug: "accordion", title: "Accordion" },
   { slug: "alert", title: "Alert" },

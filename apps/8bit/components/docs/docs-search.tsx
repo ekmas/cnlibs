@@ -14,10 +14,10 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import { docsNav } from "@/content/docs/manifest";
+import { docsNav, gettingStartedNav } from "@/content/docs/manifest";
 
 const PAGES: { href: string; title: string }[] = [
-  { href: "/docs", title: "Introduction" },
+  ...gettingStartedNav,
   { href: "/charts", title: "Charts" },
   ...docsNav.map((doc) => ({ href: `/docs/${doc.slug}`, title: doc.title })),
 ];
@@ -85,9 +85,15 @@ export function DocsSearch() {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Getting Started">
-              <CommandItem onSelect={handleSelect} value="Introduction">
-                Introduction
-              </CommandItem>
+              {gettingStartedNav.map((page) => (
+                <CommandItem
+                  key={page.href}
+                  onSelect={handleSelect}
+                  value={page.title}
+                >
+                  {page.title}
+                </CommandItem>
+              ))}
             </CommandGroup>
             <CommandGroup heading="Components">
               <CommandItem onSelect={handleSelect} value="Charts">

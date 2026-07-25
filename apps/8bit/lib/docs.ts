@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { docsNav } from "@/content/docs/manifest";
-
-const SITE_DESCRIPTION =
-  "8bit is a collection of pixel-cornered, retro-styled components for shadcn/ui, built on Base UI. Pick a component from the sidebar to see its documentation and examples.";
+import { docsNav, gettingStartedNav } from "@/content/docs/manifest";
 
 export interface DocsPagerLink {
   href: string;
@@ -11,7 +8,7 @@ export interface DocsPagerLink {
 }
 
 const pages: DocsPagerLink[] = [
-  { href: "/docs", title: "Introduction" },
+  ...gettingStartedNav,
   ...docsNav.map((doc) => ({ href: `/docs/${doc.slug}`, title: doc.title })),
 ];
 
@@ -119,19 +116,4 @@ export async function getComponentSource(slug: string): Promise<string | null> {
   } catch {
     return null;
   }
-}
-
-export function buildDocsIndexMarkdown(): string {
-  const lines: string[] = [
-    "# Introduction",
-    "",
-    SITE_DESCRIPTION,
-    "",
-    "## Components",
-    "",
-    ...docsNav.map((doc) => `- [${doc.title}](/docs/${doc.slug})`),
-    "",
-  ];
-
-  return lines.join("\n");
 }

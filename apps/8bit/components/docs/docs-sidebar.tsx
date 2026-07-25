@@ -12,7 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { docsNav } from "@/content/docs/manifest";
+import { docsNav, gettingStartedNav } from "@/content/docs/manifest";
 
 const menuButtonClassName =
   "relative data-active:before:absolute data-active:before:inset-y-1.5 data-active:before:left-0 data-active:before:w-0.5 data-active:before:bg-primary data-active:text-primary";
@@ -27,15 +27,17 @@ export function DocsSidebar() {
           <SidebarGroupLabel>Getting Started</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  className={menuButtonClassName}
-                  isActive={pathname === "/docs"}
-                  render={<Link href="/docs" />}
-                >
-                  Introduction
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {gettingStartedNav.map((page) => (
+                <SidebarMenuItem key={page.href}>
+                  <SidebarMenuButton
+                    className={menuButtonClassName}
+                    isActive={pathname === page.href}
+                    render={<Link href={page.href} />}
+                  >
+                    {page.title}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

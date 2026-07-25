@@ -17,7 +17,7 @@ export function DocsPager({
   return (
     <nav
       aria-label="Docs pagination"
-      className="flex items-center justify-between gap-4 border-t pt-6"
+      className="flex items-center justify-between gap-4"
     >
       {prev ? (
         <Button
