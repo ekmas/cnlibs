@@ -59,7 +59,7 @@ const invoices = [
 
 export function TableDemo() {
   return (
-    <Table className="max-w-md">
+    <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
@@ -92,7 +92,7 @@ export function TableDemo() {
       "Compose Table with TableHeader, TableBody, and TableRow to render a small dataset.",
     id: "default",
     preview: (
-      <Table className="max-w-md">
+      <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
