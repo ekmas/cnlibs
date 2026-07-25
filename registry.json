@@ -1409,24 +1409,6 @@
       ]
     },
     {
-      "name": "8bit/sonner",
-      "type": "registry:ui",
-      "title": "Sonner",
-      "description": "Sonner component from the 8bit UI library.",
-      "dependencies": [
-        "lucide-react",
-        "next-themes",
-        "sonner"
-      ],
-      "files": [
-        {
-          "path": "apps/8bit/components/ui/sonner.tsx",
-          "type": "registry:ui",
-          "target": "~/components/ui/sonner.tsx"
-        }
-      ]
-    },
-    {
       "name": "8bit/spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -1536,6 +1518,41 @@
           "path": "apps/8bit/lib/utils.ts",
           "type": "registry:lib",
           "target": "~/lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "8bit/toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast component from the 8bit UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "clsx",
+        "lucide-react",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toast.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/8bit/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "~/lib/utils.ts"
+        },
+        {
+          "path": "apps/8bit/components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/spinner.tsx"
         }
       ]
     },
