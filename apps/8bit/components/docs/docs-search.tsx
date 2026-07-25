@@ -18,6 +18,7 @@ import { docsNav } from "@/content/docs/manifest";
 
 const PAGES: { href: string; title: string }[] = [
   { href: "/docs", title: "Introduction" },
+  { href: "/charts", title: "Charts" },
   ...docsNav.map((doc) => ({ href: `/docs/${doc.slug}`, title: doc.title })),
 ];
 
@@ -89,6 +90,9 @@ export function DocsSearch() {
               </CommandItem>
             </CommandGroup>
             <CommandGroup heading="Components">
+              <CommandItem onSelect={handleSelect} value="Charts">
+                Charts
+              </CommandItem>
               {docsNav.map((doc) => (
                 <CommandItem
                   key={doc.slug}
