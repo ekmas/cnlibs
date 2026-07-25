@@ -1,15 +1,16 @@
 "use client";
 
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/toast";
 
 function showToast() {
-  toast("Event has been created", {
-    description: "Sunday, July 20, 2026 at 9:00 AM",
+  toast.add({
+    title: "Event created",
+    description: "Sunday, December 3 at 9:00 AM",
   });
 }
 
-export function SonnerDemo() {
+export function ToastDemo() {
   return (
     <Button onClick={showToast} variant="outline">
       Show Toast
