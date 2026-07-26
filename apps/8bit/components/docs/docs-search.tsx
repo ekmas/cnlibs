@@ -16,10 +16,14 @@ import {
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { docsNav, gettingStartedNav } from "@/content/docs/manifest";
 
-const PAGES: { href: string; title: string }[] = [
-  ...gettingStartedNav,
+const COMPONENT_PAGES: { href: string; title: string }[] = [
   { href: "/charts", title: "Charts" },
   ...docsNav.map((doc) => ({ href: `/docs/${doc.slug}`, title: doc.title })),
+].sort((a, b) => a.title.localeCompare(b.title));
+
+const PAGES: { href: string; title: string }[] = [
+  ...gettingStartedNav,
+  ...COMPONENT_PAGES,
 ];
 
 const MAC_PLATFORM_PATTERN = /Mac|iPhone|iPad/;
@@ -96,16 +100,13 @@ export function DocsSearch() {
               ))}
             </CommandGroup>
             <CommandGroup heading="Components">
-              <CommandItem onSelect={handleSelect} value="Charts">
-                Charts
-              </CommandItem>
-              {docsNav.map((doc) => (
+              {COMPONENT_PAGES.map((page) => (
                 <CommandItem
-                  key={doc.slug}
+                  key={page.href}
                   onSelect={handleSelect}
-                  value={doc.title}
+                  value={page.title}
                 >
-                  {doc.title}
+                  {page.title}
                 </CommandItem>
               ))}
             </CommandGroup>
