@@ -10,6 +10,7 @@ import {
   paintColumn,
   prefersReducedMotion,
 } from "./dither-paint"
+import { getDitherPaletteRevision } from "./palette"
 
 type Bars = { top: number[]; base: number[] } // per data index, in backing rows
 
@@ -134,6 +135,7 @@ export function BarCanvas() {
     let intensity = 0
     let needsFill = true
     let lastPaintSig = ""
+    let lastPaletteRevision = getDitherPaletteRevision()
     let lastSelected: string | null | undefined = Symbol() as never
     let lastHover: number | null | undefined = Symbol() as never
 
@@ -183,6 +185,11 @@ export function BarCanvas() {
         .join(",")}`
       if (paintSig !== lastPaintSig) {
         lastPaintSig = paintSig
+        needsFill = true
+      }
+      const paletteRevision = getDitherPaletteRevision()
+      if (paletteRevision !== lastPaletteRevision) {
+        lastPaletteRevision = paletteRevision
         needsFill = true
       }
 

@@ -9,7 +9,7 @@ import {
   OFF_TIER,
   prefersReducedMotion,
 } from "./dither-paint"
-import { rgb } from "./palette"
+import { getDitherPaletteRevision, rgb } from "./palette"
 import { distToPolygonEdge, pointInPolygon, polarX, polarY } from "./polar"
 import { usePolarChart } from "./polar-context"
 
@@ -62,6 +62,7 @@ export function RadarCanvas() {
     let lastPaintSig = ""
     let lastSelected: string | null | undefined = Symbol() as never
     let lastHover: number | null | undefined = Symbol() as never
+    let lastPaletteRevision = getDitherPaletteRevision()
 
     const fx = cols / Math.max(width, 1)
     const fy = rows / Math.max(height, 1)
@@ -195,6 +196,11 @@ export function RadarCanvas() {
       const paintSig = s.configKeys.map((k) => s.variantOf(k)).join(",")
       if (paintSig !== lastPaintSig) {
         lastPaintSig = paintSig
+        needsFill = true
+      }
+      const paletteRevision = getDitherPaletteRevision()
+      if (paletteRevision !== lastPaletteRevision) {
+        lastPaletteRevision = paletteRevision
         needsFill = true
       }
 

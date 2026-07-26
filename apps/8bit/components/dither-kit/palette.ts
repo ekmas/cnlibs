@@ -99,11 +99,16 @@ function buildLivePalette(): Record<DitherColor, Seed> {
 }
 
 let cache: Record<DitherColor, Seed> = buildFallbackPalette()
+// Bumped on every refresh() — RAF paint loops (bar-canvas, cartesian-canvas)
+// poll this each frame to notice a colour swap even when nothing else they
+// already track (hover, selection, animation progress) happened to change.
+let revision = 0
 const listeners = new Set<() => void>()
 let observing = false
 
 function refresh() {
   cache = buildLivePalette()
+  revision++
   for (const listener of listeners) listener()
 }
 
@@ -134,6 +139,10 @@ export function subscribeDitherPalette(listener: () => void) {
 // client render identical to the server-rendered one.
 export function getDitherPaletteSnapshot() {
   return cache
+}
+
+export function getDitherPaletteRevision() {
+  return revision
 }
 
 export const rgb = ([r, g, b]: Rgb, k = 1, a = 1) =>

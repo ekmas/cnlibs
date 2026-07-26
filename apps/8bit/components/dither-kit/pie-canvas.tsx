@@ -9,7 +9,7 @@ import {
   OFF_TIER,
   prefersReducedMotion,
 } from "./dither-paint"
-import { rgb } from "./palette"
+import { getDitherPaletteRevision, rgb } from "./palette"
 import { sliceAtAngle } from "./polar"
 import { usePolarChart } from "./polar-context"
 
@@ -67,6 +67,7 @@ export function PieCanvas() {
     let lastPaintSig = ""
     let lastSelected: string | null | undefined = Symbol() as never
     let lastHover: number | null | undefined = Symbol() as never
+    let lastPaletteRevision = getDitherPaletteRevision()
 
     const paint = (prog: number) => {
       const s = state.current
@@ -179,6 +180,11 @@ export function PieCanvas() {
         .join(",")}`
       if (paintSig !== lastPaintSig) {
         lastPaintSig = paintSig
+        needsFill = true
+      }
+      const paletteRevision = getDitherPaletteRevision()
+      if (paletteRevision !== lastPaletteRevision) {
+        lastPaletteRevision = paletteRevision
         needsFill = true
       }
 

@@ -10,7 +10,7 @@ import {
   prefersReducedMotion,
   resample,
 } from "./dither-paint"
-import { rgb } from "./palette"
+import { getDitherPaletteRevision, rgb } from "./palette"
 
 type Star = { key: string; xi: number; depth: number; phase: number }
 type Surface = { top: number[]; floor: number[] }
@@ -113,6 +113,7 @@ function startCartesianLoop({
   let needsFill = true
   let lastPaintSig = ""
   let lastSelected: string | null | undefined = Symbol() as never
+  let lastPaletteRevision = getDitherPaletteRevision()
 
   const draw = (now: number) => {
     raf = requestAnimationFrame(draw)
@@ -201,6 +202,12 @@ function startCartesianLoop({
       lastPaintSig = paintSig
       needsFill = true
     }
+    const paletteRevision = getDitherPaletteRevision()
+    const paletteChanged = paletteRevision !== lastPaletteRevision
+    if (paletteChanged) {
+      lastPaletteRevision = paletteRevision
+      needsFill = true
+    }
     if (
       !(
         moving ||
@@ -208,7 +215,8 @@ function startCartesianLoop({
         winkDue ||
         marker != null ||
         progChanged ||
-        sigChanged
+        sigChanged ||
+        paletteChanged
       )
     )
       return
