@@ -139,7 +139,7 @@ function TeamSwitcher() {
                   <activeTeam.logo className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">
+                  <span className="truncate font-heading">
                     {activeTeam.name}
                   </span>
                   <span className="truncate text-xs">{activeTeam.plan}</span>
@@ -178,9 +178,7 @@ function TeamSwitcher() {
               <div className="flex size-6 items-center justify-center px-border-sm px-rounded-sm [--pixel-size:1px]">
                 <Plus className="size-4" />
               </div>
-              <div className="font-medium text-muted-foreground">
-                Add team
-              </div>
+              <div className="font-medium text-muted-foreground">Add team</div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -301,7 +299,7 @@ function NavUser() {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">
+                  <span className="truncate font-heading">
                     {data.user.name}
                   </span>
                   <span className="truncate text-xs">{data.user.email}</span>
@@ -324,12 +322,10 @@ function NavUser() {
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">
+                    <span className="truncate font-heading">
                       {data.user.name}
                     </span>
-                    <span className="truncate text-xs">
-                      {data.user.email}
-                    </span>
+                    <span className="truncate text-xs">{data.user.email}</span>
                   </div>
                 </div>
               </DropdownMenuLabel>

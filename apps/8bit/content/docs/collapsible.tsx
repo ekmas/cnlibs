@@ -32,7 +32,9 @@ export function CollapsibleDemo() {
       open={isOpen}
     >
       <div className="flex items-center justify-between gap-4 px-4">
-        <h4 className="font-medium text-sm">Order #4189</h4>
+        <h4 className="font-heading text-sm">
+          Order #4189
+        </h4>
         <CollapsibleTrigger
           render={
             <Button className="size-8" size="icon" variant="ghost">

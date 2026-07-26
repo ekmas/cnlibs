@@ -37,7 +37,9 @@ export function ScrollAreaDemo() {
   return (
     <ScrollArea className="h-48 w-full max-w-xs">
       <div className="flex flex-col gap-3 p-4">
-        <h4 className="font-medium text-sm">Changelog</h4>
+        <h4 className="font-heading text-sm">
+          Changelog
+        </h4>
         {releases.map((release) => (
           <p className="text-muted-foreground text-sm" key={release}>
             {release}
@@ -53,7 +55,7 @@ export function ScrollAreaDemo() {
     preview: (
       <ScrollArea className="h-48 w-full max-w-xs">
         <div className="flex flex-col gap-3 p-4">
-          <h4 className="font-medium text-sm">Changelog</h4>
+          <h4 className="font-heading text-sm">Changelog</h4>
           {releases.map((release) => (
             <p className="text-muted-foreground text-sm" key={release}>
               {release}

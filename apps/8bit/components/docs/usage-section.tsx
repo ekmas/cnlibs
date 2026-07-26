@@ -6,7 +6,9 @@ export function UsageSection({ code }: { code: string }) {
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-3" id="usage">
-      <h2 className="font-medium text-xl tracking-tight">Usage</h2>
+      <h2 className="font-heading font-weight-heading text-xl tracking-tight">
+        Usage
+      </h2>
       {imports ? <CodeBlock code={imports} /> : null}
       <CodeBlock code={snippet} />
     </section>

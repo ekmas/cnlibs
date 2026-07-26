@@ -34,10 +34,7 @@ function ComboboxTrigger({
   );
 }
 
-function ComboboxClear({
-  className,
-  ...props
-}: ComboboxPrimitive.Clear.Props) {
+function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
   return (
     <ComboboxPrimitive.Clear
       data-slot="combobox-clear"
@@ -161,10 +158,7 @@ function ComboboxItem({
   );
 }
 
-function ComboboxGroup({
-  className,
-  ...props
-}: ComboboxPrimitive.Group.Props) {
+function ComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props) {
   return (
     <ComboboxPrimitive.Group
       data-slot="combobox-group"
@@ -184,24 +178,22 @@ function ComboboxLabel({
   return (
     <ComboboxPrimitive.GroupLabel
       data-slot="combobox-label"
-      className={cn("px-2 py-1.5 text-xs text-muted-foreground", className)}
+      className={cn(
+        "px-2 py-1.5 text-xs font-heading text-muted-foreground",
+        className
+      )}
       {...props}
     />
   );
 }
 
-function ComboboxCollection({
-  ...props
-}: ComboboxPrimitive.Collection.Props) {
+function ComboboxCollection({ ...props }: ComboboxPrimitive.Collection.Props) {
   return (
     <ComboboxPrimitive.Collection data-slot="combobox-collection" {...props} />
   );
 }
 
-function ComboboxEmpty({
-  className,
-  ...props
-}: ComboboxPrimitive.Empty.Props) {
+function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
   return (
     <ComboboxPrimitive.Empty
       data-slot="combobox-empty"
@@ -227,10 +219,7 @@ function ComboboxSeparator({
   );
 }
 
-function ComboboxChips({
-  className,
-  ...props
-}: ComboboxPrimitive.Chips.Props) {
+function ComboboxChips({ className, ...props }: ComboboxPrimitive.Chips.Props) {
   return (
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
@@ -255,7 +244,7 @@ function ComboboxChip({
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
       className={cn(
-        "flex h-5 w-fit items-center justify-center gap-1 px-rounded-sm [--pixel-size:1px] bg-muted px-1.5 text-xs font-medium whitespace-nowrap text-foreground has-data-[slot=combobox-chip-remove]:pr-0 has-disabled:pointer-events-none has-disabled:opacity-50",
+        "flex h-5 w-fit items-center justify-center gap-1 px-rounded-sm [--pixel-size:1px] bg-muted px-1.5 text-xs whitespace-nowrap text-foreground has-data-[slot=combobox-chip-remove]:pr-0 has-disabled:pointer-events-none has-disabled:opacity-50",
         className
       )}
       {...props}

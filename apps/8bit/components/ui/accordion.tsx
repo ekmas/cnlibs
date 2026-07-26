@@ -32,7 +32,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion-trigger relative flex flex-1 items-start justify-between px-rounded-md [--pixel-size:5px] px-ring [--px-bg:var(--background)] px-4 py-4 text-left text-sm font-medium outline-none hover:[--px-bg:var(--secondary)] hover:text-secondary-foreground aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:[--px-ring-color:transparent] **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground hover:**:data-[slot=accordion-trigger-icon]:text-secondary-foreground",
+          "group/accordion-trigger relative flex flex-1 items-start justify-between px-rounded-md [--pixel-size:5px] px-ring [--px-bg:var(--background)] px-4 py-4 text-left text-sm font-heading outline-none hover:[--px-bg:var(--secondary)] hover:text-secondary-foreground aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:[--px-ring-color:transparent] **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground hover:**:data-[slot=accordion-trigger-icon]:text-secondary-foreground",
           className
         )}
         {...props}

@@ -58,7 +58,7 @@ function MenubarTrigger({
     <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex items-center px-rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none hover:bg-muted aria-expanded:bg-muted",
+        "flex items-center px-rounded-sm px-2 py-1 text-sm outline-hidden select-none hover:bg-muted aria-expanded:bg-muted",
         className
       )}
       {...props}
@@ -181,7 +181,7 @@ function MenubarLabel({
       data-slot="menubar-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-sm font-medium data-inset:pl-8",
+        "px-2 py-1.5 text-sm font-heading data-inset:pl-8",
         className
       )}
       {...props}

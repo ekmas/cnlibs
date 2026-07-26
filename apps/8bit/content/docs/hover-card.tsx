@@ -29,7 +29,7 @@ export function HoverCardDemo() {
       <HoverCardTrigger render={<Button variant="ghost">@8bit</Button>} />
       <HoverCardContent>
         <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium">@8bit</p>
+          <p className="text-sm font-heading">@8bit</p>
           <p className="text-sm text-muted-foreground">
             Pixel-cornered components for React, built on Base UI.
           </p>
@@ -46,7 +46,7 @@ export function HoverCardDemo() {
         <HoverCardTrigger render={<Button variant="ghost">@8bit</Button>} />
         <HoverCardContent>
           <div className="flex flex-col gap-1">
-            <p className="font-medium text-sm">@8bit</p>
+            <p className="font-heading text-sm">@8bit</p>
             <p className="text-muted-foreground text-sm">
               Pixel-cornered components for React, built on Base UI.
             </p>

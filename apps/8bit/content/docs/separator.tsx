@@ -16,7 +16,9 @@ export function SeparatorDemo() {
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
       <div className="space-y-1">
-        <h4 className="font-medium text-sm">8bit</h4>
+        <h4 className="font-heading text-sm">
+          8bit
+        </h4>
         <p className="text-muted-foreground text-sm">
           Pixel-cornered UI components.
         </p>
@@ -38,7 +40,7 @@ export function SeparatorDemo() {
     preview: (
       <div className="flex w-full max-w-md flex-col gap-4">
         <div className="space-y-1">
-          <h4 className="font-medium text-sm">8bit</h4>
+          <h4 className="font-heading text-sm">8bit</h4>
           <p className="text-muted-foreground text-sm">
             Pixel-cornered UI components.
           </p>

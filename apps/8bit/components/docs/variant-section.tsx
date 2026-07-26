@@ -13,7 +13,7 @@ export function VariantSection({
     <section className="flex scroll-mt-20 flex-col gap-3" id={variant.id}>
       {showHeader ? (
         <>
-          <h2 className="font-medium text-xl tracking-tight">
+          <h2 className="font-heading font-weight-heading text-xl tracking-tight">
             {variant.title}
           </h2>
           {variant.description ? (

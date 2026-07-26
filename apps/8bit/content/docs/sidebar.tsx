@@ -152,7 +152,7 @@ function TeamSwitcher() {
                   <activeTeam.logo className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">
+                  <span className="truncate font-heading">
                     {activeTeam.name}
                   </span>
                   <span className="truncate text-xs">{activeTeam.plan}</span>
@@ -314,7 +314,7 @@ function NavUser() {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">
+                  <span className="truncate font-heading">
                     {data.user.name}
                   </span>
                   <span className="truncate text-xs">{data.user.email}</span>
@@ -337,7 +337,7 @@ function NavUser() {
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">
+                    <span className="truncate font-heading">
                       {data.user.name}
                     </span>
                     <span className="truncate text-xs">

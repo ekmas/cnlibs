@@ -40,7 +40,7 @@ export function DocsToc({ items }: { items: TocItem[] }) {
 
   return (
     <nav className="flex flex-col gap-2 text-sm">
-      <p className="font-medium">On This Page</p>
+      <p className="font-heading font-weight-heading">On This Page</p>
       <ul className="flex flex-col gap-1.5">
         {items.map((item) => (
           <li key={item.id}>

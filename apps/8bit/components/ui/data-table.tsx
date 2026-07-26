@@ -170,7 +170,7 @@ function DataTableColumnHeader<TData, TValue>({
 }) {
   if (!column.getCanSort()) {
     return (
-      <div className={cn("text-sm font-medium", className)} {...props}>
+      <div className={cn("text-sm", className)} {...props}>
         {title}
       </div>
     );
@@ -271,7 +271,7 @@ function DataTablePagination<TData>({
       </div>
       <div className="flex items-center gap-6 lg:gap-8">
         <div className="flex items-center gap-2">
-          <p className="text-sm font-medium">Rows per page</p>
+          <p className="text-sm">Rows per page</p>
           <Select
             onValueChange={(value) => table.setPageSize(Number(value))}
             value={`${table.getState().pagination.pageSize}`}
@@ -288,7 +288,7 @@ function DataTablePagination<TData>({
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center justify-center text-sm font-medium">
+        <div className="flex items-center justify-center text-sm">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}
         </div>
