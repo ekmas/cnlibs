@@ -17,7 +17,7 @@ export function InstallSection({
         <TabsTrigger value="manual">Manual</TabsTrigger>
       </TabsList>
       <TabsContent value="cli">
-        <InstallTabs url={`${SITE_URL}/r/${slug}.json`} />
+        <InstallTabs unrounded url={`${SITE_URL}/r/${slug}.json`} />
       </TabsContent>
       <TabsContent value="manual">
         {manualCode ? (

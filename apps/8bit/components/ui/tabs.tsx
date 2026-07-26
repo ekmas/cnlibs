@@ -53,18 +53,30 @@ function TabsList({
   );
 }
 
-function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
+function TabsTrigger({
+  className,
+  unrounded,
+  ...props
+}: TabsPrimitive.Tab.Props & {
+  /** Force this trigger to have no px-rounded corners, regardless of its
+   * position in the list. For the "line" variant, the first/last triggers
+   * round their outer top corner automatically via :first-child/:last-child
+   * CSS — this prop is an explicit, JS-driven escape hatch for triggers in
+   * between, so "is this the middle one" never depends on the CSS cascade. */
+  unrounded?: boolean;
+}) {
   return (
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-ring [--px-bg:transparent] px-2 py-1 text-sm font-medium whitespace-nowrap text-foreground/60 [transition-property:color]! focus-visible:z-10 group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-disabled:pointer-events-none aria-disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-ring [--px-bg:transparent] px-2 py-1 text-sm whitespace-nowrap text-foreground/60 [transition-property:color]! focus-visible:z-10 group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-disabled:pointer-events-none aria-disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         // Default variant: a rounded pill that fills with the page background when active.
         "group-data-[variant=default]/tabs-list:px-rounded-sm group-data-[variant=default]/tabs-list:[--pixel-size:2px] group-data-[variant=default]/tabs-list:data-active:[--px-bg:var(--background)] group-data-[variant=default]/tabs-list:data-active:text-foreground dark:group-data-[variant=default]/tabs-list:data-active:[--px-bg:color-mix(in_oklab,var(--input)_30%,transparent)]",
         // Line variant: a flush, equal-width tab strip — only the outer edges round off, active fills with secondary.
         // Inactive tabs blend the focus ring's face into the page background, so
         // focus only ever shows as the thin ring border, not a solid fill.
-        "group-data-[variant=line]/tabs-list:first:px-rounded-tl-md group-data-[variant=line]/tabs-list:last:px-rounded-tr-md group-data-[variant=line]/tabs-list:[--pixel-size:5px] group-data-[variant=line]/tabs-list:py-2 group-data-[variant=line]/tabs-list:text-base group-data-[variant=line]/tabs-list:data-active:[--px-bg:var(--secondary)] group-data-[variant=line]/tabs-list:data-active:text-secondary-foreground group-data-[variant=line]/tabs-list:not-data-active:focus-visible:[--px-bg:var(--background)] group-data-[variant=line]/tabs-list:first:[--px-shape:none]! group-data-[variant=line]/tabs-list:last:[--px-shape:none]!",
+        "group-data-[variant=line]/tabs-list:first:px-rounded-tl-md group-data-[variant=line]/tabs-list:last:px-rounded-tr-md group-data-[variant=line]/tabs-list:[--pixel-size:5px] group-data-[variant=line]/tabs-list:py-2 group-data-[variant=line]/tabs-list:text-base group-data-[variant=line]/tabs-list:data-active:[--px-bg:var(--secondary)] group-data-[variant=line]/tabs-list:data-active:text-secondary-foreground group-data-[variant=line]/tabs-list:not-data-active:focus-visible:[--px-bg:var(--background)]",
+        unrounded && "[--px-shape:none]!",
         className
       )}
       {...props}

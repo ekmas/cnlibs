@@ -12,12 +12,21 @@ const RUNNERS: Record<PackageManager, (bin: string) => string> = {
   bun: (bin) => `bunx --bun ${bin}`,
 };
 
+const RUNNER_IDS = Object.keys(RUNNERS) as PackageManager[];
+const LAST_RUNNER_INDEX = RUNNER_IDS.length - 1;
+
 export function InstallTabs({
   url,
   subcommand = "add",
+  unrounded = false,
 }: {
   url: string;
   subcommand?: "add" | "init";
+  /** True when these tabs sit nested under another tab (e.g. the "Shadcn
+   * CLI" tab in InstallSection) — none of the four triggers round, not even
+   * the outer first/last ones, since the outer tab strip already owns the
+   * card's top corners. */
+  unrounded?: boolean;
 }) {
   const [packageManager, setPackageManager] = usePackageManager();
   const handleValueChange = useCallback(
@@ -28,8 +37,14 @@ export function InstallTabs({
   return (
     <Tabs onValueChange={handleValueChange} value={packageManager}>
       <TabsList variant="line">
-        {Object.keys(RUNNERS).map((id) => (
-          <TabsTrigger key={id} value={id}>
+        {RUNNER_IDS.map((id, index) => (
+          <TabsTrigger
+            key={id}
+            unrounded={
+              unrounded || (index !== 0 && index !== LAST_RUNNER_INDEX)
+            }
+            value={id}
+          >
             {id}
           </TabsTrigger>
         ))}
