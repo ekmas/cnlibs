@@ -67,8 +67,7 @@ export function DrawerDemo() {
             <DrawerHeader>
               <DrawerTitle>Edit profile</DrawerTitle>
               <DrawerDescription>
-                Make changes to your profile here. Click save when you're
-                done.
+                Make changes to your profile here. Click save when you're done.
               </DrawerDescription>
             </DrawerHeader>
             <DrawerFooter>
