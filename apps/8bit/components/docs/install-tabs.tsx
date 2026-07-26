@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { CopyButton } from "@/components/docs/copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type PackageManager, usePackageManager } from "@/lib/package-manager";
+import { cn } from "@/lib/utils";
 
 const RUNNERS: Record<PackageManager, (bin: string) => string> = {
   pnpm: (bin) => `pnpm dlx ${bin}`,
@@ -15,10 +16,14 @@ const RUNNERS: Record<PackageManager, (bin: string) => string> = {
 const RUNNER_IDS = Object.keys(RUNNERS) as PackageManager[];
 const LAST_RUNNER_INDEX = RUNNER_IDS.length - 1;
 
+const COMPACT_TRIGGER_CLASSNAME =
+  "group-data-[variant=line]/tabs-list:py-1 group-data-[variant=line]/tabs-list:text-xs group-data-[variant=line]/tabs-list:[--pixel-size:3px]";
+
 export function InstallTabs({
   url,
   subcommand = "add",
   unrounded = false,
+  compact = false,
 }: {
   url: string;
   subcommand?: "add" | "init";
@@ -27,6 +32,9 @@ export function InstallTabs({
    * the outer first/last ones, since the outer tab strip already owns the
    * card's top corners. */
   unrounded?: boolean;
+  /** Shrinks the trigger padding/text/pixel-size, for tighter spots like the
+   * theme install dialog where two of these strips stack in one popup. */
+  compact?: boolean;
 }) {
   const [packageManager, setPackageManager] = usePackageManager();
   const handleValueChange = useCallback(
@@ -39,6 +47,7 @@ export function InstallTabs({
       <TabsList variant="line">
         {RUNNER_IDS.map((id, index) => (
           <TabsTrigger
+            className={compact ? COMPACT_TRIGGER_CLASSNAME : undefined}
             key={id}
             unrounded={
               unrounded || (index !== 0 && index !== LAST_RUNNER_INDEX)
@@ -54,7 +63,12 @@ export function InstallTabs({
         return (
           <TabsContent key={id} value={id}>
             <div className="mx-0.5 flex items-center justify-between gap-2 overflow-x-auto bg-muted/50 px-border-b-md px-rounded-b-md py-1 pr-1 pl-4 [--pixel-size:4px]">
-              <code className="whitespace-nowrap font-mono text-sm">
+              <code
+                className={cn(
+                  "whitespace-nowrap font-mono text-sm",
+                  compact && "text-xs"
+                )}
+              >
                 {command}
               </code>
               <CopyButton value={command} />

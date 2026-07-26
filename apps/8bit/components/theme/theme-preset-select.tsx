@@ -26,26 +26,23 @@ export function ThemePresetSelect() {
   const isDefault = slug === DEFAULT_THEME_PRESET;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between gap-2">
       <Select onValueChange={handleValueChange} value={slug}>
         <SelectTrigger className="w-56">
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value={DEFAULT_THEME_PRESET}>Default (8bit)</SelectItem>
-          {THEMES.map((theme) => (
-            <SelectItem key={theme.slug} value={theme.slug}>
-              {theme.title}
-            </SelectItem>
-          ))}
+          {THEMES.filter((theme) => theme.slug !== DEFAULT_THEME_PRESET).map(
+            (theme) => (
+              <SelectItem key={theme.slug} value={theme.slug}>
+                {theme.title}
+              </SelectItem>
+            )
+          )}
         </SelectContent>
       </Select>
-      <Button
-        disabled={isDefault}
-        onClick={handleReset}
-        size="sm"
-        variant="outline"
-      >
+      <Button disabled={isDefault} onClick={handleReset} variant="outline">
         <RotateCcwIcon />
         Reset to normal
       </Button>
