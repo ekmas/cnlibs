@@ -33,7 +33,7 @@ const trafficConfig = {
 
 export function AreaChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <AreaChart config={trafficConfig} data={trafficData}>
         <Grid />
         <XAxis dataKey="month" />
@@ -65,7 +65,7 @@ const deviceTrafficConfig = {
 
 export function StackedAreaChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <AreaChart
         config={deviceTrafficConfig}
         data={deviceTrafficData}
@@ -100,7 +100,7 @@ const uptimeConfig = {
 
 export function LineChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <LineChart config={uptimeConfig} data={uptimeData}>
         <Grid />
         <XAxis dataKey="time" />
@@ -128,7 +128,7 @@ const signupsConfig = {
 
 export function BarChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <BarChart config={signupsConfig} data={signupsData}>
         <Grid />
         <XAxis dataKey="week" />
@@ -157,7 +157,7 @@ const backlogConfig = {
 
 export function StackedBarChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <BarChart config={backlogConfig} data={backlogData} stackType="stacked">
         <Grid />
         <XAxis dataKey="sprint" />
@@ -190,7 +190,7 @@ function formatPercentTick(value: number) {
 
 export function PercentBarChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <BarChart
         config={retentionConfig}
         data={retentionData}
@@ -225,7 +225,7 @@ const sourcesConfig = {
 export function PieChartExample() {
   return (
     <div className="flex flex-col gap-3">
-      <div className="h-64 w-full">
+      <div className="aspect-[2/1] w-full">
         <PieChart
           config={sourcesConfig}
           data={sourcesData}
@@ -257,7 +257,7 @@ const platformConfig = {
 export function FullPieChartExample() {
   return (
     <div className="flex flex-col gap-3">
-      <div className="h-64 w-full">
+      <div className="aspect-[2/1] w-full">
         <PieChart
           config={platformConfig}
           data={platformData}
@@ -288,7 +288,7 @@ const statsConfig = {
 
 export function RadarChartExample() {
   return (
-    <div className="h-72 w-full">
+    <div className="aspect-[2/1] w-full">
       <RadarChart config={statsConfig} data={statsData} nameKey="stat">
         <Tooltip />
         <Legend />

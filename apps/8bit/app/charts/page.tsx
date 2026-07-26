@@ -11,11 +11,13 @@ import {
   StackedAreaChartExample,
   StackedBarChartExample,
 } from "@/components/charts/chart-examples";
+import { ChartInstallCommand } from "@/components/charts/chart-install-command";
 import { InstallTabs } from "@/components/docs/install-tabs";
 import { VariantSection } from "@/components/docs/variant-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { DocVariant } from "@/content/docs/registry";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   description:
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
 // components/dither-kit/palette.ts — so every chart below recolors with
 // light/dark mode.
 const DITHER_KIT_REGISTRY_URL = "https://tripwire.sh/r";
+const CHART_SUFFIX_PATTERN = / Chart$/;
 
 interface ChartFamily {
   description: string;
@@ -521,7 +524,7 @@ export default function ChartsPage() {
     <div className="flex h-[calc(100dvh-50px)] min-h-0 flex-col bg-background px-rounded-md [--pixel-size:10px]">
       <SiteHeader />
       <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
-        <div className="flex flex-col gap-8 py-10">
+        <div className="flex flex-col gap-20 py-10">
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6">
             <header className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
@@ -555,43 +558,42 @@ export default function ChartsPage() {
             </header>
           </div>
 
-          <div className="px-6">
-            <div className="columns-1 gap-8 sm:columns-2 lg:columns-3 xl:columns-4">
-              {FAMILIES.flatMap((family) =>
-                family.variants.map((variant) => (
-                  <div className="mb-8 break-inside-avoid" key={variant.id}>
-                    <VariantSection
-                      variant={{
-                        ...variant,
-                        title: `${family.title} — ${variant.title}`,
-                      }}
-                    />
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6">
-            <div className="flex flex-col gap-2">
-              <h2 className="font-medium text-2xl tracking-tight">
-                Installation
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Each family below is a separate registry item — install only the
-                charts you use.
-              </p>
-            </div>
+          <div className="flex flex-col gap-20 px-6">
             {FAMILIES.map((family) => (
-              <div className="flex flex-col gap-2" key={family.id}>
-                <h3 className="font-medium tracking-tight">{family.title}</h3>
-                <p className="text-muted-foreground text-sm">
-                  {family.description}
-                </p>
-                <InstallTabs
-                  url={`${DITHER_KIT_REGISTRY_URL}/${family.registryName}.json`}
-                />
-              </div>
+              <section className="flex flex-col gap-10" key={family.id}>
+                <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 text-center">
+                  <h2 className="font-heading text-3xl tracking-tight">
+                    {family.title}
+                  </h2>
+                  <p className="text-muted-foreground text-sm">
+                    {family.description}
+                  </p>
+                </div>
+                <div className="mx-auto grid w-3/5 grid-cols-1 gap-10 sm:grid-cols-2">
+                  {family.variants.map((variant, index) => {
+                    const isCenteredLast =
+                      family.variants.length % 2 === 1 &&
+                      index === family.variants.length - 1;
+                    return (
+                      <div
+                        className={cn(
+                          isCenteredLast &&
+                            "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-1rem)]"
+                        )}
+                        key={variant.id}
+                      >
+                        <VariantSection variant={variant} />
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mx-auto">
+                  <ChartInstallCommand
+                    name={family.title.replace(CHART_SUFFIX_PATTERN, "")}
+                    url={`${DITHER_KIT_REGISTRY_URL}/${family.registryName}.json`}
+                  />
+                </div>
+              </section>
             ))}
           </div>
         </div>
