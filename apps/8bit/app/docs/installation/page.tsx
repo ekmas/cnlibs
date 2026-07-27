@@ -26,7 +26,9 @@ export default function DocsInstallationPage() {
         </p>
       </header>
       <section className="flex flex-col gap-3">
-        <h2 className="font-medium text-xl tracking-tight">1. Pick a theme</h2>
+        <h2 className="font-medium text-xl tracking-tight">
+          1. Pick a theme and install it
+        </h2>
         <p className="text-base text-muted-foreground leading-relaxed">
           Head to the{" "}
           <Link className="px-underline" href="/theme">
@@ -37,9 +39,27 @@ export default function DocsInstallationPage() {
           project" command if you're adding 8bit to a project you already have.
         </p>
       </section>
+      <section className="flex flex-col gap-3">
+        <h2 className="font-medium text-xl tracking-tight">
+          2. Install Geist Pixel or your preferred pixel font
+        </h2>
+        <p className="text-base text-muted-foreground leading-relaxed">
+          8bit's default look uses{" "}
+          <a
+            className="px-underline"
+            href="https://fonts.google.com/specimen/Geist+Pixel?preview.script=Latn"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Geist Pixel
+          </a>
+          . Grab it from Google Fonts, or pick your preferred pixel font and add
+          it to your project.
+        </p>
+      </section>
       <section className="flex scroll-mt-20 flex-col gap-3" id="installation">
         <h2 className="font-medium text-xl tracking-tight">
-          2. Add a component
+          3. Add components
         </h2>
         <p className="text-base text-muted-foreground leading-relaxed">
           Every component in the{" "}
