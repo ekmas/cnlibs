@@ -33,7 +33,6 @@ if (TEST_REGISTRY_FLAG || process.argv.includes("--dev")) {
 const LIBRARIES = [
   {
     name: "8bit",
-    root: "apps/8bit",
     uiDir: "apps/8bit/components/ui",
   },
 ];
@@ -96,13 +95,10 @@ function buildItem(library, fileName) {
 
   function collectImports(content) {
     for (const specifier of extractImportSpecifiers(content)) {
-      if (specifier === "@/lib/utils") {
-        resolveLocalFile(
-          `${library.root}/lib/utils.ts`,
-          "registry:lib",
-          "~/lib/utils.ts"
-        );
-      } else if (specifier.startsWith("@/components/ui/")) {
+      // @/lib/utils is skipped on purpose: shadcn init always scaffolds
+      // lib/utils.ts itself, so shipping our own copy through every
+      // component's registry item is redundant.
+      if (specifier.startsWith("@/components/ui/")) {
         const depName = specifier.replace("@/components/ui/", "");
         resolveLocalFile(
           `${library.uiDir}/${depName}.tsx`,

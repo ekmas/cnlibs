@@ -5,9 +5,7 @@
   "title": "Input",
   "description": "Input component from the 8bit UI library.",
   "dependencies": [
-    "@base-ui/react",
-    "clsx",
-    "tailwind-merge"
+    "@base-ui/react"
   ],
   "files": [
     {
@@ -15,12 +13,6 @@
       "content": "import { Input as InputPrimitive } from \"@base-ui/react/input\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <div\n      data-slot=\"input-wrapper\"\n      className={cn(\n        \"px-rounded-sm px-border-sm [--pixel-size:3px] [--px-border-color:var(--input)] has-[input:focus-visible]:[--px-border-color:var(--ring)] has-[input:disabled]:opacity-50 has-[input[aria-invalid=true]]:[--px-border-color:var(--destructive)]\",\n        className\n      )}\n    >\n      <InputPrimitive\n        type={type}\n        data-slot=\"input\"\n        className=\"h-9 w-full min-w-0 bg-transparent px-2.5 py-1 text-base transition-[color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed md:text-sm\"\n        {...props}\n      />\n    </div>\n  );\n}\n\nexport { Input };\n",
       "type": "registry:ui",
       "target": "~/components/ui/input.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     }
   ]
 }

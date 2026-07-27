@@ -4,22 +4,12 @@
   "type": "registry:ui",
   "title": "Spinner",
   "description": "Spinner component from the 8bit UI library.",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
   "files": [
     {
       "path": "apps/8bit/components/ui/spinner.tsx",
       "content": "import { cn } from \"@/lib/utils\";\n\ntype SpinnerCell =\n  | { id: string; kind: \"empty\" }\n  | { id: string; kind: \"ring\"; delay: string };\n\n// Row-major layout for a 5x5 grid: the 4 corners are cut to approximate a\n// circle and the center is left empty, so only the 12 perimeter pixels form\n// a hollow ring. Each one fades out over a trailing tail (see\n// animate-pixel-spin-dot), and the negative animation-delay staggers them so\n// the lit pixels read as one line sweeping counter-clockwise around the ring.\nconst SPINNER_CELLS: SpinnerCell[] = [\n  { id: \"r0c0\", kind: \"empty\" },\n  { id: \"r0c1\", kind: \"ring\", delay: \"-825ms\" },\n  { id: \"r0c2\", kind: \"ring\", delay: \"-750ms\" },\n  { id: \"r0c3\", kind: \"ring\", delay: \"-675ms\" },\n  { id: \"r0c4\", kind: \"empty\" },\n  { id: \"r1c0\", kind: \"ring\", delay: \"0ms\" },\n  { id: \"r1c1\", kind: \"empty\" },\n  { id: \"r1c2\", kind: \"empty\" },\n  { id: \"r1c3\", kind: \"empty\" },\n  { id: \"r1c4\", kind: \"ring\", delay: \"-600ms\" },\n  { id: \"r2c0\", kind: \"ring\", delay: \"-75ms\" },\n  { id: \"r2c1\", kind: \"empty\" },\n  { id: \"r2c2\", kind: \"empty\" },\n  { id: \"r2c3\", kind: \"empty\" },\n  { id: \"r2c4\", kind: \"ring\", delay: \"-525ms\" },\n  { id: \"r3c0\", kind: \"ring\", delay: \"-150ms\" },\n  { id: \"r3c1\", kind: \"empty\" },\n  { id: \"r3c2\", kind: \"empty\" },\n  { id: \"r3c3\", kind: \"empty\" },\n  { id: \"r3c4\", kind: \"ring\", delay: \"-450ms\" },\n  { id: \"r4c0\", kind: \"empty\" },\n  { id: \"r4c1\", kind: \"ring\", delay: \"-225ms\" },\n  { id: \"r4c2\", kind: \"ring\", delay: \"-300ms\" },\n  { id: \"r4c3\", kind: \"ring\", delay: \"-375ms\" },\n  { id: \"r4c4\", kind: \"empty\" },\n];\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"grid size-5 grid-cols-5 grid-rows-5\", className)}\n      {...props}\n    >\n      {SPINNER_CELLS.map((cell) =>\n        cell.kind === \"empty\" ? (\n          <span aria-hidden=\"true\" key={cell.id} />\n        ) : (\n          <span\n            className=\"animate-pixel-spin-dot bg-foreground\"\n            key={cell.id}\n            style={{ animationDelay: cell.delay }}\n          />\n        )\n      )}\n    </span>\n  );\n}\n\nexport { Spinner };\n",
       "type": "registry:ui",
       "target": "~/components/ui/spinner.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     }
   ]
 }

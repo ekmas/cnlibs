@@ -6,9 +6,7 @@
   "description": "Field component from the 8bit UI library.",
   "dependencies": [
     "@base-ui/react",
-    "class-variance-authority",
-    "clsx",
-    "tailwind-merge"
+    "class-variance-authority"
   ],
   "files": [
     {
@@ -22,12 +20,6 @@
       "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-heading select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Label };\n",
       "type": "registry:ui",
       "target": "~/components/ui/label.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     },
     {
       "path": "apps/8bit/components/ui/separator.tsx",

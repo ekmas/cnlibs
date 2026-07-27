@@ -5,9 +5,7 @@
   "title": "Radio Group",
   "description": "Radio Group component from the 8bit UI library.",
   "dependencies": [
-    "@base-ui/react",
-    "clsx",
-    "tailwind-merge"
+    "@base-ui/react"
   ],
   "files": [
     {
@@ -15,12 +13,6 @@
       "content": "\"use client\";\n\nimport { Radio as RadioPrimitive } from \"@base-ui/react/radio\";\nimport { RadioGroup as RadioGroupPrimitive } from \"@base-ui/react/radio-group\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {\n  return (\n    <RadioGroupPrimitive\n      data-slot=\"radio-group\"\n      className={cn(\"grid w-full gap-3\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {\n  return (\n    <RadioPrimitive.Root\n      data-slot=\"radio-group-item\"\n      className={cn(\n        \"group/radio-group-item peer relative flex aspect-square size-4 shrink-0 px-rounded-sm px-border-sm [--pixel-size:2px] [--px-border-width:2px] [--px-border-color:var(--input)] outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:[--px-border-color:var(--ring)] focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:[--px-border-color:var(--destructive)] aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:[--px-border-color:color-mix(in_oklab,var(--destructive)_50%,transparent)] dark:aria-invalid:ring-destructive/40 data-checked:[--px-border-color:var(--primary)]\",\n        className\n      )}\n      {...props}\n    >\n      <RadioPrimitive.Indicator\n        data-slot=\"radio-group-indicator\"\n        className=\"flex size-4 items-center justify-center\"\n      >\n        <span className=\"size-1.5 px-rounded-sm [--pixel-size:1px] bg-primary\" />\n      </RadioPrimitive.Indicator>\n    </RadioPrimitive.Root>\n  );\n}\n\nexport { RadioGroup, RadioGroupItem };\n",
       "type": "registry:ui",
       "target": "~/components/ui/radio-group.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     }
   ]
 }

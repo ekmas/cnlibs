@@ -5,10 +5,8 @@
   "title": "Input Otp",
   "description": "Input Otp component from the 8bit UI library.",
   "dependencies": [
-    "clsx",
     "input-otp",
-    "lucide-react",
-    "tailwind-merge"
+    "lucide-react"
   ],
   "files": [
     {
@@ -16,12 +14,6 @@
       "content": "\"use client\";\n\nimport { OTPInput, OTPInputContext } from \"input-otp\";\nimport { MinusIcon } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nfunction InputOTP({\n  className,\n  containerClassName,\n  ...props\n}: React.ComponentProps<typeof OTPInput> & {\n  containerClassName?: string;\n}) {\n  return (\n    <OTPInput\n      data-slot=\"input-otp\"\n      containerClassName={cn(\n        \"cn-input-otp flex items-center has-disabled:opacity-50\",\n        containerClassName\n      )}\n      spellCheck={false}\n      className={cn(\"disabled:cursor-not-allowed\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction InputOTPGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"input-otp-group\"\n      className={cn(\n        \"flex items-center [&>[data-slot=input-otp-slot]]:[--pixel-size:3px] [&>[data-slot=input-otp-slot]]:px-border-square [&>[data-slot=input-otp-slot]:first-child]:px-rounded-l-md [&>[data-slot=input-otp-slot]:first-child]:px-border-l-md [&>[data-slot=input-otp-slot]:not(:has(~[data-slot=input-otp-slot]))]:px-rounded-r-md [&>[data-slot=input-otp-slot]:not(:has(~[data-slot=input-otp-slot]))]:px-border-r-md [&>[data-slot=input-otp-slot]:first-child:not(:has(~[data-slot=input-otp-slot]))]:px-rounded-md [&>[data-slot=input-otp-slot]:first-child:not(:has(~[data-slot=input-otp-slot]))]:px-border-md has-aria-invalid:[&>[data-slot=input-otp-slot]]:[--px-border-color:var(--destructive)] has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction InputOTPSlot({\n  index,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  index: number;\n}) {\n  const inputOTPContext = React.useContext(OTPInputContext);\n  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};\n\n  return (\n    <div\n      data-slot=\"input-otp-slot\"\n      data-active={isActive}\n      className={cn(\n        \"relative flex size-9 items-center justify-center [--px-border-color:var(--input)] text-sm shadow-xs transition-all outline-none aria-invalid:[--px-border-color:var(--destructive)] data-[active=true]:z-10 data-[active=true]:[--px-border-color:var(--ring)] data-[active=true]:ring-3 data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:[--px-border-color:var(--destructive)] data-[active=true]:aria-invalid:ring-destructive/20 dark:bg-input/30 dark:data-[active=true]:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    >\n      {char}\n      {hasFakeCaret && (\n        <div className=\"pointer-events-none absolute inset-0 flex items-center justify-center\">\n          <div className=\"h-4 w-px animate-caret-blink bg-foreground duration-1000\" />\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction InputOTPSeparator({ ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"input-otp-separator\"\n      className=\"flex items-center [&_svg:not([class*='size-'])]:size-4\"\n      role=\"separator\"\n      {...props}\n    >\n      <MinusIcon />\n    </div>\n  );\n}\n\nexport { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot };\n",
       "type": "registry:ui",
       "target": "~/components/ui/input-otp.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     }
   ]
 }

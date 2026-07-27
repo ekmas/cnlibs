@@ -4,22 +4,12 @@
   "type": "registry:ui",
   "title": "Textarea",
   "description": "Textarea component from the 8bit UI library.",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
   "files": [
     {
       "path": "apps/8bit/components/ui/textarea.tsx",
       "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <div\n      data-slot=\"textarea-wrapper\"\n      className={cn(\n        \"pr-1.5 pb-1.5 px-rounded-sm px-border-sm [--pixel-size:3px] [--px-border-color:var(--input)] has-[textarea:focus-visible]:[--px-border-color:var(--ring)] has-[textarea:disabled]:opacity-50 has-[textarea[aria-invalid=true]]:[--px-border-color:var(--destructive)]\",\n        className\n      )}\n    >\n      <textarea\n        data-slot=\"textarea\"\n        className=\"flex field-sizing-content min-h-16 w-full bg-transparent px-2.5 py-2 text-base transition-[color] outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed md:text-sm\"\n        {...props}\n      />\n    </div>\n  );\n}\n\nexport { Textarea };\n",
       "type": "registry:ui",
       "target": "~/components/ui/textarea.tsx"
-    },
-    {
-      "path": "apps/8bit/lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
-      "type": "registry:lib",
-      "target": "~/lib/utils.ts"
     }
   ]
 }
