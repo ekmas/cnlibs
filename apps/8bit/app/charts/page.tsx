@@ -529,10 +529,10 @@ export default function ChartsPage() {
             <header className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <h1 className="font-medium text-3xl tracking-tight">Charts</h1>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-[1.75]">
                   Canvas-rendered, dithered charts from{" "}
                   <a
-                    className="underline underline-offset-4 hover:text-foreground"
+                    className="px-underline"
                     href="https://www.tripwire.sh/dither-kit"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -540,11 +540,17 @@ export default function ChartsPage() {
                     dither-kit
                   </a>{" "}
                   — a separate, self-hosted registry, not part of 8bit/ui's own.
-                  Every chart shares a <code>core</code> item (scales, contexts,
-                  axes, tooltip) that installs automatically as a registry
-                  dependency. Colors are read live from this site's own{" "}
-                  <code>--chart-1..5</code> theme tokens, so every chart
-                  recolors with light/dark mode.
+                  Every chart shares a{" "}
+                  <code className="inline-block bg-muted px-2 px-border-md px-rounded-md py-0.5 font-mono text-xs [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_50%,transparent)]">
+                    core
+                  </code>{" "}
+                  item (scales, contexts, axes, tooltip) that installs
+                  automatically as a registry dependency. Colors are read live
+                  from this site's own{" "}
+                  <code className="inline-block bg-muted px-2 px-border-md px-rounded-md py-0.5 font-mono text-xs [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_50%,transparent)]">
+                    --chart-1..5
+                  </code>{" "}
+                  theme tokens, so every chart recolors with light/dark mode.
                 </p>
               </div>
               <div className="flex flex-col gap-2">

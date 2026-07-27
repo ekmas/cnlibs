@@ -1,6 +1,10 @@
 "use client";
 
+import { ExternalLinkIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export interface TocItem {
@@ -8,8 +12,22 @@ export interface TocItem {
   title: string;
 }
 
-export function DocsToc({ items }: { items: TocItem[] }) {
+const ISSUE_URL = "https://github.com/ekmas/cnlibs/issues/new";
+
+/** Active-item indicator: an 8-bit dot centered on the rail, matching
+ * DocsSidebar's ActiveDot. */
+function ActiveDot() {
+  return (
+    <span
+      aria-hidden
+      className="absolute top-1/2 -left-4 z-10 size-2.5 shrink-0 -translate-x-1/2 -translate-y-1/2 bg-primary px-rounded-sm [--pixel-size:2px]"
+    />
+  );
+}
+
+export function DocsToc({ items, title }: { items: TocItem[]; title: string }) {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const headings = items
@@ -38,24 +56,44 @@ export function DocsToc({ items }: { items: TocItem[] }) {
     return () => observer.disconnect();
   }, [items]);
 
+  const issueUrl = `${ISSUE_URL}?${new URLSearchParams({
+    body: `Page: ${SITE_URL}${pathname}\n\n`,
+    title: `docs: ${title}`,
+  })}`;
+
   return (
-    <nav className="flex flex-col gap-2 text-sm">
-      <p className="font-heading font-weight-heading">On This Page</p>
-      <ul className="flex flex-col gap-1.5">
-        {items.map((item) => (
-          <li key={item.id}>
-            <a
-              className={cn(
-                "text-muted-foreground transition-colors hover:text-foreground",
-                activeId === item.id && "font-medium text-foreground"
-              )}
-              href={`#${item.id}`}
-            >
-              {item.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <nav className="code-scrollbar flex h-full flex-col gap-4 overflow-y-auto text-sm">
+      <div className="flex flex-col gap-2 pl-2">
+        <p className="font-medium text-base text-muted-foreground tracking-wide">
+          On This Page
+        </p>
+        <ul className="flex flex-col gap-1.5 border-border border-l pl-4">
+          {items.map((item) => (
+            <li className="relative" key={item.id}>
+              {activeId === item.id && <ActiveDot />}
+              <a
+                className={cn(
+                  "text-muted-foreground transition-colors hover:text-foreground",
+                  activeId === item.id && "font-medium text-foreground"
+                )}
+                href={`#${item.id}`}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Button
+        className="w-full shrink-0"
+        nativeButton={false}
+        render={<a href={issueUrl} rel="noopener noreferrer" target="_blank" />}
+        size="sm"
+        variant="outline"
+      >
+        Report an issue
+        <ExternalLinkIcon data-icon="inline-end" />
+      </Button>
     </nav>
   );
 }

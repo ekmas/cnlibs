@@ -56,8 +56,8 @@ export default async function DocPage({ params }: DocPageProps) {
     <DocsShell
       toc={
         tocItems.length > 1 ? (
-          <aside className="sticky top-24 hidden w-48 shrink-0 xl:block">
-            <DocsToc items={tocItems} />
+          <aside className="sticky top-12 hidden h-[calc(100dvh-9.5rem)] w-48 shrink-0 xl:block">
+            <DocsToc items={tocItems} title={doc.title} />
           </aside>
         ) : null
       }
