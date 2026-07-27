@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@biomejs/biome": "2.5.3",
+    "postcss": "^8.5.19",
     "turbo": "^2.10.5",
     "typescript": "5.9.2",
     "ultracite": "7.9.4"
@@ -12,7 +13,9 @@
     "check-types": "turbo run check-types",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "registry:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs"
+    "registry:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs",
+    "registry:build:dev": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --dev",
+    "registry:test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --test"
   },
   "private": true,
   "packageManager": "pnpm@9.0.0"

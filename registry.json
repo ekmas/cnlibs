@@ -1634,9 +1634,12 @@
     },
     {
       "name": "8bit/themes/default",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Default (8bit)",
       "description": "The base 8bit/ui theme — ships with every install.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -1697,9 +1700,12 @@
     },
     {
       "name": "8bit/themes/amber-minimal",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Amber Minimal",
       "description": "Amber Minimal theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.375rem"
@@ -1760,9 +1766,12 @@
     },
     {
       "name": "8bit/themes/amethyst-haze",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Amethyst Haze",
       "description": "Amethyst Haze theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -1823,9 +1832,12 @@
     },
     {
       "name": "8bit/themes/bold-tech",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Bold Tech",
       "description": "Bold Tech theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.625rem"
@@ -1886,9 +1898,12 @@
     },
     {
       "name": "8bit/themes/bubblegum",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Bubblegum",
       "description": "Bubblegum theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.4rem"
@@ -1949,9 +1964,12 @@
     },
     {
       "name": "8bit/themes/caffeine",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Caffeine",
       "description": "Caffeine theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2012,9 +2030,12 @@
     },
     {
       "name": "8bit/themes/candyland",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Candyland",
       "description": "Candyland theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2075,9 +2096,12 @@
     },
     {
       "name": "8bit/themes/catppuccin",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Catppuccin",
       "description": "Catppuccin theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.35rem"
@@ -2138,9 +2162,12 @@
     },
     {
       "name": "8bit/themes/claude",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Claude",
       "description": "Claude theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2201,9 +2228,12 @@
     },
     {
       "name": "8bit/themes/claymorphism",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Claymorphism",
       "description": "Claymorphism theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "1.25rem"
@@ -2264,9 +2294,12 @@
     },
     {
       "name": "8bit/themes/clean-slate",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Clean Slate",
       "description": "Clean Slate theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2327,9 +2360,12 @@
     },
     {
       "name": "8bit/themes/cosmic-night",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Cosmic Night",
       "description": "Cosmic Night theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2390,9 +2426,12 @@
     },
     {
       "name": "8bit/themes/cyberpunk",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Cyberpunk",
       "description": "Cyberpunk theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2453,9 +2492,12 @@
     },
     {
       "name": "8bit/themes/darkmatter",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Darkmatter",
       "description": "Darkmatter theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.75rem"
@@ -2516,9 +2558,12 @@
     },
     {
       "name": "8bit/themes/doom-64",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Doom 64",
       "description": "Doom 64 theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0px"
@@ -2579,9 +2624,12 @@
     },
     {
       "name": "8bit/themes/elegant-luxury",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Elegant Luxury",
       "description": "Elegant Luxury theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.375rem"
@@ -2642,9 +2690,12 @@
     },
     {
       "name": "8bit/themes/graphite",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Graphite",
       "description": "Graphite theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.35rem"
@@ -2705,9 +2756,12 @@
     },
     {
       "name": "8bit/themes/kodama-grove",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Kodama Grove",
       "description": "Kodama Grove theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.425rem"
@@ -2768,9 +2822,12 @@
     },
     {
       "name": "8bit/themes/midnight-bloom",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Midnight Bloom",
       "description": "Midnight Bloom theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2831,9 +2888,12 @@
     },
     {
       "name": "8bit/themes/mocha-mousse",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Mocha Mousse",
       "description": "Mocha Mousse theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -2894,9 +2954,12 @@
     },
     {
       "name": "8bit/themes/modern-minimal",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Modern Minimal",
       "description": "Modern Minimal theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.375rem"
@@ -2957,9 +3020,12 @@
     },
     {
       "name": "8bit/themes/mono",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Mono",
       "description": "Mono theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0rem"
@@ -3020,9 +3086,12 @@
     },
     {
       "name": "8bit/themes/nature",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Nature",
       "description": "Nature theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3083,9 +3152,12 @@
     },
     {
       "name": "8bit/themes/neo-brutalism",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Neo Brutalism",
       "description": "Neo Brutalism theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0px"
@@ -3146,9 +3218,12 @@
     },
     {
       "name": "8bit/themes/northern-lights",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Northern Lights",
       "description": "Northern Lights theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3209,9 +3284,12 @@
     },
     {
       "name": "8bit/themes/notebook",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Notebook",
       "description": "Notebook theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.625rem"
@@ -3272,9 +3350,12 @@
     },
     {
       "name": "8bit/themes/ocean-breeze",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Ocean Breeze",
       "description": "Ocean Breeze theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3335,9 +3416,12 @@
     },
     {
       "name": "8bit/themes/pastel-dreams",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Pastel Dreams",
       "description": "Pastel Dreams theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "1.5rem"
@@ -3398,9 +3482,12 @@
     },
     {
       "name": "8bit/themes/perpetuity",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Perpetuity",
       "description": "Perpetuity theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.125rem"
@@ -3461,9 +3548,12 @@
     },
     {
       "name": "8bit/themes/quantum-rose",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Quantum Rose",
       "description": "Quantum Rose theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3524,9 +3614,12 @@
     },
     {
       "name": "8bit/themes/retro-arcade",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Retro Arcade",
       "description": "Retro Arcade theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.25rem"
@@ -3587,9 +3680,12 @@
     },
     {
       "name": "8bit/themes/sage-garden",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Sage Garden",
       "description": "Sage Garden theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.35rem"
@@ -3650,9 +3746,12 @@
     },
     {
       "name": "8bit/themes/soft-pop",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Soft Pop",
       "description": "Soft Pop theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "1rem"
@@ -3713,9 +3812,12 @@
     },
     {
       "name": "8bit/themes/solar-dusk",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Solar Dusk",
       "description": "Solar Dusk theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.3rem"
@@ -3776,9 +3878,12 @@
     },
     {
       "name": "8bit/themes/starry-night",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Starry Night",
       "description": "Starry Night theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3839,9 +3944,12 @@
     },
     {
       "name": "8bit/themes/sunset-horizon",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Sunset Horizon",
       "description": "Sunset Horizon theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.625rem"
@@ -3902,9 +4010,12 @@
     },
     {
       "name": "8bit/themes/supabase",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Supabase",
       "description": "Supabase theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -3965,9 +4076,12 @@
     },
     {
       "name": "8bit/themes/t3-chat",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "T3 Chat",
       "description": "T3 Chat theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -4028,9 +4142,12 @@
     },
     {
       "name": "8bit/themes/tangerine",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Tangerine",
       "description": "Tangerine theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.75rem"
@@ -4091,9 +4208,12 @@
     },
     {
       "name": "8bit/themes/twitter",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Twitter",
       "description": "Twitter theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "1.3rem"
@@ -4154,9 +4274,12 @@
     },
     {
       "name": "8bit/themes/vercel",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Vercel",
       "description": "Vercel theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.5rem"
@@ -4217,9 +4340,12 @@
     },
     {
       "name": "8bit/themes/vintage-paper",
-      "type": "registry:theme",
+      "type": "registry:style",
       "title": "Vintage Paper",
       "description": "Vintage Paper theme.",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/button.json"
+      ],
       "cssVars": {
         "theme": {
           "radius": "0.25rem"

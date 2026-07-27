@@ -36,3 +36,6 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# `pnpm registry:test` scratch output (see scripts/generate-registry.mjs)
+apps/8bit/public/r/test-registry.json

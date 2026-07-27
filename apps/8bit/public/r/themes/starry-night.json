@@ -1,9 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "starry-night",
-  "type": "registry:theme",
+  "type": "registry:style",
   "title": "Starry Night",
   "description": "Starry Night theme.",
+  "registryDependencies": [
+    "https://8bit.cnlibs.com/r/button.json"
+  ],
   "cssVars": {
     "theme": {
       "radius": "0.5rem"
@@ -59,6 +62,305 @@
       "chart-3": "oklch(0.6896 0.0714 234.0387)",
       "chart-4": "oklch(0.6243 0.0412 262.0375)",
       "chart-5": "oklch(0.5280 0.1200 357.1130)"
+    }
+  },
+  "css": {
+    "@utility px-rounded-sm": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px-shape": "polygon( 0 var(--px), var(--px) var(--px), var(--px) 0, calc(100% - var(--px)) 0, calc(100% - var(--px)) var(--px), 100% var(--px), 100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%, var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-tl-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, 100% 0, 100% 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-tr-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-bl-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 0, 100% 0, 100% 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-br-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 0, 100% 0, 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-b-sm": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px-shape": "polygon( 0 0, 100% 0, 100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%, var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-t-sm": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px-shape": "polygon( 0 var(--px), var(--px) var(--px), var(--px) 0, calc(100% - var(--px)) 0, calc(100% - var(--px)) var(--px), 100% var(--px), 100% 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-t-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-b-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 0, 100% 0, 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-l-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, 100% 0, 100% 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)) )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-rounded-r-md": {
+      "--px": "var(--pixel-size, 3px)",
+      "--px2": "calc(var(--pixel-size, 3px) * 2)",
+      "--px-shape": "polygon( 0 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, 0 100% )",
+      "border-radius": "0",
+      "clip-path": "var(--px-shape)"
+    },
+    "@utility px-border-sm": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 var(--px), var(--px) var(--px), var(--px) 0, calc(100% - var(--px)) 0, calc(100% - var(--px)) var(--px), 100% var(--px), 100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%, var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px)), 0 var(--px), var(--pw) var(--pxw), var(--pw) calc(100% - var(--pxw)), var(--pxw) calc(100% - var(--pxw)), var(--pxw) calc(100% - var(--pw)), calc(100% - var(--pxw)) calc(100% - var(--pw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pw)) calc(100% - var(--pxw)), calc(100% - var(--pw)) var(--pxw), calc(100% - var(--pxw)) var(--pxw), calc(100% - var(--pxw)) var(--pw), var(--pxw) var(--pw), var(--pxw) var(--pxw), var(--pw) var(--pxw) )"
+      }
+    },
+    "@utility px-border-b-sm": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, 100% 0, 100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%, var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px)), 0 0, var(--pw) var(--pw), var(--pw) calc(100% - var(--pxw)), var(--pxw) calc(100% - var(--pxw)), var(--pxw) calc(100% - var(--pw)), calc(100% - var(--pxw)) calc(100% - var(--pw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pw)) calc(100% - var(--pxw)), calc(100% - var(--pw)) var(--pw), var(--pw) var(--pw) )"
+      }
+    },
+    "@utility px-border-md": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)), 0 var(--px2), var(--pw) var(--px2w), var(--pw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) var(--px2w), calc(100% - var(--pxw)) var(--px2w), calc(100% - var(--pxw)) var(--pxw), calc(100% - var(--px2w)) var(--pxw), calc(100% - var(--px2w)) var(--pw), var(--px2w) var(--pw), var(--px2w) var(--pxw), var(--pxw) var(--pxw), var(--pxw) var(--px2w), var(--pw) var(--px2w) )"
+      }
+    },
+    "@utility px-border-square": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--pw": "var(--px-border-width, 2px)",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, 100% 0, 100% 100%, 0 100%, 0 0, var(--pw) var(--pw), var(--pw) calc(100% - var(--pw)), calc(100% - var(--pw)) calc(100% - var(--pw)), calc(100% - var(--pw)) var(--pw), var(--pw) var(--pw) )"
+      }
+    },
+    "@utility px-border-l-md": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, 100% 0, 100% 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)), 0 var(--px2), var(--pw) var(--px2w), var(--pw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pw)), calc(100% - var(--pw)) calc(100% - var(--pw)), calc(100% - var(--pw)) var(--pw), var(--px2w) var(--pw), var(--px2w) var(--pxw), var(--pxw) var(--pxw), var(--pxw) var(--px2w), var(--pw) var(--px2w) )"
+      }
+    },
+    "@utility px-border-r-md": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, 0 100%, 0 0, var(--pw) var(--pw), var(--pw) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) var(--px2w), calc(100% - var(--pxw)) var(--px2w), calc(100% - var(--pxw)) var(--pxw), calc(100% - var(--px2w)) var(--pxw), calc(100% - var(--px2w)) var(--pw), var(--pw) var(--pw) )"
+      }
+    },
+    "@utility px-border-t-md": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 var(--px2), var(--px) var(--px2), var(--px) var(--px), var(--px2) var(--px), var(--px2) 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% 100%, 0 100%, 0 var(--px2), var(--pw) var(--px2w), var(--pw) calc(100% - var(--pw)), calc(100% - var(--pw)) calc(100% - var(--pw)), calc(100% - var(--pw)) var(--px2w), calc(100% - var(--pxw)) var(--px2w), calc(100% - var(--pxw)) var(--pxw), calc(100% - var(--px2w)) var(--pxw), calc(100% - var(--px2w)) var(--pw), var(--px2w) var(--pw), var(--px2w) var(--pxw), var(--pxw) var(--pxw), var(--pxw) var(--px2w), var(--pw) var(--px2w) )"
+      }
+    },
+    "@utility px-border-b-md": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, 100% 0, 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)), 0 0, var(--pw) var(--pw), var(--pw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) var(--pw), var(--pw) var(--pw) )"
+      }
+    },
+    "@utility px-border-h-mid": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--pw": "var(--px-border-width, 2px)",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, 100% 0, 100% 100%, 0 100%, 0 calc(100% - var(--pw)), calc(100% - var(--pw)) calc(100% - var(--pw)), calc(100% - var(--pw)) var(--pw), 0 var(--pw) )"
+      }
+    },
+    "@utility px-border-h-end": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, calc(100% - var(--px2)) 0, calc(100% - var(--px2)) var(--px), calc(100% - var(--px)) var(--px), calc(100% - var(--px)) var(--px2), 100% var(--px2), 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, 0 100%, 0 calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) var(--px2w), calc(100% - var(--pxw)) var(--px2w), calc(100% - var(--pxw)) var(--pxw), calc(100% - var(--px2w)) var(--pxw), calc(100% - var(--px2w)) var(--pw), 0 var(--pw) )"
+      }
+    },
+    "@utility px-border-v-mid": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--pw": "var(--px-border-width, 2px)",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, var(--pw) 0, var(--pw) calc(100% - var(--pw)), calc(100% - var(--pw)) calc(100% - var(--pw)), calc(100% - var(--pw)) 0, 100% 0, 100% 100%, 0 100% )"
+      }
+    },
+    "@utility px-border-v-end": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&::before": {
+        "--px": "var(--pixel-size, 3px)",
+        "--px2": "calc(var(--pixel-size, 3px) * 2)",
+        "--pw": "var(--px-border-width, 2px)",
+        "--pxw": "calc(var(--px) + var(--pw))",
+        "--px2w": "calc(var(--px2) + var(--pw))",
+        "position": "absolute",
+        "inset": "var(--px-border-offset, 0px)",
+        "z-index": "-1",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-border-color, var(--border))",
+        "clip-path": "polygon( 0 0, var(--pw) 0, var(--pw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--px2w)), var(--pxw) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pxw)), var(--px2w) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pw)), calc(100% - var(--px2w)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--pxw)), calc(100% - var(--pxw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) calc(100% - var(--px2w)), calc(100% - var(--pw)) 0, 100% 0, 100% calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px2)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px2)) calc(100% - var(--px)), calc(100% - var(--px2)) 100%, var(--px2) 100%, var(--px2) calc(100% - var(--px)), var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px2)), 0 calc(100% - var(--px2)) )"
+      }
+    },
+    "@utility px-ring": {
+      "position": "relative",
+      "isolation": "isolate",
+      "&:focus-visible": {
+        "background-color": "var(--px-ring-color, var(--ring))"
+      },
+      "&::after": {
+        "position": "absolute",
+        "inset": "var(--px-face-offset, var(--px-ring-width, 2px))",
+        "z-index": "-2",
+        "pointer-events": "none",
+        "content": "\"\"",
+        "background": "var(--px-bg, transparent)",
+        "clip-path": "var(--px-shape, none)"
+      }
     }
   }
 }

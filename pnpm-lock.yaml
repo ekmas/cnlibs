@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.5.3
         version: 2.5.3
+      postcss:
+        specifier: ^8.5.19
+        version: 8.5.19
       turbo:
         specifier: ^2.10.5
         version: 2.10.5
