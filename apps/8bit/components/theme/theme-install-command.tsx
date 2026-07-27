@@ -19,7 +19,7 @@ export function ThemeInstallCommand() {
 
   return (
     <Dialog>
-      <DialogTrigger render={<Button />}>Copy</DialogTrigger>
+      <DialogTrigger render={<Button />}>Install</DialogTrigger>
       <DialogContent className="sm:max-w-max">
         <DialogHeader>
           <DialogTitle>Install this theme</DialogTitle>
