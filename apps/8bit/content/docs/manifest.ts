@@ -2,6 +2,7 @@ export const gettingStartedNav = [
   { href: "/docs", title: "Introduction" },
   { href: "/docs/installation", title: "Installation" },
   { href: "/docs/styling", title: "Styling" },
+  { href: "/docs/pixel-utilities", title: "Pixel Utilities" },
   { href: "/docs/components", title: "Components" },
 ] as const;
 
