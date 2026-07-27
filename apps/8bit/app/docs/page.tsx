@@ -22,7 +22,7 @@ export default function DocsIndexPage() {
           {DESCRIPTION}
         </p>
       </header>
-      <p className="text-base leading-relaxed">
+      <p className="text-base text-muted-foreground leading-relaxed">
         8bit is a retro, pixel-cornered take on shadcn/ui — every component
         starts from a Base UI primitive, and you install it straight into your
         own project with the shadcn CLI. 8bit is one of the libraries under{" "}
