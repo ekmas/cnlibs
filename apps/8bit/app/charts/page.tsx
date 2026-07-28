@@ -532,7 +532,7 @@ export default function ChartsPage() {
               <div className="flex flex-col gap-2">
                 <h1 className="font-medium text-3xl tracking-tight">Charts</h1>
                 <p className="text-muted-foreground leading-[1.75]">
-                  Canvas-rendered, dithered charts forked from{" "}
+                  Canvas-rendered,{" "}
                   <a
                     className="px-underline"
                     href="https://www.tripwire.sh/dither-kit"
@@ -541,18 +541,16 @@ export default function ChartsPage() {
                   >
                     dither-kit
                   </a>{" "}
-                  and self-hosted as part of 8bit/ui's own registry, so the
-                  theme integration below installs with it. Every chart shares a{" "}
-                  <code className="inline-block bg-muted px-2 px-border-md px-rounded-md py-0.5 font-mono text-xs [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_50%,transparent)]">
-                    core
-                  </code>{" "}
-                  item (scales, contexts, axes, tooltip) that installs
-                  automatically as a registry dependency. Colors are read live
-                  from this site's own{" "}
-                  <code className="inline-block bg-muted px-2 px-border-md px-rounded-md py-0.5 font-mono text-xs [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_50%,transparent)]">
-                    --chart-1..5
-                  </code>{" "}
-                  theme tokens, so every chart recolors with light/dark mode.
+                  charts by{" "}
+                  <a
+                    className="px-underline"
+                    href="https://www.tripwire.sh"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    tripwire.sh
+                  </a>
+                  .
                 </p>
               </div>
               <div className="flex flex-col gap-2">

@@ -7,6 +7,12 @@ import { useSeries } from "./series-context"
 
 export type DotVariant = "border" | "colored-border" | "filled"
 
+// Square, not round — markers stay pixel-consistent with the dithered fill
+// and canvas-drawn stars instead of standing out as smooth circles.
+function pixelRect(cx: number, cy: number, size: number) {
+  return { height: size * 2, width: size * 2, x: cx - size, y: cy - size }
+}
+
 function dotPaint(variant: DotVariant, seed: Seed) {
   switch (variant) {
     case "colored-border":
@@ -57,13 +63,11 @@ export function Dot({
       }}
     >
       {band.map((b, i) => (
-        <circle
+        <rect
           {...paint}
+          {...pixelRect(ctx.xCenter(i) ?? 0, ctx.y(b[1]), r)}
           // biome-ignore lint/suspicious/noArrayIndexKey: index is the stable x position
           key={i}
-          cx={ctx.xCenter(i) ?? 0}
-          cy={ctx.y(b[1])}
-          r={r}
         />
       ))}
     </g>
@@ -97,8 +101,8 @@ export function ActiveDot({
   return (
     <g>
       {/* Soft halo so the active point is unmistakable over the dither. */}
-      <circle cx={cx} cy={cy} r={r + 3} fill={rgb(seed.line, 1, 0.18)} />
-      <circle cx={cx} cy={cy} r={r} {...paint} strokeWidth={2} />
+      <rect {...pixelRect(cx, cy, r + 3)} fill={rgb(seed.line, 1, 0.18)} />
+      <rect {...pixelRect(cx, cy, r)} {...paint} strokeWidth={2} />
     </g>
   )
 }

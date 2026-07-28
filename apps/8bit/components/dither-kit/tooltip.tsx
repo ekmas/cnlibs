@@ -13,6 +13,9 @@ const VARIANT: Record<TooltipVariant, string> = {
   "frosted-glass": "bg-popover/70 backdrop-blur-sm",
 }
 
+const PIXEL_CARD =
+  "px-rounded-sm px-border-sm [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)]"
+
 /**
  * Floating hover tooltip. Reads the shared common context so it works in every
  * chart family. It glides between points and fades in/out (instead of snapping),
@@ -77,12 +80,13 @@ export function Tooltip({
             mass: 0.6,
           }}
           className={cn(
-            "pointer-events-none absolute z-10 rounded-md border px-2 py-1 shadow-sm",
+            "pointer-events-none absolute z-10 px-2 py-1",
+            PIXEL_CARD,
             VARIANT[variant]
           )}
         >
           {heading && (
-            <div className="mb-0.5 font-mono text-[10px] text-muted-foreground">
+            <div className="mb-0.5 font-heading text-[10px] text-muted-foreground">
               {heading}
             </div>
           )}
@@ -90,7 +94,7 @@ export function Tooltip({
             {items.map((item) => (
               <div
                 key={item.name}
-                className="flex items-center gap-1.5 font-mono text-[11px] text-popover-foreground tabular-nums"
+                className="flex items-center gap-1.5 font-heading text-[11px] text-popover-foreground tabular-nums"
                 style={{ opacity: item.dimmed ? 0.4 : 1 }}
               >
                 <span
