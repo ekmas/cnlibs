@@ -33,7 +33,7 @@ import {
 
 export function EmptyDemo() {
   return (
-    <Empty className="w-full max-w-md border">
+    <Empty className="w-full max-w-md">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <InboxIcon />
@@ -54,7 +54,7 @@ export function EmptyDemo() {
       "Combine EmptyMedia, EmptyTitle, and EmptyDescription to explain an empty state.",
     id: "default",
     preview: (
-      <Empty className="w-full max-w-md border">
+      <Empty className="w-full max-w-md">
         <EmptyHeader>
           <EmptyMedia variant="icon">
             <InboxIcon />
