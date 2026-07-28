@@ -523,11 +523,11 @@ export function RadarChartExample() {
 
 export default function ChartsPage() {
   return (
-    <div className="flex h-[calc(100dvh-50px)] min-h-0 flex-col bg-background px-rounded-md [--pixel-size:10px]">
+    <div className="flex min-h-0 flex-col bg-background px-rounded-md [--pixel-size:0px] sm:h-[calc(100dvh-50px)] sm:[--pixel-size:10px]">
       <SiteHeader />
       <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
         <div className="flex flex-col gap-20 py-10">
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6">
+          <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 sm:px-6">
             <header className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <h1 className="font-medium text-3xl tracking-tight">Charts</h1>
@@ -564,18 +564,18 @@ export default function ChartsPage() {
             </header>
           </div>
 
-          <div className="flex flex-col gap-20 px-6">
+          <div className="flex flex-col gap-20 px-4 sm:px-6">
             {FAMILIES.map((family) => (
               <section className="flex flex-col gap-10" key={family.id}>
                 <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 text-center">
-                  <h2 className="font-heading text-3xl tracking-tight">
+                  <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
                     {family.title}
                   </h2>
                   <p className="text-muted-foreground text-sm">
                     {family.description}
                   </p>
                 </div>
-                <div className="mx-auto grid w-3/5 grid-cols-1 gap-10 sm:grid-cols-2">
+                <div className="mx-auto grid w-full grid-cols-1 gap-10 md:grid-cols-2 xl:w-4/5 2xl:w-3/5">
                   {family.variants.map((variant, index) => {
                     const isCenteredLast =
                       family.variants.length % 2 === 1 &&
@@ -584,7 +584,7 @@ export default function ChartsPage() {
                       <div
                         className={cn(
                           isCenteredLast &&
-                            "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-1rem)]"
+                            "md:col-span-2 md:mx-auto md:w-[calc(50%-1rem)]"
                         )}
                         key={variant.id}
                       >

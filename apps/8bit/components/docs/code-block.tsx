@@ -21,11 +21,11 @@ export function CodeBlock({
           : "mx-0.5 px-border-b-md px-rounded-b-md"
       )}
     >
-      <pre className="code-scrollbar max-h-[300px] overflow-auto p-4">
-        <code className="font-mono text-sm">{code}</code>
+      <pre className="code-scrollbar max-h-[200px] overflow-auto p-4 sm:max-h-[300px]">
+        <code className="font-mono text-xs sm:text-sm">{code}</code>
       </pre>
       {isScrollable ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-muted/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8" />
       ) : null}
       <CopyButton className="absolute top-2 right-2" value={code} />
     </div>

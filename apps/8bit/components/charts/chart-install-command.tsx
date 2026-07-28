@@ -21,11 +21,13 @@ export function ChartInstallCommand({
   return (
     <Dialog>
       <DialogTrigger
-        render={<Button className="h-12 px-10 text-lg" size="lg" />}
+        render={
+          <Button className="h-10 px-5 text-lg sm:h-12 sm:px-10" size="lg" />
+        }
       >
         Install {name} charts
       </DialogTrigger>
-      <DialogContent className="sm:max-w-max">
+      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto [--px-border-color:transparent] sm:max-w-max">
         <DialogHeader>
           <DialogTitle>Install {name} charts</DialogTitle>
           <DialogDescription>

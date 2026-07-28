@@ -683,16 +683,8 @@ function getFloatingTemplate(key: string): FloatingTemplate {
 const DECORATIVE_COLUMN_KEYS: string[][] = [
   ["stat-card", "badge"],
   ["breadcrumb", "switch", "checkbox"],
+  ["select", "avatar-group", "progress", "input-group", "attachment"],
   [
-    "select",
-    "avatar-group",
-    "spinner",
-    "progress",
-    "input-group",
-    "attachment",
-  ],
-  [
-    "input-otp",
     "slider",
     "radio-group",
     "toggle",
@@ -700,6 +692,7 @@ const DECORATIVE_COLUMN_KEYS: string[][] = [
     "button-group",
     "combobox",
     "message",
+    "spinner",
   ],
   [
     "toggle-group",
@@ -751,7 +744,7 @@ export function HomeDecorativeColumns() {
   return (
     <div
       aria-hidden="true"
-      className="hidden h-full select-none gap-6 lg:flex"
+      className="hidden h-full select-none gap-6 opacity-90 lg:flex"
       ref={rootRef}
     >
       {DECORATIVE_COLUMNS.map((column, columnIndex) => (

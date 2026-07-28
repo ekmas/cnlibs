@@ -155,7 +155,7 @@ export function ThemePreview() {
         <Badge variant="destructive">Destructive</Badge>
       </div>
 
-      <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="flex flex-col gap-8 xl:flex-row">
         <div className="flex flex-1 flex-col gap-8">
           <PreviewSection title="Project">
             <div className="flex items-center gap-3">

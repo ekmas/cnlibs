@@ -29,7 +29,7 @@ export function VariantSection({
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <TabsContent value="preview">
-          <div className="mx-0.5 flex min-h-36 flex-wrap items-center justify-center gap-4 p-10 px-border-b-md px-rounded-b-md [--pixel-size:5px]">
+          <div className="mx-0.5 flex min-h-36 flex-wrap items-center justify-center gap-4 overflow-x-auto p-6 px-border-b-md px-rounded-b-md [--pixel-size:5px] sm:p-10">
             {variant.preview ?? (
               <span className="text-muted-foreground text-sm">
                 Example coming soon

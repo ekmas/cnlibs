@@ -45,7 +45,7 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="static h-full px-rounded-bl-md [--pixel-size:10px]">
+    <Sidebar className="static h-full bg-background px-rounded-bl-md [--pixel-size:10px]">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className={groupLabelClassName}>

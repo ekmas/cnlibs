@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function ThemePage() {
   return (
-    <div className="flex h-[calc(100dvh-50px)] min-h-0 flex-col bg-background px-rounded-md [--pixel-size:10px]">
+    <div className="flex h-svh min-h-0 flex-col bg-background px-rounded-md [--pixel-size:0px] sm:h-[calc(100dvh-50px)] sm:[--pixel-size:10px]">
       <SiteHeader />
       <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
         <div className="flex flex-col gap-8 py-10">
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6">
+          <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 sm:px-6">
             <header className="flex flex-col gap-2">
               <h1 className="font-medium text-3xl tracking-tight">Theme</h1>
               <p className="text-muted-foreground">

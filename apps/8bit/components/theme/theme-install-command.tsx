@@ -29,7 +29,7 @@ export function ThemeInstallCommand() {
   return (
     <Dialog>
       <DialogTrigger render={<Button />}>Install</DialogTrigger>
-      <DialogContent className="sm:max-w-max">
+      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto [--px-border-color:transparent] sm:max-w-max">
         <DialogHeader>
           <DialogTitle>Install this theme</DialogTitle>
           <DialogDescription>

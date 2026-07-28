@@ -32,10 +32,10 @@ const NAV_LINKS = [
 
 const EXTERNAL_LINKS = [
   {
-    href: "https://github.com/ekmas/cnlibs/tree/main/apps/8bit",
+    href: "https://github.com/ekmas/cnlibs",
     label: "GitHub",
   },
-  { href: "https://x.com/ekmas", label: "X" },
+  { href: "https://x.com/samuelbreznjak", label: "X" },
 ];
 
 export function SiteHeader({
@@ -50,7 +50,7 @@ export function SiteHeader({
   return (
     <header
       className={cn(
-        "flex h-14 w-full shrink-0 items-center gap-4 border-b bg-background px-4 sm:px-6",
+        "flex h-14 w-full shrink-0 items-center gap-2 border-b bg-background px-4 sm:gap-4 sm:px-6",
         className
       )}
     >
@@ -60,17 +60,17 @@ export function SiteHeader({
           8bit
         </Link>
 
-        <span className="text-muted-foreground">/</span>
+        <span className="hidden text-muted-foreground sm:inline">/</span>
 
         <Link
-          className="text-muted-foreground tracking-tight transition-colors hover:text-foreground"
-          href="https://8bit.cnlibs.com"
+          className="hidden text-muted-foreground tracking-tight transition-colors hover:text-foreground sm:inline"
+          href="https://cnlibs.com"
           target="_blank"
         >
           cnlibs.com
         </Link>
       </span>
-      <nav className="flex items-center gap-4 text-sm">
+      <nav className="hidden items-center gap-4 text-sm md:flex">
         {NAV_LINKS.map((link) => (
           <Link
             className={cn(
@@ -85,7 +85,7 @@ export function SiteHeader({
         ))}
       </nav>
       <DocsSearch />
-      <nav className="hidden items-center gap-4 text-muted-foreground text-sm sm:flex">
+      <nav className="flex items-center gap-4 text-muted-foreground text-sm">
         {EXTERNAL_LINKS.map((link) => (
           <a
             className="transition-colors hover:text-foreground"

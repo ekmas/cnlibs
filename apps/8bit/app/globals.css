@@ -1152,10 +1152,9 @@
     @apply border-border outline-ring/50;
   }
   body {
-    padding: 25px;
     font-weight: var(--font-weight-base);
     letter-spacing: var(--tracking-normal);
-    @apply bg-secondary text-foreground;
+    @apply bg-secondary text-foreground sm:p-[25px] p-0;
   }
   html {
     @apply font-pixel;

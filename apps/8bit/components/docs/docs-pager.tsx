@@ -17,10 +17,11 @@ export function DocsPager({
   return (
     <nav
       aria-label="Docs pagination"
-      className="flex items-center justify-between gap-4"
+      className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
     >
       {prev ? (
         <Button
+          className="w-full justify-center sm:w-auto sm:justify-start"
           nativeButton={false}
           render={<Link href={prev.href} />}
           variant="outline"
@@ -29,10 +30,11 @@ export function DocsPager({
           {prev.title}
         </Button>
       ) : (
-        <span />
+        <span className="hidden sm:block" />
       )}
       {next ? (
         <Button
+          className="w-full justify-center sm:w-auto sm:justify-start"
           nativeButton={false}
           render={<Link href={next.href} />}
           variant="outline"
@@ -41,7 +43,7 @@ export function DocsPager({
           <ChevronRightIcon data-icon="inline-end" />
         </Button>
       ) : (
-        <span />
+        <span className="hidden sm:block" />
       )}
     </nav>
   );

@@ -21,8 +21,15 @@ const COMPONENT_PAGES: { href: string; title: string }[] = [
   ...docsNav.map((doc) => ({ href: `/docs/${doc.slug}`, title: doc.title })),
 ].sort((a, b) => a.title.localeCompare(b.title));
 
-const PAGES: { href: string; title: string }[] = [
+// Search-only addition — not part of gettingStartedNav since that list also
+// drives the docs sidebar, and /theme isn't a docs page.
+const SEARCH_GETTING_STARTED: { href: string; title: string }[] = [
   ...gettingStartedNav,
+  { href: "/theme", title: "Theme" },
+];
+
+const PAGES: { href: string; title: string }[] = [
+  ...SEARCH_GETTING_STARTED,
   ...COMPONENT_PAGES,
 ];
 
@@ -64,16 +71,16 @@ export function DocsSearch() {
   return (
     <>
       <Button
-        className="ml-auto h-9 w-9 justify-center p-0 text-muted-foreground sm:w-64 sm:justify-start sm:gap-2 sm:px-3"
+        className="ml-auto h-9 w-9 justify-center p-0 text-muted-foreground md:w-36 md:justify-start md:gap-2 md:px-3 lg:w-64"
         onClick={openDialog}
         size="sm"
         variant="outline"
       >
         <SearchIcon data-icon="inline-start" />
-        <span className="hidden flex-1 text-left sm:inline">
+        <span className="hidden flex-1 text-left md:inline">
           Search docs...
         </span>
-        <KbdGroup className="hidden sm:inline-flex">
+        <KbdGroup className="hidden lg:inline-flex">
           <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>
@@ -89,7 +96,7 @@ export function DocsSearch() {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Getting Started">
-              {gettingStartedNav.map((page) => (
+              {SEARCH_GETTING_STARTED.map((page) => (
                 <CommandItem
                   key={page.href}
                   onSelect={handleSelect}

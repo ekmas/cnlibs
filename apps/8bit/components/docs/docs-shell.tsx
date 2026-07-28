@@ -13,7 +13,7 @@ export function DocsShell({
   toc?: ReactNode;
 }) {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 items-start gap-10 px-6 py-10">
+    <div className="mx-auto flex w-full max-w-6xl flex-1 items-start gap-10 px-4 py-10 sm:px-6">
       <article className="mx-auto flex w-full min-w-0 max-w-3xl flex-col gap-10">
         {children}
       </article>

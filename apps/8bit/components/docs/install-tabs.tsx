@@ -17,7 +17,7 @@ const RUNNER_IDS = Object.keys(RUNNERS) as PackageManager[];
 const LAST_RUNNER_INDEX = RUNNER_IDS.length - 1;
 
 const COMPACT_TRIGGER_CLASSNAME =
-  "group-data-[variant=line]/tabs-list:py-1 group-data-[variant=line]/tabs-list:text-xs group-data-[variant=line]/tabs-list:[--pixel-size:3px]";
+  "group-data-[variant=line]/tabs-list:py-1 group-data-[variant=line]/tabs-list:text-sm sm:group-data-[variant=line]/tabs-list:text-xs group-data-[variant=line]/tabs-list:[--pixel-size:3px]";
 
 export function InstallTabs({
   url,
@@ -47,7 +47,11 @@ export function InstallTabs({
       <TabsList variant="line">
         {RUNNER_IDS.map((id, index) => (
           <TabsTrigger
-            className={compact ? COMPACT_TRIGGER_CLASSNAME : undefined}
+            className={cn(
+              compact
+                ? COMPACT_TRIGGER_CLASSNAME
+                : "group-data-[variant=line]/tabs-list:text-sm sm:group-data-[variant=line]/tabs-list:text-xs"
+            )}
             key={id}
             unrounded={
               unrounded || (index !== 0 && index !== LAST_RUNNER_INDEX)
@@ -62,10 +66,10 @@ export function InstallTabs({
         const command = runWith(`shadcn@latest ${subcommand} ${url}`);
         return (
           <TabsContent key={id} value={id}>
-            <div className="mx-0.5 flex items-center justify-between gap-2 overflow-x-auto bg-muted/50 px-border-b-md px-rounded-b-md py-1 pr-1 pl-4 [--pixel-size:4px]">
+            <div className="mx-0.5 flex items-center gap-2 bg-muted/50 px-border-b-md px-rounded-b-md py-1 pr-1 pl-4 [--pixel-size:4px]">
               <code
                 className={cn(
-                  "whitespace-nowrap font-mono text-sm",
+                  "min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-sm",
                   compact && "text-xs"
                 )}
               >
