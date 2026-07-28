@@ -17,11 +17,11 @@ export default function Home() {
          * short viewports. */}
         <div className="static top-12 left-10 z-10 flex max-w-xs flex-col items-center gap-6 bg-background text-center lg:absolute lg:items-start lg:pr-4 lg:pb-10 lg:text-left">
           <h1 className="font-medium text-3xl tracking-tight sm:text-5xl">
-            8bit.cnlibs.com
+            8bit/cnlibs
           </h1>
           <p className="max-w-md text-muted-foreground">
-            Pixel-cornered, retro-styled components for shadcn/ui, built on Base
-            UI. Copy the code or install with Shadcn CLI.
+            8bit-styled shadcn-based ui library. Copy the code or install with
+            Shadcn CLI.
           </p>
           <div className="flex flex-wrap items-center justify-start gap-1 sm:gap-3">
             <Button nativeButton={false} render={<Link href="/docs" />}>

@@ -28,10 +28,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "8bit/ui",
-    template: "%s · 8bit/ui",
+    default: "8bit/cnlibs",
+    template: "%s - 8bit/cnlibs",
   },
-  description: "8-bit styled shadcn/ui components",
+  description: "8bit-styled shadcn-based ui library",
+  keywords: [
+    "8bit ui",
+    "pixel ui",
+    "shadcn ui library",
+    "8bit ui react",
+    "shadcn components",
+    "shadcn 8bit",
+  ],
+  authors: [{ name: "Samuel Breznjak", url: "https://github.com/ekmas" }],
+  openGraph: {
+    type: "website",
+    description: "8bit-styled shadcn-based ui library",
+    images: ["https://8bit.cnlibs.com/preview.png"],
+    url: "https://8bit.cnlibs.com/",
+    title: "8bit/cnlibs",
+  },
+  metadataBase: new URL("https://8bit.cnlibs.com/"),
+  twitter: {
+    card: "summary_large_image",
+    title: "8bit/cnlibs",
+    description: "8bit-styled shadcn-based ui library",
+    images: ["https://8bit.cnlibs.com/preview.png"],
+    creator: "@samuelbreznjak",
+  },
 };
 
 export default function RootLayout({
