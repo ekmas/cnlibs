@@ -8,11 +8,14 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
       data-slot="table-container"
-      className="relative w-full overflow-x-auto px-rounded-md px-border-md [--pixel-size:5px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)]"
+      className="relative w-full overflow-x-auto"
     >
       <table
         data-slot="table"
-        className={cn("w-full caption-bottom text-sm", className)}
+        className={cn(
+          "w-full px-rounded-md px-border-md [--pixel-size:5px] [--px-border-color:color-mix(in_oklab,var(--foreground)_10%,transparent)] caption-bottom text-sm",
+          className
+        )}
         {...props}
       />
     </div>
