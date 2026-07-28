@@ -19,6 +19,10 @@ export interface DocModule {
   description: string;
   links?: DocLinks;
   title: string;
+  /** Extra plain code block appended under the Usage section, for a setup
+   * step usage code alone doesn't cover (e.g. mounting a provider in the
+   * root layout). No Preview/Code tabs — just the code. */
+  usageNote?: { code: string; description?: string };
   variants: DocVariant[];
 }
 

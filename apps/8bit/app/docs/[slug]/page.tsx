@@ -94,7 +94,9 @@ export default async function DocPage({ params }: DocPageProps) {
         <h2 className="font-medium text-xl tracking-tight">Installation</h2>
         <InstallSection manualCode={manualCode} slug={slug} />
       </section>
-      {usageCode ? <UsageSection code={usageCode} /> : null}
+      {usageCode ? (
+        <UsageSection code={usageCode} note={doc.usageNote} />
+      ) : null}
       {restVariants.map((variant) => (
         <VariantSection key={variant.id} variant={variant} />
       ))}

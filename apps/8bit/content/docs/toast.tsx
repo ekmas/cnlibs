@@ -11,6 +11,26 @@ export const links = {
   shadcn: "https://ui.shadcn.com/docs/components/toast",
 };
 
+export const usageNote = {
+  code: `import { Toaster } from "@/components/ui/toast";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}`,
+  description: "Add the Toaster component to your app's layout.tsx.",
+};
+
 export const variants: DocVariant[] = [
   {
     code: `"use client";

@@ -30,9 +30,15 @@ const RETURN_PAREN_PATTERN = /return\s*\(/;
 // Fallback for a single-line `return <Jsx />;` with no wrapping parens.
 const RETURN_BARE_JSX_PATTERN = /return\s+([\s\S]*);\s*\}\s*$/;
 const LEADING_WHITESPACE_PATTERN = /^ */;
+// Matches only the exported demo function itself, not any un-exported helper
+// components/functions a larger demo (e.g. data-table) declares above it.
+const FUNCTION_OPEN_PATTERN = /export\s+function\s+\w+\s*\([^)]*\)\s*\{/;
 
 export interface UsageCodeParts {
   imports: string | null;
+  /** Module- or component-level declarations (e.g. a demo's data array or
+   * `useState` call) that sit between the imports and the returned markup. */
+  setup: string | null;
   snippet: string;
 }
 
@@ -88,16 +94,52 @@ function extractReturnedMarkup(code: string): string | null {
   return bareMatch?.[1] ? dedent(bareMatch[1]) : null;
 }
 
+/** Locates the exported demo function within `rest` (skipping any
+ * un-exported helper functions/components a larger demo, e.g. data-table,
+ * declares above it) and splits it into the module-level code that precedes
+ * it and its own body — so a later `return` inside a helper never gets
+ * mistaken for the demo's own returned markup. */
+function findDemoFunction(
+  rest: string
+): { moduleLevel: string; body: string } | null {
+  const fnMatch = rest.match(FUNCTION_OPEN_PATTERN);
+  if (fnMatch?.index === undefined) {
+    return null;
+  }
+
+  const moduleLevel = rest.slice(0, fnMatch.index);
+  const bodyStart = fnMatch.index + fnMatch[0].length;
+
+  return { body: rest.slice(bodyStart), moduleLevel };
+}
+
+/** Extracts the module-level declarations before a demo's function (e.g. a
+ * `const slides = [...]`) and the declarations inside its body before
+ * `return` (e.g. a `useState` call), so they can be shown alongside the
+ * imports, ahead of the returned markup. */
+function extractSetup(moduleLevel: string, body: string): string | null {
+  const returnMatch =
+    body.match(RETURN_PAREN_PATTERN) ?? body.match(RETURN_BARE_JSX_PATTERN);
+  const bodyLevel =
+    returnMatch?.index === undefined ? "" : body.slice(0, returnMatch.index);
+
+  const parts = [moduleLevel, bodyLevel].map(dedent).filter(Boolean);
+  return parts.length ? parts.join("\n\n") : null;
+}
+
 /** Splits a demo code string into its leading import statements (plus an
- * optional "use client" directive) and the returned markup, with any hooks,
- * helper constants, or the function wrapper itself stripped out. */
+ * optional "use client" directive), any setup declarations between the
+ * imports and the component's `return`, and the returned markup itself. */
 export function splitUsageCode(code: string): UsageCodeParts {
   const match = code.match(LEADING_IMPORTS_PATTERN);
   const rest = match ? code.slice(match[0].length) : code;
+  const demoFn = findDemoFunction(rest);
+  const body = demoFn ? demoFn.body : rest;
 
   return {
     imports: match?.[0].trim() || null,
-    snippet: extractReturnedMarkup(rest) ?? rest.trim(),
+    setup: demoFn ? extractSetup(demoFn.moduleLevel, body) : null,
+    snippet: extractReturnedMarkup(body) ?? body.trim(),
   };
 }
 
