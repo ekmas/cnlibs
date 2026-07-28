@@ -1,10 +1,8 @@
 "use client";
 
 import { ExternalLinkIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export interface TocItem {
@@ -27,7 +25,6 @@ function ActiveDot() {
 
 export function DocsToc({ items, title }: { items: TocItem[]; title: string }) {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const pathname = usePathname();
 
   useEffect(() => {
     const headings = items
@@ -57,8 +54,7 @@ export function DocsToc({ items, title }: { items: TocItem[]; title: string }) {
   }, [items]);
 
   const issueUrl = `${ISSUE_URL}?${new URLSearchParams({
-    body: `Page: ${SITE_URL}${pathname}\n\n`,
-    title: `docs: ${title}`,
+    title: `${title} component`,
   })}`;
 
   return (
