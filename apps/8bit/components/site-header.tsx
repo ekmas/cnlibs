@@ -31,7 +31,6 @@ const NAV_LINKS = [
 ];
 
 const EXTERNAL_LINKS = [
-  { href: "https://cnlibs.com", label: "cnlibs" },
   {
     href: "https://github.com/ekmas/cnlibs/tree/main/apps/8bit",
     label: "GitHub",
@@ -56,9 +55,21 @@ export function SiteHeader({
       )}
     >
       {leading}
-      <Link className="font-medium tracking-tight" href="/">
-        8bit
-      </Link>
+      <span className="flex items-center gap-2">
+        <Link className="font-medium tracking-tight" href="/">
+          8bit
+        </Link>
+
+        <span className="text-muted-foreground">/</span>
+
+        <Link
+          className="text-muted-foreground tracking-tight transition-colors hover:text-foreground"
+          href="https://8bit.cnlibs.com"
+          target="_blank"
+        >
+          cnlibs.com
+        </Link>
+      </span>
       <nav className="flex items-center gap-4 text-sm">
         {NAV_LINKS.map((link) => (
           <Link

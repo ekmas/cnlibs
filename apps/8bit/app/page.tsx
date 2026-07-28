@@ -13,11 +13,11 @@ export default function Home() {
          * it never fights the columns for width; it just sits on top. */}
         <div className="absolute top-12 left-10 z-10 flex max-w-xs flex-col items-start gap-6 text-left">
           <h1 className="font-medium text-4xl tracking-tight sm:text-5xl">
-            8bit
+            8bit.cnlibs.com
           </h1>
           <p className="max-w-md text-muted-foreground">
             Pixel-cornered, retro-styled components for shadcn/ui, built on Base
-            UI. Copy the code or install straight from the registry.
+            UI. Copy the code or install with Shadcn CLI.
           </p>
           <div className="flex flex-wrap items-center justify-start gap-3">
             <Button nativeButton={false} render={<Link href="/docs" />}>

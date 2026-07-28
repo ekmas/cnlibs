@@ -21,10 +21,10 @@ export default function ThemePage() {
             <header className="flex flex-col gap-2">
               <h1 className="font-medium text-3xl tracking-tight">Theme</h1>
               <p className="text-muted-foreground">
-                Pick a theme from the 8bit/ui theme registry to preview it on
-                the components below. Your pick is saved and still applied next
-                time you load this page — install it with the shadcn CLI to add
-                it to your own project, or use it to scaffold a new one.
+                Pick a theme from the 8bit theme registry to preview it on the
+                components below. Your pick is saved and still applied next time
+                you load this page — install it with the shadcn CLI to add it to
+                your own project, or use it to scaffold a new one.
               </p>
             </header>
 
