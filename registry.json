@@ -127,6 +127,11 @@
           "path": "apps/8bit/components/ui/breadcrumb.tsx",
           "type": "registry:ui",
           "target": "~/components/ui/breadcrumb.tsx"
+        },
+        {
+          "path": "apps/8bit/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dropdown-menu.tsx"
         }
       ]
     },
@@ -1016,6 +1021,11 @@
           "path": "apps/8bit/components/ui/tooltip.tsx",
           "type": "registry:ui",
           "target": "~/components/ui/tooltip.tsx"
+        },
+        {
+          "path": "apps/8bit/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "~/hooks/use-mobile.ts"
         }
       ]
     },
@@ -1030,7 +1040,26 @@
           "type": "registry:ui",
           "target": "~/components/ui/skeleton.tsx"
         }
-      ]
+      ],
+      "css": {
+        "@utility animate-pixel-skeleton": {
+          "animation": "pixel-skeleton 1.2s steps(1) infinite"
+        },
+        "@keyframes pixel-skeleton": {
+          "0%": {
+            "background-color": "var(--muted)"
+          },
+          "25%": {
+            "background-color": "color-mix(in oklab, var(--foreground) 10%, var(--muted))"
+          },
+          "50%": {
+            "background-color": "color-mix(in oklab, var(--foreground) 20%, var(--muted))"
+          },
+          "75%": {
+            "background-color": "color-mix(in oklab, var(--foreground) 30%, var(--muted))"
+          }
+        }
+      }
     },
     {
       "name": "8bit/slider",
@@ -1059,7 +1088,20 @@
           "type": "registry:ui",
           "target": "~/components/ui/spinner.tsx"
         }
-      ]
+      ],
+      "css": {
+        "@utility animate-pixel-spin-dot": {
+          "animation": "pixel-spin-dot 900ms linear infinite"
+        },
+        "@keyframes pixel-spin-dot": {
+          "0%, 50%": {
+            "opacity": "1"
+          },
+          "58%, 100%": {
+            "opacity": "0"
+          }
+        }
+      }
     },
     {
       "name": "8bit/switch",
@@ -3974,6 +4016,260 @@
           "chart-5": "oklch(0.4851 0.0570 72.6827)"
         }
       }
+    },
+    {
+      "dependencies": [
+        "clsx",
+        "d3-scale",
+        "d3-shape",
+        "motion",
+        "tailwind-merge"
+      ],
+      "description": "Shared scales, contexts, axes, tooltip, and the theme-aware color palette every dither-kit chart depends on.",
+      "devDependencies": [
+        "@types/d3-scale",
+        "@types/d3-shape"
+      ],
+      "files": [
+        {
+          "path": "apps/8bit/components/dither-kit/lib.ts",
+          "type": "registry:lib",
+          "target": "~/components/dither-kit/lib.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/palette.ts",
+          "type": "registry:lib",
+          "target": "~/components/dither-kit/palette.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/scales.ts",
+          "type": "registry:lib",
+          "target": "~/components/dither-kit/scales.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/polar.ts",
+          "type": "registry:lib",
+          "target": "~/components/dither-kit/polar.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/dither-paint.ts",
+          "type": "registry:lib",
+          "target": "~/components/dither-kit/dither-paint.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/use-chart-dimensions.ts",
+          "type": "registry:hook",
+          "target": "~/components/dither-kit/use-chart-dimensions.ts"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/chart-context.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/chart-context.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/common-context.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/common-context.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/series-context.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/series-context.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/polar-context.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/polar-context.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/cartesian-root.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/cartesian-root.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/polar-root.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/polar-root.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/grid.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/grid.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/reference-line.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/reference-line.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/x-axis.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/x-axis.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/y-axis.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/y-axis.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/dot.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/dot.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/legend.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/legend.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/block-legend.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/block-legend.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/tooltip.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/tooltip.tsx"
+        }
+      ],
+      "name": "dither-kit/core",
+      "title": "Dither Kit Core",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": [],
+      "description": "Composable area/line dither chart, plus Sparkline for the decorative case.",
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "apps/8bit/components/dither-kit/area-chart.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/area-chart.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/area.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/area.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/cartesian-canvas.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/cartesian-canvas.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/sparkline.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/sparkline.tsx"
+        }
+      ],
+      "name": "dither-kit/area-chart",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/dither-kit/core.json"
+      ],
+      "title": "Area & Line Chart",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": [],
+      "description": "Grouped, stacked, or percent-stacked dither bar chart.",
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "apps/8bit/components/dither-kit/bar-chart.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/bar-chart.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/bar.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/bar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/bar-canvas.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/bar-canvas.tsx"
+        }
+      ],
+      "name": "dither-kit/bar-chart",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/dither-kit/core.json"
+      ],
+      "title": "Bar Chart",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": [],
+      "description": "Donut or full-wedge dither pie chart.",
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "apps/8bit/components/dither-kit/pie-chart.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/pie-chart.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/pie.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/pie.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/pie-canvas.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/pie-canvas.tsx"
+        }
+      ],
+      "name": "dither-kit/pie-chart",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/dither-kit/core.json"
+      ],
+      "title": "Pie Chart",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": [],
+      "description": "Composable dither radar chart.",
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "apps/8bit/components/dither-kit/radar-chart.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/radar-chart.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/radar.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/radar.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/radar-canvas.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/radar-canvas.tsx"
+        },
+        {
+          "path": "apps/8bit/components/dither-kit/radar-frame.tsx",
+          "type": "registry:component",
+          "target": "~/components/dither-kit/radar-frame.tsx"
+        }
+      ],
+      "name": "dither-kit/radar-chart",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/dither-kit/core.json"
+      ],
+      "title": "Radar Chart",
+      "type": "registry:component"
+    },
+    {
+      "description": "Every dither-kit chart family, plus the shared core, installed together.",
+      "name": "dither-kit/dither-kit",
+      "registryDependencies": [
+        "https://8bit.cnlibs.com/r/dither-kit/core.json",
+        "https://8bit.cnlibs.com/r/dither-kit/area-chart.json",
+        "https://8bit.cnlibs.com/r/dither-kit/bar-chart.json",
+        "https://8bit.cnlibs.com/r/dither-kit/pie-chart.json",
+        "https://8bit.cnlibs.com/r/dither-kit/radar-chart.json"
+      ],
+      "title": "All Dither Kit Charts",
+      "type": "registry:component"
     }
   ]
 }

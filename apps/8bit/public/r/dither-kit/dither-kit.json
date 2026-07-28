@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-kit",
+  "type": "registry:component",
+  "title": "All Dither Kit Charts",
+  "description": "Every dither-kit chart family, plus the shared core, installed together.",
+  "registryDependencies": [
+    "https://8bit.cnlibs.com/r/dither-kit/core.json",
+    "https://8bit.cnlibs.com/r/dither-kit/area-chart.json",
+    "https://8bit.cnlibs.com/r/dither-kit/bar-chart.json",
+    "https://8bit.cnlibs.com/r/dither-kit/pie-chart.json",
+    "https://8bit.cnlibs.com/r/dither-kit/radar-chart.json"
+  ]
+}

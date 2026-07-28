@@ -11,5 +11,18 @@
       "type": "registry:ui",
       "target": "~/components/ui/spinner.tsx"
     }
-  ]
+  ],
+  "css": {
+    "@utility animate-pixel-spin-dot": {
+      "animation": "pixel-spin-dot 900ms linear infinite"
+    },
+    "@keyframes pixel-spin-dot": {
+      "0%, 50%": {
+        "opacity": "1"
+      },
+      "58%, 100%": {
+        "opacity": "0"
+      }
+    }
+  }
 }

@@ -17,6 +17,7 @@ import { VariantSection } from "@/components/docs/variant-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import type { DocVariant } from "@/content/docs/registry";
+import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -25,13 +26,14 @@ export const metadata: Metadata = {
   title: "Charts",
 };
 
-// dither-kit is a separate, self-hosted registry (not part of 8bit/ui's own
-// registry.json) — installs vendor straight from tripwire.sh, same shadcn
-// CLI mechanism as any other registry item. Colors come from the site's own
-// --chart-1..5 (and --destructive/--muted-foreground) theme tokens — see
-// components/dither-kit/palette.ts — so every chart below recolors with
-// light/dark mode.
-const DITHER_KIT_REGISTRY_URL = "https://tripwire.sh/r";
+// Forked from upstream dither-kit and self-hosted in this repo's own registry
+// (apps/8bit/components/dither-kit, compiled by scripts/generate-registry.mjs
+// into public/r/dither-kit/*.json) rather than installed straight from
+// tripwire.sh, because palette.ts here reads colors live from this site's own
+// --chart-1..5 (and --destructive/--muted-foreground) theme tokens instead of
+// upstream's fixed hex palette — so every chart below recolors with
+// light/dark mode and whatever theme is applied on /theme.
+const DITHER_KIT_REGISTRY_URL = `${SITE_URL}/r/dither-kit`;
 const CHART_SUFFIX_PATTERN = / Chart$/;
 
 interface ChartFamily {
@@ -530,7 +532,7 @@ export default function ChartsPage() {
               <div className="flex flex-col gap-2">
                 <h1 className="font-medium text-3xl tracking-tight">Charts</h1>
                 <p className="text-muted-foreground leading-[1.75]">
-                  Canvas-rendered, dithered charts from{" "}
+                  Canvas-rendered, dithered charts forked from{" "}
                   <a
                     className="px-underline"
                     href="https://www.tripwire.sh/dither-kit"
@@ -539,8 +541,8 @@ export default function ChartsPage() {
                   >
                     dither-kit
                   </a>{" "}
-                  — a separate, self-hosted registry, not part of 8bit/ui's own.
-                  Every chart shares a{" "}
+                  and self-hosted as part of 8bit/ui's own registry, so the
+                  theme integration below installs with it. Every chart shares a{" "}
                   <code className="inline-block bg-muted px-2 px-border-md px-rounded-md py-0.5 font-mono text-xs [--pixel-size:3px] [--px-border-color:color-mix(in_oklab,var(--foreground)_50%,transparent)]">
                     core
                   </code>{" "}

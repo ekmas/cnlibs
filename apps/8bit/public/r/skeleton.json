@@ -11,5 +11,24 @@
       "type": "registry:ui",
       "target": "~/components/ui/skeleton.tsx"
     }
-  ]
+  ],
+  "css": {
+    "@utility animate-pixel-skeleton": {
+      "animation": "pixel-skeleton 1.2s steps(1) infinite"
+    },
+    "@keyframes pixel-skeleton": {
+      "0%": {
+        "background-color": "var(--muted)"
+      },
+      "25%": {
+        "background-color": "color-mix(in oklab, var(--foreground) 10%, var(--muted))"
+      },
+      "50%": {
+        "background-color": "color-mix(in oklab, var(--foreground) 20%, var(--muted))"
+      },
+      "75%": {
+        "background-color": "color-mix(in oklab, var(--foreground) 30%, var(--muted))"
+      }
+    }
+  }
 }
