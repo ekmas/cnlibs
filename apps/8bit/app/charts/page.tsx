@@ -527,7 +527,7 @@ export default function ChartsPage() {
       <SiteHeader />
       <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
         <div className="flex flex-col gap-20 py-10">
-          <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 sm:px-6">
+          <div className="mx-auto flex w-full max-w-[800px] flex-col gap-4 px-4 sm:px-6">
             <header className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <h1 className="font-medium text-3xl tracking-tight">Charts</h1>
