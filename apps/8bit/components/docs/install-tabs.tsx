@@ -50,7 +50,7 @@ export function InstallTabs({
             className={cn(
               compact
                 ? COMPACT_TRIGGER_CLASSNAME
-                : "group-data-[variant=line]/tabs-list:text-sm sm:group-data-[variant=line]/tabs-list:text-xs"
+                : "group-data-[variant=line]/tabs-list:text-xs sm:group-data-[variant=line]/tabs-list:text-sm"
             )}
             key={id}
             unrounded={
