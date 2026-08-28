@@ -1,24 +1,7 @@
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import { AsciiEdge, AsciiVRule } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
-
-/** A column of "|" characters clipped to the textarea's height —
- * absolutely positioned so its 60-line filler can't set the row's
- * height (the textarea's own `rows` attribute stays in charge). */
-function TextareaRule({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute inset-y-0 w-[1ch] overflow-hidden text-primary/60 select-none",
-        className
-      )}
-    >
-      <pre className="m-0 font-mono">{"|\n".repeat(60)}</pre>
-    </span>
-  );
-}
 
 function Textarea({
   className,
@@ -32,14 +15,18 @@ function Textarea({
       className="group/textarea inline-flex flex-col font-mono text-sm text-primary select-none"
       style={{ width: `${chWidth}ch` }}
     >
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/textarea:text-primary"
-      >
-        {topBorder(chWidth)}
-      </div>
+      <AsciiEdge
+        edge="top"
+        width={chWidth}
+        className="text-primary/60 group-focus-within/textarea:text-primary"
+      />
       <div className="relative flex items-stretch">
-        <TextareaRule className="left-0 group-focus-within/textarea:text-primary" />
+        {/* Side rules are absolutely positioned so their filler can't set
+         * the row's height (the textarea's own `rows` stays in charge). */}
+        <AsciiVRule
+          side="left"
+          className="pointer-events-none absolute inset-y-0 left-0 group-focus-within/textarea:text-primary"
+        />
         <textarea
           data-slot="textarea"
           rows={rows}
@@ -49,14 +36,16 @@ function Textarea({
           )}
           {...props}
         />
-        <TextareaRule className="right-0 group-focus-within/textarea:text-primary" />
+        <AsciiVRule
+          side="right"
+          className="pointer-events-none absolute inset-y-0 right-0 group-focus-within/textarea:text-primary"
+        />
       </div>
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/textarea:text-primary"
-      >
-        {bottomBorder(chWidth)}
-      </div>
+      <AsciiEdge
+        edge="bottom"
+        width={chWidth}
+        className="text-primary/60 group-focus-within/textarea:text-primary"
+      />
     </div>
   );
 }

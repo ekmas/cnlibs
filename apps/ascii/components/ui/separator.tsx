@@ -20,11 +20,7 @@ function Separator({
       )}
       {...props}
     >
-      <AsciiRule
-        char={orientation === "vertical" ? "|" : "-"}
-        orientation={orientation}
-        className="h-full w-full"
-      />
+      <AsciiRule orientation={orientation} className="h-full w-full" />
     </SeparatorPrimitive>
   );
 }

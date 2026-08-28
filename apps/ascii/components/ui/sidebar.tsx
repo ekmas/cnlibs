@@ -247,7 +247,10 @@ function Sidebar({
           {children}
           {/* The sidebar's border: a column of "|" glyphs on its inner
            * edge, matching the frame color used across the components. */}
-          <AsciiVRule className="pointer-events-none absolute inset-y-0 group-data-[side=left]:right-0 group-data-[side=right]:left-0" />
+          <AsciiVRule
+            side="right"
+            className="pointer-events-none absolute inset-y-0 group-data-[side=left]:right-0 group-data-[side=right]:left-0"
+          />
         </div>
       </div>
     </div>
@@ -645,7 +648,7 @@ function SidebarMenuSkeleton({
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
   return (
     <div className="relative mx-3.5 translate-x-px group-data-[collapsible=icon]:hidden">
-      <AsciiVRule className="absolute inset-y-0 left-0" />
+      <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
       <ul
         data-slot="sidebar-menu-sub"
         data-sidebar="menu-sub"

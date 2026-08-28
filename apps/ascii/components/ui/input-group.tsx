@@ -3,22 +3,27 @@
 import { Input as InputPrimitive } from "@base-ui/react/input";
 import * as React from "react";
 
+import {
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 const frameClass =
   "text-primary/60 group-focus-within/input-group:text-primary";
 
 /** A 1ch "+ | +" column — the group's outer edges and the divider
- * between sections, with "+" landing on the border rows. */
-function FrameCol() {
+ * between sections, with junctions landing on the border rows. */
+function FrameCol({ side }: { side: "left" | "right" }) {
   return (
     <div
       aria-hidden
       className={cn("flex w-[1ch] shrink-0 flex-col select-none", frameClass)}
     >
-      <span>+</span>
-      <span>|</span>
-      <span>+</span>
+      <AsciiJunction />
+      <AsciiSide side={side} />
+      <AsciiJunction />
     </div>
   );
 }
@@ -27,16 +32,14 @@ function FrameCol() {
  * absolutely positioned so its filler can't widen the section. */
 function DashRow({ edge }: { edge: "top" | "bottom" }) {
   return (
-    <span
-      aria-hidden
+    <AsciiRule
+      line={edge}
       className={cn(
-        "absolute inset-x-0 overflow-hidden whitespace-pre select-none",
+        "absolute inset-x-0",
         edge === "top" ? "top-0" : "bottom-0",
         frameClass
       )}
-    >
-      {"-".repeat(200)}
-    </span>
+    />
   );
 }
 
@@ -58,14 +61,14 @@ function InputGroup({
       style={{ width: `${chWidth}ch` }}
       {...props}
     >
-      <FrameCol />
+      <FrameCol side="left" />
       {sections.map((section, i) => (
         <React.Fragment key={i}>
-          {i > 0 && <FrameCol />}
+          {i > 0 && <FrameCol side="right" />}
           {section}
         </React.Fragment>
       ))}
-      <FrameCol />
+      <FrameCol side="right" />
     </div>
   );
 }

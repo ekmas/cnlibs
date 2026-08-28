@@ -1,6 +1,11 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import {
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -44,11 +49,9 @@ function ButtonBorder({ edge }: { edge: "top" | "bottom" }) {
         edge === "top" ? "top-0" : "bottom-0"
       )}
     >
-      <span>+</span>
-      <span className="min-w-0 flex-1 overflow-hidden whitespace-pre">
-        {"-".repeat(200)}
-      </span>
-      <span>+</span>
+      <AsciiJunction />
+      <AsciiRule line={edge} className="min-w-0 flex-1" />
+      <AsciiJunction />
     </span>
   );
 }
@@ -77,18 +80,14 @@ function Button({
       {boxed ? (
         <>
           <ButtonBorder edge="top" />
-          <span aria-hidden data-slot="frame">
-            |
-          </span>
+          <AsciiSide side="left" data-slot="frame" />
           <span
             data-slot="label"
             className="flex min-w-0 flex-1 items-center justify-center gap-[1ch]"
           >
             {children}
           </span>
-          <span aria-hidden data-slot="frame">
-            |
-          </span>
+          <AsciiSide side="right" data-slot="frame" />
           <ButtonBorder edge="bottom" />
         </>
       ) : (

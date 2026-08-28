@@ -3,8 +3,7 @@
 import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
 import * as React from "react";
 
-import { AsciiVRule } from "@/components/ascii/ascii-box";
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import { AsciiEdge, AsciiVRule } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 /* "+--+" over "|AA|" — the box hugs the two initial characters. */
@@ -25,19 +24,15 @@ function Avatar({ className, children, ...props }: AvatarPrimitive.Root.Props) {
       style={{ width: `${width}ch` }}
       {...props}
     >
-      <span aria-hidden className="block whitespace-pre">
-        {topBorder(width)}
-      </span>
+      <AsciiEdge edge="top" width={width} />
       <span className="relative block" style={{ height: `${rows}lh` }}>
-        <AsciiVRule className="absolute inset-y-0 left-0" />
+        <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
         <span className="absolute inset-x-[1ch] inset-y-0 flex items-center justify-center overflow-hidden uppercase">
           {children}
         </span>
-        <AsciiVRule className="absolute inset-y-0 right-0" />
+        <AsciiVRule side="right" className="absolute inset-y-0 right-0" />
       </span>
-      <span aria-hidden className="block whitespace-pre">
-        {bottomBorder(width)}
-      </span>
+      <AsciiEdge edge="bottom" width={width} />
     </AvatarPrimitive.Root>
   );
 }
@@ -92,19 +87,15 @@ function AvatarGroupCount({
       style={{ width: `${width}ch` }}
       {...props}
     >
-      <span aria-hidden className="block whitespace-pre">
-        {topBorder(width)}
-      </span>
+      <AsciiEdge edge="top" width={width} />
       <span className="relative block" style={{ height: `${AVATAR_ROWS}lh` }}>
-        <AsciiVRule className="absolute inset-y-0 left-0" />
+        <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
         <span className="absolute inset-x-[1ch] inset-y-0 flex items-center justify-center text-ascii-comment">
           +{children}
         </span>
-        <AsciiVRule className="absolute inset-y-0 right-0" />
+        <AsciiVRule side="right" className="absolute inset-y-0 right-0" />
       </span>
-      <span aria-hidden className="block whitespace-pre">
-        {bottomBorder(width)}
-      </span>
+      <AsciiEdge edge="bottom" width={width} />
     </div>
   );
 }

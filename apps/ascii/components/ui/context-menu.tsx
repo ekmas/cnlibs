@@ -3,7 +3,12 @@
 import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import {
+  AsciiEdge,
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
@@ -59,13 +64,13 @@ function ContextMenuContent({
           style={{ width: `${chWidth}ch` }}
           {...props}
         >
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {topBorder(chWidth)}
-          </span>
+          <AsciiEdge edge="top" width={chWidth} className="text-primary/60" />
           {children}
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {bottomBorder(chWidth)}
-          </span>
+          <AsciiEdge
+            edge="bottom"
+            width={chWidth}
+            className="text-primary/60"
+          />
         </ContextMenuPrimitive.Popup>
       </ContextMenuPrimitive.Positioner>
     </ContextMenuPortal>
@@ -90,9 +95,7 @@ function ContextMenuItem({
       )}
       {...props}
     >
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <span
         className={cn(
           "flex min-w-0 flex-1 items-center px-[1ch]",
@@ -115,9 +118,7 @@ function ContextMenuItem({
           ]
         </span>
       </span>
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </ContextMenuPrimitive.Item>
   );
 }
@@ -128,19 +129,15 @@ function ContextMenuSeparator({
 }: ContextMenuPrimitive.Separator.Props) {
   return (
     <div className="flex items-center whitespace-pre text-primary/60 select-none">
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
       <ContextMenuPrimitive.Separator
         data-slot="context-menu-separator"
         className={cn("min-w-0 flex-1 overflow-hidden", className)}
         {...props}
       >
-        <span aria-hidden>{"-".repeat(200)}</span>
+        <AsciiRule line="divider" />
       </ContextMenuPrimitive.Separator>
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
     </div>
   );
 }

@@ -21,8 +21,11 @@
   --text-sm--line-height: 22px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-ibm-plex-mono);
-  --font-mono: var(--font-ibm-plex-mono);
+  /* Both families resolve to --font-ascii, which the theme page
+   * overrides at runtime with any Google mono font (see
+   * components/ascii/ascii-theme.tsx). */
+  --font-sans: var(--font-ascii);
+  --font-mono: var(--font-ascii);
   --font-heading: var(--font-sans);
   /* The sidebar has no palette of its own — its utilities
    * (bg-sidebar, text-sidebar-* in components/ui/sidebar.tsx)
@@ -76,6 +79,10 @@
 }
 
 :root {
+  /* The mono family. next/font supplies the default; the theme page
+   * writes an inline override on <html>. */
+  --font-ascii: var(--font-ibm-plex-mono);
+
   /* palette — single source for every color used in more than one
    * token, named by role (not hue) so alternate schemes can swap the
    * values wholesale: ascii-primary is the scheme's signature color,

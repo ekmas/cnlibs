@@ -3,7 +3,7 @@
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import { AsciiEdge, AsciiSide } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 /** The popup anchors to the whole trigger frame (like Select), not
@@ -40,21 +40,27 @@ function ComboboxTrigger({
       style={{ width: `${chWidth}ch` }}
       {...props}
     >
-      <span aria-hidden className="frame-line whitespace-pre text-primary/60">
-        {topBorder(chWidth)}
-      </span>
+      <AsciiEdge
+        edge="top"
+        width={chWidth}
+        className="frame-line text-primary/60"
+      />
       <span className="flex items-stretch">
-        <span aria-hidden className="frame-line shrink-0 text-primary/60">
-          |
-        </span>
+        <AsciiSide
+          side="left"
+          className="frame-line shrink-0 text-primary/60"
+        />
         {children}
-        <span aria-hidden className="frame-line shrink-0 text-primary/60">
-          |
-        </span>
+        <AsciiSide
+          side="right"
+          className="frame-line shrink-0 text-primary/60"
+        />
       </span>
-      <span aria-hidden className="frame-line whitespace-pre text-primary/60">
-        {bottomBorder(chWidth)}
-      </span>
+      <AsciiEdge
+        edge="bottom"
+        width={chWidth}
+        className="frame-line text-primary/60"
+      />
     </div>
   );
 }
@@ -126,13 +132,13 @@ function ComboboxContent({
           style={{ width: `${chWidth}ch` }}
           {...props}
         >
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {topBorder(chWidth)}
-          </span>
+          <AsciiEdge edge="top" width={chWidth} className="text-primary/60" />
           <ComboboxPrimitive.List>{children}</ComboboxPrimitive.List>
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {bottomBorder(chWidth)}
-          </span>
+          <AsciiEdge
+            edge="bottom"
+            width={chWidth}
+            className="text-primary/60"
+          />
         </ComboboxPrimitive.Popup>
       </ComboboxPrimitive.Positioner>
     </ComboboxPrimitive.Portal>
@@ -153,9 +159,7 @@ function ComboboxItem({
       )}
       {...props}
     >
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <span className="flex min-w-0 flex-1 items-center px-[1ch] group-data-highlighted/combobox-item:text-primary">
         <span
           aria-hidden
@@ -176,9 +180,7 @@ function ComboboxItem({
           x
         </ComboboxPrimitive.ItemIndicator>
       </span>
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </ComboboxPrimitive.Item>
   );
 }

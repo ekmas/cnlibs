@@ -3,7 +3,12 @@
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import {
+  AsciiEdge,
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 const Select = SelectPrimitive.Root;
@@ -49,13 +54,16 @@ function SelectTrigger({
       style={{ width: `${chWidth}ch` }}
       {...props}
     >
-      <span aria-hidden className="frame-line whitespace-pre text-primary/60">
-        {topBorder(chWidth)}
-      </span>
+      <AsciiEdge
+        edge="top"
+        width={chWidth}
+        className="frame-line text-primary/60"
+      />
       <span className="flex items-stretch">
-        <span aria-hidden className="frame-line shrink-0 text-primary/60">
-          |
-        </span>
+        <AsciiSide
+          side="left"
+          className="frame-line shrink-0 text-primary/60"
+        />
         <span className="flex min-w-0 flex-1 items-center gap-[1ch] overflow-hidden px-[2ch] *:data-[slot=select-value]:flex *:data-[slot=select-value]:min-w-0 *:data-[slot=select-value]:flex-1 *:data-[slot=select-value]:items-center">
           {children}
         </span>
@@ -69,13 +77,16 @@ function SelectTrigger({
         >
           v
         </SelectPrimitive.Icon>
-        <span aria-hidden className="frame-line shrink-0 text-primary/60">
-          |
-        </span>
+        <AsciiSide
+          side="right"
+          className="frame-line shrink-0 text-primary/60"
+        />
       </span>
-      <span aria-hidden className="frame-line whitespace-pre text-primary/60">
-        {bottomBorder(chWidth)}
-      </span>
+      <AsciiEdge
+        edge="bottom"
+        width={chWidth}
+        className="frame-line text-primary/60"
+      />
     </SelectPrimitive.Trigger>
   );
 }
@@ -113,15 +124,15 @@ function SelectContent({
           style={{ width: `${chWidth}ch` }}
           {...props}
         >
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {topBorder(chWidth)}
-          </span>
+          <AsciiEdge edge="top" width={chWidth} className="text-primary/60" />
           <SelectScrollUpButton />
           <SelectPrimitive.List>{children}</SelectPrimitive.List>
           <SelectScrollDownButton />
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {bottomBorder(chWidth)}
-          </span>
+          <AsciiEdge
+            edge="bottom"
+            width={chWidth}
+            className="text-primary/60"
+          />
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>
     </SelectPrimitive.Portal>
@@ -134,9 +145,7 @@ function SelectLabel({
 }: SelectPrimitive.GroupLabel.Props) {
   return (
     <div className="flex items-stretch">
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <SelectPrimitive.GroupLabel
         data-slot="select-label"
         className={cn(
@@ -145,9 +154,7 @@ function SelectLabel({
         )}
         {...props}
       />
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </div>
   );
 }
@@ -166,9 +173,7 @@ function SelectItem({
       )}
       {...props}
     >
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <span className="flex min-w-0 flex-1 items-center px-[1ch] group-data-highlighted/select-item:text-primary">
         <span
           aria-hidden
@@ -189,9 +194,7 @@ function SelectItem({
           x
         </SelectPrimitive.ItemIndicator>
       </span>
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </SelectPrimitive.Item>
   );
 }
@@ -202,19 +205,15 @@ function SelectSeparator({
 }: SelectPrimitive.Separator.Props) {
   return (
     <div className="flex items-center whitespace-pre text-primary/60 select-none">
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
       <SelectPrimitive.Separator
         data-slot="select-separator"
         className={cn("min-w-0 flex-1 overflow-hidden", className)}
         {...props}
       >
-        <span aria-hidden>{"-".repeat(200)}</span>
+        <AsciiRule line="divider" />
       </SelectPrimitive.Separator>
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
     </div>
   );
 }

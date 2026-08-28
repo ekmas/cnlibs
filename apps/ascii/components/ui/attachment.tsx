@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { AsciiRule, AsciiVRule } from "@/components/ascii/ascii-box";
+import { AsciiHBorder, AsciiVRule } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 function Attachment({
@@ -14,23 +14,23 @@ function Attachment({
       className={cn("inline-flex flex-col bg-card text-sm", className)}
       {...props}
     >
-      <div aria-hidden className="flex text-primary/60 select-none">
-        <span>+</span>
-        <AsciiRule className="flex-1" />
-        <span>+</span>
-      </div>
+      <AsciiHBorder line="top" />
       <div className="relative">
-        <AsciiVRule tone="soft" className="absolute inset-y-0 left-0" />
+        <AsciiVRule
+          tone="soft"
+          side="left"
+          className="absolute inset-y-0 left-0"
+        />
         <div className="flex min-w-0 items-start gap-[1ch] px-[2ch]">
           {children}
         </div>
-        <AsciiVRule tone="soft" className="absolute inset-y-0 right-0" />
+        <AsciiVRule
+          tone="soft"
+          side="right"
+          className="absolute inset-y-0 right-0"
+        />
       </div>
-      <div aria-hidden className="flex text-primary/60 select-none">
-        <span>+</span>
-        <AsciiRule className="flex-1" />
-        <span>+</span>
-      </div>
+      <AsciiHBorder line="bottom" />
     </div>
   );
 }

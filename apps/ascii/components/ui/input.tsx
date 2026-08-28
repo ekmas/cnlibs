@@ -3,6 +3,8 @@
 import { Input as InputPrimitive } from "@base-ui/react/input";
 import * as React from "react";
 
+import { AsciiSide } from "@/components/ascii/ascii-box";
+import { useAsciiChars } from "@/components/ascii/ascii-theme";
 import { bottomBorder, topBorder } from "@/lib/ascii";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +16,7 @@ function Input({
   ref,
   ...props
 }: React.ComponentProps<"input"> & { chWidth?: number }) {
+  const chars = useAsciiChars();
   const isPassword = type === "password";
   const isNumber = type === "number";
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -37,7 +40,10 @@ function Input({
   /* The frame's right corners double as steppers on number inputs: the
    * corner "+" is swapped for a "<" / ">" rotated to point up / down. */
   const borderRow = (edge: "top" | "bottom") => {
-    const row = edge === "top" ? topBorder(chWidth) : bottomBorder(chWidth);
+    const row =
+      edge === "top"
+        ? topBorder(chWidth, undefined, chars)
+        : bottomBorder(chWidth, chars);
     if (!isNumber) {
       return (
         <div
@@ -76,12 +82,10 @@ function Input({
     >
       {borderRow("top")}
       <div className="flex items-stretch">
-        <span
-          aria-hidden
+        <AsciiSide
+          side="left"
           className="shrink-0 text-primary/60 group-focus-within/input:text-primary"
-        >
-          |
-        </span>
+        />
         {/* The 1ch gap lives on the wrapper, not the input: inputs scroll
          * overflowing text underneath their own padding, which would show
          * glyphs bleeding through next to the border. */}
@@ -118,12 +122,10 @@ function Input({
             </span>
           )}
         </div>
-        <span
-          aria-hidden
+        <AsciiSide
+          side="right"
           className="shrink-0 text-primary/60 group-focus-within/input:text-primary"
-        >
-          |
-        </span>
+        />
       </div>
       {borderRow("bottom")}
     </div>

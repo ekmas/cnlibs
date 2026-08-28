@@ -3,7 +3,11 @@
 import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import * as React from "react";
 
-import { AsciiBoxContext } from "@/components/ascii/ascii-box";
+import {
+  AsciiBoxContext,
+  AsciiJunction,
+  AsciiRule,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 type CommandOption = {
@@ -96,11 +100,9 @@ function CommandList({
           bg
         )}
       >
-        <span className="shrink-0">+</span>
-        <span className="min-w-0 flex-1 overflow-hidden">
-          {"-".repeat(200)}
-        </span>
-        <span className="shrink-0">+</span>
+        <AsciiJunction className="shrink-0" />
+        <AsciiRule line="divider" className="min-w-0 flex-1" />
+        <AsciiJunction className="shrink-0" />
       </div>
       <div
         data-slot="command-list"
@@ -152,9 +154,9 @@ function CommandSeparator({ className }: { className?: string }) {
         className
       )}
     >
-      <span className="shrink-0">+</span>
-      <span className="min-w-0 flex-1 overflow-hidden">{"-".repeat(200)}</span>
-      <span className="shrink-0">+</span>
+      <AsciiJunction className="shrink-0" />
+      <AsciiRule line="divider" className="min-w-0 flex-1" />
+      <AsciiJunction className="shrink-0" />
     </div>
   );
 }

@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import { AsciiSide } from "@/components/ascii/ascii-box";
+import { useAsciiChars } from "@/components/ascii/ascii-theme";
 import { columnDivider } from "@/lib/ascii";
 import { cn } from "@/lib/utils";
 
@@ -39,9 +41,10 @@ function Table({
 }
 
 function Divider({ widths }: { widths: number[] }) {
+  const chars = useAsciiChars();
   return (
     <div aria-hidden className="whitespace-pre text-primary/60">
-      {columnDivider(widths)}
+      {columnDivider(widths, chars)}
     </div>
   );
 }
@@ -90,13 +93,11 @@ function TableRow({
       )}
       {...props}
     >
-      <span
-        aria-hidden
+      <AsciiSide
+        side="left"
         data-slot="table-row-rule"
         className="shrink-0 text-primary/60"
-      >
-        |
-      </span>
+      />
       {cells.map((cell, i) => (
         <React.Fragment key={i}>
           {React.isValidElement<{ style?: React.CSSProperties }>(cell)
@@ -104,13 +105,11 @@ function TableRow({
                 style: { width: `${widths[i]}ch`, ...cell.props.style },
               })
             : cell}
-          <span
-            aria-hidden
+          <AsciiSide
+            side="right"
             data-slot="table-row-rule"
             className="shrink-0 text-primary/60"
-          >
-            |
-          </span>
+          />
         </React.Fragment>
       ))}
     </div>

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
-import { AsciiRule, AsciiVRule } from "@/components/ascii/ascii-box";
+import {
+  AsciiJunction,
+  AsciiRule,
+  AsciiVRule,
+} from "@/components/ascii/ascii-box";
+import { AsciiThemeProvider } from "@/components/ascii/ascii-theme";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ASCII_FONT_VAR, ASCII_THEME_STORAGE_KEY } from "@/lib/ascii-theme";
 import "./globals.css";
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -16,29 +22,49 @@ export const metadata: Metadata = {
     "A shadcn/ui component library recreated as a monospace, ASCII-bordered terminal aesthetic.",
 };
 
+/* Applies the persisted theme's colors and font before first paint so
+ * a customised palette doesn't flash the defaults. Mirrors the
+ * provider's applyColors/applyFont in components/ascii/ascii-theme.tsx
+ * (kept dependency-free and tiny since it runs inline, blocking). */
+const themeBootScript = `(function(){try{var t=JSON.parse(localStorage.getItem(${JSON.stringify(ASCII_THEME_STORAGE_KEY)}));if(!t)return;var r=document.documentElement;if(t.colors)for(var k in t.colors)if(/^--[a-z-]+$/.test(k)&&typeof t.colors[k]==="string")r.style.setProperty(k,t.colors[k]);if(typeof t.font==="string"&&t.font.trim()){var f=t.font.trim().replace(/"/g,"");r.style.setProperty(${JSON.stringify(ASCII_FONT_VAR)},'"'+f+'", ui-monospace, monospace')}}catch(e){}})();`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${ibmPlexMono.variable} h-full antialiased`}>
+      <head>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static, build-time string — see themeBootScript */}
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
       <body className="flex h-dvh items-center justify-center overflow-hidden bg-background">
-        <div className="flex h-(--frame-h) w-[calc(100dvw-20ch)] max-w-[208ch] flex-col overflow-hidden font-mono text-primary/60 [--frame-h:min(calc(100dvh-20ch),108ch)]">
-          <div aria-hidden className="flex shrink-0 select-none leading-none">
-            <span>+</span>
-            <AsciiRule tone="soft" className="flex-1" />
-            <span>+</span>
-          </div>
-          <div className="relative min-h-0 flex-1">
-            <AsciiVRule tone="soft" className="absolute inset-y-0 left-0" />
-            <div className="flex h-full min-w-0 flex-col overflow-hidden px-[1ch] text-foreground">
-              <TooltipProvider>{children}</TooltipProvider>
+        <AsciiThemeProvider>
+          <div className="flex h-(--frame-h) w-[calc(100dvw-20ch)] max-w-[208ch] flex-col overflow-hidden font-mono text-primary/60 [--frame-h:min(calc(100dvh-20ch),108ch)]">
+            <div aria-hidden className="flex shrink-0 select-none leading-none">
+              <AsciiJunction />
+              <AsciiRule line="top" tone="soft" className="flex-1" />
+              <AsciiJunction />
             </div>
-            <AsciiVRule tone="soft" className="absolute inset-y-0 right-0" />
+            <div className="relative min-h-0 flex-1">
+              <AsciiVRule
+                tone="soft"
+                side="left"
+                className="absolute inset-y-0 left-0"
+              />
+              <div className="flex h-full min-w-0 flex-col overflow-hidden px-[1ch] text-foreground">
+                <TooltipProvider>{children}</TooltipProvider>
+              </div>
+              <AsciiVRule
+                tone="soft"
+                side="right"
+                className="absolute inset-y-0 right-0"
+              />
+            </div>
+            <div aria-hidden className="flex shrink-0 select-none leading-none">
+              <AsciiJunction />
+              <AsciiRule line="bottom" tone="soft" className="flex-1" />
+              <AsciiJunction />
+            </div>
           </div>
-          <div aria-hidden className="flex shrink-0 select-none leading-none">
-            <span>+</span>
-            <AsciiRule tone="soft" className="flex-1" />
-            <span>+</span>
-          </div>
-        </div>
+        </AsciiThemeProvider>
       </body>
     </html>
   );

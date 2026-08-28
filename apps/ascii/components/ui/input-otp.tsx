@@ -3,7 +3,7 @@
 import { OTPField as OTPFieldPrimitive } from "@base-ui/react/otp-field";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import { AsciiEdge, AsciiSide } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 const SLOT_WIDTH = 3; // ch — "|" + 1 char + "|"
@@ -83,19 +83,16 @@ function InputOTPSlot({
       className="group/otp-slot inline-flex flex-col"
       style={{ width: `${SLOT_WIDTH}ch` }}
     >
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/otp-slot:text-primary"
-      >
-        {topBorder(SLOT_WIDTH)}
-      </div>
+      <AsciiEdge
+        edge="top"
+        width={SLOT_WIDTH}
+        className="text-primary/60 group-focus-within/otp-slot:text-primary"
+      />
       <div className="flex items-stretch">
-        <span
-          aria-hidden
+        <AsciiSide
+          side="left"
           className="shrink-0 text-primary/60 group-focus-within/otp-slot:text-primary"
-        >
-          |
-        </span>
+        />
         <OTPFieldPrimitive.Input
           aria-label={index === 0 ? undefined : `Character ${index + 1}`}
           data-slot="input-otp-input"
@@ -106,19 +103,16 @@ function InputOTPSlot({
           )}
           {...props}
         />
-        <span
-          aria-hidden
+        <AsciiSide
+          side="right"
           className="shrink-0 text-primary/60 group-focus-within/otp-slot:text-primary"
-        >
-          |
-        </span>
+        />
       </div>
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/otp-slot:text-primary"
-      >
-        {bottomBorder(SLOT_WIDTH)}
-      </div>
+      <AsciiEdge
+        edge="bottom"
+        width={SLOT_WIDTH}
+        className="text-primary/60 group-focus-within/otp-slot:text-primary"
+      />
     </div>
   );
 }

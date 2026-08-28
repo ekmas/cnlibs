@@ -4,7 +4,12 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import {
+  AsciiEdge,
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 function Menubar({ className, children, ...props }: MenubarPrimitive.Props) {
@@ -90,13 +95,13 @@ function MenubarContent({
           style={{ width: `${chWidth}ch` }}
           {...props}
         >
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {topBorder(chWidth)}
-          </span>
+          <AsciiEdge edge="top" width={chWidth} className="text-primary/60" />
           {children}
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {bottomBorder(chWidth)}
-          </span>
+          <AsciiEdge
+            edge="bottom"
+            width={chWidth}
+            className="text-primary/60"
+          />
         </MenuPrimitive.Popup>
       </MenuPrimitive.Positioner>
     </MenubarPortal>
@@ -121,9 +126,7 @@ function MenubarItem({
       )}
       {...props}
     >
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <span
         className={cn(
           "flex min-w-0 flex-1 items-center px-[1ch]",
@@ -146,9 +149,7 @@ function MenubarItem({
           ]
         </span>
       </span>
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </MenuPrimitive.Item>
   );
 }
@@ -159,19 +160,15 @@ function MenubarSeparator({
 }: MenuPrimitive.Separator.Props) {
   return (
     <div className="flex items-center whitespace-pre text-primary/60 select-none">
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
       <MenuPrimitive.Separator
         data-slot="menubar-separator"
         className={cn("min-w-0 flex-1 overflow-hidden", className)}
         {...props}
       >
-        <span aria-hidden>{"-".repeat(200)}</span>
+        <AsciiRule line="divider" />
       </MenuPrimitive.Separator>
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
     </div>
   );
 }

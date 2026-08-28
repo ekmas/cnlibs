@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import { AsciiEdge, AsciiSide } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 function NativeSelect({
@@ -15,19 +15,16 @@ function NativeSelect({
       className="group/native-select inline-flex flex-col font-mono text-sm text-primary select-none"
       style={{ width: `${chWidth}ch` }}
     >
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/native-select:text-primary"
-      >
-        {topBorder(chWidth)}
-      </div>
+      <AsciiEdge
+        edge="top"
+        width={chWidth}
+        className="text-primary/60 group-focus-within/native-select:text-primary"
+      />
       <div className="flex items-stretch">
-        <span
-          aria-hidden
+        <AsciiSide
+          side="left"
           className="shrink-0 text-primary/60 group-focus-within/native-select:text-primary"
-        >
-          |
-        </span>
+        />
         <select
           data-slot="native-select"
           className={cn(
@@ -45,19 +42,16 @@ function NativeSelect({
         >
           v
         </span>
-        <span
-          aria-hidden
+        <AsciiSide
+          side="right"
           className="shrink-0 text-primary/60 group-focus-within/native-select:text-primary"
-        >
-          |
-        </span>
+        />
       </div>
-      <div
-        aria-hidden
-        className="whitespace-pre text-primary/60 group-focus-within/native-select:text-primary"
-      >
-        {bottomBorder(chWidth)}
-      </div>
+      <AsciiEdge
+        edge="bottom"
+        width={chWidth}
+        className="text-primary/60 group-focus-within/native-select:text-primary"
+      />
     </div>
   );
 }

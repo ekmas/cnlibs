@@ -2,7 +2,9 @@
 
 import * as React from "react";
 
+import { useAsciiChars } from "@/components/ascii/ascii-theme";
 import { CodeBlock } from "@/components/ascii/code-block";
+import { bottomBorder, topBorder, vGlyph } from "@/lib/ascii";
 import { cn } from "@/lib/utils";
 
 const MANAGERS = [
@@ -31,7 +33,8 @@ function InstallTab({
   active: boolean;
   onSelect: () => void;
 }) {
-  const border = `+${"-".repeat(id.length + 2)}+`;
+  const chars = useAsciiChars();
+  const width = id.length + 4;
   return (
     <button
       type="button"
@@ -45,9 +48,9 @@ function InstallTab({
           : "text-ascii-comment hover:text-foreground focus-visible:text-foreground"
       )}
     >
-      <span aria-hidden>{border}</span>
-      <span>{`| ${id} |`}</span>
-      <span aria-hidden>{border}</span>
+      <span aria-hidden>{topBorder(width, undefined, chars)}</span>
+      <span>{`${vGlyph(chars.left)} ${id} ${vGlyph(chars.right)}`}</span>
+      <span aria-hidden>{bottomBorder(width, chars)}</span>
     </button>
   );
 }

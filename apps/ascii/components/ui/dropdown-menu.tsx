@@ -3,7 +3,12 @@
 import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import * as React from "react";
 
-import { bottomBorder, topBorder } from "@/lib/ascii";
+import {
+  AsciiEdge,
+  AsciiJunction,
+  AsciiRule,
+  AsciiSide,
+} from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
@@ -50,13 +55,13 @@ function DropdownMenuContent({
           style={{ width: `${chWidth}ch` }}
           {...props}
         >
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {topBorder(chWidth)}
-          </span>
+          <AsciiEdge edge="top" width={chWidth} className="text-primary/60" />
           {children}
-          <span aria-hidden className="block whitespace-pre text-primary/60">
-            {bottomBorder(chWidth)}
-          </span>
+          <AsciiEdge
+            edge="bottom"
+            width={chWidth}
+            className="text-primary/60"
+          />
         </MenuPrimitive.Popup>
       </MenuPrimitive.Positioner>
     </DropdownMenuPortal>
@@ -73,9 +78,7 @@ function DropdownMenuGroupLabel({
 }: MenuPrimitive.GroupLabel.Props) {
   return (
     <div className="flex items-stretch">
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <MenuPrimitive.GroupLabel
         data-slot="dropdown-menu-group-label"
         className={cn(
@@ -84,9 +87,7 @@ function DropdownMenuGroupLabel({
         )}
         {...props}
       />
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </div>
   );
 }
@@ -109,9 +110,7 @@ function DropdownMenuItem({
       )}
       {...props}
     >
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="left" className="shrink-0 text-primary/60" />
       <span
         className={cn(
           "flex min-w-0 flex-1 items-center px-[1ch]",
@@ -134,9 +133,7 @@ function DropdownMenuItem({
           ]
         </span>
       </span>
-      <span aria-hidden className="shrink-0 text-primary/60">
-        |
-      </span>
+      <AsciiSide side="right" className="shrink-0 text-primary/60" />
     </MenuPrimitive.Item>
   );
 }
@@ -147,19 +144,15 @@ function DropdownMenuSeparator({
 }: MenuPrimitive.Separator.Props) {
   return (
     <div className="flex items-center whitespace-pre text-primary/60 select-none">
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
       <MenuPrimitive.Separator
         data-slot="dropdown-menu-separator"
         className={cn("min-w-0 flex-1 overflow-hidden", className)}
         {...props}
       >
-        <span aria-hidden>{"-".repeat(200)}</span>
+        <AsciiRule line="divider" />
       </MenuPrimitive.Separator>
-      <span aria-hidden className="shrink-0">
-        +
-      </span>
+      <AsciiJunction className="shrink-0" />
     </div>
   );
 }

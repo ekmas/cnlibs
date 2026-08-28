@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AsciiBox, AsciiBoxDivider } from "@/components/ascii/ascii-box";
+import { HeroBoxes } from "@/components/ascii/hero-boxes";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -30,11 +31,12 @@ export default function Home() {
             </p>
           </div>
 
-          <pre className="w-max whitespace-pre border border-primary/50 bg-card px-[2ch] py-[1lh] font-mono text-primary text-sm">
-            {`+----------------+  +----------------+
-|    ${readyCount} / ${asciiComponents.length}       |  |  VIEW LIBRARY  |
-+----------------+  +----------------+`}
-          </pre>
+          <HeroBoxes
+            labels={[
+              `${readyCount} / ${asciiComponents.length}`,
+              "VIEW LIBRARY",
+            ]}
+          />
 
           <div className="flex items-center gap-3">
             <Button

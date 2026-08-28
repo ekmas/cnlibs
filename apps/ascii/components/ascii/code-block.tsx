@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { AsciiRule, AsciiVRule } from "@/components/ascii/ascii-box";
+import { AsciiHBorder, AsciiVRule } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
 /** A bordered, copyable code snippet in the ASCII frame style. */
@@ -27,23 +27,15 @@ function CodeBlock({ code, className }: { code: string; className?: string }) {
         className
       )}
     >
-      <div aria-hidden className="flex select-none text-primary/60">
-        <span>+</span>
-        <AsciiRule className="flex-1" />
-        <span>+</span>
-      </div>
+      <AsciiHBorder line="top" />
       <div className="relative bg-card">
-        <AsciiVRule className="absolute inset-y-0 left-0" />
+        <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
         <pre className="overflow-x-auto whitespace-pre px-[2ch] text-ascii-soft outline-none">
           {code}
         </pre>
-        <AsciiVRule className="absolute inset-y-0 right-0" />
+        <AsciiVRule side="right" className="absolute inset-y-0 right-0" />
       </div>
-      <div aria-hidden className="flex select-none text-primary/60">
-        <span>+</span>
-        <AsciiRule className="flex-1" />
-        <span>+</span>
-      </div>
+      <AsciiHBorder line="bottom" />
       <button
         type="button"
         onClick={copy}
