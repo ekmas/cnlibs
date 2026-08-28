@@ -4,7 +4,7 @@ import { Input as InputPrimitive } from "@base-ui/react/input";
 import * as React from "react";
 
 import { AsciiSide } from "@/components/ascii/ascii-box";
-import { useAsciiChars } from "@/components/ascii/ascii-theme";
+import { useAsciiChars } from "@/components/ascii/ascii-chars";
 import { bottomBorder, topBorder } from "@/lib/ascii";
 import { cn } from "@/lib/utils";
 

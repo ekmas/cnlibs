@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { useAsciiChars } from "@/components/ascii/ascii-theme";
+import { useAsciiChars } from "@/components/ascii/ascii-chars";
 import {
   type AsciiChars,
   bottomBorder,

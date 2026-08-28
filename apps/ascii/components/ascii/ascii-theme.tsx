@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import { AsciiCharsContext } from "@/components/ascii/ascii-chars";
 import type { AsciiChars } from "@/lib/ascii";
 import {
   ASCII_FONT_VAR,
@@ -168,7 +169,9 @@ function AsciiThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AsciiThemeContext.Provider value={value}>
-      {children}
+      <AsciiCharsContext.Provider value={theme.chars}>
+        {children}
+      </AsciiCharsContext.Provider>
     </AsciiThemeContext.Provider>
   );
 }
@@ -177,10 +180,4 @@ function useAsciiTheme() {
   return React.useContext(AsciiThemeContext);
 }
 
-/** The active border glyph set — what every framed component draws
- * with. Falls back to the defaults outside a provider. */
-function useAsciiChars(): AsciiChars {
-  return React.useContext(AsciiThemeContext).theme.chars;
-}
-
-export { AsciiThemeProvider, useAsciiChars, useAsciiTheme };
+export { AsciiThemeProvider, useAsciiTheme };

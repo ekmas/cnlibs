@@ -1,6 +1,6 @@
 "use client";
 
-import { useAsciiChars } from "@/components/ascii/ascii-theme";
+import { useAsciiChars } from "@/components/ascii/ascii-chars";
 import { bottomBorder, topBorder, vGlyph } from "@/lib/ascii";
 
 const BOX_WIDTH = 18;
