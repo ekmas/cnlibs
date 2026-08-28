@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { AppSidebar } from "@/components/ascii/app-sidebar";
 import { AsciiRule, AsciiVRule } from "@/components/ascii/ascii-box";
+import { SearchButton } from "@/components/ascii/search";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export default function ComponentsLayout({
@@ -53,12 +54,7 @@ export default function ComponentsLayout({
                 </Link>
               </nav>
               <div className="ml-auto flex items-center gap-[2ch]">
-                <button
-                  type="button"
-                  className="select-none text-ascii-comment outline-none hover:text-primary focus-visible:text-primary"
-                >
-                  [ search ]
-                </button>
+                <SearchButton />
                 <a
                   href="https://github.com"
                   target="_blank"

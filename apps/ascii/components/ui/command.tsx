@@ -23,12 +23,15 @@ function Command({
   onValueChange,
   placeholder = "Type a command or search...",
   emptyMessage = "No matching commands.",
+  filter,
   className,
 }: {
   groups: CommandGroupData[];
   onValueChange?: (item: CommandOption) => void;
   placeholder?: string;
   emptyMessage?: string;
+  /** Custom query matcher — defaults to matching the item's label. */
+  filter?: (item: CommandOption, query: string) => boolean;
   className?: string;
 }) {
   return (
@@ -37,6 +40,7 @@ function Command({
         inline
         open
         items={groups}
+        filter={filter}
         itemToStringLabel={(item: CommandOption) => item.label}
         onValueChange={(item: CommandOption | null) => {
           if (!item) return;
@@ -180,13 +184,21 @@ function CommandItem({
     <ComboboxPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item mx-[1ch] flex cursor-default items-center gap-[1ch] px-[2ch] text-ascii-soft outline-hidden select-none",
+        "group/command-item mx-[1ch] flex cursor-default items-center gap-[1ch] pr-[2ch] pl-[1ch] text-ascii-soft outline-hidden select-none",
         "data-highlighted:text-primary",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         className
       )}
       {...props}
     >
+      {/* Reserved 1ch pointer column so items don't shift when the
+       * ">" appears on hover/keyboard highlight. */}
+      <span
+        aria-hidden
+        className="w-[1ch] shrink-0 select-none opacity-0 group-data-highlighted/command-item:opacity-100"
+      >
+        &gt;
+      </span>
       {children}
     </ComboboxPrimitive.Item>
   );

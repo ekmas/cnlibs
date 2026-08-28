@@ -37,10 +37,17 @@ export default function Home() {
           </pre>
 
           <div className="flex items-center gap-3">
-            <Button render={<Link href="/components/button" />}>
+            <Button
+              nativeButton={false}
+              render={<Link href="/components/button" />}
+            >
               Browse components
             </Button>
-            <Button variant="outline" render={<Link href="/components" />}>
+            <Button
+              nativeButton={false}
+              render={<Link href="/components" />}
+              variant="outline"
+            >
               Full index
             </Button>
           </div>
