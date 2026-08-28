@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "Checkbox component from the ascii UI library.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/checkbox.tsx",
+      "content": "\"use client\";\n\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui/react/checkbox\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"group/checkbox peer inline-flex shrink-0 items-center font-mono text-sm text-ascii-comment outline-none\",\n        \"after:absolute after:-inset-x-2 after:-inset-y-2 relative\",\n        \"hover:text-primary focus-visible:text-primary\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"data-checked:text-primary\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden>[</span>\n      <span\n        aria-hidden\n        className=\"w-[1ch] text-center text-primary opacity-0 group-data-checked/checkbox:opacity-100\"\n      >\n        x\n      </span>\n      <span aria-hidden>]</span>\n    </CheckboxPrimitive.Root>\n  );\n}\n\nexport { Checkbox };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/checkbox.tsx"
+    }
+  ]
+}

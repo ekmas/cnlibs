@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Field component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/field.tsx",
+      "content": "import * as React from \"react\";\nimport { Label } from \"@/components/ui/label\";\nimport { cn } from \"@/lib/utils\";\n\nfunction Field({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"field\"\n      className={cn(\"flex flex-col\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction FieldLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof Label>) {\n  return (\n    <Label\n      data-slot=\"field-label\"\n      className={cn(\n        \"text-ascii-comment uppercase tracking-[0.04em]\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction FieldControl({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div data-slot=\"field-control\" className={cn(className)} {...props} />;\n}\n\nfunction FieldDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return (\n    <p\n      data-slot=\"field-description\"\n      className={cn(\"mt-[1lh] text-ascii-soft\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction FieldError({ className, ...props }: React.ComponentProps<\"p\">) {\n  return (\n    <p\n      data-slot=\"field-error\"\n      className={cn(\"text-destructive\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Field, FieldControl, FieldDescription, FieldError, FieldLabel };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/field.tsx"
+    },
+    {
+      "path": "apps/ascii/components/ui/label.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-[1ch] text-sm select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:pointer-events-none peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Label };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/label.tsx"
+    }
+  ]
+}

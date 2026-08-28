@@ -1,0 +1,157 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lavender",
+  "type": "registry:style",
+  "title": "Lavender",
+  "description": "Deep purple on lavender white.",
+  "registryDependencies": [
+    "https://ascii.cnlibs.com/r/button.json"
+  ],
+  "cssVars": {
+    "theme": {
+      "text-sm": "16px",
+      "text-sm--line-height": "22px",
+      "color-background": "var(--background)",
+      "color-foreground": "var(--foreground)",
+      "font-sans": "var(--font-ascii)",
+      "font-mono": "var(--font-ascii)",
+      "font-heading": "var(--font-sans)",
+      "color-sidebar-ring": "var(--ring)",
+      "color-sidebar-border": "var(--border)",
+      "color-sidebar-accent-foreground": "var(--accent-foreground)",
+      "color-sidebar-accent": "var(--secondary)",
+      "color-sidebar-primary-foreground": "var(--primary-foreground)",
+      "color-sidebar-primary": "var(--primary)",
+      "color-sidebar-foreground": "var(--ascii-soft)",
+      "color-sidebar": "var(--background)",
+      "color-ring": "var(--ring)",
+      "color-input": "var(--input)",
+      "color-border": "var(--border)",
+      "color-destructive": "var(--destructive)",
+      "color-accent-foreground": "var(--accent-foreground)",
+      "color-muted-foreground": "var(--muted-foreground)",
+      "color-secondary-foreground": "var(--secondary-foreground)",
+      "color-secondary": "var(--secondary)",
+      "color-primary-foreground": "var(--primary-foreground)",
+      "color-primary": "var(--primary)",
+      "color-popover-foreground": "var(--popover-foreground)",
+      "color-popover": "var(--popover)",
+      "color-card-foreground": "var(--card-foreground)",
+      "color-card": "var(--card)",
+      "color-ascii-comment": "var(--ascii-comment)",
+      "color-ascii-soft": "var(--ascii-soft)",
+      "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+      "radius-*": "initial"
+    },
+    "light": {
+      "ascii-primary": "#6d28d9",
+      "ascii-soft": "#7c5cb0",
+      "ascii-text": "#1e1233",
+      "ascii-comment": "#9d92b8",
+      "muted-foreground": "#7b6f99",
+      "background": "#f6f3fc",
+      "ascii-surface": "#fdfcff",
+      "secondary": "#ebe4f7",
+      "ascii-dim": "#d4c8ea",
+      "primary-foreground": "#fdfcff",
+      "destructive": "#be123c",
+      "foreground": "var(--ascii-text)",
+      "card": "var(--ascii-surface)",
+      "card-foreground": "var(--ascii-text)",
+      "popover": "var(--ascii-surface)",
+      "popover-foreground": "var(--ascii-text)",
+      "primary": "var(--ascii-primary)",
+      "secondary-foreground": "var(--ascii-soft)",
+      "accent-foreground": "var(--ascii-text)",
+      "border": "var(--ascii-dim)",
+      "input": "var(--ascii-dim)",
+      "ring": "var(--ascii-primary)",
+      "font-weight-heading": "700",
+      "font-weight-base": "400",
+      "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+      "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+    },
+    "dark": {
+      "ascii-primary": "#6d28d9",
+      "ascii-soft": "#7c5cb0",
+      "ascii-text": "#1e1233",
+      "ascii-comment": "#9d92b8",
+      "muted-foreground": "#7b6f99",
+      "background": "#f6f3fc",
+      "ascii-surface": "#fdfcff",
+      "secondary": "#ebe4f7",
+      "ascii-dim": "#d4c8ea",
+      "primary-foreground": "#fdfcff",
+      "destructive": "#be123c",
+      "foreground": "var(--ascii-text)",
+      "card": "var(--ascii-surface)",
+      "card-foreground": "var(--ascii-text)",
+      "popover": "var(--ascii-surface)",
+      "popover-foreground": "var(--ascii-text)",
+      "primary": "var(--ascii-primary)",
+      "secondary-foreground": "var(--ascii-soft)",
+      "accent-foreground": "var(--ascii-text)",
+      "border": "var(--ascii-dim)",
+      "input": "var(--ascii-dim)",
+      "ring": "var(--ascii-primary)",
+      "font-weight-heading": "700",
+      "font-weight-base": "400",
+      "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+      "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+    }
+  },
+  "css": {
+    "@utility font-weight-heading": {
+      "font-weight": "var(--font-weight-heading)"
+    },
+    "@utility font-weight-base": {
+      "font-weight": "var(--font-weight-base)"
+    },
+    "@utility no-scrollbar": {
+      "-ms-overflow-style": "none",
+      "scrollbar-width": "none",
+      "&::-webkit-scrollbar": {
+        "display": "none"
+      }
+    },
+    "@keyframes skeleton": {
+      "0%": {
+        "opacity": "0"
+      },
+      "33.33%": {
+        "opacity": "0.5"
+      },
+      "66.66%": {
+        "opacity": "1"
+      },
+      "100%": {
+        "opacity": "1"
+      }
+    },
+    "@layer base": {
+      "*": {
+        "border-color": "var(--border)",
+        "outline-color": "color-mix(in oklab, var(--ring) 50%, transparent)",
+        "-ms-overflow-style": "none",
+        "scrollbar-width": "none"
+      },
+      "*::-webkit-scrollbar": {
+        "display": "none"
+      },
+      "html": {
+        "font-family": "var(--font-ascii)"
+      },
+      "body": {
+        "font-weight": "var(--font-weight-base)",
+        "background-color": "var(--background)",
+        "color": "var(--foreground)",
+        "font-size": "var(--text-sm)",
+        "line-height": "var(--text-sm--line-height)"
+      },
+      "::selection": {
+        "color": "var(--primary-foreground)",
+        "background": "var(--primary)"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty",
+  "description": "Empty component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/empty.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Empty({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty\"\n      className={cn(\n        \"flex flex-col items-center py-[1lh] text-center\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction EmptyMedia({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-media\"\n      aria-hidden\n      className={cn(\n        \"flex items-center justify-center text-ascii-comment select-none\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction EmptyTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-title\"\n      className={cn(\"font-weight-heading text-card-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction EmptyDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-description\"\n      className={cn(\"mt-[1lh] max-w-[36ch] text-ascii-comment\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction EmptyAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-action\"\n      className={cn(\"pt-[1lh]\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Empty, EmptyAction, EmptyDescription, EmptyMedia, EmptyTitle };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/empty.tsx"
+    }
+  ]
+}

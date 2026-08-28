@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "Kbd component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/kbd.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Kbd({ className, children, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"kbd\"\n      className={cn(\n        \"inline-flex items-center font-mono text-sm text-ascii-comment select-none [&_[data-slot=bracket]]:text-ascii-comment/70\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden data-slot=\"bracket\">\n        [\n      </span>\n      {children}\n      <span aria-hidden data-slot=\"bracket\">\n        ]\n      </span>\n    </span>\n  );\n}\n\nexport { Kbd };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/kbd.tsx"
+    }
+  ]
+}

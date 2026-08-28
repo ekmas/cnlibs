@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item",
+  "type": "registry:ui",
+  "title": "Item",
+  "description": "Item component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/item.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Item({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item\"\n      className={cn(\"flex w-full items-center gap-[1ch] py-[1lh]\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction ItemMedia({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item-media\"\n      className={cn(\"flex shrink-0 items-center\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction ItemContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item-content\"\n      className={cn(\"flex min-w-0 flex-1 flex-col\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction ItemTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item-title\"\n      className={cn(\"truncate font-weight-heading text-foreground\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction ItemDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item-description\"\n      className={cn(\"mt-[1lh] truncate text-ascii-comment\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction ItemActions({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"item-actions\"\n      className={cn(\"flex shrink-0 items-center gap-[1ch]\", className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n};\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/item.tsx"
+    }
+  ]
+}

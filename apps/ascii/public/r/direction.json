@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "type": "registry:ui",
+  "title": "Direction",
+  "description": "Direction component from the ascii UI library.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/direction.tsx",
+      "content": "\"use client\";\n\nimport { DirectionProvider as DirectionProviderPrimitive } from \"@base-ui/react/direction-provider\";\n\n/**\n * Sets the reading direction (\"ltr\" | \"rtl\") for descendant base-ui\n * components. Pure context provider — renders no DOM element of its own,\n * so there is no root to attach `data-slot` to.\n */\nfunction DirectionProvider(props: DirectionProviderPrimitive.Props) {\n  return <DirectionProviderPrimitive {...props} />;\n}\n\nexport { DirectionProvider };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/direction.tsx"
+    }
+  ]
+}

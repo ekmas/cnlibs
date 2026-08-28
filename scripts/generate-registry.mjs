@@ -73,6 +73,39 @@ const LIBRARIES = [
       },
     },
     utilitiesSource: "apps/8bit/app/globals.css",
+    outputDir: "apps/8bit/public/r",
+  },
+  {
+    name: "ascii",
+    uiDir: "apps/ascii/components/ui",
+    hooksDir: "apps/ascii/hooks",
+    // The ascii components share frame primitives (components/ascii/
+    // ascii-box.tsx, ascii-theme.tsx) and pure helpers (lib/ascii.ts,
+    // lib/ascii-theme.ts) that live outside components/ui. Imports under
+    // these aliases are followed and bundled into the item, landing at the
+    // same relative paths in the consumer's project so the "@/" imports
+    // keep resolving. (@/lib/utils is still skipped — shadcn scaffolds it.)
+    aliases: [
+      {
+        prefix: "@/components/ascii/",
+        dir: "apps/ascii/components/ascii",
+        type: "registry:component",
+        target: "~/components/ascii/",
+      },
+      {
+        prefix: "@/lib/",
+        dir: "apps/ascii/lib",
+        type: "registry:lib",
+        target: "~/lib/",
+      },
+      {
+        prefix: "@/registry/",
+        dir: "apps/ascii/registry",
+        type: "registry:lib",
+        target: "~/registry/",
+      },
+    ],
+    outputDir: "apps/ascii/public/r",
   },
 ];
 
@@ -94,6 +127,19 @@ const THEME_REGISTRIES = [
     // importable string so the /theme page's "Manual" copy tab can show
     // them without the app itself needing a postcss dependency at runtime.
     manualCssModule: "apps/8bit/lib/generated/pixel-utilities.ts",
+  },
+  {
+    name: "ascii",
+    themesModule: "apps/ascii/registry/themes.ts",
+    siteUrlModule: "apps/ascii/lib/site.ts",
+    outputDir: "apps/ascii/public/r/themes",
+    // ascii palettes carry their full cssVars (theme/light/dark) and the
+    // shared base CSS (font-weight utilities, skeleton keyframes, base
+    // layer) straight from the themes module — nothing is parsed out of
+    // globals.css, the module mirrors it by hand.
+    cssVarsExport: "themeCssVars",
+    cssExport: "ASCII_THEME_CSS",
+    registryDependencyNames: ["button"],
   },
 ];
 
@@ -146,13 +192,17 @@ const DITHER_KIT_REGISTRY = {
       title: "Area & Line Chart",
       description:
         "Composable area/line dither chart, plus Sparkline for the decorative case.",
-      files: ["area-chart.tsx", "area.tsx", "cartesian-canvas.tsx", "sparkline.tsx"],
+      files: [
+        "area-chart.tsx",
+        "area.tsx",
+        "cartesian-canvas.tsx",
+        "sparkline.tsx",
+      ],
     },
     {
       name: "bar-chart",
       title: "Bar Chart",
-      description:
-        "Grouped, stacked, or percent-stacked dither bar chart.",
+      description: "Grouped, stacked, or percent-stacked dither bar chart.",
       files: ["bar-chart.tsx", "bar.tsx", "bar-canvas.tsx"],
     },
     {
@@ -165,7 +215,12 @@ const DITHER_KIT_REGISTRY = {
       name: "radar-chart",
       title: "Radar Chart",
       description: "Composable dither radar chart.",
-      files: ["radar-chart.tsx", "radar.tsx", "radar-canvas.tsx", "radar-frame.tsx"],
+      files: [
+        "radar-chart.tsx",
+        "radar.tsx",
+        "radar-canvas.tsx",
+        "radar-frame.tsx",
+      ],
     },
   ],
 };
@@ -239,6 +294,25 @@ function extractComponentCss(cssRoot, { keyframes = [], utilities = [] }) {
   return css;
 }
 
+// "@/lib/ascii" may be lib/ascii.ts or lib/ascii.tsx — pick whichever
+// exists (components are .tsx, pure modules .ts).
+function resolveModuleFileName(dir, moduleName) {
+  for (const extension of [".tsx", ".ts"]) {
+    const candidate = `${moduleName}${extension}`;
+    if (fs.existsSync(path.join(REPO_ROOT, dir, candidate))) {
+      return candidate;
+    }
+  }
+  throw new Error(`Cannot resolve ${moduleName} in ${dir}`);
+}
+
+const isPackageSpecifier = (specifier) =>
+  !(specifier.startsWith(".") || specifier.startsWith("@/"));
+
+function findAlias(library, specifier) {
+  return library.aliases?.find((alias) => specifier.startsWith(alias.prefix));
+}
+
 function buildItem(library, cssRoot, fileName) {
   const componentName = fileName.replace(TSX_EXTENSION, "");
   const files = new Map();
@@ -252,6 +326,26 @@ function buildItem(library, cssRoot, fileName) {
     const content = fs.readFileSync(absolutePath, "utf8");
     files.set(relativePath, { path: relativePath, type, target });
     collectImports(content);
+  }
+
+  // "@/components/ascii/ascii-box" -> the file under that alias's dir,
+  // bundled at the matching path in the consumer's project.
+  function resolveAliasedFile(specifier) {
+    const alias = findAlias(library, specifier);
+    const moduleName = specifier.slice(alias.prefix.length);
+    const resolvedName = resolveModuleFileName(alias.dir, moduleName);
+    resolveLocalFile(
+      `${alias.dir}/${resolvedName}`,
+      alias.type,
+      `${alias.target}${resolvedName}`
+    );
+  }
+
+  function addPackageDependency(specifier) {
+    const packageName = packageNameFromSpecifier(specifier);
+    if (!FRAMEWORK_PACKAGES.has(packageName)) {
+      dependencies.add(packageName);
+    }
   }
 
   function collectImports(content) {
@@ -273,11 +367,10 @@ function buildItem(library, cssRoot, fileName) {
           "registry:hook",
           `~/hooks/${hookName}.ts`
         );
-      } else if (!(specifier.startsWith(".") || specifier.startsWith("@/"))) {
-        const packageName = packageNameFromSpecifier(specifier);
-        if (!FRAMEWORK_PACKAGES.has(packageName)) {
-          dependencies.add(packageName);
-        }
+      } else if (specifier !== "@/lib/utils" && findAlias(library, specifier)) {
+        resolveAliasedFile(specifier);
+      } else if (isPackageSpecifier(specifier)) {
+        addPackageDependency(specifier);
       }
     }
   }
@@ -288,8 +381,7 @@ function buildItem(library, cssRoot, fileName) {
     `~/components/ui/${fileName}`
   );
 
-  for (const depName of library.extraLocalDependencies?.[componentName] ??
-    []) {
+  for (const depName of library.extraLocalDependencies?.[componentName] ?? []) {
     resolveLocalFile(
       `${library.uiDir}/${depName}.tsx`,
       "registry:ui",
@@ -303,6 +395,7 @@ function buildItem(library, cssRoot, fileName) {
   return {
     name: `${library.name}/${componentName}`,
     componentName,
+    outputDir: library.outputDir,
     type: "registry:ui",
     title,
     description: `${title} component from the ${library.name} UI library.`,
@@ -585,7 +678,13 @@ async function buildThemeItems(themeRegistry) {
   const { THEMES } = await import(pathToFileURL(modulePath).href);
   const siteUrlModulePath = path.join(REPO_ROOT, themeRegistry.siteUrlModule);
   const { SITE_URL } = await import(pathToFileURL(siteUrlModulePath).href);
-  const css = buildUtilitiesCss(themeRegistry);
+  const themesModule = await import(pathToFileURL(modulePath).href);
+  const css = themeRegistry.cssExport
+    ? themesModule[themeRegistry.cssExport]
+    : buildUtilitiesCss(themeRegistry);
+  const cssVarsFor = themeRegistry.cssVarsExport
+    ? themesModule[themeRegistry.cssVarsExport]
+    : (theme) => theme.cssVars;
   const registryDependencies = themeRegistry.registryDependencyNames.map(
     (name) => `${SITE_URL}/r/${name}.json`
   );
@@ -604,7 +703,7 @@ async function buildThemeItems(themeRegistry) {
     title: theme.title,
     description: theme.description,
     registryDependencies,
-    cssVars: theme.cssVars,
+    cssVars: cssVarsFor(theme),
     css,
   }));
 }
@@ -616,7 +715,7 @@ const builtThemeItems = (
 const builtDitherKitItems = await buildDitherKitItems(DITHER_KIT_REGISTRY);
 
 const items = [
-  ...builtItems.map(({ componentName, ...item }) => item),
+  ...builtItems.map(({ componentName, outputDir, ...item }) => item),
   // `css` is identical across every theme (it's the shared pixel-corner
   // utility set, not theme-specific data) and large enough to blow past
   // lint's file-size cap when inlined 40+ times, so the manifest omits it
@@ -640,8 +739,9 @@ fs.writeFileSync(
 
 console.log(`Wrote ${items.length} item(s) to registry.json`);
 
-const OUTPUT_DIR = path.join(REPO_ROOT, "apps/8bit/public/r");
-fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+for (const library of LIBRARIES) {
+  fs.mkdirSync(path.join(REPO_ROOT, library.outputDir), { recursive: true });
+}
 
 for (const item of builtItems) {
   const compiled = {
@@ -660,12 +760,17 @@ for (const item of builtItems) {
     ...(item.css ? { css: item.css } : {}),
   };
   fs.writeFileSync(
-    path.join(OUTPUT_DIR, `${item.componentName}.json`),
+    path.join(REPO_ROOT, item.outputDir, `${item.componentName}.json`),
     `${JSON.stringify(compiled, null, 2)}\n`
   );
 }
 
-console.log(`Built ${builtItems.length} item(s) into apps/8bit/public/r`);
+for (const library of LIBRARIES) {
+  const count = builtItems.filter(
+    (item) => item.outputDir === library.outputDir
+  ).length;
+  console.log(`Built ${count} item(s) into ${library.outputDir}`);
+}
 
 for (const item of builtThemeItems) {
   const dir = path.join(REPO_ROOT, item.outputDir);
@@ -686,9 +791,12 @@ for (const item of builtThemeItems) {
   );
 }
 
-console.log(
-  `Built ${builtThemeItems.length} theme(s) into apps/8bit/public/r/themes`
-);
+for (const themeRegistry of THEME_REGISTRIES) {
+  const count = builtThemeItems.filter(
+    (item) => item.outputDir === themeRegistry.outputDir
+  ).length;
+  console.log(`Built ${count} theme(s) into ${themeRegistry.outputDir}`);
+}
 
 const DITHER_KIT_OUTPUT_DIR = path.join(
   REPO_ROOT,
