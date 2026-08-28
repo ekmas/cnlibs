@@ -2,22 +2,17 @@
 
 import * as React from "react";
 
-import { useAsciiChars } from "@/components/ascii/ascii-theme";
+import { useAsciiChars } from "@/components/ascii/ascii-chars";
 import { CodeBlock } from "@/components/ascii/code-block";
 import { bottomBorder, topBorder, vGlyph } from "@/lib/ascii";
+import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const MANAGERS = [
-  {
-    id: "pnpm",
-    command: (name: string) => `pnpm dlx shadcn@latest add ${name}`,
-  },
-  { id: "npm", command: (name: string) => `npx shadcn@latest add ${name}` },
-  {
-    id: "yarn",
-    command: (name: string) => `yarn dlx shadcn@latest add ${name}`,
-  },
-  { id: "bun", command: (name: string) => `bunx shadcn@latest add ${name}` },
+  { id: "pnpm", run: (bin: string) => `pnpm dlx ${bin}` },
+  { id: "npm", run: (bin: string) => `npx ${bin}` },
+  { id: "yarn", run: (bin: string) => `yarn dlx ${bin}` },
+  { id: "bun", run: (bin: string) => `bunx --bun ${bin}` },
 ] as const;
 
 type ManagerId = (typeof MANAGERS)[number]["id"];
@@ -55,15 +50,27 @@ function InstallTab({
   );
 }
 
-/** Install command for a component, tabbed per package manager. The
- * tab row sits directly on the snippet: the tabs' bottom border row
+/** Install command for a registry item, tabbed per package manager.
+ * `item` is the path under /r — "button", "themes/phosphor". The tab
+ * row sits directly on the snippet: the tabs' bottom border row
  * overlaps the code block's top border. */
-function InstallTabs({ component }: { component: string }) {
+function InstallTabs({
+  item,
+  subcommand = "add",
+  className,
+}: {
+  item: string;
+  subcommand?: "add" | "init";
+  className?: string;
+}) {
   const [active, setActive] = React.useState<ManagerId>("pnpm");
   const manager = MANAGERS.find((m) => m.id === active) ?? MANAGERS[0];
+  const command = manager.run(
+    `shadcn@latest ${subcommand} ${SITE_URL}/r/${item}.json`
+  );
 
   return (
-    <div className="w-full max-w-[80ch] font-mono text-sm">
+    <div className={cn("w-full max-w-[80ch] font-mono text-sm", className)}>
       <div role="tablist" className="relative z-10 -mb-[1lh] flex w-fit">
         {MANAGERS.map((m) => (
           <InstallTab
@@ -74,7 +81,7 @@ function InstallTabs({ component }: { component: string }) {
           />
         ))}
       </div>
-      <CodeBlock code={manager.command(component)} />
+      <CodeBlock code={command} className="max-w-none" />
     </div>
   );
 }

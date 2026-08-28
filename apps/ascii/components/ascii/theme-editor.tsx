@@ -4,6 +4,7 @@ import * as React from "react";
 import { useAsciiTheme } from "@/components/ascii/ascii-theme";
 import { CodeBlock } from "@/components/ascii/code-block";
 import { DocSection } from "@/components/ascii/component-docs";
+import { InstallTabs } from "@/components/ascii/install-tabs";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -281,6 +282,31 @@ function ThemeEditor() {
             />
           ))}
         </div>
+      </DocSection>
+
+      <DocSection title="install">
+        <p className="max-w-2xl text-ascii-soft">
+          Every palette is a registry item. Scaffold a new project with it, or
+          add it to one you already have — it ships the tokens, the type scale
+          and the Button component.
+        </p>
+        {activePalette ? (
+          <>
+            <InstallTabs
+              item={`themes/${activePalette.id}`}
+              subcommand="init"
+              className="max-w-[96ch]"
+            />
+            <InstallTabs
+              item={`themes/${activePalette.id}`}
+              className="max-w-[96ch]"
+            />
+          </>
+        ) : (
+          <p className="text-ascii-comment">
+            {"// pick a palette above to get its install command"}
+          </p>
+        )}
       </DocSection>
 
       <DocSection title="export">

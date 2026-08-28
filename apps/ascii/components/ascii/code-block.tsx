@@ -30,7 +30,7 @@ function CodeBlock({ code, className }: { code: string; className?: string }) {
       <AsciiHBorder line="top" />
       <div className="relative bg-card">
         <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
-        <pre className="overflow-x-auto whitespace-pre px-[2ch] text-ascii-soft outline-none">
+        <pre className="overflow-x-auto whitespace-pre pr-[10ch] pl-[2ch] text-ascii-soft outline-none">
           {code}
         </pre>
         <AsciiVRule side="right" className="absolute inset-y-0 right-0" />

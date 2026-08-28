@@ -33,7 +33,7 @@ export default async function ComponentPage({
       <ComponentHeader description={doc.description} title={doc.title} />
 
       <DocSection title="install">
-        <InstallTabs component={slug} />
+        <InstallTabs item={slug} />
       </DocSection>
 
       {doc.sections.map((section) => (
