@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "apps/ascii/components/ui/kbd.tsx",
-      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Kbd({ className, children, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      data-slot=\"kbd\"\n      className={cn(\n        \"inline-flex items-center font-mono text-sm text-ascii-comment select-none [&_[data-slot=bracket]]:text-ascii-comment/70\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden data-slot=\"bracket\">\n        [\n      </span>\n      {children}\n      <span aria-hidden data-slot=\"bracket\">\n        ]\n      </span>\n    </span>\n  );\n}\n\nexport { Kbd };\n",
+      "content": "import * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Kbd({ className, children, ...props }: React.ComponentProps<\"span\">) {\r\n  return (\r\n    <span\r\n      data-slot=\"kbd\"\r\n      className={cn(\r\n        \"inline-flex items-center font-mono text-sm text-ascii-comment select-none [&_[data-slot=bracket]]:text-ascii-comment/70\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <span aria-hidden data-slot=\"bracket\">\r\n        [\r\n      </span>\r\n      {children}\r\n      <span aria-hidden data-slot=\"bracket\">\r\n        ]\r\n      </span>\r\n    </span>\r\n  );\r\n}\r\n\r\nexport { Kbd };\r\n",
       "type": "registry:ui",
       "target": "~/components/ui/kbd.tsx"
     }

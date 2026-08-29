@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "apps/ascii/components/ui/marker.tsx",
-      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst markerToneClass = {\n  success: \"text-primary\",\n  warning: \"text-destructive\",\n  danger: \"text-destructive\",\n  neutral: \"text-ascii-comment\",\n} as const;\n\ntype MarkerTone = keyof typeof markerToneClass;\n\nfunction Marker({\n  tone = \"neutral\",\n  className,\n  ...props\n}: React.ComponentProps<\"span\"> & {\n  tone?: MarkerTone;\n}) {\n  return (\n    <span\n      data-slot=\"marker\"\n      aria-hidden\n      className={cn(\n        \"inline-block font-mono select-none\",\n        markerToneClass[tone],\n        className\n      )}\n      {...props}\n    >\n      •\n    </span>\n  );\n}\n\nexport { Marker };\n",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst markerToneClass = {\n  success: \"text-primary\",\n  warning: \"text-destructive\",\n  danger: \"text-destructive\",\n  neutral: \"text-ascii-comment\",\n} as const;\n\ntype MarkerTone = keyof typeof markerToneClass;\n\nfunction Marker({\n  tone = \"neutral\",\n  className,\n  ...props\n}: React.ComponentProps<\"span\"> & {\n  tone?: MarkerTone;\n}) {\n  return (\n    <span\n      data-slot=\"marker\"\n      aria-hidden\n      className={cn(\n        \"inline-block font-mono select-none\",\n        markerToneClass[tone],\n        className\n      )}\n      {...props}\n    >\n      *\n    </span>\n  );\n}\n\nexport { Marker };\n",
       "type": "registry:ui",
       "target": "~/components/ui/marker.tsx"
     }

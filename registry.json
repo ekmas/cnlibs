@@ -2819,6 +2819,11 @@
           "path": "apps/ascii/lib/ascii.ts",
           "type": "registry:lib",
           "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/spinner.tsx"
         }
       ]
     },
