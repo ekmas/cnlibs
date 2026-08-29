@@ -111,7 +111,9 @@ function NavigationMenuContent({
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
-      className={cn("flex flex-col text-ascii-soft", className)}
+      // The box pads 2ch; pull back 1ch so links read pad, ">", gap, label
+      // on the same columns as menu items.
+      className={cn("-ml-[1ch] flex flex-col text-ascii-soft", className)}
       {...props}
     />
   );
@@ -134,19 +136,14 @@ function NavigationMenuLink({
       )}
       {...props}
     >
+      {/* ">" pointer + 1ch gap before the label, like menu items. */}
       <span
         aria-hidden
         className="w-[1ch] shrink-0 opacity-0 group-hover/nav-link:opacity-100 group-focus-visible/nav-link:opacity-100 group-data-[active]/nav-link:opacity-100"
       >
-        [
+        &gt;
       </span>
-      {children}
-      <span
-        aria-hidden
-        className="w-[1ch] shrink-0 text-right opacity-0 group-hover/nav-link:opacity-100 group-focus-visible/nav-link:opacity-100 group-data-[active]/nav-link:opacity-100"
-      >
-        ]
-      </span>
+      <span className="pl-[1ch]">{children}</span>
     </NavigationMenuPrimitive.Link>
   );
 }

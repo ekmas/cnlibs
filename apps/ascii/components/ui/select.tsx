@@ -64,14 +64,14 @@ function SelectTrigger({
           side="left"
           className="frame-line shrink-0 text-primary/60"
         />
-        <span className="flex min-w-0 flex-1 items-center gap-[1ch] overflow-hidden px-[2ch] *:data-[slot=select-value]:flex *:data-[slot=select-value]:min-w-0 *:data-[slot=select-value]:flex-1 *:data-[slot=select-value]:items-center">
+        <span className="flex min-w-0 flex-1 items-center gap-[1ch] overflow-hidden pr-[1ch] pl-[3ch] *:data-[slot=select-value]:flex *:data-[slot=select-value]:min-w-0 *:data-[slot=select-value]:flex-1 *:data-[slot=select-value]:items-center">
           {children}
         </span>
         <SelectPrimitive.Icon
           render={
             <span
               aria-hidden
-              className="shrink-0 pointer-events-none px-[2ch] text-primary select-none"
+              className="shrink-0 pointer-events-none px-[1ch] text-primary select-none"
             />
           }
         >
@@ -149,7 +149,7 @@ function SelectLabel({
       <SelectPrimitive.GroupLabel
         data-slot="select-label"
         className={cn(
-          "min-w-0 flex-1 px-[2ch] text-sm tracking-[0.06em] text-ascii-comment uppercase",
+          "min-w-0 flex-1 px-[1ch] text-sm tracking-[0.06em] text-ascii-comment uppercase",
           className
         )}
         {...props}
@@ -174,23 +174,20 @@ function SelectItem({
       {...props}
     >
       <AsciiSide side="left" className="shrink-0 text-primary/60" />
+      {/* Columns: pad, ">" pointer, gap, label — so the label sits at
+       * column 4, matching the trigger's pl-[3ch]. "x" lands on the
+       * chevron's column (width-3) behind 1ch of right padding. */}
       <span className="flex min-w-0 flex-1 items-center px-[1ch] group-data-highlighted/select-item:text-primary">
         <span
           aria-hidden
           className="w-[1ch] shrink-0 opacity-0 select-none group-data-highlighted/select-item:opacity-100"
         >
-          [
+          &gt;
         </span>
         <SelectPrimitive.ItemText className="min-w-0 truncate whitespace-nowrap px-[1ch]">
           {children}
         </SelectPrimitive.ItemText>
-        <span
-          aria-hidden
-          className="w-[1ch] shrink-0 opacity-0 select-none group-data-highlighted/select-item:opacity-100"
-        >
-          ]
-        </span>
-        <SelectPrimitive.ItemIndicator className="ml-auto w-[1ch] shrink-0 pr-[1ch] text-primary">
+        <SelectPrimitive.ItemIndicator className="ml-auto w-[1ch] shrink-0 text-primary">
           x
         </SelectPrimitive.ItemIndicator>
       </span>

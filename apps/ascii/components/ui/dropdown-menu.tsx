@@ -82,7 +82,7 @@ function DropdownMenuGroupLabel({
       <MenuPrimitive.GroupLabel
         data-slot="dropdown-menu-group-label"
         className={cn(
-          "min-w-0 flex-1 px-[2ch] text-sm tracking-[0.06em] text-ascii-comment uppercase",
+          "min-w-0 flex-1 px-[1ch] text-sm tracking-[0.06em] text-ascii-comment uppercase",
           className
         )}
         {...props}
@@ -119,18 +119,15 @@ function DropdownMenuItem({
             : "group-data-highlighted/dropdown-menu-item:text-primary"
         )}
       >
+        {/* Columns: pad, ">" pointer, gap, label — same as Select items. */}
         <span
           aria-hidden
           className="w-[1ch] shrink-0 opacity-0 group-data-highlighted/dropdown-menu-item:opacity-100"
         >
-          [
+          &gt;
         </span>
-        <span className="flex min-w-0 flex-1 items-center">{children}</span>
-        <span
-          aria-hidden
-          className="w-[1ch] shrink-0 text-right opacity-0 group-data-highlighted/dropdown-menu-item:opacity-100"
-        >
-          ]
+        <span className="flex min-w-0 flex-1 items-center px-[1ch]">
+          {children}
         </span>
       </span>
       <AsciiSide side="right" className="shrink-0 text-primary/60" />

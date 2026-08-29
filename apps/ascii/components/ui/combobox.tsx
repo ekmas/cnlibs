@@ -70,7 +70,7 @@ function ComboboxInput({ className, ...props }: ComboboxPrimitive.Input.Props) {
     <ComboboxPrimitive.Input
       data-slot="combobox-input"
       className={cn(
-        "min-w-0 flex-1 bg-transparent px-[2ch] text-sm text-primary outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:opacity-50",
+        "min-w-0 flex-1 bg-transparent pr-[1ch] pl-[3ch] text-sm text-primary outline-none placeholder:text-muted-foreground disabled:pointer-events-none disabled:opacity-50",
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ function ComboboxIcon({
       data-slot="combobox-icon"
       aria-label="Open list"
       className={cn(
-        "shrink-0 px-[2ch] text-primary outline-none select-none hover:text-primary/70 focus-visible:text-primary/70",
+        "shrink-0 px-[1ch] text-primary outline-none select-none hover:text-primary/70 focus-visible:text-primary/70",
         className
       )}
       {...props}
@@ -160,23 +160,20 @@ function ComboboxItem({
       {...props}
     >
       <AsciiSide side="left" className="shrink-0 text-primary/60" />
+      {/* Columns: pad, ">" pointer, gap, label — so the label sits at
+       * column 4, matching the input's pl-[3ch]. "x" lands on the
+       * chevron's column (width-3) behind 1ch of right padding. */}
       <span className="flex min-w-0 flex-1 items-center px-[1ch] group-data-highlighted/combobox-item:text-primary">
         <span
           aria-hidden
           className="w-[1ch] shrink-0 opacity-0 select-none group-data-highlighted/combobox-item:opacity-100"
         >
-          [
+          &gt;
         </span>
         <span className="min-w-0 truncate whitespace-nowrap px-[1ch]">
           {children}
         </span>
-        <span
-          aria-hidden
-          className="w-[1ch] shrink-0 opacity-0 select-none group-data-highlighted/combobox-item:opacity-100"
-        >
-          ]
-        </span>
-        <ComboboxPrimitive.ItemIndicator className="ml-auto w-[1ch] shrink-0 pr-[1ch] text-primary">
+        <ComboboxPrimitive.ItemIndicator className="ml-auto w-[1ch] shrink-0 text-primary">
           x
         </ComboboxPrimitive.ItemIndicator>
       </span>
