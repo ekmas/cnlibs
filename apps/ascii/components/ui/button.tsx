@@ -50,7 +50,7 @@ function ButtonBorder({ edge }: { edge: "top" | "bottom" }) {
       )}
     >
       <AsciiJunction />
-      <AsciiRule line={edge} className="min-w-0 flex-1" />
+      <AsciiRule line={edge} className="min-w-0 flex-1 text-inherit" />
       <AsciiJunction />
     </span>
   );
