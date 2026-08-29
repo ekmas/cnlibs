@@ -1,5 +1,7 @@
 import { DemoRow } from "@/components/ascii/component-docs";
 import { Badge } from "@/components/ui/badge";
+import { Marker } from "@/components/ui/marker";
+import { Spinner } from "@/components/ui/spinner";
 import type { ComponentDoc } from "./types";
 
 export const doc: ComponentDoc = {
@@ -38,14 +40,33 @@ export const doc: ComponentDoc = {
       code: `<span>build #4021</span>
 <Badge>Passing</Badge>
 <Badge variant="secondary">main</Badge>
-<Badge variant="destructive">2 vulns</Badge>`,
+<Badge variant="destructive">2 vulns</Badge>
+
+<Badge variant="outline"><Marker tone="success" /> healthy</Badge>
+<Badge variant="secondary"><Spinner /> building</Badge>
+<Badge render={<a href="#releases" />}>v1.4.2</Badge>`,
       preview: (
-        <div className="flex flex-wrap items-center gap-[2ch] text-ascii-soft text-sm">
-          <span>build #4021</span>
-          <Badge>Passing</Badge>
-          <Badge variant="secondary">main</Badge>
-          <Badge variant="destructive">2 vulns</Badge>
-        </div>
+        <>
+          <DemoRow label="inline">
+            <div className="flex flex-wrap items-center gap-[2ch] text-ascii-soft text-sm">
+              <span>build #4021</span>
+              <Badge>Passing</Badge>
+              <Badge variant="secondary">main</Badge>
+              <Badge variant="destructive">2 vulns</Badge>
+            </div>
+          </DemoRow>
+          <DemoRow label="with icon">
+            <Badge variant="outline">
+              <Marker tone="success" /> healthy
+            </Badge>
+            <Badge variant="secondary">
+              <Spinner /> building
+            </Badge>
+          </DemoRow>
+          <DemoRow label="as link">
+            <Badge render={<a href="#releases" />}>v1.4.2</Badge>
+          </DemoRow>
+        </>
       ),
     },
   ],

@@ -10,6 +10,7 @@ export const doc: ComponentDoc = {
     {
       title: "variants",
       code: `<Slider min={1} max={32} value={value} onValueChange={setValue} />
+<Slider min={0} max={16} step={2} value={replicas} onValueChange={setReplicas} />
 <Slider defaultValue={40} chWidth={12} />`,
       preview: <SliderDemo />,
     },

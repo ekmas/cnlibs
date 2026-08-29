@@ -49,6 +49,8 @@ const columns: DataTableColumn<Deployment>[] = [
   {
     key: "status",
     header: "status",
+    // Columns sort on click by default; opt this one out.
+    sortable: false,
     render: (row) => (
       <span className={statusColor[row.status]}>{row.status}</span>
     ),

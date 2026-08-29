@@ -42,6 +42,7 @@ export const doc: ComponentDoc = {
     {
       title: "states",
       code: `<Input placeholder="not editable" disabled />
+<Input defaultValue="prj_8f2a91c4" readOnly />
 
 <Label htmlFor="email">Email address</Label>
 <Input id="email" placeholder="sam@paper.design" />`,
@@ -49,6 +50,13 @@ export const doc: ComponentDoc = {
         <>
           <DemoRow label="disabled">
             <Input aria-label="Disabled" disabled placeholder="not editable" />
+          </DemoRow>
+          <DemoRow label="read-only">
+            <Input
+              aria-label="Project id"
+              defaultValue="prj_8f2a91c4"
+              readOnly
+            />
           </DemoRow>
           <DemoRow label="with label">
             <div className="flex flex-col">

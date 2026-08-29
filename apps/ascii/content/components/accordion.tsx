@@ -90,5 +90,34 @@ export const doc: ComponentDoc = {
         </div>
       ),
     },
+    {
+      title: "states",
+      code: `<Accordion defaultValue={["logs"]}>
+  <AccordionItem value="logs">
+    <AccordionTrigger>Build logs</AccordionTrigger>
+    <AccordionContent>Compiled in 1.2s.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="artifacts" disabled>
+    <AccordionTrigger>Artifacts (none yet)</AccordionTrigger>
+    <AccordionContent>Artifacts appear once the build finishes.</AccordionContent>
+  </AccordionItem>
+</Accordion>`,
+      preview: (
+        <div className="w-[44ch]">
+          <Accordion defaultValue={["logs"]}>
+            <AccordionItem value="logs">
+              <AccordionTrigger>Build logs</AccordionTrigger>
+              <AccordionContent>Compiled in 1.2s.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem disabled value="artifacts">
+              <AccordionTrigger>Artifacts (none yet)</AccordionTrigger>
+              <AccordionContent>
+                Artifacts appear once the build finishes.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      ),
+    },
   ],
 };

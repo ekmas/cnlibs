@@ -47,16 +47,41 @@ export const doc: ComponentDoc = {
     <RadioGroupItem value="a" />
     locked by admin
   </Label>
+</RadioGroup>
+
+<RadioGroup defaultValue="hobby">
+  <Label>
+    <RadioGroupItem value="hobby" />
+    Hobby
+  </Label>
+  <Label>
+    <RadioGroupItem value="enterprise" disabled />
+    Enterprise — contact sales
+  </Label>
 </RadioGroup>`,
       preview: (
-        <DemoRow label="disabled">
-          <RadioGroup defaultValue="a" disabled>
-            <Label className="font-mono text-muted-foreground text-sm">
-              <RadioGroupItem value="a" />
-              locked by admin
-            </Label>
-          </RadioGroup>
-        </DemoRow>
+        <>
+          <DemoRow label="disabled">
+            <RadioGroup defaultValue="a" disabled>
+              <Label className="font-mono text-muted-foreground text-sm">
+                <RadioGroupItem value="a" />
+                locked by admin
+              </Label>
+            </RadioGroup>
+          </DemoRow>
+          <DemoRow label="one disabled">
+            <RadioGroup defaultValue="hobby">
+              <Label className="font-mono text-foreground text-sm">
+                <RadioGroupItem value="hobby" />
+                Hobby
+              </Label>
+              <Label className="font-mono text-muted-foreground text-sm">
+                <RadioGroupItem disabled value="enterprise" />
+                Enterprise — contact sales
+              </Label>
+            </RadioGroup>
+          </DemoRow>
+        </>
       ),
     },
   ],

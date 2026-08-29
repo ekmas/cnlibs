@@ -82,28 +82,59 @@ export const doc: ComponentDoc = {
       code: `<SheetContent side="top" />
 <SheetContent side="right" />
 <SheetContent side="bottom" />
-<SheetContent side="left" />`,
+<SheetContent side="left" />
+
+<SheetContent side="left" showCloseButton={false}>
+  ...
+  <SheetFooter>
+    <SheetClose render={<Button variant="outline">Done</Button>} />
+  </SheetFooter>
+</SheetContent>`,
       preview: (
-        <DemoRow label="sides">
-          {sides.map((side) => (
-            <Sheet key={side}>
-              <SheetTrigger render={<Button variant="ghost">{side}</Button>} />
-              <SheetContent side={side}>
+        <>
+          <DemoRow label="sides">
+            {sides.map((side) => (
+              <Sheet key={side}>
+                <SheetTrigger
+                  render={<Button variant="ghost">{side}</Button>}
+                />
+                <SheetContent side={side}>
+                  <SheetHeader>
+                    <SheetTitle>side=&quot;{side}&quot;</SheetTitle>
+                    <SheetDescription>
+                      The sheet slides in from the {side} edge.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <SheetFooter>
+                    <SheetClose
+                      render={<Button variant="outline">Close</Button>}
+                    />
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
+            ))}
+          </DemoRow>
+          <DemoRow label="no close [x]">
+            <Sheet>
+              <SheetTrigger
+                render={<Button variant="ghost">showCloseButton=false</Button>}
+              />
+              <SheetContent showCloseButton={false} side="left">
                 <SheetHeader>
-                  <SheetTitle>side=&quot;{side}&quot;</SheetTitle>
+                  <SheetTitle>Filters</SheetTitle>
                   <SheetDescription>
-                    The sheet slides in from the {side} edge.
+                    Dismiss with escape, the backdrop, or the footer button.
                   </SheetDescription>
                 </SheetHeader>
                 <SheetFooter>
                   <SheetClose
-                    render={<Button variant="outline">Close</Button>}
+                    render={<Button variant="outline">Done</Button>}
                   />
                 </SheetFooter>
               </SheetContent>
             </Sheet>
-          ))}
-        </DemoRow>
+          </DemoRow>
+        </>
       ),
     },
   ],

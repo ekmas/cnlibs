@@ -3,6 +3,7 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
+  MenubarSeparator,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import type { ComponentDoc } from "./types";
@@ -20,13 +21,15 @@ export const doc: ComponentDoc = {
       <MenubarItem>New session</MenubarItem>
       <MenubarItem>Open recent</MenubarItem>
       <MenubarItem>Close window</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem variant="destructive">Delete session</MenubarItem>
     </MenubarContent>
   </MenubarMenu>
   <MenubarMenu>
     <MenubarTrigger>Edit</MenubarTrigger>
     <MenubarContent chWidth={24}>
       <MenubarItem>Undo</MenubarItem>
-      <MenubarItem>Redo</MenubarItem>
+      <MenubarItem disabled>Redo</MenubarItem>
       <MenubarItem>Find in files</MenubarItem>
     </MenubarContent>
   </MenubarMenu>
@@ -47,13 +50,15 @@ export const doc: ComponentDoc = {
               <MenubarItem>New session</MenubarItem>
               <MenubarItem>Open recent</MenubarItem>
               <MenubarItem>Close window</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem variant="destructive">Delete session</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
             <MenubarTrigger>Edit</MenubarTrigger>
             <MenubarContent chWidth={24}>
               <MenubarItem>Undo</MenubarItem>
-              <MenubarItem>Redo</MenubarItem>
+              <MenubarItem disabled>Redo</MenubarItem>
               <MenubarItem>Find in files</MenubarItem>
             </MenubarContent>
           </MenubarMenu>

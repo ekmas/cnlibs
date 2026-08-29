@@ -37,6 +37,42 @@ export const doc: ComponentDoc = {
       ),
     },
     {
+      title: "variants",
+      code: `// Framed tabs sitting on a framed panel — the docs' install tabs.
+<Tabs variant="boxed" defaultValue="pnpm" className="w-full max-w-md">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">pnpm dlx shadcn@latest add tabs</TabsContent>
+  <TabsContent value="npm">npx shadcn@latest add tabs</TabsContent>
+  <TabsContent value="yarn">yarn dlx shadcn@latest add tabs</TabsContent>
+  <TabsContent value="bun">bunx --bun shadcn@latest add tabs</TabsContent>
+</Tabs>`,
+      preview: (
+        <Tabs className="w-full max-w-md" defaultValue="pnpm" variant="boxed">
+          <TabsList>
+            <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+            <TabsTrigger value="npm">npm</TabsTrigger>
+            <TabsTrigger value="yarn">yarn</TabsTrigger>
+            <TabsTrigger value="bun">bun</TabsTrigger>
+          </TabsList>
+          <TabsContent value="pnpm">
+            pnpm dlx shadcn@latest add tabs
+          </TabsContent>
+          <TabsContent value="npm">npx shadcn@latest add tabs</TabsContent>
+          <TabsContent value="yarn">
+            yarn dlx shadcn@latest add tabs
+          </TabsContent>
+          <TabsContent value="bun">
+            bunx --bun shadcn@latest add tabs
+          </TabsContent>
+        </Tabs>
+      ),
+    },
+    {
       title: "states",
       code: `<Tabs defaultValue="a" className="w-full max-w-md">
   <TabsList>

@@ -1,6 +1,8 @@
+import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -28,7 +30,7 @@ export const doc: ComponentDoc = {
       </DialogDescription>
     </DialogHeader>
     <Label htmlFor="email" className="mt-[1lh]">Email</Label>
-    <Input id="email" chWidth={38} placeholder="sam@paper.design" />
+    <Input id="email" chWidth={40} placeholder="sam@paper.design" />
     <DialogFooter showCloseButton>
       <Button>Send invite</Button>
     </DialogFooter>
@@ -48,7 +50,7 @@ export const doc: ComponentDoc = {
               Email
             </Label>
             <Input
-              chWidth={38}
+              chWidth={40}
               id="dialog-email"
               placeholder="sam@paper.design"
             />
@@ -57,6 +59,66 @@ export const doc: ComponentDoc = {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+      ),
+    },
+    {
+      title: "variants",
+      code: `<Dialog>
+  <DialogTrigger render={<Button variant="outline">Compact</Button>} />
+  <DialogContent chWidth={36} showCloseButton={false}>
+    <DialogHeader>
+      <DialogTitle>Discard changes?</DialogTitle>
+      <DialogDescription>Unsaved edits will be lost.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose render={<Button variant="ghost">Keep editing</Button>} />
+      <DialogClose render={<Button variant="destructive">Discard</Button>} />
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+
+<DialogContent chWidth={60}>...</DialogContent>`,
+      preview: (
+        <>
+          <DemoRow label="compact">
+            <Dialog>
+              <DialogTrigger
+                render={<Button variant="outline">Compact</Button>}
+              />
+              <DialogContent chWidth={36} showCloseButton={false}>
+                <DialogHeader>
+                  <DialogTitle>Discard changes?</DialogTitle>
+                  <DialogDescription>
+                    Unsaved edits will be lost.
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <DialogClose
+                    render={<Button variant="ghost">Keep editing</Button>}
+                  />
+                  <DialogClose
+                    render={<Button variant="destructive">Discard</Button>}
+                  />
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </DemoRow>
+          <DemoRow label="wide">
+            <Dialog>
+              <DialogTrigger render={<Button variant="outline">Wide</Button>} />
+              <DialogContent chWidth={60}>
+                <DialogHeader>
+                  <DialogTitle>Release notes</DialogTitle>
+                  <DialogDescription>
+                    chWidth sets the frame width in characters — 60 here, 46 by
+                    default.
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter showCloseButton />
+              </DialogContent>
+            </Dialog>
+          </DemoRow>
+        </>
       ),
     },
   ],
