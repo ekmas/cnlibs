@@ -36,7 +36,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="field-description"
-      className={cn("mt-[1lh] text-ascii-soft", className)}
+      className={cn("text-ascii-soft", className)}
       {...props}
     />
   );

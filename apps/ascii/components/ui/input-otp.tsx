@@ -6,7 +6,7 @@ import * as React from "react";
 import { AsciiEdge, AsciiSide } from "@/components/ascii/ascii-box";
 import { cn } from "@/lib/utils";
 
-const SLOT_WIDTH = 3; // ch — "|" + 1 char + "|"
+const SLOT_WIDTH = 5; // ch — "|" + 1ch pad + 1 char + 1ch pad + "|"
 
 function InputOTP({
   className,
@@ -97,7 +97,7 @@ function InputOTPSlot({
           aria-label={index === 0 ? undefined : `Character ${index + 1}`}
           data-slot="input-otp-input"
           className={cn(
-            "min-w-0 flex-1 bg-transparent text-center text-sm text-primary outline-none disabled:pointer-events-none disabled:opacity-50",
+            "min-w-0 flex-1 bg-transparent px-[1ch] text-center text-sm text-primary outline-none disabled:pointer-events-none disabled:opacity-50",
             "in-data-all-selected:bg-primary in-data-all-selected:text-primary-foreground",
             className
           )}

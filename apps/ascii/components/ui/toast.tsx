@@ -3,6 +3,7 @@
 import { Toast as ToastPrimitive } from "@base-ui/react/toast";
 
 import { AsciiBox } from "@/components/ascii/ascii-box";
+import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 
 type ToastVariant = "default" | "success" | "error";
@@ -65,8 +66,10 @@ function Toaster({ width = 42 }: { width?: number }) {
               {toast.title && (
                 <ToastPrimitive.Title
                   data-slot="toast-title"
-                  className="font-weight-heading"
+                  className="flex items-center gap-[1ch] font-weight-heading"
                 >
+                  {/* toastManager.promise() sets type "loading" while pending. */}
+                  {toast.type === "loading" && <Spinner aria-hidden />}
                   {toast.title}
                 </ToastPrimitive.Title>
               )}

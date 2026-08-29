@@ -67,7 +67,9 @@ function DataTable<T extends Record<string, unknown>>({
             {columns.map((col) => (
               <TableHead key={String(col.key)} align={col.align}>
                 {col.sortable === false ? (
-                  col.header
+                  <span className="uppercase tracking-[0.04em]">
+                    {col.header}
+                  </span>
                 ) : (
                   <button
                     type="button"
@@ -78,12 +80,14 @@ function DataTable<T extends Record<string, unknown>>({
                     )}
                   >
                     {col.header}
+                    {/* Same glyphs as the number input's steppers: "<" / ">"
+                     * rotated a quarter turn to point up (asc) / down (desc). */}
                     <span aria-hidden className="w-[1ch] text-primary">
-                      {sortKey === col.key
-                        ? direction === "asc"
-                          ? "^"
-                          : "v"
-                        : ""}
+                      {sortKey === col.key && (
+                        <span className="inline-block rotate-90">
+                          {direction === "asc" ? "<" : ">"}
+                        </span>
+                      )}
                     </span>
                   </button>
                 )}

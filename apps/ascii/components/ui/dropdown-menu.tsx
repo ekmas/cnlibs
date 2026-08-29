@@ -49,7 +49,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           className={cn(
-            "relative isolate z-50 origin-(--transform-origin) bg-popover font-mono text-sm text-popover-foreground",
+            "relative isolate z-50 origin-(--transform-origin) bg-popover font-mono text-sm text-popover-foreground outline-none",
             className
           )}
           style={{ width: `${chWidth}ch` }}
