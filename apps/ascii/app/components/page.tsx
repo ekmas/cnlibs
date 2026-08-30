@@ -12,7 +12,7 @@ export default function ComponentsIndexPage() {
         <span className="text-ascii-comment text-sm uppercase tracking-[0.08em]">
           {"/// ui kit — monospace + ascii borders"}
         </span>
-        <h1 className="font-weight-heading text-primary text-sm tracking-tight">
+        <h1 className="mb-[1lh] font-heading text-primary text-sm tracking-tight">
           ASCII COMPONENTS — FULL LIBRARY
         </h1>
         <p className="max-w-2xl text-ascii-soft text-sm">
@@ -20,7 +20,6 @@ export default function ComponentsIndexPage() {
           {readyCount} of {asciiComponents.length} are wired up and interactive
           — the rest are on the way.
         </p>
-        <AsciiRule className="mt-2 w-full" />
       </div>
 
       <div className="grid grid-cols-1 gap-x-6 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">

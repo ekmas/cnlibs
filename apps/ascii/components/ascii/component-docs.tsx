@@ -1,6 +1,7 @@
 import type * as React from "react";
 
 import { CodeBlock } from "@/components/ascii/code-block";
+import { slugify } from "@/lib/slug";
 import { cn } from "@/lib/utils";
 
 /** A titled docs section on a component page — "install", "variants",
@@ -19,7 +20,11 @@ function DocSection({
 }) {
   return (
     <section className={cn("flex flex-col gap-[1lh]", className)}>
-      <h2 className="font-weight-heading text-ascii-comment text-sm uppercase tracking-[0.08em]">
+      <h2
+        className="scroll-mt-[1lh] font-heading text-ascii-comment text-sm uppercase tracking-[0.08em]"
+        data-title={title}
+        id={slugify(title)}
+      >
         {`## ${title}`}
       </h2>
       {children}

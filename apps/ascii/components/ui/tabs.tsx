@@ -144,7 +144,7 @@ function TabsTrigger({
         "hover:text-foreground",
         "focus-visible:text-primary",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-active:font-weight-heading data-active:text-primary",
+        "data-active:font-heading data-active:text-primary",
         className
       )}
       {...props}
@@ -157,11 +157,17 @@ function TabsTrigger({
 function TabsContent({
   className,
   children,
+  frame = true,
   ...props
-}: TabsPrimitive.Panel.Props) {
+}: TabsPrimitive.Panel.Props & {
+  /** Boxed variant only: draw the framed panel around the content.
+   * Pass false when the content brings its own frame (a code block,
+   * a nested install strip) so the tab strip lands on that instead. */
+  frame?: boolean;
+}) {
   const variant = React.useContext(TabsVariantContext);
 
-  if (variant === "boxed") {
+  if (variant === "boxed" && frame) {
     return (
       <TabsPrimitive.Panel
         data-slot="tabs-content"
