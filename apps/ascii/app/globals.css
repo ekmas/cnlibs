@@ -3,16 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* The library's two font-weight dials: headings/emphasis (titles,
- * active states, anything that was hardcoded bold) and everything
- * else. Retune both in :root instead of editing components. */
-@utility font-weight-heading {
-  font-weight: var(--font-weight-heading);
-}
-@utility font-weight-base {
-  font-weight: var(--font-weight-base);
-}
-
 @theme inline {
   /* Global type scale — the whole app declares text-sm, so resizing
    * it here resizes every text instance (and, via ch/lh units, the
@@ -26,7 +16,12 @@
    * components/ascii/ascii-theme.tsx). */
   --font-sans: var(--font-ascii);
   --font-mono: var(--font-ascii);
-  --font-heading: var(--font-sans);
+  /* The library's two font-weight dials: headings/emphasis (titles,
+   * active states, anything that was hardcoded bold) and everything
+   * else. Tailwind derives the font-heading / font-base utilities from
+   * them — retune here instead of editing components. */
+  --font-weight-heading: 700;
+  --font-weight-base: 400;
   /* The sidebar has no palette of its own — its utilities
    * (bg-sidebar, text-sidebar-* in components/ui/sidebar.tsx)
    * alias the base tokens. */
@@ -115,9 +110,6 @@
   --input: var(--ascii-dim);
   --ring: var(--ascii-primary);
 
-  --font-weight-heading: 700;
-  --font-weight-base: 400;
-
   /* ascii-specific tokens */
   --ascii-comment: #4a5f52;
   --ascii-glow: 0 0 8px
@@ -153,5 +145,51 @@
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* Native scrollbars sized to the character grid — one cell: 1ch wide, 1lh tall —
+ * for scroll boxes that should keep the browser's scrolling (code
+ * blocks) but still sit on the grid. Re-enables what the base layer
+ * hides on every element. */
+@utility ascii-scrollbar {
+  /* The thumb color lives in a custom property flipped on hover. The
+   * scrollbar pseudo-elements inherit it, and a change to an inherited
+   * property is what reliably makes Chromium repaint them — a plain
+   * `:hover::-webkit-scrollbar-thumb` rule is often applied late or not
+   * at all. Transparent at rest, so the track keeps its space and
+   * nothing shifts when the thumb appears. */
+  --ascii-thumb: transparent;
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
+  &:hover {
+    --ascii-thumb: color-mix(in oklab, var(--primary) 50%, transparent);
+  }
+  /* Chromium ignores the ::-webkit-scrollbar rules once scrollbar-color
+   * is set, so the standard property is for Firefox only. */
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: var(--ascii-thumb) transparent;
+  }
+  &::-webkit-scrollbar {
+    display: block;
+    width: 1ch;
+    height: 1lh;
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  /* The horizontal track stays a full row tall, but its thumb paints
+   * only a 1ch-thick bar centred in that row — transparent borders eat
+   * the rest, and background-clip keeps the color inside them. */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ascii-thumb);
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-thumb:horizontal {
+    border-block: calc((1lh - 1ch) / 2) solid transparent;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
   }
 }
