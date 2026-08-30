@@ -37,7 +37,25 @@ const TEST_CHART_FLAG = TEST_CHART_ARG !== undefined;
 const TEST_CHART_FAMILY = TEST_CHART_ARG?.startsWith("--test-chart=")
   ? TEST_CHART_ARG.slice("--test-chart=".length)
   : "area-chart";
-if (TEST_REGISTRY_FLAG || TEST_CHART_FLAG || process.argv.includes("--dev")) {
+// `--test-ascii` (`pnpm registry:test:ascii`, optionally `--test-ascii=<slug>`,
+// default phosphor) is the ascii equivalent of `--test`: one scratch
+// registry:style item built exactly like a real palette (tokens, base CSS,
+// bundled frame primitives) but pointing its registryDependencies at the
+// local dev server, with Button added so `shadcn init` on it exercises a
+// full local component install. Written to apps/ascii/public/r/ — gitignored.
+const TEST_ASCII_ARG = process.argv.find(
+  (arg) => arg === "--test-ascii" || arg.startsWith("--test-ascii=")
+);
+const TEST_ASCII_FLAG = TEST_ASCII_ARG !== undefined;
+const TEST_ASCII_SLUG = TEST_ASCII_ARG?.startsWith("--test-ascii=")
+  ? TEST_ASCII_ARG.slice("--test-ascii=".length)
+  : "phosphor";
+if (
+  TEST_REGISTRY_FLAG ||
+  TEST_CHART_FLAG ||
+  TEST_ASCII_FLAG ||
+  process.argv.includes("--dev")
+) {
   process.env.NODE_ENV = "development";
 } else {
   process.env.NODE_ENV ??= "production";
@@ -106,6 +124,23 @@ const LIBRARIES = [
       },
     ],
     outputDir: "apps/ascii/public/r",
+    // Standalone items built from aliased (non-ui) entry files. The frame
+    // primitives ship as their own registry:component item so a theme can
+    // scaffold a project with the ASCII building blocks — and nothing from
+    // components/ui — installed by default.
+    extraItems: [
+      {
+        name: "ascii-primitives",
+        type: "registry:component",
+        title: "ASCII Primitives",
+        description:
+          "The frame primitives (AsciiBox, AsciiRule, AsciiSide…), the glyph-set context and the lib/ascii string helpers every ascii component is drawn with.",
+        entries: [
+          "@/components/ascii/ascii-box",
+          "@/components/ascii/ascii-chars",
+        ],
+      },
+    ],
   },
 ];
 
@@ -133,13 +168,31 @@ const THEME_REGISTRIES = [
     themesModule: "apps/ascii/registry/themes.ts",
     siteUrlModule: "apps/ascii/lib/site.ts",
     outputDir: "apps/ascii/public/r/themes",
-    // ascii palettes carry their full cssVars (theme/light/dark) and the
+    // ascii palettes carry their full cssVars (theme + light only) and the
     // shared base CSS (font-weight utilities, skeleton keyframes, base
     // layer) straight from the themes module — nothing is parsed out of
     // globals.css, the module mirrors it by hand.
     cssVarsExport: "themeCssVars",
     cssExport: "ASCII_THEME_CSS",
-    registryDependencyNames: ["button"],
+    // Scaffolding installs the frame primitives (components/ascii/
+    // ascii-box.tsx, ascii-chars.tsx, lib/ascii.ts) — the modules every
+    // ui component imports — and no ui component itself. Their files are
+    // bundled straight into each theme item (copied from the standalone
+    // ascii-primitives item above), so `shadcn init` writes them without
+    // having to resolve a second registry request.
+    registryDependencyNames: [],
+    bundleItemFiles: ["ascii-primitives"],
+    // A palette is the whole theme, so `shadcn init` starts from the item
+    // alone instead of layering it over shadcn's default style; "utils"
+    // (shadcn's own item for lib/utils.ts) is pulled in by name so cn()
+    // still lands, since every component imports it.
+    extends: "none",
+    sharedRegistryDependencies: ["utils"],
+    // npm packages every theme item installs up front. With extends:none
+    // nothing comes from shadcn's default style, and the bundled primitives
+    // don't import cva themselves — but nearly every ui component does, so
+    // it ships with the scaffold rather than on the first `add`.
+    dependencies: ["class-variance-authority"],
   },
 ];
 
@@ -313,8 +366,11 @@ function findAlias(library, specifier) {
   return library.aliases?.find((alias) => specifier.startsWith(alias.prefix));
 }
 
-function buildItem(library, cssRoot, fileName) {
-  const componentName = fileName.replace(TSX_EXTENSION, "");
+// Walks the imports of one or more root files, bundling every local file
+// they reach (ui siblings, hooks, aliased primitives) and collecting npm
+// dependencies. Shared by the per-component ui items and the aliased
+// extraItems.
+function collectFiles(library, roots) {
   const files = new Map();
   const dependencies = new Set();
 
@@ -375,19 +431,34 @@ function buildItem(library, cssRoot, fileName) {
     }
   }
 
-  resolveLocalFile(
-    `${library.uiDir}/${fileName}`,
-    "registry:ui",
-    `~/components/ui/${fileName}`
-  );
-
-  for (const depName of library.extraLocalDependencies?.[componentName] ?? []) {
-    resolveLocalFile(
-      `${library.uiDir}/${depName}.tsx`,
-      "registry:ui",
-      `~/components/ui/${depName}.tsx`
-    );
+  for (const root of roots) {
+    if (typeof root === "string") {
+      resolveAliasedFile(root);
+    } else {
+      resolveLocalFile(root.relativePath, root.type, root.target);
+    }
   }
+
+  return { files: [...files.values()], dependencies: [...dependencies].sort() };
+}
+
+function buildItem(library, cssRoot, fileName) {
+  const componentName = fileName.replace(TSX_EXTENSION, "");
+  const roots = [
+    {
+      relativePath: `${library.uiDir}/${fileName}`,
+      type: "registry:ui",
+      target: `~/components/ui/${fileName}`,
+    },
+    ...(library.extraLocalDependencies?.[componentName] ?? []).map(
+      (depName) => ({
+        relativePath: `${library.uiDir}/${depName}.tsx`,
+        type: "registry:ui",
+        target: `~/components/ui/${depName}.tsx`,
+      })
+    ),
+  ];
+  const { files, dependencies } = collectFiles(library, roots);
 
   const title = titleCase(componentName);
   const utilities = library.componentUtilities?.[componentName];
@@ -399,11 +470,25 @@ function buildItem(library, cssRoot, fileName) {
     type: "registry:ui",
     title,
     description: `${title} component from the ${library.name} UI library.`,
-    ...(dependencies.size > 0
-      ? { dependencies: [...dependencies].sort() }
-      : {}),
-    files: [...files.values()],
+    ...(dependencies.length > 0 ? { dependencies } : {}),
+    files,
     ...(utilities ? { css: extractComponentCss(cssRoot, utilities) } : {}),
+  };
+}
+
+// An item whose roots are aliased (non-ui) modules — e.g. the ascii frame
+// primitives — written to the library's outputDir under its own name.
+function buildExtraItem(library, extra) {
+  const { files, dependencies } = collectFiles(library, extra.entries);
+  return {
+    name: `${library.name}/${extra.name}`,
+    componentName: extra.name,
+    outputDir: library.outputDir,
+    type: extra.type,
+    title: extra.title,
+    description: extra.description,
+    ...(dependencies.length > 0 ? { dependencies } : {}),
+    files,
   };
 }
 
@@ -525,7 +610,12 @@ const builtItems = LIBRARIES.flatMap((library) => {
   const cssRoot = library.utilitiesSource
     ? parseCssFile(library.utilitiesSource)
     : null;
-  return fileNames.map((fileName) => buildItem(library, cssRoot, fileName));
+  return [
+    ...fileNames.map((fileName) => buildItem(library, cssRoot, fileName)),
+    ...(library.extraItems ?? []).map((extra) =>
+      buildExtraItem(library, extra)
+    ),
+  ];
 });
 
 function buildUtilitiesCss(themeRegistry) {
@@ -685,9 +775,26 @@ async function buildThemeItems(themeRegistry) {
   const cssVarsFor = themeRegistry.cssVarsExport
     ? themesModule[themeRegistry.cssVarsExport]
     : (theme) => theme.cssVars;
-  const registryDependencies = themeRegistry.registryDependencyNames.map(
-    (name) => `${SITE_URL}/r/${name}.json`
-  );
+  // Bare names resolve against shadcn's own registry ("utils"); this
+  // library's items are addressed by URL.
+  const registryDependencies = [
+    ...(themeRegistry.sharedRegistryDependencies ?? []),
+    ...themeRegistry.registryDependencyNames.map(
+      (name) => `${SITE_URL}/r/${name}.json`
+    ),
+  ];
+  // Files of already-built library items to ship inside every theme.
+  const files = (themeRegistry.bundleItemFiles ?? []).flatMap((name) => {
+    const item = builtItems.find(
+      (built) => built.name === `${themeRegistry.name}/${name}`
+    );
+    if (!item) {
+      throw new Error(
+        `bundleItemFiles: no built item named ${themeRegistry.name}/${name}`
+      );
+    }
+    return item.files;
+  });
   if (themeRegistry.manualCssModule) {
     writeGeneratedModule(
       themeRegistry.manualCssModule,
@@ -702,10 +809,66 @@ async function buildThemeItems(themeRegistry) {
     type: "registry:style",
     title: theme.title,
     description: theme.description,
-    registryDependencies,
+    ...(themeRegistry.extends ? { extends: themeRegistry.extends } : {}),
+    ...(themeRegistry.dependencies
+      ? { dependencies: themeRegistry.dependencies }
+      : {}),
+    ...(registryDependencies.length > 0 ? { registryDependencies } : {}),
+    ...(files.length > 0 ? { files } : {}),
     cssVars: cssVarsFor(theme),
     css,
   }));
+}
+
+// `pnpm registry:test:ascii`: one scratch ascii palette item with Button as a
+// registryDependency on the local dev server (SITE_URL resolves to it under
+// this flag), so `shadcn init <url>` scaffolds tokens + primitives + Button
+// entirely from localhost. Not part of the published registry — gitignored.
+async function writeAsciiTestRegistryItem() {
+  const themeRegistry = THEME_REGISTRIES.find((r) => r.name === "ascii");
+  const themeItems = await buildThemeItems(themeRegistry);
+  const theme = themeItems.find((t) => t.slug === TEST_ASCII_SLUG);
+  if (!theme) {
+    console.error(
+      `No ascii theme named "${TEST_ASCII_SLUG}". Available slugs: ${themeItems.map((t) => t.slug).join(", ")}`
+    );
+    process.exit(1);
+  }
+  const siteUrlModulePath = path.join(REPO_ROOT, themeRegistry.siteUrlModule);
+  const { SITE_URL } = await import(pathToFileURL(siteUrlModulePath).href);
+  const { name, slug, outputDir, files: bundled = [], ...rest } = theme;
+  const compiled = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: "test-registry",
+    // `extends: "none"` and the "utils" dependency come with the theme.
+    ...rest,
+    title: `${theme.title} (local test)`,
+    description:
+      "Scratch ascii palette for testing scaffolding against the local dev server: the real theme item plus Button as a registryDependency. Not part of the published registry — regenerate with `pnpm registry:test:ascii`, don't commit it.",
+    registryDependencies: ["utils", `${SITE_URL}/r/button.json`],
+    // The published writer inlines each file's source at write time; this
+    // early exit skips that step, so do it here.
+    files: bundled.map((file) => ({
+      ...file,
+      content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+    })),
+  };
+  const outPath = path.join(
+    REPO_ROOT,
+    "apps/ascii/public/r/test-registry.json"
+  );
+  fs.writeFileSync(
+    outPath,
+    `${JSON.stringify(compiled, null, 2)}
+`
+  );
+  console.log(`Wrote ${path.relative(REPO_ROOT, outPath)}`);
+  console.log(`Try: npx shadcn init ${SITE_URL}/r/test-registry.json`);
+}
+
+if (TEST_ASCII_FLAG) {
+  await writeAsciiTestRegistryItem();
+  process.exit(0);
 }
 
 const builtThemeItems = (
@@ -781,7 +944,21 @@ for (const item of builtThemeItems) {
     type: item.type,
     title: item.title,
     description: item.description,
-    registryDependencies: item.registryDependencies,
+    ...(item.extends ? { extends: item.extends } : {}),
+    ...(item.dependencies ? { dependencies: item.dependencies } : {}),
+    ...(item.registryDependencies
+      ? { registryDependencies: item.registryDependencies }
+      : {}),
+    ...(item.files
+      ? {
+          files: item.files.map((file) => ({
+            path: file.path,
+            content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+            type: file.type,
+            target: file.target,
+          })),
+        }
+      : {}),
     cssVars: item.cssVars,
     css: item.css,
   };

@@ -9,8 +9,8 @@
 //
 // Palettes are single-mode: a dark palette is dark and a light palette is
 // light, there is no paired counterpart. The compiled registry item writes
-// the same values to both the :root and .dark buckets so it renders the
-// same whichever mode the consumer's app is in.
+// its values to :root only (shadcn's `light` bucket) — no .dark block, so
+// the palette renders the same whichever mode the consumer's app is in.
 //
 // Kept import-free so scripts/generate-registry.mjs can `import()` it
 // straight from source with Node's type stripping.
@@ -357,8 +357,6 @@ export const ASCII_BASE_CSS_VARS: Record<string, string> = {
   border: "var(--ascii-dim)",
   input: "var(--ascii-dim)",
   ring: "var(--ascii-primary)",
-  "font-weight-heading": "700",
-  "font-weight-base": "400",
   // The mono family. Falls back to IBM Plex Mono if the consumer wires
   // it up through next/font with variable "--font-ibm-plex-mono".
   "font-ascii":
@@ -377,7 +375,10 @@ export const ASCII_THEME_INLINE_VARS: Record<string, string> = {
   "color-foreground": "var(--foreground)",
   "font-sans": "var(--font-ascii)",
   "font-mono": "var(--font-ascii)",
-  "font-heading": "var(--font-sans)",
+  // The two font-weight dials — Tailwind derives the `font-heading` and
+  // `font-base` utilities from them. Retune here, not in components.
+  "font-weight-heading": "700",
+  "font-weight-base": "400",
   "color-sidebar-ring": "var(--ring)",
   "color-sidebar-border": "var(--border)",
   "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -406,17 +407,11 @@ export const ASCII_THEME_INLINE_VARS: Record<string, string> = {
   "radius-*": "initial",
 };
 
-/** Extra CSS shipped with every theme item: the two font-weight
- * utilities, the skeleton keyframes and the base layer (type size,
+/** Extra CSS shipped with every theme item: the no-scrollbar utility,
+ * the skeleton keyframes and the base layer (type size,
  * selection color, hidden scrollbars). Shape is the registry-item `css`
  * field. Mirrors the rest of app/globals.css. */
 export const ASCII_THEME_CSS: Record<string, unknown> = {
-  "@utility font-weight-heading": {
-    "font-weight": "var(--font-weight-heading)",
-  },
-  "@utility font-weight-base": {
-    "font-weight": "var(--font-weight-base)",
-  },
   "@utility no-scrollbar": {
     "-ms-overflow-style": "none",
     "scrollbar-width": "none",
@@ -430,8 +425,6 @@ export const ASCII_THEME_CSS: Record<string, unknown> = {
   },
   "@layer base": {
     "*": {
-      "border-color": "var(--border)",
-      "outline-color": "color-mix(in oklab, var(--ring) 50%, transparent)",
       "-ms-overflow-style": "none",
       "scrollbar-width": "none",
     },
@@ -451,8 +444,10 @@ export const ASCII_THEME_CSS: Record<string, unknown> = {
   },
 };
 
-/** A theme's full shadcn `cssVars` (theme/light/dark buckets). */
+/** A theme's shadcn `cssVars`: the `@theme inline` mappings plus the
+ * palette in the `light` bucket, which the CLI writes to :root. Palettes
+ * are single-mode, so there is deliberately no `dark` bucket. */
 export function themeCssVars(theme: AsciiThemeRegistryEntry) {
   const vars = { ...theme.palette, ...ASCII_BASE_CSS_VARS };
-  return { theme: ASCII_THEME_INLINE_VARS, light: vars, dark: vars };
+  return { theme: ASCII_THEME_INLINE_VARS, light: vars };
 }
