@@ -7,7 +7,7 @@ import { docsNav } from "@/content/docs/manifest";
 const [entry] = docsNav;
 
 export const metadata: Metadata = {
-  title: `${entry.title} — ascii`,
+  title: entry.title,
   description: entry.description,
 };
 

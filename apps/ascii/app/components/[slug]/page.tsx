@@ -20,7 +20,10 @@ export async function generateMetadata({
 }: PageProps<"/components/[slug]">) {
   const { slug } = await params;
   const doc = componentDocs[slug];
-  return { title: doc ? `${doc.title} — ascii` : "ascii" };
+  if (!doc) {
+    return {};
+  }
+  return { description: doc.description, title: doc.title };
 }
 
 export default async function ComponentPage({

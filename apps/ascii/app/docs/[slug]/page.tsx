@@ -14,10 +14,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/docs/[slug]">) {
   const { slug } = await params;
   const entry = getDocsEntry(slug);
-  return {
-    title: entry ? `${entry.title} — ascii` : "ascii",
-    description: entry?.description,
-  };
+  if (!entry) {
+    return {};
+  }
+  return { description: entry.description, title: entry.title };
 }
 
 export default async function DocsSlugPage({

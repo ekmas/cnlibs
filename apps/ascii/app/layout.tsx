@@ -18,10 +18,38 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "700"],
 });
 
+const DESCRIPTION = "ascii-styled shadcn-based ui library";
+
 export const metadata: Metadata = {
-  title: "ascii — shadcn component library",
-  description:
-    "A shadcn/ui component library recreated as a monospace, ASCII-bordered terminal aesthetic.",
+  title: {
+    default: "ascii/cnlibs",
+    template: "%s - ascii/cnlibs",
+  },
+  description: DESCRIPTION,
+  keywords: [
+    "ascii ui",
+    "terminal ui",
+    "shadcn ui library",
+    "ascii ui react",
+    "shadcn components",
+    "shadcn ascii",
+  ],
+  authors: [{ name: "Samuel Breznjak", url: "https://github.com/ekmas" }],
+  openGraph: {
+    type: "website",
+    description: DESCRIPTION,
+    images: ["https://ascii.cnlibs.com/preview.png"],
+    url: "https://ascii.cnlibs.com/",
+    title: "ascii/cnlibs",
+  },
+  metadataBase: new URL("https://ascii.cnlibs.com/"),
+  twitter: {
+    card: "summary_large_image",
+    title: "ascii/cnlibs",
+    description: DESCRIPTION,
+    images: ["https://ascii.cnlibs.com/preview.png"],
+    creator: "@samuelbreznjak",
+  },
 };
 
 /* Applies the persisted theme's colors and font before first paint so

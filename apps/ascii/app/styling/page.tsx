@@ -4,7 +4,7 @@ import { ComponentHeader } from "@/components/ascii/component-header";
 import { ThemeEditor } from "@/components/ascii/theme-editor";
 
 export const metadata: Metadata = {
-  title: "Styling — ascii",
+  title: "Styling",
   description:
     "Pick a Google mono font, a color scheme and the characters every ASCII frame is drawn with.",
 };
