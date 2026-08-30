@@ -2892,6 +2892,29 @@
       ]
     },
     {
+      "name": "ascii/ascii-primitives",
+      "type": "registry:component",
+      "title": "ASCII Primitives",
+      "description": "The frame primitives (AsciiBox, AsciiRule, AsciiSide…), the glyph-set context and the lib/ascii string helpers every ascii component is drawn with.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
       "name": "8bit/themes/default",
       "type": "registry:style",
       "title": "Default (8bit)",
@@ -5668,8 +5691,29 @@
       "type": "registry:style",
       "title": "Phosphor",
       "description": "The default ascii/ui palette: green phosphor on black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -5679,7 +5723,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -5730,36 +5775,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#39ff6a",
-          "ascii-soft": "#8fe6aa",
-          "ascii-text": "#f4fff7",
-          "ascii-comment": "#4a5f52",
-          "muted-foreground": "#6b8577",
-          "background": "#0b0f0c",
-          "ascii-surface": "#0e1512",
-          "secondary": "#13251a",
-          "ascii-dim": "#1e3a28",
-          "primary-foreground": "#05130a",
-          "destructive": "#ffb000",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -5770,8 +5785,29 @@
       "type": "registry:style",
       "title": "Amber",
       "description": "Warm amber monitor glow.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -5781,7 +5817,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -5832,36 +5869,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#ffb000",
-          "ascii-soft": "#e6c27a",
-          "ascii-text": "#fff7e6",
-          "ascii-comment": "#6b5a33",
-          "muted-foreground": "#8a7a52",
-          "background": "#0f0c06",
-          "ascii-surface": "#161108",
-          "secondary": "#26200f",
-          "ascii-dim": "#3a2f14",
-          "primary-foreground": "#1a1200",
-          "destructive": "#ff5f5f",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -5872,8 +5879,29 @@
       "type": "registry:style",
       "title": "Ice",
       "description": "Cool cyan on near-black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -5883,7 +5911,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -5934,36 +5963,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#5ee0ff",
-          "ascii-soft": "#9ad8e6",
-          "ascii-text": "#f0fbff",
-          "ascii-comment": "#3f5d66",
-          "muted-foreground": "#5f8590",
-          "background": "#070c0f",
-          "ascii-surface": "#0c1418",
-          "secondary": "#112028",
-          "ascii-dim": "#193640",
-          "primary-foreground": "#00121a",
-          "destructive": "#ffb000",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -5974,8 +5973,29 @@
       "type": "registry:style",
       "title": "Magenta",
       "description": "Hot pink on dark plum.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -5985,7 +6005,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6036,36 +6057,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#ff5ecf",
-          "ascii-soft": "#e6a3d4",
-          "ascii-text": "#fff2fb",
-          "ascii-comment": "#6a3d5c",
-          "muted-foreground": "#8f5f80",
-          "background": "#0f070c",
-          "ascii-surface": "#170b12",
-          "secondary": "#26101e",
-          "ascii-dim": "#3f1a33",
-          "primary-foreground": "#1a0012",
-          "destructive": "#ffb000",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6076,8 +6067,29 @@
       "type": "registry:style",
       "title": "Violet",
       "description": "Soft violet on deep indigo.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6087,7 +6099,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6138,36 +6151,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#a78bfa",
-          "ascii-soft": "#c4b5fd",
-          "ascii-text": "#f5f3ff",
-          "ascii-comment": "#524a70",
-          "muted-foreground": "#7a7099",
-          "background": "#0b0912",
-          "ascii-surface": "#120f1c",
-          "secondary": "#1d1830",
-          "ascii-dim": "#2e2650",
-          "primary-foreground": "#0e0620",
-          "destructive": "#fb7185",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6178,8 +6161,29 @@
       "type": "registry:style",
       "title": "Ember",
       "description": "Burnt orange on charcoal.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6189,7 +6193,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6240,36 +6245,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#ff6a3d",
-          "ascii-soft": "#e6a08a",
-          "ascii-text": "#fff4f0",
-          "ascii-comment": "#66463a",
-          "muted-foreground": "#8c6a5c",
-          "background": "#100907",
-          "ascii-surface": "#180e0b",
-          "secondary": "#281713",
-          "ascii-dim": "#40241c",
-          "primary-foreground": "#1a0800",
-          "destructive": "#ffd23f",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6280,8 +6255,29 @@
       "type": "registry:style",
       "title": "Mono",
       "description": "Plain white on black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6291,7 +6287,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6342,36 +6339,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#f2f2f2",
-          "ascii-soft": "#b8b8b8",
-          "ascii-text": "#ffffff",
-          "ascii-comment": "#5c5c5c",
-          "muted-foreground": "#7a7a7a",
-          "background": "#0a0a0a",
-          "ascii-surface": "#111111",
-          "secondary": "#1c1c1c",
-          "ascii-dim": "#2e2e2e",
-          "primary-foreground": "#0a0a0a",
-          "destructive": "#ff6b6b",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6382,8 +6349,29 @@
       "type": "registry:style",
       "title": "Paper",
       "description": "Forest green on warm paper.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6393,7 +6381,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6444,36 +6433,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#1f5f3a",
-          "ascii-soft": "#3f6b52",
-          "ascii-text": "#141a16",
-          "ascii-comment": "#8a9a90",
-          "muted-foreground": "#6f7f75",
-          "background": "#f6f4ec",
-          "ascii-surface": "#fbfaf5",
-          "secondary": "#e6e9e2",
-          "ascii-dim": "#c9d2cc",
-          "primary-foreground": "#f6f4ec",
-          "destructive": "#b4530a",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6484,8 +6443,29 @@
       "type": "registry:style",
       "title": "Daylight",
       "description": "Royal blue on cool white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6495,7 +6475,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6546,36 +6527,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#1d4ed8",
-          "ascii-soft": "#3b5b9a",
-          "ascii-text": "#0f172a",
-          "ascii-comment": "#8a94a8",
-          "muted-foreground": "#64748b",
-          "background": "#f5f7fb",
-          "ascii-surface": "#ffffff",
-          "secondary": "#e6ebf5",
-          "ascii-dim": "#c7d0e0",
-          "primary-foreground": "#ffffff",
-          "destructive": "#c2410c",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6586,8 +6537,29 @@
       "type": "registry:style",
       "title": "Sepia",
       "description": "Rust brown on aged parchment.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6597,7 +6569,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6648,36 +6621,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#8a4b1f",
-          "ascii-soft": "#8c6b4f",
-          "ascii-text": "#2b1d12",
-          "ascii-comment": "#a8927c",
-          "muted-foreground": "#8a7460",
-          "background": "#f4ecdf",
-          "ascii-surface": "#faf5ec",
-          "secondary": "#ebe0cd",
-          "ascii-dim": "#d6c6ad",
-          "primary-foreground": "#faf5ec",
-          "destructive": "#a11f1f",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6688,8 +6631,29 @@
       "type": "registry:style",
       "title": "Slate",
       "description": "Slate grey-blue on off-white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6699,7 +6663,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6750,36 +6715,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#334155",
-          "ascii-soft": "#526075",
-          "ascii-text": "#0f172a",
-          "ascii-comment": "#94a3b8",
-          "muted-foreground": "#64748b",
-          "background": "#f1f5f9",
-          "ascii-surface": "#ffffff",
-          "secondary": "#e2e8f0",
-          "ascii-dim": "#cbd5e1",
-          "primary-foreground": "#ffffff",
-          "destructive": "#b91c1c",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6790,8 +6725,29 @@
       "type": "registry:style",
       "title": "Mint",
       "description": "Teal on mint white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6801,7 +6757,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6852,36 +6809,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#0f766e",
-          "ascii-soft": "#3d7f79",
-          "ascii-text": "#052e2b",
-          "ascii-comment": "#7fa39f",
-          "muted-foreground": "#5f8581",
-          "background": "#effaf7",
-          "ascii-surface": "#ffffff",
-          "secondary": "#d9f0eb",
-          "ascii-dim": "#b7dcd5",
-          "primary-foreground": "#ffffff",
-          "destructive": "#c2410c",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6892,8 +6819,29 @@
       "type": "registry:style",
       "title": "Lavender",
       "description": "Deep purple on lavender white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -6903,7 +6851,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -6954,36 +6903,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#6d28d9",
-          "ascii-soft": "#7c5cb0",
-          "ascii-text": "#1e1233",
-          "ascii-comment": "#9d92b8",
-          "muted-foreground": "#7b6f99",
-          "background": "#f6f3fc",
-          "ascii-surface": "#fdfcff",
-          "secondary": "#ebe4f7",
-          "ascii-dim": "#d4c8ea",
-          "primary-foreground": "#fdfcff",
-          "destructive": "#be123c",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
@@ -6994,8 +6913,29 @@
       "type": "registry:style",
       "title": "Ink",
       "description": "Black ink on white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
-        "https://ascii.cnlibs.com/r/button.json"
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
       ],
       "cssVars": {
         "theme": {
@@ -7005,7 +6945,8 @@
           "color-foreground": "var(--foreground)",
           "font-sans": "var(--font-ascii)",
           "font-mono": "var(--font-ascii)",
-          "font-heading": "var(--font-sans)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
           "color-sidebar-ring": "var(--ring)",
           "color-sidebar-border": "var(--border)",
           "color-sidebar-accent-foreground": "var(--accent-foreground)",
@@ -7056,36 +6997,6 @@
           "border": "var(--ascii-dim)",
           "input": "var(--ascii-dim)",
           "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
-          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
-          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
-        },
-        "dark": {
-          "ascii-primary": "#111111",
-          "ascii-soft": "#444444",
-          "ascii-text": "#000000",
-          "ascii-comment": "#8c8c8c",
-          "muted-foreground": "#666666",
-          "background": "#ffffff",
-          "ascii-surface": "#fafafa",
-          "secondary": "#eeeeee",
-          "ascii-dim": "#d4d4d4",
-          "primary-foreground": "#ffffff",
-          "destructive": "#c81e1e",
-          "foreground": "var(--ascii-text)",
-          "card": "var(--ascii-surface)",
-          "card-foreground": "var(--ascii-text)",
-          "popover": "var(--ascii-surface)",
-          "popover-foreground": "var(--ascii-text)",
-          "primary": "var(--ascii-primary)",
-          "secondary-foreground": "var(--ascii-soft)",
-          "accent-foreground": "var(--ascii-text)",
-          "border": "var(--ascii-dim)",
-          "input": "var(--ascii-dim)",
-          "ring": "var(--ascii-primary)",
-          "font-weight-heading": "700",
-          "font-weight-base": "400",
           "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
           "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
