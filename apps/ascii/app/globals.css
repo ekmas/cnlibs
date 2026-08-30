@@ -7,8 +7,8 @@
   /* Global type scale — the whole app declares text-sm, so resizing
    * it here resizes every text instance (and, via ch/lh units, the
    * entire ASCII grid). */
-  --text-sm: 16px;
-  --text-sm--line-height: 22px;
+  --text-sm: var(--ascii-font-size);
+  --text-sm--line-height: var(--ascii-line-height);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   /* Both families resolve to --font-ascii, which the theme page
@@ -74,6 +74,12 @@
 }
 
 :root {
+  /* The cell size. text-sm reads these, and since every length in the
+   * app is in ch/lh, changing them rescales the whole grid — which is
+   * how small screens get a smaller cell below the md breakpoint. */
+  --ascii-font-size: 16px;
+  --ascii-line-height: 22px;
+
   /* The mono family. next/font supplies the default; the theme page
    * writes an inline override on <html>. */
   --font-ascii: var(--font-ibm-plex-mono);
@@ -114,6 +120,10 @@
   --ascii-comment: #4a5f52;
   --ascii-glow: 0 0 8px
     color-mix(in srgb, var(--ascii-primary) 35%, transparent);
+  @media (width < 48rem) {
+    --ascii-font-size: 12px;
+    --ascii-line-height: 16px;
+  }
 }
 
 @layer base {

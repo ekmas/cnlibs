@@ -17,9 +17,25 @@ import {
 } from "@/components/ui/dialog";
 import { Kbd } from "@/components/ui/kbd";
 import { docsHref, docsNav } from "@/content/docs/manifest";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { asciiComponents } from "@/lib/ascii-components";
 
+// Mirrors the header nav (minus the brand links) so every destination
+// is reachable from the palette; external entries open in a new tab.
+const NAV_ITEMS: CommandOption[] = [
+  { value: "/docs", label: "Docs" },
+  { value: "/components", label: "Components" },
+  { value: "/styling", label: "Styling" },
+  {
+    value: "https://github.com/ekmas/cnlibs",
+    label: "Github",
+    hint: "external",
+  },
+  { value: "https://x.com/samuelbreznjak", label: "X", hint: "external" },
+];
+
 const groups: CommandGroupData[] = [
+  { group: "Navigation", items: NAV_ITEMS },
   {
     group: "Getting started",
     items: docsNav.map((entry) => ({
@@ -73,6 +89,7 @@ function isEditingTarget(target: EventTarget | null) {
 export function SearchButton() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -93,6 +110,10 @@ export function SearchButton() {
   const goTo = useCallback(
     (item: CommandOption) => {
       setOpen(false);
+      if (item.value.startsWith("http")) {
+        window.open(item.value, "_blank", "noopener,noreferrer");
+        return;
+      }
       router.push(item.value);
     },
     [router]
@@ -102,10 +123,10 @@ export function SearchButton() {
     <>
       <Button onClick={openDialog} variant="outline">
         Search
-        <Kbd>Ctrl + K</Kbd>
+        <Kbd className="max-sm:hidden">Ctrl + K</Kbd>
       </Button>
       <Dialog onOpenChange={setOpen} open={open}>
-        <DialogContent chWidth={50} padY={0}>
+        <DialogContent chWidth={isMobile ? 40 : 50} padY={0}>
           <DialogHeader className="mb-[1lh]">
             <DialogTitle>Search</DialogTitle>
           </DialogHeader>

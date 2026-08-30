@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { AsciiRule } from "@/components/ascii/ascii-box";
+import { Brand } from "@/components/ascii/brand";
 import {
   Sidebar,
   SidebarContent,
@@ -25,21 +26,8 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="none">
       <SidebarHeader className="gap-0 p-0">
-        <div className="flex h-[3lh] items-center px-[2ch]">
-          <div className="font-heading text-sm tracking-[0.08em]">
-            <Link href="/" className="text-primary hover:underline">
-              ascii
-            </Link>
-            <span className="text-ascii-comment">.</span>
-            <a
-              href="https://cnlibs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-base text-ascii-soft hover:underline"
-            >
-              cnlibs.com
-            </a>
-          </div>
+        <div className="flex h-[3lh] items-center px-[3ch]">
+          <Brand />
         </div>
         <AsciiRule />
       </SidebarHeader>

@@ -52,7 +52,7 @@ function OnThisPage({ articleId }: { articleId: string }) {
   return (
     <nav
       aria-label="On this page"
-      className="sticky top-0 hidden w-[32ch] shrink-0 flex-col self-start py-[1lh] font-mono text-sm lg:flex"
+      className="sticky top-0 hidden w-[32ch] shrink-0 flex-col self-start py-[1lh] font-mono text-sm xl:flex"
     >
       <span className="text-ascii-comment uppercase tracking-[0.08em]">
         On this page

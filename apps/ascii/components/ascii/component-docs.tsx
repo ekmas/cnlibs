@@ -44,8 +44,13 @@ function DemoRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("flex items-start gap-[2ch]", className)}>
-      <span className="w-[14ch] shrink-0 text-ascii-comment text-sm">
+    <div
+      className={cn(
+        "flex items-start gap-[2ch] max-sm:flex-col max-sm:gap-0",
+        className
+      )}
+    >
+      <span className="w-[14ch] shrink-0 text-ascii-comment text-sm max-sm:w-auto">
         {label}
       </span>
       <div className="flex min-w-0 flex-1 flex-wrap items-center gap-[2ch]">

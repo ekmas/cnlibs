@@ -102,7 +102,7 @@ const components = {
     </ol>
   ),
   li: ({ children }) => (
-    <li className="group/li flex gap-[1ch] text-ascii-soft">
+    <li className="group/li mt-[1lh] flex gap-[1ch] text-ascii-soft first:mt-0">
       <span
         aria-hidden
         className="shrink-0 select-none text-primary [ol_&]:hidden"
@@ -123,23 +123,40 @@ const components = {
   ),
   table: ({ children }) => (
     <div className="max-w-[80ch] overflow-x-auto">
-      <table className="w-full border-collapse text-left text-sm">
+      <table className="w-full border-collapse text-left text-sm max-sm:block">
         {children}
       </table>
     </div>
   ),
   thead: ({ children }) => (
-    <thead className="text-ascii-comment uppercase tracking-[0.06em]">
+    <thead className="text-ascii-comment uppercase tracking-[0.06em] max-sm:block">
       {children}
     </thead>
   ),
-  tbody: ({ children }) => <tbody>{children}</tbody>,
-  tr: ({ children }) => <tr className="align-top">{children}</tr>,
+  // Table rows can't carry margins, so the blank row between entries is
+  // padding on the body cells; the header row (always first) gets none.
+  tbody: ({ children }) => (
+    <tbody className="max-sm:block max-sm:[&_td+td]:pt-0 [&_td]:pt-[1lh]">
+      {children}
+    </tbody>
+  ),
+  // Below sm each row stacks its cells (name above description) instead
+  // of squeezing two columns into the width.
+  tr: ({ children }) => (
+    <tr className="align-top max-sm:flex max-sm:flex-col">{children}</tr>
+  ),
   th: ({ children }) => (
-    <th className="whitespace-nowrap pr-[2ch] font-base">{children}</th>
+    <th className="whitespace-nowrap pr-[2ch] font-base max-sm:block">
+      {children}
+    </th>
   ),
   td: ({ children }) => (
-    <td className={cn("pr-[2ch] text-ascii-soft", "first:text-primary")}>
+    <td
+      className={cn(
+        "pr-[2ch] text-ascii-soft max-sm:block",
+        "first:text-primary"
+      )}
+    >
       {children}
     </td>
   ),

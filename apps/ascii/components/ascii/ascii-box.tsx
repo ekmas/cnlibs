@@ -34,10 +34,14 @@ const AsciiBoxContext = React.createContext<{
   /** Background utility class of the box surface — dividers repaint it
    * over the absolute side rules so intersections show only junctions. */
   bg: string;
+  /** Fluid boxes take their width from CSS, so dividers are drawn as
+   * clipped rules instead of fixed-length strings. */
+  fluid: boolean;
 }>({
   width: 40,
   tone: "soft",
   bg: "bg-card",
+  fluid: false,
 });
 
 /** The junction glyph ("+" by default) — for corners and intersections
@@ -153,6 +157,11 @@ type AsciiBoxProps = Omit<React.ComponentProps<"div">, "title"> & {
   /** Background utility class of the box surface. Pass this instead of a
    * bg-* class in className so dividers can repaint it at intersections. */
   bg?: string;
+  /** Size the box with CSS (w-*, max-w-*) instead of `width`: the edge
+   * rows become clipped rules that follow the container, so the box can
+   * be `w-full` on a narrow screen. `width` is then only the fallback
+   * used when no width class is given. */
+  fluid?: boolean;
 };
 
 function AsciiBox({
@@ -163,12 +172,13 @@ function AsciiBox({
   className,
   contentClassName,
   padY = 0,
+  fluid = false,
   children,
   ...props
 }: AsciiBoxProps) {
   const chars = useAsciiChars();
   return (
-    <AsciiBoxContext.Provider value={{ width, tone, bg }}>
+    <AsciiBoxContext.Provider value={{ width, tone, bg, fluid }}>
       <div
         data-slot="ascii-box"
         className={cn(
@@ -176,15 +186,40 @@ function AsciiBox({
           bg,
           className
         )}
-        style={{ width: `${width}ch` }}
+        style={fluid ? undefined : { width: `${width}ch` }}
         {...props}
       >
-        <div
-          aria-hidden
-          className={cn("select-none whitespace-pre", toneClass[tone])}
-        >
-          {topBorder(width, title, chars)}
-        </div>
+        {fluid ? (
+          <div
+            aria-hidden
+            className={cn("flex select-none whitespace-pre", toneClass[tone])}
+          >
+            <AsciiJunction className="shrink-0" />
+            {title ? (
+              <>
+                <AsciiRule
+                  line="top"
+                  tone={tone}
+                  className="w-[2ch] shrink-0 text-inherit"
+                />
+                <span className="shrink-0">{` ${title} `}</span>
+              </>
+            ) : null}
+            <AsciiRule
+              line="top"
+              tone={tone}
+              className="min-w-0 flex-1 text-inherit"
+            />
+            <AsciiJunction className="shrink-0" />
+          </div>
+        ) : (
+          <div
+            aria-hidden
+            className={cn("select-none whitespace-pre", toneClass[tone])}
+          >
+            {topBorder(width, title, chars)}
+          </div>
+        )}
         <div className="relative">
           <AsciiVRule
             tone={tone}
@@ -202,12 +237,16 @@ function AsciiBox({
             className="absolute inset-y-0 right-0"
           />
         </div>
-        <div
-          aria-hidden
-          className={cn("select-none whitespace-pre", toneClass[tone])}
-        >
-          {bottomBorder(width, chars)}
-        </div>
+        {fluid ? (
+          <AsciiHBorder line="bottom" tone={tone} />
+        ) : (
+          <div
+            aria-hidden
+            className={cn("select-none whitespace-pre", toneClass[tone])}
+          >
+            {bottomBorder(width, chars)}
+          </div>
+        )}
       </div>
     </AsciiBoxContext.Provider>
   );
@@ -223,7 +262,7 @@ function AsciiBoxDivider({
   className?: string;
   pad?: boolean;
 }) {
-  const { width, tone, bg } = React.useContext(AsciiBoxContext);
+  const { width, tone, bg, fluid } = React.useContext(AsciiBoxContext);
   const chars = useAsciiChars();
   return (
     <div
@@ -238,7 +277,11 @@ function AsciiBoxDivider({
       {/* Positioned above the box's absolute side rules and repainting
        * the surface, so the intersection cells show only junctions. */}
       <div className={cn("relative z-10", bg)}>
-        <span>{dividerBorder(width, chars)}</span>
+        {fluid ? (
+          <AsciiHBorder line="divider" tone={tone} />
+        ) : (
+          <span>{dividerBorder(width, chars)}</span>
+        )}
       </div>
       {pad && <div> </div>}
     </div>

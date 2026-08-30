@@ -48,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="flex h-dvh items-center justify-center overflow-hidden bg-background">
         <AsciiThemeProvider>
-          <div className="flex h-(--frame-h) w-[calc(100dvw-20ch)] max-w-[208ch] flex-col overflow-hidden font-mono text-primary/60 [--frame-h:min(calc(100dvh-20ch),108ch)]">
+          <div className="flex h-(--frame-h) w-[calc(100dvw-20ch)] max-w-[208ch] flex-col overflow-hidden font-mono text-primary/60 [--frame-h:min(calc(100dvh-20ch),108ch)] max-md:w-dvw max-md:max-w-none max-md:[--frame-h:100dvh]">
             <div aria-hidden className="flex shrink-0 select-none leading-none">
               <AsciiJunction />
               <AsciiRule line="top" tone="soft" className="flex-1" />

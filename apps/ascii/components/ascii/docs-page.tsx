@@ -23,7 +23,10 @@ function DocsPageView({
       <div className="flex min-w-0 max-w-4xl flex-1 flex-col py-[1lh]">
         <ComponentHeader description={entry.description} title={entry.title} />
         <div className="flex flex-col gap-[2lh]">
-          <article className="flex flex-col gap-[1lh]" id="docs-article">
+          <article
+            className="flex flex-col gap-[1lh] overflow-x-auto"
+            id="docs-article"
+          >
             {children}
           </article>
           <DocsPager next={next} prev={prev} />

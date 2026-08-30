@@ -41,7 +41,7 @@ function GlyphPreview({ preset }: { preset: string }) {
 /** Theming: the four bundled presets side by side. */
 function GlyphPresets() {
   return (
-    <div className="grid w-fit grid-cols-2 gap-x-[2ch] gap-y-[1lh]">
+    <div className="grid w-fit grid-cols-2 gap-x-[2ch] gap-y-[1lh] max-sm:grid-cols-1">
       <GlyphPreview preset="classic" />
       <GlyphPreview preset="double" />
       <GlyphPreview preset="stars" />
@@ -127,8 +127,13 @@ function TokenTable() {
   ];
   return (
     <dl className="flex max-w-[80ch] flex-col text-sm">
+      {/* Two columns on the grid; on narrow screens each entry stacks the
+       * name above its description instead of squeezing the text. */}
       {rows.map((row) => (
-        <div className="flex gap-[2ch]" key={row.name}>
+        <div
+          className="mt-[1lh] flex gap-[2ch] first:mt-0 max-sm:flex-col max-sm:gap-0"
+          key={row.name}
+        >
           <dt
             className={`w-[20ch] shrink-0 ${row.className ?? "text-ascii-soft"}`}
           >
@@ -173,7 +178,13 @@ function FrameKinds() {
 /** Grid: the AsciiBox reference example. */
 function BoxExample() {
   return (
-    <AsciiBox bg="bg-card" title="deploy.log" width={40}>
+    <AsciiBox
+      bg="bg-card"
+      className="w-[40ch] max-sm:w-full"
+      fluid
+      title="deploy.log"
+      width={40}
+    >
       <p className="text-ascii-soft">Build finished in 48s.</p>
       <AsciiBoxDivider pad={false} />
       <AsciiBoxRow>
@@ -213,7 +224,13 @@ function FluidFrame() {
 /** Grid: the status-panel recipe. */
 function StatusPanel() {
   return (
-    <AsciiBox contentClassName="flex flex-col" title="services" width={44}>
+    <AsciiBox
+      className="w-[44ch] max-sm:w-full"
+      contentClassName="flex flex-col"
+      fluid
+      title="services"
+      width={44}
+    >
       <ul className="flex flex-col text-ascii-soft">
         <li className="flex items-center gap-[1ch]">
           <Marker tone="success" /> api
