@@ -64,7 +64,7 @@ function QuestionnaireQuestion({
   return (
     <div
       data-slot="questionnaire-question"
-      className={cn("my-[1lh] font-weight-heading text-foreground", className)}
+      className={cn("my-[1lh] font-heading text-foreground", className)}
       {...props}
     />
   );
@@ -99,7 +99,7 @@ function QuestionnaireOption({
       className={cn(
         "flex items-center gap-[1ch] px-[2ch] text-left text-ascii-soft outline-none",
         "hover:text-foreground focus-visible:text-foreground",
-        "data-selected:text-primary data-selected:font-weight-heading",
+        "data-selected:text-primary data-selected:font-heading",
         className
       )}
       {...props}

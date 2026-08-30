@@ -36,7 +36,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="item-title"
-      className={cn("truncate font-weight-heading text-foreground", className)}
+      className={cn("truncate font-heading text-foreground", className)}
       {...props}
     />
   );

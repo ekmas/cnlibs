@@ -33,7 +33,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-title"
-      className={cn("font-weight-heading", className)}
+      className={cn("font-heading", className)}
       {...props}
     />
   );

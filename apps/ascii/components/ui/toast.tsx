@@ -66,7 +66,7 @@ function Toaster({ width = 42 }: { width?: number }) {
               {toast.title && (
                 <ToastPrimitive.Title
                   data-slot="toast-title"
-                  className="flex items-center gap-[1ch] font-weight-heading"
+                  className="flex items-center gap-[1ch] font-heading"
                 >
                   {/* toastManager.promise() sets type "loading" while pending. */}
                   {toast.type === "loading" && <Spinner aria-hidden />}

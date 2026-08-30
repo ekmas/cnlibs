@@ -43,7 +43,7 @@ function MessageAuthor({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="message-author"
-      className={cn("font-weight-heading text-primary", className)}
+      className={cn("font-heading text-primary", className)}
       {...props}
     />
   );

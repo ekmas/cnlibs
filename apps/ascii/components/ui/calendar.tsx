@@ -92,7 +92,7 @@ function Calendar({
         >
           {"<"}
         </button>
-        <span className="col-span-5 font-weight-heading tracking-[0.04em] text-primary uppercase">
+        <span className="col-span-5 font-heading tracking-[0.04em] text-primary uppercase">
           {monthLabel}
         </span>
         <button
@@ -125,7 +125,7 @@ function Calendar({
               onClick={() => onSelect?.(date)}
               className={cn(
                 "text-foreground outline-none hover:text-primary focus-visible:text-primary",
-                isToday && !isSelected && "font-weight-heading text-primary",
+                isToday && !isSelected && "font-heading text-primary",
                 isSelected && "bg-primary text-primary-foreground"
               )}
             >

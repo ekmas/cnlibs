@@ -54,7 +54,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       role="rowgroup"
       data-slot="table-header"
-      className={cn("font-weight-heading text-foreground", className)}
+      className={cn("font-heading text-foreground", className)}
       {...props}
     />
   );
@@ -69,7 +69,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       role="rowgroup"
       data-slot="table-footer"
-      className={cn("font-weight-heading", className)}
+      className={cn("font-heading", className)}
       {...props}
     />
   );

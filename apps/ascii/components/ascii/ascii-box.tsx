@@ -162,7 +162,7 @@ function AsciiBox({
   bg = "bg-card",
   className,
   contentClassName,
-  padY = 1,
+  padY = 0,
   children,
   ...props
 }: AsciiBoxProps) {

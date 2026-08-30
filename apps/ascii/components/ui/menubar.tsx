@@ -51,7 +51,7 @@ function MenubarTrigger({ className, ...props }: MenuPrimitive.Trigger.Props) {
         "inline-flex items-center whitespace-nowrap text-ascii-comment uppercase outline-none",
         "hover:text-foreground",
         "focus-visible:text-primary",
-        "data-popup-open:font-weight-heading data-popup-open:text-primary",
+        "data-popup-open:font-heading data-popup-open:text-primary",
         className
       )}
       {...props}
