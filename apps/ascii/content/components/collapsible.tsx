@@ -55,19 +55,30 @@ export const doc: ComponentDoc = {
     },
     {
       title: "open by default",
+      description: "defaultOpen starts the panel expanded.",
       code: `<Collapsible defaultOpen>
-  <CollapsibleTrigger>Open by default</CollapsibleTrigger>
+  <CollapsibleTrigger>Build details</CollapsibleTrigger>
   <CollapsibleContent>
-    Pass defaultOpen to start expanded.
+    <ul className="flex flex-col">
+      <li>commit  a1b2c3d</li>
+      <li>branch  main</li>
+      <li>took    48s</li>
+    </ul>
   </CollapsibleContent>
 </Collapsible>`,
       preview: (
-        <Collapsible className="w-[44ch]" defaultOpen>
-          <CollapsibleTrigger>Open by default</CollapsibleTrigger>
-          <CollapsibleContent>
-            Pass defaultOpen to start expanded.
-          </CollapsibleContent>
-        </Collapsible>
+        <AsciiBox title="Build #4021" width={48}>
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger>Build details</CollapsibleTrigger>
+            <CollapsibleContent>
+              <ul className="flex flex-col whitespace-pre text-ascii-soft">
+                <li>commit a1b2c3d</li>
+                <li>branch main</li>
+                <li>took 48s</li>
+              </ul>
+            </CollapsibleContent>
+          </Collapsible>
+        </AsciiBox>
       ),
     },
   ],

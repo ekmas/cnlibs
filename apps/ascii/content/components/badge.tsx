@@ -49,12 +49,6 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "as link",
-      description: "render swaps the element, so a badge can be an anchor.",
-      code: `<Badge render={<a href="#releases" />}>v1.4.2</Badge>`,
-      preview: <Badge render={<a href="#releases" />}>v1.4.2</Badge>,
-    },
-    {
       title: "inline",
       code: `<span>build #4021</span>
 <Badge>Passing</Badge>
