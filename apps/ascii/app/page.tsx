@@ -22,8 +22,8 @@ export default function Home() {
             <span className="text-ascii-comment text-sm uppercase tracking-[0.08em]">
               {"/// ui kit — monospace + ascii borders"}
             </span>
-            <h1 className="font-weight-heading text-primary text-sm tracking-tight">
-              ASCII UI
+            <h1 className="font-heading text-primary text-sm tracking-tight">
+              ascii
             </h1>
             <p className="max-w-lg text-ascii-soft text-sm">
               A shadcn/ui component library, typed out in IBM Plex Mono. Real,

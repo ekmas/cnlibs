@@ -1,0 +1,42 @@
+import { GlyphPresets, TokenTable } from "@/components/ascii/docs-demos";
+
+## tokens
+
+A palette is eleven values. They feed the standard shadcn tokens (`--primary`, `--background`, `--destructive`…) plus a few ASCII-specific roles that components use directly. Names describe a role, not a hue, so a palette can be swapped wholesale.
+
+<TokenTable />
+
+Resting frames are drawn at 60% of the primary color; hover and focus bring them to 100%. Two more dials live in the Tailwind theme: `--font-weight-heading` (700) and `--font-weight-base` (400), which give you the `font-heading` / `font-base` utilities.
+
+## border glyphs
+
+Every framed component asks one context for six characters and draws itself from them. `top`, `bottom` and `divider` repeat horizontally; `left` and `right` repeat one character per row; `junction` is a single character placed at corners and wherever a divider meets a side. A line may be a multi-character sequence — `<|>` draws `<|><|><|>…`.
+
+<GlyphPresets />
+
+```tsx
+import { AsciiCharsProvider } from "@/components/ascii/ascii-chars";
+
+// Any key left out keeps its default ("+", "-", "|").
+<AsciiCharsProvider
+  chars={{
+    top: "=",
+    bottom: "=",
+    left: "‖",
+    right: "‖",
+    divider: "=",
+    junction: "#",
+  }}
+>
+  <App />
+</AsciiCharsProvider>
+
+// Lines may be sequences that repeat to fill the run:
+<AsciiCharsProvider chars={{ top: "<|>", bottom: "<|>", left: "^|v", right: "^|v" }}>
+```
+
+Providers nest: wrap one panel in its own `AsciiCharsProvider` to give it a different frame from the rest of the page, exactly as the previews above do. Components rendered outside any provider use the classic set, so an installed component works before you configure anything.
+
+## the styling page
+
+[/styling](/styling) is a live editor for all three dials. It is backed by `AsciiThemeProvider`, which exposes `useAsciiTheme()` with `setColors`, `setFont`, `setChars` and `reset`, and persists the result under the `ascii-theme` key in localStorage. Use it to try combinations, then bake the winner into your app with the snippets above.

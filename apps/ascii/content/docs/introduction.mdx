@@ -1,0 +1,22 @@
+## what it is
+
+The shadcn/ui components — buttons, dialogs, menus, tables, forms — rebuilt to look like they were typed into a terminal. No CSS borders, rounded corners or shadows: a frame is a row of `+----+` above and below and a column of `|` down each side, drawn with real characters on the same grid as the text inside.
+
+Behavior stays ordinary and accessible: every component wraps a [Base UI](https://base-ui.com) primitive, so keyboard navigation, focus, portals and ARIA come for free. ascii only decides what it looks like.
+
+## how it's built
+
+| | |
+| --- | --- |
+| one grid | Everything is measured in characters and lines — `ch` across, `lh` down — so borders and text always line up. |
+| frames are text | Borders are strings or repeated glyphs clipped to width. They inherit color like text. |
+| glyphs are a theme | The frame characters come from one context — swap `+ - \|` for `= ‖ #` or `~ ( )` and every component redraws. |
+| palettes | Fourteen color schemes (seven dark, seven light), each an installable registry item on the usual shadcn tokens. |
+| registry | Components and themes ship from a self-hosted shadcn registry. `shadcn add` copies the source into your project. |
+
+## what's inside
+
+- [60 components](/components) — the full shadcn/ui catalogue plus a few extras (Bubble, Marker, Message, Questionnaire, Attachment).
+- [Frame primitives](/docs/grid) (`AsciiBox`, `AsciiRule`, `AsciiSide`…) for drawing your own panels on the grid.
+- [Themes](/docs/theming): palettes, any Google mono font and the glyph set — previewed on the [styling page](/styling).
+

@@ -1,0 +1,149 @@
+import {
+  BoxExample,
+  CellRuler,
+  FluidFrame,
+  FrameKinds,
+  StatusPanel,
+} from "@/components/ascii/docs-demos";
+
+## units
+
+Horizontal distances are measured in `ch` (the width of one character) and vertical distances in `lh` (one line). The library declares `text-sm` everywhere and sizes it to 16px over a 22px line, so one cell is exactly one glyph and one row is exactly one text line. As long as you pad and size in these units, a border row you draw and the text next to it stay in step.
+
+<CellRuler />
+
+```tsx
+<div className="flex flex-col gap-[1lh] px-[2ch]">             // grid-aligned spacing
+<div className="w-[40ch]">                                     // 40 characters wide
+<div className="h-[8lh]">                                      // 8 text rows tall
+<Input chWidth={34} />                                         // fixed-width frames take a character count
+```
+
+## fixed vs fluid frames
+
+Frames come in two kinds, and every component uses one of them:
+
+| | |
+| --- | --- |
+| fixed (chWidth) | The border is a generated string of exactly N characters — `+----+` — so the frame's width is known up front. Inputs, selects, dialogs, cards, popups and `AsciiBox` work this way; they take a `chWidth` / `width` prop in characters. |
+| fluid | The border is a long run of glyphs clipped by `overflow-hidden` to whatever width the layout gives it. Buttons, tabs, code blocks and rules use this, so they can size to their content or stretch with a flex container. |
+
+<FrameKinds />
+
+## AsciiBox
+
+The workhorse for custom panels: a titled, fixed-width frame with 2ch of inner padding and optional empty rows above and below the content.
+
+<BoxExample />
+
+```tsx
+import { AsciiBox, AsciiBoxDivider, AsciiBoxRow } from "@/components/ascii/ascii-box";
+
+<AsciiBox width={40} title="deploy.log" bg="bg-card">
+  <p>Build finished in 48s.</p>
+  <AsciiBoxDivider pad={false} />
+  <AsciiBoxRow>
+    <span className="flex justify-between">
+      <span>web-app</span>
+      <Badge>live</Badge>
+    </span>
+  </AsciiBoxRow>
+  <AsciiBoxRow>
+    <span className="flex justify-between">
+      <span>worker</span>
+      <Badge variant="destructive">failed</Badge>
+    </span>
+  </AsciiBoxRow>
+</AsciiBox>
+```
+
+| | |
+| --- | --- |
+| width | Total width in characters, borders included. |
+| title | Text set into the top border: `+-- title ------+`. |
+| padY | Empty text rows above and below the content (default 0). |
+| bg | The surface class (default `bg-card`). Pass it here rather than in `className` so dividers can repaint it where they cross the side rules. |
+| contentClassName | Classes for the padded content column. |
+| AsciiBoxDivider | A full-width `+----+` rule. By default it adds a blank row on each side; `pad={false}` draws it flush. |
+| AsciiBoxRow | A row that spans out to the side glyphs — for lists that need their own hover or selection background. |
+
+## building blocks
+
+Below `AsciiBox` sit the pieces every component is assembled from. They all read the glyph set from context and are `aria-hidden`, so screen readers never hear a border.
+
+| | |
+| --- | --- |
+| AsciiEdge | A fixed-width top or bottom row, optionally titled — the string form of a frame edge. |
+| AsciiSide | One side glyph. Used per row by inputs, menu items and table rows that draw their own sides. |
+| AsciiVRule | A column of side glyphs that stretches to its sibling's height — for content of unknown height. |
+| AsciiRule | A fluid horizontal (or vertical) run of the `divider` glyph, clipped to its container. `line` picks another edge glyph; `char` overrides it. |
+| AsciiHBorder | Junction + fluid rule + junction: `+------+` at any width. |
+| AsciiJunction | The single corner/intersection glyph. |
+| AsciiPad | N literal empty text rows — vertical padding that stays on the grid. |
+
+<FluidFrame />
+
+```tsx
+import { AsciiHBorder, AsciiVRule } from "@/components/ascii/ascii-box";
+
+// A fluid frame that stretches with its container (this is how CodeBlock is built).
+<div className="w-full max-w-[60ch]">
+  <AsciiHBorder line="top" />
+  <div className="relative">
+    <AsciiVRule side="left" className="absolute inset-y-0 left-0" />
+    <div className="px-[2ch]">any content, any height</div>
+    <AsciiVRule side="right" className="absolute inset-y-0 right-0" />
+  </div>
+  <AsciiHBorder line="bottom" />
+</div>
+```
+
+## string helpers
+
+When you need the raw strings — a custom table, a divider with column junctions, a border inside a `<pre>` — the same functions the components use are in `lib/ascii.ts`. Pass the glyph set from `useAsciiChars()` so your output follows the theme; omit it for the classic characters.
+
+```ts
+import { fill, topBorder, bottomBorder, columnDivider, tableRowWidth } from "@/lib/ascii";
+import { useAsciiChars } from "@/components/ascii/ascii-chars";
+
+const chars = useAsciiChars();          // the active glyph set
+
+topBorder(20, "log", chars)             // "+-- log -----------+"
+bottomBorder(20, chars)                 // "+------------------+"
+fill(6, "<|>")                          // "<|><|>"
+columnDivider([8, 6], chars)            // "+--------+------+"
+tableRowWidth([8, 6])                   // 17
+```
+
+## recipe: a status panel
+
+<StatusPanel />
+
+```tsx
+<AsciiBox width={44} title="services" contentClassName="flex flex-col">
+  <ul className="flex flex-col">
+    <li className="flex items-center gap-[1ch]">
+      <Marker tone="success" /> api <span className="ml-auto text-ascii-comment">12ms</span>
+    </li>
+    <li className="flex items-center gap-[1ch]">
+      <Marker tone="warning" /> queue <span className="ml-auto text-ascii-comment">lagging</span>
+    </li>
+    <li className="flex items-center gap-[1ch]">
+      <Marker tone="neutral" /> cron <span className="ml-auto text-ascii-comment">idle</span>
+    </li>
+  </ul>
+  <AsciiBoxDivider pad={false} />
+  <Progress value={72} label="disk 72%" />
+  <AsciiRule />
+  <Button variant="outline" className="self-end">Refresh</Button>
+</AsciiBox>
+```
+
+## rules of the grid
+
+- Space in `ch` and `lh` only. A single `p-4` in the middle of a frame knocks every row after it off the grid.
+- Generated border strings need `whitespace-pre` (the primitives set it) — collapsed spaces shorten a titled edge.
+- Mark frame glyphs `aria-hidden` and `select-none`; they are decoration, not content.
+- Two framed things next to each other should overlap by `1ch` (`-space-x-[1ch]`) so they share one `|` instead of showing two — that is how Button Group and the install tabs work.
+- Where a divider crosses a side rule, give the divider `relative z-10` and the surface background so the intersection shows one junction glyph, not a `|` underneath a `-`.
+- Frames inherit `color`. To recolor a whole frame, set the text color on the wrapper and let `text-inherit` primitives follow — do not color each glyph.

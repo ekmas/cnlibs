@@ -16,26 +16,34 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Kbd } from "@/components/ui/kbd";
+import { docsHref, docsNav } from "@/content/docs/manifest";
 import { asciiComponents } from "@/lib/ascii-components";
 
 const groups: CommandGroupData[] = [
+  {
+    group: "Getting started",
+    items: docsNav.map((entry) => ({
+      value: docsHref(entry.slug),
+      label: entry.title,
+    })),
+  },
   {
     group: "Components",
     items: asciiComponents.map((entry) => ({
       value: `/components/${entry.slug}`,
       label: entry.name,
-      hint: entry.status === "soon" ? "soon" : undefined,
     })),
   },
 ];
 
 /** Matches the query against names and descriptions, so e.g. "modal"
  * finds Dialog and "one-time" finds Input OTP. */
-const descriptionByHref = new Map<string, string>(
-  asciiComponents.map(
+const descriptionByHref = new Map<string, string>([
+  ...docsNav.map((entry) => [docsHref(entry.slug), entry.description] as const),
+  ...asciiComponents.map(
     (entry) => [`/components/${entry.slug}`, entry.description] as const
-  )
-);
+  ),
+]);
 
 function matchesQuery(item: CommandOption, query: string) {
   const q = query.trim().toLowerCase();

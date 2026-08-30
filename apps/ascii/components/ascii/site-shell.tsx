@@ -10,7 +10,7 @@ import { SearchButton } from "@/components/ascii/search";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const NAV = [
-  { href: "/components", label: "Docs" },
+  { href: "/docs", label: "Docs" },
   { href: "/components", label: "Components" },
   { href: "/styling", label: "Styling" },
 ] as const;
