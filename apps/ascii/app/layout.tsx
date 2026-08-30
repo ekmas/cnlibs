@@ -6,8 +6,10 @@ import {
   AsciiVRule,
 } from "@/components/ascii/ascii-box";
 import { AsciiThemeProvider } from "@/components/ascii/ascii-theme";
+import { SiteUrlProvider } from "@/components/ascii/site-url";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ASCII_FONT_VAR, ASCII_THEME_STORAGE_KEY } from "@/lib/ascii-theme";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -17,7 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ASCII UI — shadcn component library",
+  title: "ascii — shadcn component library",
   description:
     "A shadcn/ui component library recreated as a monospace, ASCII-bordered terminal aesthetic.",
 };
@@ -29,8 +31,17 @@ export const metadata: Metadata = {
 const themeBootScript = `(function(){try{var t=JSON.parse(localStorage.getItem(${JSON.stringify(ASCII_THEME_STORAGE_KEY)}));if(!t)return;var r=document.documentElement;if(t.colors)for(var k in t.colors)if(/^--[a-z-]+$/.test(k)&&typeof t.colors[k]==="string")r.style.setProperty(k,t.colors[k]);if(typeof t.font==="string"&&t.font.trim()){var f=t.font.trim().replace(/"/g,"");r.style.setProperty(${JSON.stringify(ASCII_FONT_VAR)},'"'+f+'", ui-monospace, monospace')}}catch(e){}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  /* suppressHydrationWarning: the boot script above sets the persisted
+   * palette's custom properties as an inline style on <html> before
+   * React runs, so the server markup (no style) never matches — that
+   * is the intended pre-paint theme, not a bug. Only <html>'s own
+   * attributes are suppressed; children still hydrate strictly. */
   return (
-    <html lang="en" className={`${ibmPlexMono.variable} h-full antialiased`}>
+    <html
+      className={`${ibmPlexMono.variable} h-full antialiased`}
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static, build-time string — see themeBootScript */}
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
@@ -50,7 +61,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 className="absolute inset-y-0 left-0"
               />
               <div className="flex h-full min-w-0 flex-col overflow-hidden px-[1ch] text-foreground">
-                <TooltipProvider>{children}</TooltipProvider>
+                <SiteUrlProvider value={SITE_URL}>
+                  <TooltipProvider>{children}</TooltipProvider>
+                </SiteUrlProvider>
               </div>
               <AsciiVRule
                 tone="soft"

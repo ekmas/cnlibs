@@ -4,8 +4,8 @@ import * as React from "react";
 
 import { useAsciiChars } from "@/components/ascii/ascii-chars";
 import { CodeBlock } from "@/components/ascii/code-block";
+import { useSiteUrl } from "@/components/ascii/site-url";
 import { bottomBorder, topBorder, vGlyph } from "@/lib/ascii";
-import { SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const MANAGERS = [
@@ -63,10 +63,11 @@ function InstallTabs({
   subcommand?: "add" | "init";
   className?: string;
 }) {
+  const siteUrl = useSiteUrl();
   const [active, setActive] = React.useState<ManagerId>("pnpm");
   const manager = MANAGERS.find((m) => m.id === active) ?? MANAGERS[0];
   const command = manager.run(
-    `shadcn@latest ${subcommand} ${SITE_URL}/r/${item}.json`
+    `shadcn@latest ${subcommand} ${siteUrl}/r/${item}.json`
   );
 
   return (
