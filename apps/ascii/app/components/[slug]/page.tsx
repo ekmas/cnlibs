@@ -45,7 +45,7 @@ export default async function ComponentPage({
   return (
     <div className="flex items-start gap-[4ch] px-[2ch]">
       <div className="flex min-w-0 max-w-4xl flex-1 flex-col py-[1lh]">
-        <header className="flex flex-col">
+        <header className="mb-[1lh] flex flex-col">
           <h1 className="mb-[1lh] font-heading text-primary text-sm tracking-tight">
             {doc.title}
           </h1>
@@ -62,7 +62,7 @@ export default async function ComponentPage({
           ) : null}
         </header>
 
-        <div className="flex flex-col gap-[2lh] pt-[1lh]" id="docs-article">
+        <div className="flex flex-col gap-[2lh]" id="docs-article">
           {hero ? <VariantSection showHeader={false} variant={hero} /> : null}
 
           <section className="flex flex-col gap-[1lh]" id="installation">

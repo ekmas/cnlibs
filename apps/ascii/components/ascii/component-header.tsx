@@ -6,7 +6,7 @@ function ComponentHeader({
   description: string;
 }) {
   return (
-    <div className="flex flex-col">
+    <div className="mb-[1lh] flex flex-col">
       <h1 className="mb-[1lh] font-heading text-primary text-sm tracking-tight">
         {title}
       </h1>
