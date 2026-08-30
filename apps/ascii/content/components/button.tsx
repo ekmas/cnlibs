@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import type { ComponentDoc } from "./types";
@@ -8,112 +7,80 @@ export const doc: ComponentDoc = {
   description: "Triggers an action.",
   sections: [
     {
-      title: "variants",
-      code: `<Button>Deploy</Button>
-<Button variant="secondary">View logs</Button>
-<Button variant="outline">Cancel</Button>
-<Button variant="ghost">Skip</Button>
-<Button variant="destructive">Delete</Button>
-<Button variant="link">Docs</Button>`,
+      title: "default",
+      code: "<Button>Deploy</Button>",
+      preview: <Button>Deploy</Button>,
+    },
+    {
+      title: "secondary",
+      code: `<Button variant="secondary">View logs</Button>`,
+      preview: <Button variant="secondary">View logs</Button>,
+    },
+    {
+      title: "outline",
+      code: `<Button variant="outline">Cancel</Button>`,
+      preview: <Button variant="outline">Cancel</Button>,
+    },
+    {
+      title: "ghost",
+      code: `<Button variant="ghost">Skip</Button>`,
+      preview: <Button variant="ghost">Skip</Button>,
+    },
+    {
+      title: "destructive",
+      code: `<Button variant="destructive">Delete</Button>`,
+      preview: <Button variant="destructive">Delete</Button>,
+    },
+    {
+      title: "link",
+      description: "No frame — a # marker that turns into > on hover.",
+      code: `<Button variant="link">Docs</Button>`,
+      preview: <Button variant="link">Docs</Button>,
+    },
+    {
+      title: "icon",
+      description: 'size="icon" fits a single glyph; give it an aria-label.',
+      code: `<Button size="icon" aria-label="Close">x</Button>`,
       preview: (
-        <>
-          <DemoRow label="default">
-            <Button>Deploy</Button>
-          </DemoRow>
-          <DemoRow label="secondary">
-            <Button variant="secondary">View logs</Button>
-          </DemoRow>
-          <DemoRow label="outline">
-            <Button variant="outline">Cancel</Button>
-          </DemoRow>
-          <DemoRow label="ghost">
-            <Button variant="ghost">Skip</Button>
-          </DemoRow>
-          <DemoRow label="destructive">
-            <Button variant="destructive">Delete</Button>
-          </DemoRow>
-          <DemoRow label="link">
-            <Button variant="link">Docs</Button>
-          </DemoRow>
-        </>
+        <Button aria-label="Close" size="icon">
+          x
+        </Button>
       ),
     },
     {
-      title: "sizes",
-      code: `<Button size="default">Default</Button>
-<Button size="icon" aria-label="Close">x</Button>`,
-      preview: (
-        <>
-          <DemoRow label="default">
-            <Button size="default">Default</Button>
-          </DemoRow>
-          <DemoRow label="icon">
-            <Button aria-label="Close" size="icon">
-              x
-            </Button>
-          </DemoRow>
-        </>
-      ),
+      title: "with glyph",
+      code: "<Button>[+] New project</Button>",
+      preview: <Button>[+] New project</Button>,
     },
     {
-      title: "states",
-      code: `<Button disabled>Locked</Button>
-<Button variant="outline" disabled>Locked</Button>
-
-<Button disabled><Spinner /> Deploying</Button>
-<Button variant="outline" disabled><Spinner /> Fetching</Button>`,
-      preview: (
-        <>
-          <DemoRow label="disabled">
-            <Button disabled>Locked</Button>
-            <Button disabled variant="outline">
-              Locked
-            </Button>
-          </DemoRow>
-          <DemoRow label="loading">
-            <Button disabled>
-              <Spinner /> Deploying
-            </Button>
-            <Button disabled variant="outline">
-              <Spinner /> Fetching
-            </Button>
-          </DemoRow>
-        </>
-      ),
-    },
-    {
-      title: "example",
-      code: `<Button>[+] New project</Button>
-<Button variant="outline">Download <span className="text-ascii-comment">v</span></Button>
-<Button variant="ghost" aria-label="Previous">&lt;</Button>
-<Button variant="ghost" aria-label="Next">&gt;</Button>
-<Button render={<a href="#docs" />} nativeButton={false} variant="outline">
+      title: "as link",
+      description:
+        "render swaps the element; nativeButton={false} tells Base UI it isn't a <button>.",
+      code: `<Button render={<a href="#docs" />} nativeButton={false} variant="outline">
   Read the docs
 </Button>`,
       preview: (
-        <>
-          <DemoRow label="with glyph">
-            <Button>[+] New project</Button>
-            <Button variant="outline">
-              Download <span className="text-ascii-comment">v</span>
-            </Button>
-            <Button aria-label="Previous" variant="ghost">
-              &lt;
-            </Button>
-            <Button aria-label="Next" variant="ghost">
-              &gt;
-            </Button>
-          </DemoRow>
-          <DemoRow label="as link">
-            <Button
-              nativeButton={false}
-              render={<a href="#docs" />}
-              variant="outline"
-            >
-              Read the docs
-            </Button>
-          </DemoRow>
-        </>
+        <Button
+          nativeButton={false}
+          render={<a href="#docs" />}
+          variant="outline"
+        >
+          Read the docs
+        </Button>
+      ),
+    },
+    {
+      title: "disabled",
+      code: "<Button disabled>Locked</Button>",
+      preview: <Button disabled>Locked</Button>,
+    },
+    {
+      title: "loading",
+      code: "<Button disabled><Spinner /> Deploying</Button>",
+      preview: (
+        <Button disabled>
+          <Spinner /> Deploying
+        </Button>
       ),
     },
   ],

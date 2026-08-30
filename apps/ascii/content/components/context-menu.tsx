@@ -13,7 +13,7 @@ export const doc: ComponentDoc = {
   description: "A menu of actions triggered by a right click.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<ContextMenu>
   <ContextMenuTrigger>
     <AsciiBox width={40} title="deploy.log">right-click this row</AsciiBox>

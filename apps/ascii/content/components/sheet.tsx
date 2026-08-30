@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,14 +13,44 @@ import {
 } from "@/components/ui/sheet";
 import type { ComponentDoc } from "./types";
 
-const sides = ["top", "right", "bottom", "left"] as const;
+function SideSheet({ side }: { side: "top" | "right" | "bottom" | "left" }) {
+  return (
+    <Sheet>
+      <SheetTrigger render={<Button variant="ghost">{side}</Button>} />
+      <SheetContent side={side}>
+        <SheetHeader>
+          <SheetTitle>side=&quot;{side}&quot;</SheetTitle>
+          <SheetDescription>
+            The sheet slides in from the {side} edge.
+          </SheetDescription>
+        </SheetHeader>
+        <SheetFooter>
+          <SheetClose render={<Button variant="outline">Close</Button>} />
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+const sideCode = (side: string) => `<Sheet>
+  <SheetTrigger render={<Button variant="ghost">${side}</Button>} />
+  <SheetContent side="${side}">
+    <SheetHeader>
+      <SheetTitle>side="${side}"</SheetTitle>
+      <SheetDescription>The sheet slides in from the ${side} edge.</SheetDescription>
+    </SheetHeader>
+    <SheetFooter>
+      <SheetClose render={<Button variant="outline">Close</Button>} />
+    </SheetFooter>
+  </SheetContent>
+</Sheet>`;
 
 export const doc: ComponentDoc = {
   title: "Sheet",
   description: "Extends the dialog to display content on the edge.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Sheet>
   <SheetTrigger render={<Button variant="outline">Edit project</Button>} />
   <SheetContent side="right">
@@ -78,63 +107,51 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
-      code: `<SheetContent side="top" />
-<SheetContent side="right" />
-<SheetContent side="bottom" />
-<SheetContent side="left" />
-
-<SheetContent side="left" showCloseButton={false}>
-  ...
-  <SheetFooter>
-    <SheetClose render={<Button variant="outline">Done</Button>} />
-  </SheetFooter>
-</SheetContent>`,
+      title: "left",
+      code: sideCode("left"),
+      preview: <SideSheet side="left" />,
+    },
+    {
+      title: "top",
+      code: sideCode("top"),
+      preview: <SideSheet side="top" />,
+    },
+    {
+      title: "bottom",
+      code: sideCode("bottom"),
+      preview: <SideSheet side="bottom" />,
+    },
+    {
+      title: "without close button",
+      description:
+        "showCloseButton={false} drops the [x]; escape, the backdrop and SheetClose still dismiss it.",
+      code: `<Sheet>
+  <SheetTrigger render={<Button variant="ghost">Filters</Button>} />
+  <SheetContent side="left" showCloseButton={false}>
+    <SheetHeader>
+      <SheetTitle>Filters</SheetTitle>
+      <SheetDescription>Dismiss with escape, the backdrop, or the footer button.</SheetDescription>
+    </SheetHeader>
+    <SheetFooter>
+      <SheetClose render={<Button variant="outline">Done</Button>} />
+    </SheetFooter>
+  </SheetContent>
+</Sheet>`,
       preview: (
-        <>
-          <DemoRow label="sides">
-            {sides.map((side) => (
-              <Sheet key={side}>
-                <SheetTrigger
-                  render={<Button variant="ghost">{side}</Button>}
-                />
-                <SheetContent side={side}>
-                  <SheetHeader>
-                    <SheetTitle>side=&quot;{side}&quot;</SheetTitle>
-                    <SheetDescription>
-                      The sheet slides in from the {side} edge.
-                    </SheetDescription>
-                  </SheetHeader>
-                  <SheetFooter>
-                    <SheetClose
-                      render={<Button variant="outline">Close</Button>}
-                    />
-                  </SheetFooter>
-                </SheetContent>
-              </Sheet>
-            ))}
-          </DemoRow>
-          <DemoRow label="no close [x]">
-            <Sheet>
-              <SheetTrigger
-                render={<Button variant="ghost">showCloseButton=false</Button>}
-              />
-              <SheetContent showCloseButton={false} side="left">
-                <SheetHeader>
-                  <SheetTitle>Filters</SheetTitle>
-                  <SheetDescription>
-                    Dismiss with escape, the backdrop, or the footer button.
-                  </SheetDescription>
-                </SheetHeader>
-                <SheetFooter>
-                  <SheetClose
-                    render={<Button variant="outline">Done</Button>}
-                  />
-                </SheetFooter>
-              </SheetContent>
-            </Sheet>
-          </DemoRow>
-        </>
+        <Sheet>
+          <SheetTrigger render={<Button variant="ghost">Filters</Button>} />
+          <SheetContent showCloseButton={false} side="left">
+            <SheetHeader>
+              <SheetTitle>Filters</SheetTitle>
+              <SheetDescription>
+                Dismiss with escape, the backdrop, or the footer button.
+              </SheetDescription>
+            </SheetHeader>
+            <SheetFooter>
+              <SheetClose render={<Button variant="outline">Done</Button>} />
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
       ),
     },
   ],

@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Badge } from "@/components/ui/badge";
 import { Marker } from "@/components/ui/marker";
 import { Spinner } from "@/components/ui/spinner";
@@ -9,64 +8,65 @@ export const doc: ComponentDoc = {
   description: "A small status label.",
   sections: [
     {
-      title: "variants",
-      code: `<Badge>Online</Badge>
-<Badge variant="secondary">Beta</Badge>
-<Badge variant="destructive">Deprecated</Badge>
-<Badge variant="outline">Draft</Badge>
-<Badge variant="ghost">Archived</Badge>`,
+      title: "default",
+      code: "<Badge>Online</Badge>",
+      preview: <Badge>Online</Badge>,
+    },
+    {
+      title: "secondary",
+      code: `<Badge variant="secondary">Beta</Badge>`,
+      preview: <Badge variant="secondary">Beta</Badge>,
+    },
+    {
+      title: "destructive",
+      code: `<Badge variant="destructive">Deprecated</Badge>`,
+      preview: <Badge variant="destructive">Deprecated</Badge>,
+    },
+    {
+      title: "outline",
+      code: `<Badge variant="outline">Draft</Badge>`,
+      preview: <Badge variant="outline">Draft</Badge>,
+    },
+    {
+      title: "ghost",
+      code: `<Badge variant="ghost">Archived</Badge>`,
+      preview: <Badge variant="ghost">Archived</Badge>,
+    },
+    {
+      title: "with icon",
+      description: "Any inline glyph or component sits before the label.",
+      code: `<Badge variant="outline"><Marker tone="success" /> healthy</Badge>
+<Badge variant="secondary"><Spinner /> building</Badge>`,
       preview: (
-        <>
-          <DemoRow label="default">
-            <Badge>Online</Badge>
-          </DemoRow>
-          <DemoRow label="secondary">
-            <Badge variant="secondary">Beta</Badge>
-          </DemoRow>
-          <DemoRow label="destructive">
-            <Badge variant="destructive">Deprecated</Badge>
-          </DemoRow>
-          <DemoRow label="outline">
-            <Badge variant="outline">Draft</Badge>
-          </DemoRow>
-          <DemoRow label="ghost">
-            <Badge variant="ghost">Archived</Badge>
-          </DemoRow>
-        </>
+        <div className="flex flex-wrap items-center gap-[2ch]">
+          <Badge variant="outline">
+            <Marker tone="success" /> healthy
+          </Badge>
+          <Badge variant="secondary">
+            <Spinner /> building
+          </Badge>
+        </div>
       ),
     },
     {
-      title: "example",
+      title: "as link",
+      description: "render swaps the element, so a badge can be an anchor.",
+      code: `<Badge render={<a href="#releases" />}>v1.4.2</Badge>`,
+      preview: <Badge render={<a href="#releases" />}>v1.4.2</Badge>,
+    },
+    {
+      title: "inline",
       code: `<span>build #4021</span>
 <Badge>Passing</Badge>
 <Badge variant="secondary">main</Badge>
-<Badge variant="destructive">2 vulns</Badge>
-
-<Badge variant="outline"><Marker tone="success" /> healthy</Badge>
-<Badge variant="secondary"><Spinner /> building</Badge>
-<Badge render={<a href="#releases" />}>v1.4.2</Badge>`,
+<Badge variant="destructive">2 vulns</Badge>`,
       preview: (
-        <>
-          <DemoRow label="inline">
-            <div className="flex flex-wrap items-center gap-[2ch] text-ascii-soft text-sm">
-              <span>build #4021</span>
-              <Badge>Passing</Badge>
-              <Badge variant="secondary">main</Badge>
-              <Badge variant="destructive">2 vulns</Badge>
-            </div>
-          </DemoRow>
-          <DemoRow label="with icon">
-            <Badge variant="outline">
-              <Marker tone="success" /> healthy
-            </Badge>
-            <Badge variant="secondary">
-              <Spinner /> building
-            </Badge>
-          </DemoRow>
-          <DemoRow label="as link">
-            <Badge render={<a href="#releases" />}>v1.4.2</Badge>
-          </DemoRow>
-        </>
+        <div className="flex flex-wrap items-center gap-[2ch] text-ascii-soft text-sm">
+          <span>build #4021</span>
+          <Badge>Passing</Badge>
+          <Badge variant="secondary">main</Badge>
+          <Badge variant="destructive">2 vulns</Badge>
+        </div>
       ),
     },
   ],

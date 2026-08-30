@@ -13,7 +13,7 @@ export const doc: ComponentDoc = {
   description: "A trail to the current resource.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>

@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Sets the text direction for your app.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<DirectionProvider direction={direction}>
   <div dir={direction} className="flex items-center gap-[1ch]">
     <Button variant="ghost">Back</Button>

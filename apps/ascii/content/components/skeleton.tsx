@@ -1,5 +1,4 @@
 import { AsciiBox } from "@/components/ascii/ascii-box";
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { ComponentDoc } from "./types";
 
@@ -8,36 +7,32 @@ export const doc: ComponentDoc = {
   description: "A placeholder while content loads.",
   sections: [
     {
-      title: "variants",
-      code: `<Skeleton className="h-[1lh] w-[24ch]" />
-
-<div className="flex w-[32ch] flex-col gap-[1lh]">
+      title: "default",
+      code: `<Skeleton className="h-[1lh] w-[24ch]" />`,
+      preview: <Skeleton className="h-[1lh] w-[24ch]" />,
+    },
+    {
+      title: "paragraph",
+      code: `<div className="flex w-[32ch] flex-col gap-[1lh]">
   <Skeleton className="h-[1lh] w-full" />
   <Skeleton className="h-[1lh] w-full" />
   <Skeleton className="h-[1lh] w-2/3" />
-</div>
-
-<Skeleton className="h-[4lh] w-[16ch]" />`,
+</div>`,
       preview: (
-        <>
-          <DemoRow label="line">
-            <Skeleton className="h-[1lh] w-[24ch]" />
-          </DemoRow>
-          <DemoRow label="paragraph">
-            <div className="flex w-[32ch] flex-col gap-[1lh]">
-              <Skeleton className="h-[1lh] w-full" />
-              <Skeleton className="h-[1lh] w-full" />
-              <Skeleton className="h-[1lh] w-2/3" />
-            </div>
-          </DemoRow>
-          <DemoRow label="block">
-            <Skeleton className="h-[4lh] w-[16ch]" />
-          </DemoRow>
-        </>
+        <div className="flex w-[32ch] flex-col gap-[1lh]">
+          <Skeleton className="h-[1lh] w-full" />
+          <Skeleton className="h-[1lh] w-full" />
+          <Skeleton className="h-[1lh] w-2/3" />
+        </div>
       ),
     },
     {
-      title: "example",
+      title: "block",
+      code: `<Skeleton className="h-[4lh] w-[16ch]" />`,
+      preview: <Skeleton className="h-[4lh] w-[16ch]" />,
+    },
+    {
+      title: "in a panel",
       code: `<AsciiBox width={44} title="Loading deploy" contentClassName="flex flex-col gap-[1lh]">
   <Skeleton className="h-[1lh] w-[16ch]" />
   <Skeleton className="h-[1lh] w-full" />

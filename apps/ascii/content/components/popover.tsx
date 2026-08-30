@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,18 +11,41 @@ import {
 } from "@/components/ui/popover";
 import type { ComponentDoc } from "./types";
 
-const placements = [
-  ["right", "start"],
-  ["top", "center"],
-  ["bottom", "end"],
-] as const;
+function PlacementPopover({
+  side,
+  align,
+}: {
+  side: "top" | "right" | "bottom" | "left";
+  align: "start" | "center" | "end";
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={
+          <Button variant="ghost">
+            {side} / {align}
+          </Button>
+        }
+      />
+      <PopoverContent align={align} chWidth={28} side={side}>
+        <PopoverTitle>
+          side=&quot;{side}&quot; align=&quot;{align}&quot;
+        </PopoverTitle>
+        <PopoverDescription>
+          Flips to the opposite side when it runs out of room.
+        </PopoverDescription>
+        <PopoverClose render={<Button variant="outline">Close</Button>} />
+      </PopoverContent>
+    </Popover>
+  );
+}
 
 export const doc: ComponentDoc = {
   title: "Popover",
   description: "Rich content in a portal, triggered by a button.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Popover>
   <PopoverTrigger render={<Button variant="outline">Settings</Button>} />
   <PopoverContent chWidth={32}>
@@ -66,36 +88,19 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "placement",
-      code: `<PopoverContent side="right" align="start">...</PopoverContent>
-<PopoverContent side="top" align="center">...</PopoverContent>
-<PopoverContent side="bottom" align="end">...</PopoverContent>`,
-      preview: (
-        <DemoRow label="side / align">
-          {placements.map(([side, align]) => (
-            <Popover key={side}>
-              <PopoverTrigger
-                render={
-                  <Button variant="ghost">
-                    {side} / {align}
-                  </Button>
-                }
-              />
-              <PopoverContent align={align} chWidth={28} side={side}>
-                <PopoverTitle>
-                  side=&quot;{side}&quot; align=&quot;{align}&quot;
-                </PopoverTitle>
-                <PopoverDescription>
-                  Flips to the opposite side when it runs out of room.
-                </PopoverDescription>
-                <PopoverClose
-                  render={<Button variant="outline">Close</Button>}
-                />
-              </PopoverContent>
-            </Popover>
-          ))}
-        </DemoRow>
-      ),
+      title: "side right",
+      code: `<PopoverContent chWidth={28} side="right" align="start">...</PopoverContent>`,
+      preview: <PlacementPopover align="start" side="right" />,
+    },
+    {
+      title: "side top",
+      code: `<PopoverContent chWidth={28} side="top" align="center">...</PopoverContent>`,
+      preview: <PlacementPopover align="center" side="top" />,
+    },
+    {
+      title: "align end",
+      code: `<PopoverContent chWidth={28} side="bottom" align="end">...</PopoverContent>`,
+      preview: <PlacementPopover align="end" side="bottom" />,
     },
   ],
 };

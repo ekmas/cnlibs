@@ -21,7 +21,7 @@ export const doc: ComponentDoc = {
   description: "A horizontal, swipeable slide track.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Carousel className="w-full max-w-xl">
   <div className="flex items-center justify-end gap-[1ch]">
     <CarouselPrevious />

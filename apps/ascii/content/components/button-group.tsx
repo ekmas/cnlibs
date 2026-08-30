@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -13,7 +12,7 @@ export const doc: ComponentDoc = {
   description: "Related buttons grouped together.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<ButtonGroup>
   <Button variant="ghost">Day</Button>
   <Button aria-pressed>Week</Button>
@@ -22,14 +21,25 @@ export const doc: ComponentDoc = {
       preview: <ButtonGroupDemo />,
     },
     {
-      title: "variants",
+      title: "outline",
       code: `<ButtonGroup>
   <Button variant="outline">Copy</Button>
   <Button variant="outline">Paste</Button>
   <Button variant="outline">Cut</Button>
-</ButtonGroup>
-
-<ButtonGroup>
+</ButtonGroup>`,
+      preview: (
+        <ButtonGroup>
+          <Button variant="outline">Copy</Button>
+          <Button variant="outline">Paste</Button>
+          <Button variant="outline">Cut</Button>
+        </ButtonGroup>
+      ),
+    },
+    {
+      title: "split button",
+      description:
+        "A primary action sharing its frame with a menu of alternatives.",
+      code: `<ButtonGroup>
   <Button>Deploy</Button>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" aria-label="More">v</Button>} />
@@ -38,29 +48,16 @@ export const doc: ComponentDoc = {
       <DropdownMenuItem variant="destructive">Roll back last deploy</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
-</ButtonGroup>
-
-<ButtonGroup>
+</ButtonGroup>`,
+      preview: <ButtonGroupSplitDemo />,
+    },
+    {
+      title: "with input",
+      code: `<ButtonGroup>
   <Input chWidth={30} placeholder="sam@paper.design" />
   <Button variant="outline">Invite</Button>
 </ButtonGroup>`,
-      preview: (
-        <>
-          <DemoRow label="outline">
-            <ButtonGroup>
-              <Button variant="outline">Copy</Button>
-              <Button variant="outline">Paste</Button>
-              <Button variant="outline">Cut</Button>
-            </ButtonGroup>
-          </DemoRow>
-          <DemoRow label="split">
-            <ButtonGroupSplitDemo />
-          </DemoRow>
-          <DemoRow label="with input">
-            <ButtonGroupInputDemo />
-          </DemoRow>
-        </>
-      ),
+      preview: <ButtonGroupInputDemo />,
     },
   ],
 };

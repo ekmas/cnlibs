@@ -15,7 +15,7 @@ export const doc: ComponentDoc = {
   description: "Header, content and footer container.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Card width={38}>
   <CardHeader>
     <CardTitle>Session</CardTitle>
@@ -58,15 +58,26 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
+      title: "header only",
       code: `<Card width={30}>
   <CardHeader>
     <CardTitle>Header only</CardTitle>
     <CardDescription>No divider needed</CardDescription>
   </CardHeader>
-</Card>
-
-<Card width={30}>
+</Card>`,
+      preview: (
+        <Card width={30}>
+          <CardHeader>
+            <CardTitle>Header only</CardTitle>
+            <CardDescription>No divider needed</CardDescription>
+          </CardHeader>
+        </Card>
+      ),
+    },
+    {
+      title: "with action",
+      description: "CardAction floats a control on the header's right edge.",
+      code: `<Card width={30}>
   <CardHeader>
     <CardTitle>With action</CardTitle>
     <CardAction>
@@ -78,27 +89,17 @@ export const doc: ComponentDoc = {
   </CardContent>
 </Card>`,
       preview: (
-        <div className="flex flex-wrap items-start gap-[4ch]">
-          <Card width={30}>
-            <CardHeader>
-              <CardTitle>Header only</CardTitle>
-              <CardDescription>No divider needed</CardDescription>
-            </CardHeader>
-          </Card>
-          <Card width={30}>
-            <CardHeader>
-              <CardTitle>With action</CardTitle>
-              <CardAction>
-                <Button variant="ghost">Edit</Button>
-              </CardAction>
-            </CardHeader>
-            <CardContent>
-              <span className="text-ascii-soft">
-                Sections divide themselves.
-              </span>
-            </CardContent>
-          </Card>
-        </div>
+        <Card width={30}>
+          <CardHeader>
+            <CardTitle>With action</CardTitle>
+            <CardAction>
+              <Button variant="ghost">Edit</Button>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <span className="text-ascii-soft">Sections divide themselves.</span>
+          </CardContent>
+        </Card>
       ),
     },
   ],

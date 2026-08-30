@@ -7,7 +7,7 @@ export const doc: ComponentDoc = {
   description: "Date picker with range and preset support.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: "<DatePicker defaultValue={new Date(2026, 7, 25)} />",
       preview: (
         <div className="flex flex-col">

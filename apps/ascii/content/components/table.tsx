@@ -23,7 +23,7 @@ export const doc: ComponentDoc = {
   description: "A responsive table component.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Table widths={[14, 10, 10]}>
   <TableHeader>
     <TableRow>

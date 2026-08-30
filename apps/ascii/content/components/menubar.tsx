@@ -13,7 +13,7 @@ export const doc: ComponentDoc = {
   description: "A persistent menu common in desktop apps.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Menubar>
   <MenubarMenu>
     <MenubarTrigger>File</MenubarTrigger>

@@ -13,7 +13,7 @@ export const doc: ComponentDoc = {
   description: "An empty-state placeholder.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<AsciiBox width={48} title="Deployments">
   <Empty>
     <EmptyTitle>No deployments yet</EmptyTitle>
@@ -40,7 +40,7 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
+      title: "without an action",
       code: `<Empty>
   <EmptyTitle>No results for "quantum"</EmptyTitle>
   <EmptyDescription>Try a shorter query.</EmptyDescription>

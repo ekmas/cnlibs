@@ -16,7 +16,7 @@ export const doc: ComponentDoc = {
   description: "A panel that slides in from the edge of the screen.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Drawer>
   <DrawerTrigger render={<Button variant="outline">Open</Button>} />
   <DrawerContent>

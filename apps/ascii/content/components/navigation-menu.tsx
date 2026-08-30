@@ -16,7 +16,7 @@ export const doc: ComponentDoc = {
   description: "A collection of links for site navigation.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>

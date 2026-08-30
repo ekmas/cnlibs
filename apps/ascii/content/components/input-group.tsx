@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import {
   InputGroup,
   InputGroupAddon,
@@ -12,18 +11,38 @@ export const doc: ComponentDoc = {
   description: "Icons, buttons and helper content on inputs.",
   sections: [
     {
-      title: "variants",
+      title: "default",
       code: `<InputGroup chWidth={40}>
   <InputGroupAddon>https://</InputGroupAddon>
   <InputGroupInput aria-label="Domain" defaultValue="hooks.example.com" />
-</InputGroup>
-
-<InputGroup chWidth={30}>
+</InputGroup>`,
+      preview: (
+        <InputGroup chWidth={40}>
+          <InputGroupAddon>https://</InputGroupAddon>
+          <InputGroupInput
+            aria-label="Domain"
+            defaultValue="hooks.example.com"
+          />
+        </InputGroup>
+      ),
+    },
+    {
+      title: "suffix",
+      description: "Addons go on either side of the input.",
+      code: `<InputGroup chWidth={30}>
   <InputGroupInput aria-label="Weight" defaultValue="128" />
   <InputGroupAddon className="pr-[2ch]">MB</InputGroupAddon>
-</InputGroup>
-
-<Label htmlFor="webhook">Webhook URL</Label>
+</InputGroup>`,
+      preview: (
+        <InputGroup chWidth={30}>
+          <InputGroupInput aria-label="Weight" defaultValue="128" />
+          <InputGroupAddon className="pr-[2ch]">MB</InputGroupAddon>
+        </InputGroup>
+      ),
+    },
+    {
+      title: "with button",
+      code: `<Label htmlFor="webhook">Webhook URL</Label>
 <InputGroup chWidth={50}>
   <InputGroupAddon>https://</InputGroupAddon>
   <InputGroupInput id="webhook" defaultValue="hooks.example.com/deploy" />
@@ -37,43 +56,24 @@ export const doc: ComponentDoc = {
   </InputGroupAddon>
 </InputGroup>`,
       preview: (
-        <>
-          <DemoRow label="prefix">
-            <InputGroup chWidth={40}>
-              <InputGroupAddon>https://</InputGroupAddon>
-              <InputGroupInput
-                aria-label="Domain"
-                defaultValue="hooks.example.com"
-              />
-            </InputGroup>
-          </DemoRow>
-          <DemoRow label="suffix">
-            <InputGroup chWidth={30}>
-              <InputGroupInput aria-label="Weight" defaultValue="128" />
-              <InputGroupAddon className="pr-[2ch]">MB</InputGroupAddon>
-            </InputGroup>
-          </DemoRow>
-          <DemoRow label="with button">
-            <div className="flex flex-col">
-              <Label htmlFor="input-group-webhook">Webhook URL</Label>
-              <InputGroup chWidth={50}>
-                <InputGroupAddon>https://</InputGroupAddon>
-                <InputGroupInput
-                  defaultValue="hooks.example.com/deploy"
-                  id="input-group-webhook"
-                />
-                <InputGroupAddon>
-                  <button
-                    className="select-none outline-none hover:text-primary focus-visible:text-primary"
-                    type="button"
-                  >
-                    Copy
-                  </button>
-                </InputGroupAddon>
-              </InputGroup>
-            </div>
-          </DemoRow>
-        </>
+        <div className="flex flex-col">
+          <Label htmlFor="input-group-webhook">Webhook URL</Label>
+          <InputGroup chWidth={50}>
+            <InputGroupAddon>https://</InputGroupAddon>
+            <InputGroupInput
+              defaultValue="hooks.example.com/deploy"
+              id="input-group-webhook"
+            />
+            <InputGroupAddon>
+              <button
+                className="select-none outline-none hover:text-primary focus-visible:text-primary"
+                type="button"
+              >
+                Copy
+              </button>
+            </InputGroupAddon>
+          </InputGroup>
+        </div>
       ),
     },
   ],

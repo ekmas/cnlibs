@@ -1,6 +1,5 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Slider } from "@/components/ui/slider";
-import { SliderDemo } from "./demos/slider-demo";
+import { SliderControlledDemo, SliderSteppedDemo } from "./demos/slider-demo";
 import type { ComponentDoc } from "./types";
 
 export const doc: ComponentDoc = {
@@ -8,20 +7,34 @@ export const doc: ComponentDoc = {
   description: "Pick a value from within a given range.",
   sections: [
     {
-      title: "variants",
-      code: `<Slider min={1} max={32} value={value} onValueChange={setValue} />
-<Slider min={0} max={16} step={2} value={replicas} onValueChange={setReplicas} />
-<Slider defaultValue={40} chWidth={12} />`,
-      preview: <SliderDemo />,
+      title: "default",
+      code: "<Slider defaultValue={40} />",
+      preview: <Slider aria-label="Volume" defaultValue={40} />,
     },
     {
-      title: "states",
+      title: "controlled",
+      description: "Drive the value from state with value / onValueChange.",
+      code: `const [concurrency, setConcurrency] = React.useState(8)
+
+<Slider min={1} max={32} value={concurrency} onValueChange={setConcurrency} />`,
+      preview: <SliderControlledDemo />,
+    },
+    {
+      title: "stepped",
+      description: "step snaps the thumb to multiples of a value.",
+      code: "<Slider min={0} max={16} step={2} value={replicas} onValueChange={setReplicas} />",
+      preview: <SliderSteppedDemo />,
+    },
+    {
+      title: "narrow track",
+      description: "chWidth sets the track length in characters.",
+      code: "<Slider defaultValue={40} chWidth={12} />",
+      preview: <Slider aria-label="Volume" chWidth={12} defaultValue={40} />,
+    },
+    {
+      title: "disabled",
       code: "<Slider defaultValue={60} disabled />",
-      preview: (
-        <DemoRow label="disabled">
-          <Slider aria-label="Locked" defaultValue={60} disabled />
-        </DemoRow>
-      ),
+      preview: <Slider aria-label="Locked" defaultValue={60} disabled />,
     },
   ],
 };

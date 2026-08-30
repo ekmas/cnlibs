@@ -1,125 +1,151 @@
 "use client";
 
 import { Toast as ToastPrimitive } from "@base-ui/react/toast";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Toaster, ToastProvider } from "@/components/ui/toast";
 
-function ToastTriggers() {
-  const toastManager = ToastPrimitive.useToastManager();
+type Manager = ReturnType<typeof ToastPrimitive.useToastManager>;
 
+/** One trigger button inside its own provider + viewport, so each
+ * docs example fires toasts independently. */
+function ToastExample({
+  label,
+  variant = "default",
+  onTrigger,
+}: {
+  label: ReactNode;
+  variant?: "default" | "outline" | "ghost" | "destructive";
+  onTrigger: (manager: Manager) => void;
+}) {
   return (
-    <div className="flex flex-wrap gap-[1ch]">
-      <Button
-        onClick={() =>
-          toastManager.add({
-            title: "Deployment queued",
-            description: "main@a1b2c3d will build in ~40s.",
-          })
-        }
-      >
-        Trigger toast
-      </Button>
-      <Button
-        onClick={() =>
-          toastManager.add({
-            type: "success",
-            title: "Deployment live",
-            description: "v1.4.2 is now serving production traffic.",
-          })
-        }
-        variant="outline"
-      >
-        Trigger success
-      </Button>
-      <Button
-        onClick={() =>
-          toastManager.add({
-            type: "error",
-            title: "Build failed",
-            description: "Exit code 1 — see logs for details.",
-          })
-        }
-        variant="destructive"
-      >
-        Trigger error
-      </Button>
-    </div>
+    <ToastProvider>
+      <ToastTrigger label={label} onTrigger={onTrigger} variant={variant} />
+      <Toaster />
+    </ToastProvider>
   );
 }
 
-function ToastPromiseTriggers() {
+function ToastTrigger({
+  label,
+  variant,
+  onTrigger,
+}: {
+  label: ReactNode;
+  variant: "default" | "outline" | "ghost" | "destructive";
+  onTrigger: (manager: Manager) => void;
+}) {
   const toastManager = ToastPrimitive.useToastManager();
-
-  const fire = (outcome: "success" | "error") =>
-    toastManager
-      .promise(
-        new Promise<string>((resolve, reject) => {
-          setTimeout(() => {
-            if (outcome === "success") {
-              resolve("v1.4.3");
-            } else {
-              reject(new Error("upstream timeout"));
-            }
-          }, 1800);
-        }),
-        {
-          loading: { title: "Deploying...", description: "Uploading build." },
-          success: (version) => ({
-            title: "Deployment live",
-            description: `${version} is now serving production traffic.`,
-          }),
-          error: (error: Error) => ({
-            title: "Deployment failed",
-            description: error.message,
-          }),
-        }
-      )
-      .catch(() => undefined);
-
   return (
-    <div className="flex flex-wrap gap-[1ch]">
-      <Button onClick={() => fire("success")} variant="outline">
-        Promise → success
-      </Button>
-      <Button onClick={() => fire("error")} variant="outline">
-        Promise → error
-      </Button>
-      <Button
-        onClick={() =>
-          toastManager.add({
-            title: "Sticky notice",
-            description: "timeout={0} keeps it until dismissed.",
-            timeout: 0,
-          })
-        }
-        variant="ghost"
-      >
-        Persistent
-      </Button>
-    </div>
+    <Button onClick={() => onTrigger(toastManager)} variant={variant}>
+      {label}
+    </Button>
   );
 }
 
 export function ToastDemo() {
   return (
-    <ToastProvider>
-      <p className="text-ascii-comment">
-        {"// fires a toast in the top-right corner"}
-      </p>
-      <ToastTriggers />
-      <Toaster />
-    </ToastProvider>
+    <ToastExample
+      label="Trigger toast"
+      onTrigger={(manager) =>
+        manager.add({
+          title: "Deployment queued",
+          description: "main@a1b2c3d will build in ~40s.",
+        })
+      }
+    />
   );
 }
 
+export function ToastSuccessDemo() {
+  return (
+    <ToastExample
+      label="Trigger success"
+      onTrigger={(manager) =>
+        manager.add({
+          type: "success",
+          title: "Deployment live",
+          description: "v1.4.2 is now serving production traffic.",
+        })
+      }
+      variant="outline"
+    />
+  );
+}
+
+export function ToastErrorDemo() {
+  return (
+    <ToastExample
+      label="Trigger error"
+      onTrigger={(manager) =>
+        manager.add({
+          type: "error",
+          title: "Build failed",
+          description: "Exit code 1 — see logs for details.",
+        })
+      }
+      variant="destructive"
+    />
+  );
+}
+
+function deploy(outcome: "success" | "error") {
+  return new Promise<string>((resolve, reject) => {
+    setTimeout(() => {
+      if (outcome === "success") {
+        resolve("v1.4.3");
+      } else {
+        reject(new Error("upstream timeout"));
+      }
+    }, 1800);
+  });
+}
+
+const promiseOptions = {
+  loading: { title: "Deploying...", description: "Uploading build." },
+  success: (version: string) => ({
+    title: "Deployment live",
+    description: `${version} is now serving production traffic.`,
+  }),
+  error: (error: Error) => ({
+    title: "Deployment failed",
+    description: error.message,
+  }),
+};
+
 export function ToastPromiseDemo() {
   return (
-    <ToastProvider>
-      <p className="text-ascii-comment">
-        {"// one toast that updates as the promise settles"}
-      </p>
-      <ToastPromiseTriggers />
-      <Toaster />
-    </ToastProvider>
+    <div className="flex flex-wrap gap-[1ch]">
+      <ToastExample
+        label="Promise → success"
+        onTrigger={(manager) =>
+          manager.promise(deploy("success"), promiseOptions).catch(() => {})
+        }
+        variant="outline"
+      />
+      <ToastExample
+        label="Promise → error"
+        onTrigger={(manager) =>
+          manager.promise(deploy("error"), promiseOptions).catch(() => {})
+        }
+        variant="outline"
+      />
+    </div>
+  );
+}
+
+export function ToastPersistentDemo() {
+  return (
+    <ToastExample
+      label="Persistent"
+      onTrigger={(manager) =>
+        manager.add({
+          title: "Sticky notice",
+          description: "timeout: 0 keeps it until dismissed.",
+          timeout: 0,
+        })
+      }
+      variant="ghost"
+    />
   );
 }

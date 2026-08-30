@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Multi-step form with progress and conditional questions.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Questionnaire>
   <QuestionnaireProgress step={1} total={3} />
   <QuestionnaireStep>

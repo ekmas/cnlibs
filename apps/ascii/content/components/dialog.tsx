@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -19,7 +18,7 @@ export const doc: ComponentDoc = {
   description: "A window overlaid on the primary content.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Dialog>
   <DialogTrigger render={<Button>Invite teammate</Button>} />
   <DialogContent chWidth={44}>
@@ -62,7 +61,9 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
+      title: "compact",
+      description:
+        "A narrower frame without the [x]; DialogClose in the footer dismisses it.",
       code: `<Dialog>
   <DialogTrigger render={<Button variant="outline">Compact</Button>} />
   <DialogContent chWidth={36} showCloseButton={false}>
@@ -75,50 +76,54 @@ export const doc: ComponentDoc = {
       <DialogClose render={<Button variant="destructive">Discard</Button>} />
     </DialogFooter>
   </DialogContent>
-</Dialog>
-
-<DialogContent chWidth={60}>...</DialogContent>`,
+</Dialog>`,
       preview: (
-        <>
-          <DemoRow label="compact">
-            <Dialog>
-              <DialogTrigger
-                render={<Button variant="outline">Compact</Button>}
+        <Dialog>
+          <DialogTrigger render={<Button variant="outline">Compact</Button>} />
+          <DialogContent chWidth={36} showCloseButton={false}>
+            <DialogHeader>
+              <DialogTitle>Discard changes?</DialogTitle>
+              <DialogDescription>Unsaved edits will be lost.</DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <DialogClose
+                render={<Button variant="ghost">Keep editing</Button>}
               />
-              <DialogContent chWidth={36} showCloseButton={false}>
-                <DialogHeader>
-                  <DialogTitle>Discard changes?</DialogTitle>
-                  <DialogDescription>
-                    Unsaved edits will be lost.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter>
-                  <DialogClose
-                    render={<Button variant="ghost">Keep editing</Button>}
-                  />
-                  <DialogClose
-                    render={<Button variant="destructive">Discard</Button>}
-                  />
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </DemoRow>
-          <DemoRow label="wide">
-            <Dialog>
-              <DialogTrigger render={<Button variant="outline">Wide</Button>} />
-              <DialogContent chWidth={60}>
-                <DialogHeader>
-                  <DialogTitle>Release notes</DialogTitle>
-                  <DialogDescription>
-                    chWidth sets the frame width in characters — 60 here, 46 by
-                    default.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter showCloseButton />
-              </DialogContent>
-            </Dialog>
-          </DemoRow>
-        </>
+              <DialogClose
+                render={<Button variant="destructive">Discard</Button>}
+              />
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      ),
+    },
+    {
+      title: "wide",
+      description: "chWidth sets the frame width in characters (default 46).",
+      code: `<Dialog>
+  <DialogTrigger render={<Button variant="outline">Wide</Button>} />
+  <DialogContent chWidth={60}>
+    <DialogHeader>
+      <DialogTitle>Release notes</DialogTitle>
+      <DialogDescription>60 characters wide.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter showCloseButton />
+  </DialogContent>
+</Dialog>`,
+      preview: (
+        <Dialog>
+          <DialogTrigger render={<Button variant="outline">Wide</Button>} />
+          <DialogContent chWidth={60}>
+            <DialogHeader>
+              <DialogTitle>Release notes</DialogTitle>
+              <DialogDescription>
+                chWidth sets the frame width in characters — 60 here, 46 by
+                default.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter showCloseButton />
+          </DialogContent>
+        </Dialog>
       ),
     },
   ],

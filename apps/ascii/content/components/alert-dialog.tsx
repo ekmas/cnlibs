@@ -17,7 +17,7 @@ export const doc: ComponentDoc = {
   description: "A modal that blocks the UI until the user responds.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<AlertDialog>
   <AlertDialogTrigger render={<Button variant="destructive">Delete</Button>} />
   <AlertDialogContent chWidth={44}>

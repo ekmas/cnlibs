@@ -17,7 +17,7 @@ export const doc: ComponentDoc = {
   description: "Expands and collapses a panel.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Collapsible>
   <ul className="flex flex-col">
     <li>src/lib/cn.ts</li>
@@ -33,7 +33,7 @@ export const doc: ComponentDoc = {
   </CollapsibleContent>
 </Collapsible>`,
       preview: (
-        <AsciiBox padY={0} title="Search results" width={48}>
+        <AsciiBox title="Search results" width={48}>
           <Collapsible>
             <ul className="flex flex-col text-ascii-soft">
               <li>src/lib/cn.ts</li>
@@ -54,7 +54,7 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
+      title: "open by default",
       code: `<Collapsible defaultOpen>
   <CollapsibleTrigger>Open by default</CollapsibleTrigger>
   <CollapsibleContent>

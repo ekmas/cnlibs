@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "A sortable table with client-side data.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `const columns: DataTableColumn<Deployment>[] = [
   // Every column sorts on header click unless sortable: false.
   { key: "name", header: "name" },

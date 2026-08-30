@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Toggle } from "@/components/ui/toggle";
 import type { ComponentDoc } from "./types";
 
@@ -7,62 +6,53 @@ export const doc: ComponentDoc = {
   description: "A two-state button that can be on or off.",
   sections: [
     {
-      title: "variants",
-      code: `<Toggle aria-label="Bold">Bold</Toggle>
-<Toggle variant="outline" aria-label="Italic">Italic</Toggle>`,
+      title: "default",
+      code: `<Toggle aria-label="Bold">Bold</Toggle>`,
+      preview: <Toggle aria-label="Bold">Bold</Toggle>,
+    },
+    {
+      title: "outline",
+      code: `<Toggle variant="outline" aria-label="Italic">Italic</Toggle>`,
       preview: (
-        <>
-          <DemoRow label="default">
-            <Toggle aria-label="Bold">Bold</Toggle>
-          </DemoRow>
-          <DemoRow label="outline">
-            <Toggle aria-label="Italic" variant="outline">
-              Italic
-            </Toggle>
-          </DemoRow>
-        </>
+        <Toggle aria-label="Italic" variant="outline">
+          Italic
+        </Toggle>
       ),
     },
     {
-      title: "sizes",
-      code: `<Toggle size="sm" aria-label="Bold">Bold</Toggle>
-<Toggle aria-label="Bold">Bold</Toggle>
-<Toggle size="lg" aria-label="Bold">Bold</Toggle>`,
+      title: "small",
+      code: `<Toggle size="sm" aria-label="Bold">Bold</Toggle>`,
       preview: (
-        <>
-          <DemoRow label="sm">
-            <Toggle aria-label="Bold" size="sm">
-              Bold
-            </Toggle>
-          </DemoRow>
-          <DemoRow label="default">
-            <Toggle aria-label="Bold">Bold</Toggle>
-          </DemoRow>
-          <DemoRow label="lg">
-            <Toggle aria-label="Bold" size="lg">
-              Bold
-            </Toggle>
-          </DemoRow>
-        </>
+        <Toggle aria-label="Bold" size="sm">
+          Bold
+        </Toggle>
       ),
     },
     {
-      title: "states",
-      code: `<Toggle aria-label="Pin thread" defaultPressed>Pin</Toggle>
-<Toggle aria-label="Locked" disabled>Locked</Toggle>`,
+      title: "large",
+      code: `<Toggle size="lg" aria-label="Bold">Bold</Toggle>`,
       preview: (
-        <>
-          <DemoRow label="pressed">
-            <Toggle aria-label="Pin thread" defaultPressed>
-              Pin
-            </Toggle>
-          </DemoRow>
-          <DemoRow label="disabled">
-            <Toggle aria-label="Locked" disabled>
-              Locked
-            </Toggle>
-          </DemoRow>
-        </>
+        <Toggle aria-label="Bold" size="lg">
+          Bold
+        </Toggle>
+      ),
+    },
+    {
+      title: "pressed",
+      code: `<Toggle aria-label="Pin thread" defaultPressed>Pin</Toggle>`,
+      preview: (
+        <Toggle aria-label="Pin thread" defaultPressed>
+          Pin
+        </Toggle>
+      ),
+    },
+    {
+      title: "disabled",
+      code: `<Toggle aria-label="Locked" disabled>Locked</Toggle>`,
+      preview: (
+        <Toggle aria-label="Locked" disabled>
+          Locked
+        </Toggle>
       ),
     },
   ],

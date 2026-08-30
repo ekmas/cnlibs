@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Layered sections shown one at a time.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Tabs defaultValue="overview" className="w-full max-w-md">
   <TabsList>
     <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -37,9 +37,10 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
-      code: `// Framed tabs sitting on a framed panel — the docs' install tabs.
-<Tabs variant="boxed" defaultValue="pnpm" className="w-full max-w-md">
+      title: "boxed",
+      description:
+        "Framed tabs sitting on a framed panel — the look of the docs' install tabs.",
+      code: `<Tabs variant="boxed" defaultValue="pnpm" className="w-full max-w-md">
   <TabsList>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
     <TabsTrigger value="npm">npm</TabsTrigger>
@@ -73,7 +74,7 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "states",
+      title: "disabled tab",
       code: `<Tabs defaultValue="a" className="w-full max-w-md">
   <TabsList>
     <TabsTrigger value="a">Active</TabsTrigger>

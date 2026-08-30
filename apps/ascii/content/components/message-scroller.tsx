@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Auto-sticks to bottom, jumps to unread messages.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<MessageScroller>
   {entries.map((entry) => (
     <Message key={entry.id}>

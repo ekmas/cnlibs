@@ -14,7 +14,7 @@ export const doc: ComponentDoc = {
   description: "Page navigation with first, last and ellipsis links.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Pagination>
   <PaginationContent>
     <PaginationItem><PaginationPrevious href="#" /></PaginationItem>

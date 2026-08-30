@@ -11,10 +11,10 @@ export const doc: ComponentDoc = {
   description: "Stacked sections, one open at a time.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<Accordion defaultValue={["getting-started"]}>
   <AccordionItem value="getting-started">
-    <AccordionTrigger>What is ASCII UI?</AccordionTrigger>
+    <AccordionTrigger>What is ascii?</AccordionTrigger>
     <AccordionContent>
       A canvas design tool's component set, rebuilt in monospace type.
     </AccordionContent>
@@ -36,7 +36,7 @@ export const doc: ComponentDoc = {
         <div className="w-[44ch]">
           <Accordion defaultValue={["getting-started"]}>
             <AccordionItem value="getting-started">
-              <AccordionTrigger>What is ASCII UI?</AccordionTrigger>
+              <AccordionTrigger>What is ascii?</AccordionTrigger>
               <AccordionContent>
                 A canvas design tool&apos;s component set, rebuilt in monospace
                 type for real apps.
@@ -60,7 +60,8 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "variants",
+      title: "multiple",
+      description: "multiple keeps several sections expanded at once.",
       code: `<Accordion multiple defaultValue={["a", "b"]}>
   <AccordionItem value="a">
     <AccordionTrigger>Multiple open</AccordionTrigger>
@@ -91,7 +92,7 @@ export const doc: ComponentDoc = {
       ),
     },
     {
-      title: "states",
+      title: "disabled item",
       code: `<Accordion defaultValue={["logs"]}>
   <AccordionItem value="logs">
     <AccordionTrigger>Build logs</AccordionTrigger>

@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Accessible panel groups with keyboard support.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `<ResizablePanelGroup totalWidth={61} defaultLeftWidth={30} minWidth={12}>
   <ResizablePanel side="start">
     {(chWidth) => (

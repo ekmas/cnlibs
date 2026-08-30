@@ -6,7 +6,7 @@ export const doc: ComponentDoc = {
   description: "Pick a date or a range of dates.",
   sections: [
     {
-      title: "example",
+      title: "default",
       code: `const [selected, setSelected] = React.useState<Date>()
 
 <Calendar selected={selected} onSelect={setSelected} />`,

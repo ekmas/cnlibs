@@ -22,15 +22,25 @@ export const doc: ComponentDoc = {
   description: "A composable row: title, description and actions.",
   sections: [
     {
-      title: "variants",
+      title: "default",
       code: `<Item>
   <ItemContent>
     <ItemTitle>Text only</ItemTitle>
     <ItemDescription>Just a title and a description.</ItemDescription>
   </ItemContent>
-</Item>
-
-<Item>
+</Item>`,
+      preview: (
+        <Item className="w-full max-w-md">
+          <ItemContent>
+            <ItemTitle>Text only</ItemTitle>
+            <ItemDescription>Just a title and a description.</ItemDescription>
+          </ItemContent>
+        </Item>
+      ),
+    },
+    {
+      title: "with media and actions",
+      code: `<Item>
   <ItemMedia>
     <Avatar>
       <AvatarFallback>SB</AvatarFallback>
@@ -45,34 +55,27 @@ export const doc: ComponentDoc = {
   </ItemActions>
 </Item>`,
       preview: (
-        <>
-          <Item className="w-full max-w-md">
-            <ItemContent>
-              <ItemTitle>Text only</ItemTitle>
-              <ItemDescription>Just a title and a description.</ItemDescription>
-            </ItemContent>
-          </Item>
-          <Item className="w-full max-w-md">
-            <ItemMedia>
-              <Avatar>
-                <AvatarFallback>SB</AvatarFallback>
-              </Avatar>
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>With media and actions</ItemTitle>
-              <ItemDescription>
-                Avatar on the left, button on the right.
-              </ItemDescription>
-            </ItemContent>
-            <ItemActions>
-              <Button variant="ghost">Open</Button>
-            </ItemActions>
-          </Item>
-        </>
+        <Item className="w-full max-w-md">
+          <ItemMedia>
+            <Avatar>
+              <AvatarFallback>SB</AvatarFallback>
+            </Avatar>
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>With media and actions</ItemTitle>
+            <ItemDescription>
+              Avatar on the left, button on the right.
+            </ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="ghost">Open</Button>
+          </ItemActions>
+        </Item>
       ),
     },
     {
-      title: "example",
+      title: "list",
+      description: "Items inside AsciiBoxRow get per-row hover backgrounds.",
       code: `<AsciiBox width={44} title="Team members" tone="primary">
   <div className="flex flex-col">
     {teammates.map((teammate) => (

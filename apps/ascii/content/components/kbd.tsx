@@ -1,5 +1,4 @@
 import { AsciiBox } from "@/components/ascii/ascii-box";
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Kbd } from "@/components/ui/kbd";
 import type { ComponentDoc } from "./types";
 
@@ -8,44 +7,42 @@ export const doc: ComponentDoc = {
   description: "Displays keyboard shortcut input.",
   sections: [
     {
-      title: "variants",
-      code: `<Kbd>Esc</Kbd>
-
-<span className="flex items-center gap-[1ch]">
+      title: "default",
+      code: "<Kbd>Esc</Kbd>",
+      preview: <Kbd>Esc</Kbd>,
+    },
+    {
+      title: "combination",
+      code: `<span className="flex items-center gap-[1ch]">
   <Kbd>Ctrl</Kbd>
   <span>+</span>
   <Kbd>K</Kbd>
-</span>
-
-<span className="flex items-center gap-[1ch]">
+</span>`,
+      preview: (
+        <span className="flex items-center gap-[1ch]">
+          <Kbd>Ctrl</Kbd>
+          <span className="text-ascii-comment">+</span>
+          <Kbd>K</Kbd>
+        </span>
+      ),
+    },
+    {
+      title: "sequence",
+      code: `<span className="flex items-center gap-[1ch]">
   <Kbd>g</Kbd>
   <span>then</span>
   <Kbd>d</Kbd>
 </span>`,
       preview: (
-        <>
-          <DemoRow label="single key">
-            <Kbd>Esc</Kbd>
-          </DemoRow>
-          <DemoRow label="combination">
-            <span className="flex items-center gap-[1ch]">
-              <Kbd>Ctrl</Kbd>
-              <span className="text-ascii-comment">+</span>
-              <Kbd>K</Kbd>
-            </span>
-          </DemoRow>
-          <DemoRow label="sequence">
-            <span className="flex items-center gap-[1ch]">
-              <Kbd>g</Kbd>
-              <span className="text-ascii-comment">then</span>
-              <Kbd>d</Kbd>
-            </span>
-          </DemoRow>
-        </>
+        <span className="flex items-center gap-[1ch]">
+          <Kbd>g</Kbd>
+          <span className="text-ascii-comment">then</span>
+          <Kbd>d</Kbd>
+        </span>
       ),
     },
     {
-      title: "example",
+      title: "shortcut list",
       code: `<AsciiBox width={44} title="Shortcuts" contentClassName="flex flex-col">
   <div className="flex items-center justify-between">
     <span>Command palette</span>

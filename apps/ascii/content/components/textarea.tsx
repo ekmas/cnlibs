@@ -1,4 +1,3 @@
-import { DemoRow } from "@/components/ascii/component-docs";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { ComponentDoc } from "./types";
@@ -8,46 +7,58 @@ export const doc: ComponentDoc = {
   description: "Multi-line text input.",
   sections: [
     {
-      title: "variants",
-      code: `<Textarea rows={5} chWidth={44} placeholder="Add context..." />
-<Textarea rows={2} chWidth={30} placeholder="Short note..." />`,
+      title: "default",
+      code: `<Textarea rows={5} chWidth={44} placeholder="Add context..." />`,
       preview: (
-        <>
-          <DemoRow label="default">
-            <div className="flex flex-col">
-              <Label htmlFor="textarea-notes">Notes</Label>
-              <Textarea
-                chWidth={44}
-                id="textarea-notes"
-                placeholder="Add context for the on-call engineer..."
-                rows={5}
-              />
-            </div>
-          </DemoRow>
-          <DemoRow label="compact">
-            <Textarea
-              aria-label="Note"
-              chWidth={30}
-              placeholder="Short note..."
-              rows={2}
-            />
-          </DemoRow>
-        </>
+        <Textarea
+          aria-label="Notes"
+          chWidth={44}
+          placeholder="Add context for the on-call engineer..."
+          rows={5}
+        />
       ),
     },
     {
-      title: "states",
-      code: `<Textarea rows={3} disabled defaultValue="Read-only incident summary." />`,
+      title: "with label",
+      code: `<Label htmlFor="notes">Notes</Label>
+<Textarea id="notes" rows={3} chWidth={44} />`,
       preview: (
-        <DemoRow label="disabled">
+        <div className="flex flex-col">
+          <Label htmlFor="textarea-notes">Notes</Label>
           <Textarea
-            aria-label="Disabled"
-            chWidth={30}
-            defaultValue="Read-only incident summary."
-            disabled
+            chWidth={44}
+            id="textarea-notes"
+            placeholder="Add context..."
             rows={3}
           />
-        </DemoRow>
+        </div>
+      ),
+    },
+    {
+      title: "compact",
+      description:
+        "rows and chWidth size the frame in text rows and characters.",
+      code: `<Textarea rows={2} chWidth={30} placeholder="Short note..." />`,
+      preview: (
+        <Textarea
+          aria-label="Note"
+          chWidth={30}
+          placeholder="Short note..."
+          rows={2}
+        />
+      ),
+    },
+    {
+      title: "disabled",
+      code: `<Textarea rows={3} disabled defaultValue="Read-only incident summary." />`,
+      preview: (
+        <Textarea
+          aria-label="Disabled"
+          chWidth={30}
+          defaultValue="Read-only incident summary."
+          disabled
+          rows={3}
+        />
       ),
     },
   ],
