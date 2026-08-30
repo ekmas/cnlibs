@@ -23,19 +23,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { AsciiChars } from "@/lib/ascii";
+import { type AsciiChars, DEFAULT_ASCII_CHARS } from "@/lib/ascii";
 import {
   ASCII_CHARS_PRESETS,
   ASCII_COLOR_PRESETS,
-  ASCII_COLOR_VARIABLES,
-  ASCII_FONT_VAR,
   type AsciiColorMode,
   type AsciiColorPreset,
   type AsciiTheme,
   DEFAULT_ASCII_THEME,
   DEFAULT_FONT_FAMILY,
   findColorPreset,
-  fontFamilyValue,
   GOOGLE_MONO_FONTS,
   isDefaultAsciiTheme,
 } from "@/lib/ascii-theme";
@@ -182,15 +179,28 @@ function sameChars(a: AsciiChars, b: AsciiChars) {
   return CHAR_FIELDS.every(({ key }) => a[key] === b[key]);
 }
 
-/** The generated CSS the user can paste into their own globals.css. */
-function themeToCss(theme: AsciiTheme) {
-  const lines = ASCII_COLOR_VARIABLES.map(
-    (variable) => `  ${variable}: ${theme.colors[variable]};`
+/** The provider snippet for the user's root layout — only the glyphs
+ * that differ from the classic set are listed, since any key left out
+ * keeps its default. Empty when nothing changed: no provider needed. */
+function charsToProvider(chars: AsciiChars) {
+  const changed = CHAR_FIELDS.filter(
+    ({ key }) => chars[key] !== DEFAULT_ASCII_CHARS[key]
   );
-  if (theme.font) {
-    lines.push(`  ${ASCII_FONT_VAR}: ${fontFamilyValue(theme.font)};`);
+  if (changed.length === 0) {
+    return "// default characters — no provider needed";
   }
-  return `:root {\n${lines.join("\n")}\n}`;
+  const entries = changed
+    .map(({ key }) => `    ${key}: ${JSON.stringify(chars[key])},`)
+    .join("\n");
+  return `import { AsciiCharsProvider } from "@/components/ascii/ascii-chars";
+
+<AsciiCharsProvider
+  chars={{
+${entries}
+  }}
+>
+  {children}
+</AsciiCharsProvider>`;
 }
 
 function ThemeEditor() {
@@ -282,21 +292,32 @@ function ThemeEditor() {
             />
           ))}
         </div>
+        <p className="max-w-2xl text-ascii-soft">
+          Components draw the classic set with no setup. If you change it, wrap
+          your app once in{" "}
+          <span className="text-primary">AsciiCharsProvider</span> (in the root
+          layout) with the characters you picked — copy the snippet from the
+          config below.
+        </p>
       </DocSection>
 
       <DocSection title="install">
         <p className="max-w-2xl text-ascii-soft">
           Every palette is a registry item. Scaffold a new project with it, or
           add it to one you already have — it ships the tokens, the type scale
-          and the Button component.
+          and the ASCII frame primitives.
         </p>
         {activePalette ? (
           <>
+            <p className="text-ascii-soft">Scaffold a new project:</p>
             <InstallTabs
               item={`themes/${activePalette.id}`}
               subcommand="init"
               className="max-w-[96ch]"
             />
+            <p className="text-ascii-soft">
+              Or add the theme to an existing project:
+            </p>
             <InstallTabs
               item={`themes/${activePalette.id}`}
               className="max-w-[96ch]"
@@ -311,9 +332,9 @@ function ThemeEditor() {
 
       <DocSection title="export">
         <p className="max-w-2xl text-ascii-soft">
-          Your theme is saved in this browser. Copy the config to ship it: paste
-          the CSS into your globals.css and pass the characters to{" "}
-          <span className="text-primary">AsciiThemeProvider</span>.
+          Your theme is saved in this browser. The palette ships with the
+          install command above; if you changed the characters, copy the
+          provider into your root layout.
         </p>
         <div className="flex flex-wrap items-center gap-[2ch]">
           <ThemeConfigDialog theme={theme} />
@@ -338,24 +359,26 @@ function ThemeEditor() {
   );
 }
 
-/** "copy config" — opens a modal with the theme as CSS variables and
- * as the JSON the provider persists, each in its own copyable block. */
+/** "copy ascii provider" — opens a modal with the glyph provider snippet for
+ * the root layout. The palette itself needs no copying: it installs as
+ * a registry item via the command in the install section. */
 function ThemeConfigDialog({ theme }: { theme: AsciiTheme }) {
   return (
     <Dialog>
-      <DialogTrigger render={<Button variant="outline">copy config</Button>} />
+      <DialogTrigger
+        render={<Button variant="outline">copy ascii provider</Button>}
+      />
       <DialogContent chWidth={76}>
         <DialogHeader>
-          <DialogTitle>Theme config</DialogTitle>
+          <DialogTitle>Glyph provider</DialogTitle>
           <DialogDescription>
-            CSS for your globals.css, and the full theme as JSON.
+            Wrap your root layout in this to draw every frame with the
+            characters you picked.
           </DialogDescription>
         </DialogHeader>
         <div className="mt-[1lh] flex max-h-[60dvh] flex-col gap-[1lh] overflow-y-auto">
-          <span className="text-ascii-comment">{"// globals.css"}</span>
-          <CodeBlock code={themeToCss(theme)} />
-          <span className="text-ascii-comment">{"// theme.json"}</span>
-          <CodeBlock code={JSON.stringify(theme, null, 2)} />
+          <span className="text-ascii-comment">{"// app/layout.tsx"}</span>
+          <CodeBlock code={charsToProvider(theme.chars)} />
         </div>
         <DialogFooter showCloseButton className="mt-[1lh]" />
       </DialogContent>

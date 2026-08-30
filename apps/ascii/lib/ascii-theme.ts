@@ -107,15 +107,15 @@ export const ASCII_CHARS_PRESETS: AsciiCharsPreset[] = [
     },
   },
   {
-    id: "box",
-    name: "box drawing",
+    id: "stars",
+    name: "stars",
     chars: {
-      top: "─",
-      bottom: "─",
-      left: "│",
-      right: "│",
-      divider: "─",
-      junction: "┼",
+      top: "*",
+      bottom: "*",
+      left: "*",
+      right: "*",
+      divider: "-",
+      junction: "+",
     },
   },
   {
