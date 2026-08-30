@@ -9,16 +9,12 @@ export default function ComponentsIndexPage() {
   return (
     <div className="flex max-w-5xl flex-col gap-8 px-[2ch] py-[1lh]">
       <div className="flex flex-col gap-2 pb-[1lh]">
-        <span className="text-ascii-comment text-sm uppercase tracking-[0.08em]">
-          {"/// ui kit — monospace + ascii borders"}
-        </span>
         <h1 className="mb-[1lh] font-heading text-primary text-sm tracking-tight">
-          ASCII COMPONENTS — FULL LIBRARY
+          Components
         </h1>
         <p className="max-w-2xl text-ascii-soft text-sm">
-          Every component in the shadcn registry, rebuilt in IBM Plex Mono.{" "}
-          {readyCount} of {asciiComponents.length} are wired up and interactive
-          — the rest are on the way.
+          Every component in the shadcn registry. {readyCount} of{" "}
+          {asciiComponents.length} are wired up and interactive.
         </p>
       </div>
 
@@ -31,15 +27,11 @@ export default function ComponentsIndexPage() {
           >
             <span className="flex items-baseline justify-between gap-3">
               <span>{entry.name}</span>
-              <span
-                className={
-                  entry.status === "ready"
-                    ? "text-primary text-sm uppercase tracking-[0.08em]"
-                    : "text-ascii-comment text-sm uppercase tracking-[0.08em]"
-                }
-              >
-                {entry.status === "ready" ? "ready" : "soon"}
-              </span>
+              {entry.status === "ready" ? null : (
+                <span className="text-ascii-comment text-sm uppercase tracking-[0.08em]">
+                  soon
+                </span>
+              )}
             </span>
             <AsciiRule className="w-full opacity-40 group-hover:opacity-100" />
           </Link>
