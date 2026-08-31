@@ -1,0 +1,106 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import type { ComponentDoc } from "./types";
+
+function PlacementPopover({
+  side,
+  align,
+}: {
+  side: "top" | "right" | "bottom" | "left";
+  align: "start" | "center" | "end";
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={
+          <Button variant="ghost">
+            {side} / {align}
+          </Button>
+        }
+      />
+      <PopoverContent align={align} chWidth={28} side={side}>
+        <PopoverTitle>
+          side=&quot;{side}&quot; align=&quot;{align}&quot;
+        </PopoverTitle>
+        <PopoverDescription>
+          Flips to the opposite side when it runs out of room.
+        </PopoverDescription>
+        <PopoverClose render={<Button variant="outline">Close</Button>} />
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+export const doc: ComponentDoc = {
+  title: "Popover",
+  description: "Rich content in a portal, triggered by a button.",
+  sections: [
+    {
+      title: "default",
+      code: `<Popover>
+  <PopoverTrigger render={<Button variant="outline">Settings</Button>} />
+  <PopoverContent chWidth={32}>
+    <PopoverTitle>Deploy settings</PopoverTitle>
+    <PopoverDescription>
+      Applies to the next deploy on this branch.
+    </PopoverDescription>
+    <Label htmlFor="domain" className="mt-[1lh]">Domain</Label>
+    <Input id="domain" chWidth={28} defaultValue="ascii-ui.paper.design" />
+    <Label htmlFor="region">Region</Label>
+    <Input id="region" chWidth={28} defaultValue="iad1" />
+    <Button className="self-end">Save</Button>
+  </PopoverContent>
+</Popover>`,
+      preview: (
+        <Popover>
+          <PopoverTrigger
+            render={<Button variant="outline">Settings</Button>}
+          />
+          <PopoverContent chWidth={32}>
+            <PopoverTitle>Deploy settings</PopoverTitle>
+            <PopoverDescription>
+              Applies to the next deploy on this branch.
+            </PopoverDescription>
+            <div className="mt-[1lh] flex flex-col">
+              <Label htmlFor="popover-domain">Domain</Label>
+              <Input
+                chWidth={28}
+                defaultValue="ascii-ui.paper.design"
+                id="popover-domain"
+              />
+            </div>
+            <div className="flex flex-col">
+              <Label htmlFor="popover-region">Region</Label>
+              <Input chWidth={28} defaultValue="iad1" id="popover-region" />
+            </div>
+            <Button className="self-end">Save</Button>
+          </PopoverContent>
+        </Popover>
+      ),
+    },
+    {
+      title: "side right",
+      code: `<PopoverContent chWidth={28} side="right" align="start">...</PopoverContent>`,
+      preview: <PlacementPopover align="start" side="right" />,
+    },
+    {
+      title: "side top",
+      code: `<PopoverContent chWidth={28} side="top" align="center">...</PopoverContent>`,
+      preview: <PlacementPopover align="center" side="top" />,
+    },
+    {
+      title: "align end",
+      code: `<PopoverContent chWidth={28} side="bottom" align="end">...</PopoverContent>`,
+      preview: <PlacementPopover align="end" side="bottom" />,
+    },
+  ],
+};

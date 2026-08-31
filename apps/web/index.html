@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --fg: #000;
@@ -134,7 +135,7 @@
     ul.libraries p {
       margin: 0;
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 500;
       color: var(--accent);
       text-decoration: none;
     }
@@ -275,6 +276,137 @@
         background: #fff;
       }
     }
+
+    /* Frame drawn with real glyphs, like the lib's fluid AsciiBox:
+       "+----+" rows on the top/bottom edges and clipped columns of "|"
+       down the sides. Grid is the lib's cell: 16px / 22px mono. */
+    ul.libraries li.ascii {
+      position: relative;
+      padding: 2lh 3ch;
+      font-family: "IBM Plex Mono", ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 16px;
+      line-height: 22px;
+      border: none;
+      border-radius: 0;
+    }
+
+    ul.libraries li.ascii .box-top,
+    ul.libraries li.ascii .box-bottom,
+    ul.libraries li.ascii .box-side {
+      position: absolute;
+      color: color-mix(in srgb, var(--fg) 60%, transparent);
+      user-select: none;
+    }
+
+    ul.libraries li.ascii .box-top,
+    ul.libraries li.ascii .box-bottom {
+      right: 0;
+      left: 0;
+      display: flex;
+    }
+
+    ul.libraries li.ascii .box-top {
+      top: 0;
+    }
+
+    ul.libraries li.ascii .box-bottom {
+      bottom: 0;
+    }
+
+    /* One unbroken run of "|" that wraps one glyph per line — survives
+       HTML formatters, which would re-indent literal newlines. */
+    ul.libraries li.ascii .box-side {
+      top: 1lh;
+      bottom: 1lh;
+      width: 1ch;
+      overflow: hidden;
+      word-break: break-all;
+      white-space: normal;
+    }
+
+    ul.libraries li.ascii .box-left {
+      left: 0;
+    }
+
+    ul.libraries li.ascii .box-right {
+      right: 0;
+    }
+
+    ul.libraries li.ascii .rule {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      white-space: pre;
+    }
+
+    ul.libraries li.ascii p {
+      font-family: inherit;
+    }
+
+    /* Mirrors apps/ascii/components/ui/button.tsx (default variant):
+       "+----+" rows pinned to the top/bottom edges, "|" sides, label
+       padded by 1ch, whole thing 1lh of padding so the rows fit. */
+    ul.libraries li.ascii a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 22px 0;
+      padding: 1lh 0;
+      font: inherit;
+      color: var(--fg);
+      white-space: nowrap;
+      text-decoration: none;
+      user-select: none;
+      background: transparent;
+    }
+
+    ul.libraries li.ascii a .frame {
+      color: color-mix(in srgb, var(--fg) 60%, transparent);
+    }
+
+    ul.libraries li.ascii a:hover .frame,
+    ul.libraries li.ascii a:focus-visible .frame {
+      color: var(--fg);
+    }
+
+    ul.libraries li.ascii a:focus-visible {
+      outline: none;
+    }
+
+    ul.libraries li.ascii a:active {
+      transform: translateY(1px);
+    }
+
+    ul.libraries li.ascii a .frame-top,
+    ul.libraries li.ascii a .frame-bottom {
+      position: absolute;
+      right: 0;
+      left: 0;
+      display: flex;
+    }
+
+    ul.libraries li.ascii a .frame-top {
+      top: 0;
+    }
+
+    ul.libraries li.ascii a .frame-bottom {
+      bottom: 0;
+    }
+
+    ul.libraries li.ascii a .rule {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      white-space: pre;
+    }
+
+    ul.libraries li.ascii a .label {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
+      padding: 0 1ch;
+    }
   </style>
 </head>
 
@@ -316,9 +448,23 @@
         <p>8bit</p>
         <a target="_blank" href="https://8bit.cnlibs.com">Visit</a>
       </li>
-      <li>
-        <p>???</p>
-        <button disabled type="button">Coming soon</button>
+      <li class="ascii">
+        <span class="box-top" aria-hidden="true"><span>+</span><span
+            class="rule">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><span>+</span></span>
+        <span class="box-side box-left" aria-hidden="true">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>
+        <span class="box-side box-right" aria-hidden="true">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>
+        <p>ascii</p>
+        <a target="_blank" href="https://ascii.cnlibs.com">
+          <span class="frame frame-top" aria-hidden="true"><span>+</span><span
+              class="rule">----------------------------------------</span><span>+</span></span>
+          <span class="frame" aria-hidden="true">|</span>
+          <span class="label">Visit</span>
+          <span class="frame" aria-hidden="true">|</span>
+          <span class="frame frame-bottom" aria-hidden="true"><span>+</span><span
+              class="rule">----------------------------------------</span><span>+</span></span>
+        </a>
+        <span class="box-bottom" aria-hidden="true"><span>+</span><span
+            class="rule">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><span>+</span></span>
       </li>
       <li>
         <p>???</p>

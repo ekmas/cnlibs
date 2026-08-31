@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Switch component from the ascii UI library.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/switch.tsx",
+      "content": "\"use client\";\n\nimport { Switch as SwitchPrimitive } from \"@base-ui/react/switch\";\n\nimport { cn } from \"@/lib/utils\";\n\n/* Static \"(o  )\" / \"(  o)\" — the state swaps the glyphs, nothing\n * animates. */\nfunction Switch({ className, ...props }: SwitchPrimitive.Root.Props) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"group/switch peer inline-flex shrink-0 items-center font-mono text-sm whitespace-pre text-ascii-comment outline-none select-none\",\n        \"hover:text-primary focus-visible:text-primary\",\n        \"data-checked:text-primary\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden className=\"group-data-checked/switch:hidden\">\n        {\"(o  )\"}\n      </span>\n      <span aria-hidden className=\"hidden group-data-checked/switch:inline\">\n        {\"(  o)\"}\n      </span>\n    </SwitchPrimitive.Root>\n  );\n}\n\nexport { Switch };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/switch.tsx"
+    }
+  ]
+}

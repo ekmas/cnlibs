@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Field component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/field.tsx",
+      "content": "import * as React from \"react\";\r\nimport { Label } from \"@/components/ui/label\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Field({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"field\"\r\n      className={cn(\"flex flex-col\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction FieldLabel({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<typeof Label>) {\r\n  return (\r\n    <Label\r\n      data-slot=\"field-label\"\r\n      className={cn(\r\n        \"text-ascii-comment uppercase tracking-[0.04em]\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction FieldControl({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return <div data-slot=\"field-control\" className={cn(className)} {...props} />;\r\n}\r\n\r\nfunction FieldDescription({ className, ...props }: React.ComponentProps<\"p\">) {\r\n  return (\r\n    <p\r\n      data-slot=\"field-description\"\r\n      className={cn(\"text-ascii-soft\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction FieldError({ className, ...props }: React.ComponentProps<\"p\">) {\r\n  return (\r\n    <p\r\n      data-slot=\"field-error\"\r\n      className={cn(\"text-destructive\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { Field, FieldControl, FieldDescription, FieldError, FieldLabel };\r\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/field.tsx"
+    },
+    {
+      "path": "apps/ascii/components/ui/label.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-[1ch] text-sm select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:pointer-events-none peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Label };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/label.tsx"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "type": "registry:ui",
+  "title": "Button Group",
+  "description": "Button Group component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/button-group.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n/** Boxed buttons in a row, overlapped by 1ch so adjacent buttons\n * share a single vertical border — drawn like the install tabs: each\n * button's frame takes its label color (dim at rest, foreground on\n * hover, primary when active), and the hovered, focused or pressed\n * button is raised above its neighbours so its whole frame shows. */\nfunction ButtonGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"button-group\"\n      role=\"group\"\n      className={cn(\n        \"inline-flex items-stretch -space-x-[1ch] font-mono text-sm\",\n        \"[&_[data-slot=frame]]:text-inherit!\",\n        \"[&>[data-slot=button]:hover]:z-10 [&>[data-slot=button]:focus-visible]:z-10\",\n        \"[&>[data-slot=button][aria-pressed=true]]:z-10\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { ButtonGroup };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/button-group.tsx"
+    }
+  ]
+}

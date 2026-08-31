@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "Aspect Ratio component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/aspect-ratio.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction AspectRatio({\n  ratio = 16 / 9,\n  className,\n  style,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio?: number }) {\n  return (\n    <div\n      data-slot=\"aspect-ratio\"\n      className={cn(\"relative w-full overflow-hidden\", className)}\n      style={{ aspectRatio: ratio, ...style }}\n      {...props}\n    />\n  );\n}\n\nexport { AspectRatio };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/aspect-ratio.tsx"
+    }
+  ]
+}

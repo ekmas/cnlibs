@@ -1,0 +1,144 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sepia",
+  "type": "registry:style",
+  "title": "Sepia",
+  "description": "Rust brown on aged parchment.",
+  "extends": "none",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ascii/ascii-box.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { useAsciiChars } from \"@/components/ascii/ascii-chars\";\nimport {\n  type AsciiChars,\n  bottomBorder,\n  dividerBorder,\n  fill,\n  junctionGlyph,\n  topBorder,\n  vColumn,\n  vGlyph,\n} from \"@/lib/ascii\";\nimport { cn } from \"@/lib/utils\";\n\ntype Tone = \"primary\" | \"soft\";\n\n/** Which line of the glyph set a rule draws with. */\ntype AsciiLine = keyof Omit<AsciiChars, \"junction\">;\n\n/* Every ASCII frame in the app shares one border color (matching the\n * inputs' and menus' rest-state frames). The tone axis is kept as API\n * so emphasis can be reintroduced without touching call sites. */\nconst toneClass: Record<Tone, string> = {\n  primary: \"text-primary/60\",\n  soft: \"text-primary/60\",\n};\n\nconst AsciiBoxContext = React.createContext<{\n  width: number;\n  tone: Tone;\n  /** Background utility class of the box surface — dividers repaint it\n   * over the absolute side rules so intersections show only junctions. */\n  bg: string;\n  /** Fluid boxes take their width from CSS, so dividers are drawn as\n   * clipped rules instead of fixed-length strings. */\n  fluid: boolean;\n}>({\n  width: 40,\n  tone: \"soft\",\n  bg: \"bg-card\",\n  fluid: false,\n});\n\n/** The junction glyph (\"+\" by default) — for corners and intersections\n * drawn outside a full AsciiBox (layout frames, fluid borders). */\nfunction AsciiJunction({\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"span\">, \"children\">) {\n  const chars = useAsciiChars();\n  return (\n    <span aria-hidden className={cn(\"select-none\", className)} {...props}>\n      {junctionGlyph(chars)}\n    </span>\n  );\n}\n\n/** One glyph of a vertical edge — for single-row frames (inputs,\n * menu items, table rows) that draw their own sides per row. */\nfunction AsciiSide({\n  side = \"left\",\n  row = 0,\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"span\">, \"children\"> & {\n  side?: \"left\" | \"right\";\n  row?: number;\n}) {\n  const chars = useAsciiChars();\n  return (\n    <span aria-hidden className={cn(\"select-none\", className)} {...props}>\n      {vGlyph(chars[side], row)}\n    </span>\n  );\n}\n\n/** A fixed-width \"+----+\" edge row for frames sized in characters —\n * the top (optionally titled) or bottom border of an input, menu,\n * avatar… Rendered as a block span so it can sit inside buttons. */\nfunction AsciiEdge({\n  edge,\n  width,\n  title,\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"span\">, \"children\" | \"title\"> & {\n  edge: \"top\" | \"bottom\";\n  width: number;\n  title?: string;\n}) {\n  const chars = useAsciiChars();\n  return (\n    <span\n      aria-hidden\n      className={cn(\"block select-none whitespace-pre\", className)}\n      {...props}\n    >\n      {edge === \"top\"\n        ? topBorder(width, title, chars)\n        : bottomBorder(width, chars)}\n    </span>\n  );\n}\n\n/** A column of side glyphs that stretches to match its sibling's\n * height via flex `items-stretch` — real glyphs, clipped by overflow. */\nfunction AsciiVRule({\n  tone = \"soft\",\n  side = \"left\",\n  className,\n}: {\n  tone?: Tone;\n  side?: \"left\" | \"right\";\n  className?: string;\n}) {\n  const chars = useAsciiChars();\n  return (\n    <div\n      aria-hidden\n      className={cn(\n        \"w-[1ch] shrink-0 select-none overflow-hidden\",\n        toneClass[tone],\n        className\n      )}\n    >\n      <pre className=\"m-0 font-mono\">{vColumn(300, chars[side])}</pre>\n    </div>\n  );\n}\n\n/** One or more literal empty text rows — vertical padding that stays\n * on the character grid instead of arbitrary CSS lengths. */\nfunction AsciiPad({\n  rows = 1,\n  className,\n}: {\n  rows?: number;\n  className?: string;\n}) {\n  return (\n    <div aria-hidden className={cn(\"select-none whitespace-pre\", className)}>\n      {Array.from({ length: rows }, () => \" \").join(\"\\n\")}\n    </div>\n  );\n}\n\ntype AsciiBoxProps = Omit<React.ComponentProps<\"div\">, \"title\"> & {\n  width: number;\n  title?: string;\n  tone?: Tone;\n  contentClassName?: string;\n  /** Empty text rows rendered above and below the content. */\n  padY?: number;\n  /** Background utility class of the box surface. Pass this instead of a\n   * bg-* class in className so dividers can repaint it at intersections. */\n  bg?: string;\n  /** Size the box with CSS (w-*, max-w-*) instead of `width`: the edge\n   * rows become clipped rules that follow the container, so the box can\n   * be `w-full` on a narrow screen. `width` is then only the fallback\n   * used when no width class is given. */\n  fluid?: boolean;\n};\n\nfunction AsciiBox({\n  width,\n  title,\n  tone = \"soft\",\n  bg = \"bg-card\",\n  className,\n  contentClassName,\n  padY = 0,\n  fluid = false,\n  children,\n  ...props\n}: AsciiBoxProps) {\n  const chars = useAsciiChars();\n  return (\n    <AsciiBoxContext.Provider value={{ width, tone, bg, fluid }}>\n      <div\n        data-slot=\"ascii-box\"\n        className={cn(\n          \"inline-flex flex-col font-mono text-card-foreground text-sm\",\n          bg,\n          className\n        )}\n        style={fluid ? undefined : { width: `${width}ch` }}\n        {...props}\n      >\n        {fluid ? (\n          <div\n            aria-hidden\n            className={cn(\"flex select-none whitespace-pre\", toneClass[tone])}\n          >\n            <AsciiJunction className=\"shrink-0\" />\n            {title ? (\n              <>\n                <AsciiRule\n                  line=\"top\"\n                  tone={tone}\n                  className=\"w-[2ch] shrink-0 text-inherit\"\n                />\n                <span className=\"shrink-0\">{` ${title} `}</span>\n              </>\n            ) : null}\n            <AsciiRule\n              line=\"top\"\n              tone={tone}\n              className=\"min-w-0 flex-1 text-inherit\"\n            />\n            <AsciiJunction className=\"shrink-0\" />\n          </div>\n        ) : (\n          <div\n            aria-hidden\n            className={cn(\"select-none whitespace-pre\", toneClass[tone])}\n          >\n            {topBorder(width, title, chars)}\n          </div>\n        )}\n        <div className=\"relative\">\n          <AsciiVRule\n            tone={tone}\n            side=\"left\"\n            className=\"absolute inset-y-0 left-0\"\n          />\n          {padY > 0 && <AsciiPad rows={padY} />}\n          <div className={cn(\"min-w-0 px-[2ch]\", contentClassName)}>\n            {children}\n          </div>\n          {padY > 0 && <AsciiPad rows={padY} />}\n          <AsciiVRule\n            tone={tone}\n            side=\"right\"\n            className=\"absolute inset-y-0 right-0\"\n          />\n        </div>\n        {fluid ? (\n          <AsciiHBorder line=\"bottom\" tone={tone} />\n        ) : (\n          <div\n            aria-hidden\n            className={cn(\"select-none whitespace-pre\", toneClass[tone])}\n          >\n            {bottomBorder(width, chars)}\n          </div>\n        )}\n      </div>\n    </AsciiBoxContext.Provider>\n  );\n}\n\n/** A \"+---+\" divider spanning the box's full content width, flanked\n * by one empty text row on each side (disable with pad={false}) —\n * for separating sections (header/content/footer) inside an AsciiBox. */\nfunction AsciiBoxDivider({\n  className,\n  pad = true,\n}: {\n  className?: string;\n  pad?: boolean;\n}) {\n  const { width, tone, bg, fluid } = React.useContext(AsciiBoxContext);\n  const chars = useAsciiChars();\n  return (\n    <div\n      aria-hidden\n      className={cn(\n        \"-mx-[2ch] select-none whitespace-pre\",\n        toneClass[tone],\n        className\n      )}\n    >\n      {pad && <div> </div>}\n      {/* Positioned above the box's absolute side rules and repainting\n       * the surface, so the intersection cells show only junctions. */}\n      <div className={cn(\"relative z-10\", bg)}>\n        {fluid ? (\n          <AsciiHBorder line=\"divider\" tone={tone} />\n        ) : (\n          <span>{dividerBorder(width, chars)}</span>\n        )}\n      </div>\n      {pad && <div> </div>}\n    </div>\n  );\n}\n\n/** A single side-glyph-flanked line — for list-style rows (menus, table\n * rows) that need their own hover/selection background per row. */\nfunction AsciiBoxRow({\n  className,\n  contentClassName,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & { contentClassName?: string }) {\n  const { tone } = React.useContext(AsciiBoxContext);\n  return (\n    <div className={cn(\"-mx-[2ch] flex items-center\", className)} {...props}>\n      <AsciiSide side=\"left\" className={cn(\"shrink-0\", toneClass[tone])} />\n      <div className={cn(\"min-w-0 flex-1 px-[1ch]\", contentClassName)}>\n        {children}\n      </div>\n      <AsciiSide side=\"right\" className={cn(\"shrink-0\", toneClass[tone])} />\n    </div>\n  );\n}\n\n/** A fluid single-character-tall rule for contexts where the exact\n * character width isn't known ahead of time (e.g. spans a flexible\n * container). Renders real repeated glyphs, clipped by overflow.\n *\n * Draws with the theme's `divider` line (horizontal) or `left` line\n * (vertical) unless `line` picks another edge; `char` overrides the\n * theme entirely. */\nfunction AsciiRule({\n  className,\n  char,\n  line,\n  tone = \"soft\",\n  orientation = \"horizontal\",\n}: {\n  className?: string;\n  char?: string;\n  line?: AsciiLine;\n  tone?: Tone;\n  orientation?: \"horizontal\" | \"vertical\";\n}) {\n  const chars = useAsciiChars();\n  const vertical = orientation === \"vertical\";\n  const seq = char ?? chars[line ?? (vertical ? \"left\" : \"divider\")];\n  return (\n    <div\n      aria-hidden\n      className={cn(\n        \"select-none overflow-hidden whitespace-pre text-nowrap\",\n        toneClass[tone],\n        className\n      )}\n    >\n      {vertical ? vColumn(300, seq) : fill(400, seq)}\n    </div>\n  );\n}\n\n/** A fluid \"+----+\" row: junction, a horizontal line that fills the\n * available width, junction. For box edges whose width is set by\n * layout rather than a character count. */\nfunction AsciiHBorder({\n  line = \"top\",\n  tone = \"soft\",\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"div\">, \"children\"> & {\n  line?: AsciiLine;\n  tone?: Tone;\n}) {\n  return (\n    <div\n      aria-hidden\n      className={cn(\"flex select-none\", toneClass[tone], className)}\n      {...props}\n    >\n      <AsciiJunction className=\"shrink-0\" />\n      <AsciiRule line={line} tone={tone} className=\"min-w-0 flex-1\" />\n      <AsciiJunction className=\"shrink-0\" />\n    </div>\n  );\n}\n\nexport type { AsciiLine };\nexport {\n  AsciiBox,\n  AsciiBoxContext,\n  AsciiBoxDivider,\n  AsciiBoxRow,\n  AsciiEdge,\n  AsciiHBorder,\n  AsciiJunction,\n  AsciiPad,\n  AsciiRule,\n  AsciiSide,\n  AsciiVRule,\n};\n",
+      "type": "registry:component",
+      "target": "~/components/ascii/ascii-box.tsx"
+    },
+    {
+      "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { type AsciiChars, DEFAULT_ASCII_CHARS } from \"@/lib/ascii\";\n\n/** The glyph set every framed component draws its edges from. The\n * default value means components work with no provider at all — they\n * render the classic \"+\", \"-\" and \"|\" frame. */\nconst AsciiCharsContext = React.createContext<AsciiChars>(DEFAULT_ASCII_CHARS);\n\n/** Supplies a fixed glyph set to every component beneath it — the\n * static entry point for a project that wants, say, \"<|>\" edges without\n * the styling page's localStorage-backed AsciiThemeProvider. Any key\n * left out keeps its default. */\nfunction AsciiCharsProvider({\n  chars,\n  children,\n}: {\n  chars: Partial<AsciiChars>;\n  children: React.ReactNode;\n}) {\n  const value = React.useMemo<AsciiChars>(\n    () => ({ ...DEFAULT_ASCII_CHARS, ...chars }),\n    [chars]\n  );\n  return (\n    <AsciiCharsContext.Provider value={value}>\n      {children}\n    </AsciiCharsContext.Provider>\n  );\n}\n\n/** The active border glyph set. */\nfunction useAsciiChars(): AsciiChars {\n  return React.useContext(AsciiCharsContext);\n}\n\nexport { AsciiCharsContext, AsciiCharsProvider, useAsciiChars };\n",
+      "type": "registry:component",
+      "target": "~/components/ascii/ascii-chars.tsx"
+    },
+    {
+      "path": "apps/ascii/lib/ascii.ts",
+      "content": "/** The glyph set every ASCII frame in the library is drawn from.\n *\n * Line entries (`top`, `bottom`, `left`, `right`, `divider`) may be a\n * single character or a sequence that repeats to fill the run — `<|>`\n * draws `<|><|><|>…`. Vertical lines repeat one character per row.\n * `junction` is always exactly one character: it sits at corners and\n * wherever a divider meets a side. */\nexport type AsciiChars = {\n  /** Top edge of a box, repeats horizontally. */\n  top: string;\n  /** Bottom edge of a box, repeats horizontally. */\n  bottom: string;\n  /** Left edge of a box, repeats vertically (one char per row). */\n  left: string;\n  /** Right edge of a box, repeats vertically (one char per row). */\n  right: string;\n  /** Interior horizontal rules: section dividers, separators, table\n   * row dividers. Repeats horizontally. */\n  divider: string;\n  /** Corners and intersections. Single character. */\n  junction: string;\n};\n\nexport const DEFAULT_ASCII_CHARS: AsciiChars = {\n  top: \"-\",\n  bottom: \"-\",\n  left: \"|\",\n  right: \"|\",\n  divider: \"-\",\n  junction: \"+\",\n};\n\n/** Repeats `seq` to exactly `n` characters (truncating a partial\n * final repeat). An empty sequence falls back to a space so the\n * layout keeps its width. */\nexport function fill(n: number, seq = \"-\") {\n  const count = Math.max(n, 0);\n  if (count === 0) {\n    return \"\";\n  }\n  const unit = seq.length > 0 ? seq : \" \";\n  return unit.repeat(Math.ceil(count / unit.length)).slice(0, count);\n}\n\n/** @deprecated use `fill` — kept as an alias for existing call sites. */\nexport function hRepeat(n: number, char = \"-\") {\n  return fill(n, char);\n}\n\n/** The glyph a vertical sequence shows on a given row. */\nexport function vGlyph(seq: string, row = 0) {\n  if (seq.length === 0) {\n    return \" \";\n  }\n  return seq[row % seq.length] ?? \" \";\n}\n\n/** `rows` glyphs of a vertical sequence, one per line. */\nexport function vColumn(rows: number, seq = \"|\") {\n  const lines: string[] = [];\n  for (let row = 0; row < rows; row += 1) {\n    lines.push(vGlyph(seq, row));\n  }\n  return lines.join(\"\\n\");\n}\n\n/** A single junction glyph — sequences are trimmed to their first\n * character, an empty string falls back to the default. */\nexport function junctionGlyph(chars: AsciiChars) {\n  return chars.junction.length > 0\n    ? chars.junction[0]\n    : DEFAULT_ASCII_CHARS.junction;\n}\n\nexport function topBorder(\n  width: number,\n  title?: string,\n  chars: AsciiChars = DEFAULT_ASCII_CHARS\n) {\n  const j = junctionGlyph(chars);\n  if (!title) {\n    return `${j}${fill(width - 2, chars.top)}${j}`;\n  }\n  const label = ` ${title} `;\n  const left = 2;\n  const right = Math.max(width - 2 - left - label.length, 1);\n  return `${j}${fill(left, chars.top)}${label}${fill(right, chars.top)}${j}`;\n}\n\nexport function bottomBorder(\n  width: number,\n  chars: AsciiChars = DEFAULT_ASCII_CHARS\n) {\n  const j = junctionGlyph(chars);\n  return `${j}${fill(width - 2, chars.bottom)}${j}`;\n}\n\nexport function dividerBorder(\n  width: number,\n  chars: AsciiChars = DEFAULT_ASCII_CHARS\n) {\n  const j = junctionGlyph(chars);\n  return `${j}${fill(width - 2, chars.divider)}${j}`;\n}\n\n/** Divider row for a table: a junction at every column boundary,\n * divider glyphs exactly as wide as each column. Its junctions land\n * on the side-glyph positions of rows built as `|cell|cell|…|` with\n * the same widths. */\nexport function columnDivider(\n  widths: number[],\n  chars: AsciiChars = DEFAULT_ASCII_CHARS\n) {\n  const j = junctionGlyph(chars);\n  return `${j}${widths.map((w) => fill(w, chars.divider)).join(j)}${j}`;\n}\n\n/** Total character width of a table row (and its dividers):\n * one side glyph per boundary plus the column widths. */\nexport function tableRowWidth(widths: number[]) {\n  return widths.reduce((sum, w) => sum + w, 0) + widths.length + 1;\n}\n",
+      "type": "registry:lib",
+      "target": "~/lib/ascii.ts"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "text-sm": "16px",
+      "text-sm--line-height": "22px",
+      "color-background": "var(--background)",
+      "color-foreground": "var(--foreground)",
+      "font-sans": "var(--font-ascii)",
+      "font-mono": "var(--font-ascii)",
+      "font-weight-heading": "700",
+      "font-weight-base": "400",
+      "color-sidebar-ring": "var(--ring)",
+      "color-sidebar-border": "var(--border)",
+      "color-sidebar-accent-foreground": "var(--accent-foreground)",
+      "color-sidebar-accent": "var(--secondary)",
+      "color-sidebar-primary-foreground": "var(--primary-foreground)",
+      "color-sidebar-primary": "var(--primary)",
+      "color-sidebar-foreground": "var(--ascii-soft)",
+      "color-sidebar": "var(--background)",
+      "color-ring": "var(--ring)",
+      "color-input": "var(--input)",
+      "color-border": "var(--border)",
+      "color-destructive": "var(--destructive)",
+      "color-accent-foreground": "var(--accent-foreground)",
+      "color-muted-foreground": "var(--muted-foreground)",
+      "color-secondary-foreground": "var(--secondary-foreground)",
+      "color-secondary": "var(--secondary)",
+      "color-primary-foreground": "var(--primary-foreground)",
+      "color-primary": "var(--primary)",
+      "color-popover-foreground": "var(--popover-foreground)",
+      "color-popover": "var(--popover)",
+      "color-card-foreground": "var(--card-foreground)",
+      "color-card": "var(--card)",
+      "color-ascii-comment": "var(--ascii-comment)",
+      "color-ascii-soft": "var(--ascii-soft)",
+      "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+      "radius-*": "initial"
+    },
+    "light": {
+      "ascii-primary": "#8a4b1f",
+      "ascii-soft": "#8c6b4f",
+      "ascii-text": "#2b1d12",
+      "ascii-comment": "#a8927c",
+      "muted-foreground": "#8a7460",
+      "background": "#f4ecdf",
+      "ascii-surface": "#faf5ec",
+      "secondary": "#ebe0cd",
+      "ascii-dim": "#d6c6ad",
+      "primary-foreground": "#faf5ec",
+      "destructive": "#a11f1f",
+      "foreground": "var(--ascii-text)",
+      "card": "var(--ascii-surface)",
+      "card-foreground": "var(--ascii-text)",
+      "popover": "var(--ascii-surface)",
+      "popover-foreground": "var(--ascii-text)",
+      "primary": "var(--ascii-primary)",
+      "secondary-foreground": "var(--ascii-soft)",
+      "accent-foreground": "var(--ascii-text)",
+      "border": "var(--ascii-dim)",
+      "input": "var(--ascii-dim)",
+      "ring": "var(--ascii-primary)",
+      "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+      "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+    }
+  },
+  "css": {
+    "@utility no-scrollbar": {
+      "-ms-overflow-style": "none",
+      "scrollbar-width": "none",
+      "&::-webkit-scrollbar": {
+        "display": "none"
+      }
+    },
+    "@keyframes skeleton": {
+      "0%": {
+        "opacity": "0"
+      },
+      "33.33%": {
+        "opacity": "0.5"
+      },
+      "66.66%": {
+        "opacity": "1"
+      },
+      "100%": {
+        "opacity": "1"
+      }
+    },
+    "@layer base": {
+      "*": {
+        "-ms-overflow-style": "none",
+        "scrollbar-width": "none"
+      },
+      "*::-webkit-scrollbar": {
+        "display": "none"
+      },
+      "html": {
+        "font-family": "var(--font-ascii)"
+      },
+      "body": {
+        "font-weight": "var(--font-weight-base)",
+        "background-color": "var(--background)",
+        "color": "var(--foreground)",
+        "font-size": "var(--text-sm)",
+        "line-height": "var(--text-sm--line-height)"
+      },
+      "::selection": {
+        "color": "var(--primary-foreground)",
+        "background": "var(--primary)"
+      }
+    }
+  }
+}

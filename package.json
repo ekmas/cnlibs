@@ -16,7 +16,8 @@
     "registry:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs",
     "registry:build:dev": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --dev",
     "registry:test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --test",
-    "registry:test:charts": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --test-chart"
+    "registry:test:charts": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --test-chart",
+    "registry:test:ascii": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-registry.mjs --test-ascii"
   },
   "private": true,
   "packageManager": "pnpm@9.0.0"

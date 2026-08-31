@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Skeleton component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/skeleton.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nfunction Skeleton({\n  className,\n  char = \"#\",\n  ...props\n}: React.ComponentProps<\"div\"> & { char?: string }) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden\n      className={cn(\n        \"animate-skeleton overflow-hidden font-mono text-sm whitespace-pre text-ascii-comment select-none\",\n        className\n      )}\n      {...props}\n    >\n      {/* A block of filler glyphs, clipped by the sized container — size\n       * the skeleton with w-[Nch] / h-[Nlh] to stay on the char grid. */}\n      {`${char.repeat(200)}\\n`.repeat(30)}\n    </div>\n  );\n}\n\nexport { Skeleton };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/skeleton.tsx"
+    }
+  ]
+}

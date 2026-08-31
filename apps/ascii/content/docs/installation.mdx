@@ -1,0 +1,81 @@
+import { InstallTabs } from "@/components/ascii/install-tabs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+## 1. pick a palette
+
+Head to the <Button variant="link" nativeButton={false} render={<Link href="/styling" target="_blank" />}>styling</Button> page, pick the palette you want, and copy the scaffold command shown there to init a brand new project already themed — or the "add to existing project" command if you're adding ascii to a project you already have.
+
+A palette brings its color tokens, the base CSS and the [frame primitives](/docs/grid) every component draws with — no UI components yet; those come in step 4.
+
+## 2. wrap the layout
+
+Every framed component asks one React context for the characters it draws its edges with. Wrap your root layout once in `AsciiCharsProvider` (it came with the palette, in `components/ascii/ascii-chars.tsx`) and pass the glyph set you want — any key you leave out keeps its default:
+
+```tsx
+// app/layout.tsx
+import { AsciiCharsProvider } from "@/components/ascii/ascii-chars";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <AsciiCharsProvider
+          chars={{
+            top: "=",
+            bottom: "=",
+            left: "‖",
+            right: "‖",
+            divider: "=",
+            junction: "#",
+          }}
+        >
+          {children}
+        </AsciiCharsProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+If you're happy with the classic `+ - |` frame you can skip this step — without a provider every component falls back to it. The [styling page](/styling) lets you try the presets and generates this snippet for whichever you pick.
+
+## 3. install a mono font
+
+The whole grid depends on a monospace face. The default look uses [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) — grab it from Google Fonts, or pick your preferred mono font, and point `--font-ascii` at it:
+
+```tsx
+// app/layout.tsx
+import { IBM_Plex_Mono } from "next/font/google";
+
+const mono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={mono.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+```css
+/* app/globals.css */
+:root {
+  --font-ascii: var(--font-ibm-plex-mono);
+}
+```
+
+## 4. add components
+
+Every component in the [registry](/components) installs the same way — swap the URL for the one shown on that component's docs page. Button is used here as an example:
+
+<InstallTabs item="button" />
+
+## prefer to copy by hand?
+
+Every component doc has a "manual" tab with its full source, so you can paste it in without touching the CLI.

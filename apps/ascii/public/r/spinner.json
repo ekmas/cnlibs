@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "Spinner component from the ascii UI library.",
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/spinner.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst FRAMES = [\"|\", \"/\", \"-\", \"\\\\\"];\n\nfunction Spinner({\n  className,\n  intervalMs = 150,\n  ...props\n}: React.ComponentProps<\"span\"> & { intervalMs?: number }) {\n  const [frame, setFrame] = React.useState(0);\n\n  React.useEffect(() => {\n    const id = setInterval(() => {\n      setFrame((f) => (f + 1) % FRAMES.length);\n    }, intervalMs);\n    return () => clearInterval(id);\n  }, [intervalMs]);\n\n  return (\n    <span\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\n        \"inline-block w-[1ch] font-mono text-primary select-none\",\n        className\n      )}\n      {...props}\n    >\n      {FRAMES[frame]}\n    </span>\n  );\n}\n\nexport { Spinner };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/spinner.tsx"
+    }
+  ]
+}

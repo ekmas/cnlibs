@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "Collapsible component from the ascii UI library.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/collapsible.tsx",
+      "content": "\"use client\";\n\nimport { Collapsible as CollapsiblePrimitive } from \"@base-ui/react/collapsible\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Collapsible({ className, ...props }: CollapsiblePrimitive.Root.Props) {\n  return (\n    <CollapsiblePrimitive.Root\n      data-slot=\"collapsible\"\n      className={cn(\"flex flex-col font-mono\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CollapsibleTrigger({\n  className,\n  children,\n  ...props\n}: CollapsiblePrimitive.Trigger.Props) {\n  return (\n    <CollapsiblePrimitive.Trigger\n      data-slot=\"collapsible-trigger\"\n      className={cn(\n        \"group/collapsible-trigger flex items-center gap-[1ch] text-left text-sm text-foreground outline-none hover:text-primary focus-visible:text-primary disabled:pointer-events-none disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden className=\"shrink-0 text-primary select-none\">\n        <span className=\"group-aria-expanded/collapsible-trigger:hidden\">\n          &gt;\n        </span>\n        <span className=\"hidden group-aria-expanded/collapsible-trigger:inline\">\n          v\n        </span>\n      </span>\n      {children}\n    </CollapsiblePrimitive.Trigger>\n  );\n}\n\nfunction CollapsibleContent({\n  className,\n  children,\n  ...props\n}: CollapsiblePrimitive.Panel.Props) {\n  return (\n    <CollapsiblePrimitive.Panel\n      data-slot=\"collapsible-content\"\n      className=\"overflow-hidden text-sm\"\n      {...props}\n    >\n      <div\n        className={cn(\n          \"h-(--collapsible-panel-height) text-ascii-soft data-ending-style:h-0 data-starting-style:h-0\",\n          className\n        )}\n      >\n        {children}\n      </div>\n    </CollapsiblePrimitive.Panel>\n  );\n}\n\nexport { Collapsible, CollapsibleContent, CollapsibleTrigger };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/collapsible.tsx"
+    }
+  ]
+}

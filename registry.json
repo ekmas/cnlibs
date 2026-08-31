@@ -1246,6 +1246,1675 @@
       ]
     },
     {
+      "name": "ascii/accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Accordion component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/accordion.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Alert Dialog component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/alert-dialog.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/alert.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Aspect Ratio component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/aspect-ratio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Attachment component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/attachment.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/attachment.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/avatar.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/breadcrumb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Bubble component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/bubble.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/bubble.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Button Group component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/button-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Calendar component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/calendar.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/card.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/carousel.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/carousel.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/combobox.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/combobox.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/command.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/command.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Context Menu component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/context-menu.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Data Table component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/data-table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/data-table.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/table.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Date Picker component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/date-picker.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Dialog component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dialog.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Direction component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/direction.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/direction.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Drawer component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/drawer.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Dropdown Menu component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/dropdown-menu.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/empty.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/empty.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/field.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/hover-card.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input Group component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-group.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Input Otp component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input-otp.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Item component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/item.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/item.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Kbd component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/kbd.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/kbd.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Marker component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/marker.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/marker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Menubar component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/menubar.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "Message Scroller component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/message-scroller.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/message-scroller.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Message component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/message.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/message.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/avatar.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Native Select component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/native-select.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/native-select.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Navigation Menu component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/navigation-menu.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/pagination.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/popover.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/progress.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "description": "Questionnaire component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/questionnaire.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/questionnaire.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio Group component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/resizable.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/resizable.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scroll Area component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/scroll-area.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/select.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sheet.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sidebar.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/button.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/input.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/separator.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/sheet.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/skeleton.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tooltip.tsx"
+        },
+        {
+          "path": "apps/ascii/hooks/use-mobile.ts",
+          "type": "registry:hook",
+          "target": "~/hooks/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/skeleton.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/slider.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Spinner component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Switch component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/table.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tabs.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea component from the ascii UI library.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/textarea.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Toast component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/toast.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toast.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        },
+        {
+          "path": "apps/ascii/components/ui/spinner.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Toggle Group component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Toggle component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii/tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Tooltip component from the ascii UI library.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "~/components/ui/tooltip.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
+      "name": "ascii/ascii-primitives",
+      "type": "registry:component",
+      "title": "ASCII Primitives",
+      "description": "The frame primitives (AsciiBox, AsciiRule, AsciiSide…), the glyph-set context and the lib/ascii string helpers every ascii component is drawn with.",
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ]
+    },
+    {
       "name": "8bit/themes/default",
       "type": "registry:style",
       "title": "Default (8bit)",
@@ -4014,6 +5683,1322 @@
           "chart-3": "oklch(0.6180 0.0778 65.5444)",
           "chart-4": "oklch(0.5604 0.0624 68.5805)",
           "chart-5": "oklch(0.4851 0.0570 72.6827)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/phosphor",
+      "type": "registry:style",
+      "title": "Phosphor",
+      "description": "The default ascii/ui palette: green phosphor on black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#39ff6a",
+          "ascii-soft": "#8fe6aa",
+          "ascii-text": "#f4fff7",
+          "ascii-comment": "#4a5f52",
+          "muted-foreground": "#6b8577",
+          "background": "#0b0f0c",
+          "ascii-surface": "#0e1512",
+          "secondary": "#13251a",
+          "ascii-dim": "#1e3a28",
+          "primary-foreground": "#05130a",
+          "destructive": "#ffb000",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/amber",
+      "type": "registry:style",
+      "title": "Amber",
+      "description": "Warm amber monitor glow.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#ffb000",
+          "ascii-soft": "#e6c27a",
+          "ascii-text": "#fff7e6",
+          "ascii-comment": "#6b5a33",
+          "muted-foreground": "#8a7a52",
+          "background": "#0f0c06",
+          "ascii-surface": "#161108",
+          "secondary": "#26200f",
+          "ascii-dim": "#3a2f14",
+          "primary-foreground": "#1a1200",
+          "destructive": "#ff5f5f",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/ice",
+      "type": "registry:style",
+      "title": "Ice",
+      "description": "Cool cyan on near-black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#5ee0ff",
+          "ascii-soft": "#9ad8e6",
+          "ascii-text": "#f0fbff",
+          "ascii-comment": "#3f5d66",
+          "muted-foreground": "#5f8590",
+          "background": "#070c0f",
+          "ascii-surface": "#0c1418",
+          "secondary": "#112028",
+          "ascii-dim": "#193640",
+          "primary-foreground": "#00121a",
+          "destructive": "#ffb000",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/magenta",
+      "type": "registry:style",
+      "title": "Magenta",
+      "description": "Hot pink on dark plum.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#ff5ecf",
+          "ascii-soft": "#e6a3d4",
+          "ascii-text": "#fff2fb",
+          "ascii-comment": "#6a3d5c",
+          "muted-foreground": "#8f5f80",
+          "background": "#0f070c",
+          "ascii-surface": "#170b12",
+          "secondary": "#26101e",
+          "ascii-dim": "#3f1a33",
+          "primary-foreground": "#1a0012",
+          "destructive": "#ffb000",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/violet",
+      "type": "registry:style",
+      "title": "Violet",
+      "description": "Soft violet on deep indigo.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#a78bfa",
+          "ascii-soft": "#c4b5fd",
+          "ascii-text": "#f5f3ff",
+          "ascii-comment": "#524a70",
+          "muted-foreground": "#7a7099",
+          "background": "#0b0912",
+          "ascii-surface": "#120f1c",
+          "secondary": "#1d1830",
+          "ascii-dim": "#2e2650",
+          "primary-foreground": "#0e0620",
+          "destructive": "#fb7185",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/ember",
+      "type": "registry:style",
+      "title": "Ember",
+      "description": "Burnt orange on charcoal.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#ff6a3d",
+          "ascii-soft": "#e6a08a",
+          "ascii-text": "#fff4f0",
+          "ascii-comment": "#66463a",
+          "muted-foreground": "#8c6a5c",
+          "background": "#100907",
+          "ascii-surface": "#180e0b",
+          "secondary": "#281713",
+          "ascii-dim": "#40241c",
+          "primary-foreground": "#1a0800",
+          "destructive": "#ffd23f",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/mono",
+      "type": "registry:style",
+      "title": "Mono",
+      "description": "Plain white on black.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#f2f2f2",
+          "ascii-soft": "#b8b8b8",
+          "ascii-text": "#ffffff",
+          "ascii-comment": "#5c5c5c",
+          "muted-foreground": "#7a7a7a",
+          "background": "#0a0a0a",
+          "ascii-surface": "#111111",
+          "secondary": "#1c1c1c",
+          "ascii-dim": "#2e2e2e",
+          "primary-foreground": "#0a0a0a",
+          "destructive": "#ff6b6b",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/paper",
+      "type": "registry:style",
+      "title": "Paper",
+      "description": "Forest green on warm paper.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#1f5f3a",
+          "ascii-soft": "#3f6b52",
+          "ascii-text": "#141a16",
+          "ascii-comment": "#8a9a90",
+          "muted-foreground": "#6f7f75",
+          "background": "#f6f4ec",
+          "ascii-surface": "#fbfaf5",
+          "secondary": "#e6e9e2",
+          "ascii-dim": "#c9d2cc",
+          "primary-foreground": "#f6f4ec",
+          "destructive": "#b4530a",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/daylight",
+      "type": "registry:style",
+      "title": "Daylight",
+      "description": "Royal blue on cool white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#1d4ed8",
+          "ascii-soft": "#3b5b9a",
+          "ascii-text": "#0f172a",
+          "ascii-comment": "#8a94a8",
+          "muted-foreground": "#64748b",
+          "background": "#f5f7fb",
+          "ascii-surface": "#ffffff",
+          "secondary": "#e6ebf5",
+          "ascii-dim": "#c7d0e0",
+          "primary-foreground": "#ffffff",
+          "destructive": "#c2410c",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/sepia",
+      "type": "registry:style",
+      "title": "Sepia",
+      "description": "Rust brown on aged parchment.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#8a4b1f",
+          "ascii-soft": "#8c6b4f",
+          "ascii-text": "#2b1d12",
+          "ascii-comment": "#a8927c",
+          "muted-foreground": "#8a7460",
+          "background": "#f4ecdf",
+          "ascii-surface": "#faf5ec",
+          "secondary": "#ebe0cd",
+          "ascii-dim": "#d6c6ad",
+          "primary-foreground": "#faf5ec",
+          "destructive": "#a11f1f",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/slate",
+      "type": "registry:style",
+      "title": "Slate",
+      "description": "Slate grey-blue on off-white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#334155",
+          "ascii-soft": "#526075",
+          "ascii-text": "#0f172a",
+          "ascii-comment": "#94a3b8",
+          "muted-foreground": "#64748b",
+          "background": "#f1f5f9",
+          "ascii-surface": "#ffffff",
+          "secondary": "#e2e8f0",
+          "ascii-dim": "#cbd5e1",
+          "primary-foreground": "#ffffff",
+          "destructive": "#b91c1c",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/mint",
+      "type": "registry:style",
+      "title": "Mint",
+      "description": "Teal on mint white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#0f766e",
+          "ascii-soft": "#3d7f79",
+          "ascii-text": "#052e2b",
+          "ascii-comment": "#7fa39f",
+          "muted-foreground": "#5f8581",
+          "background": "#effaf7",
+          "ascii-surface": "#ffffff",
+          "secondary": "#d9f0eb",
+          "ascii-dim": "#b7dcd5",
+          "primary-foreground": "#ffffff",
+          "destructive": "#c2410c",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/lavender",
+      "type": "registry:style",
+      "title": "Lavender",
+      "description": "Deep purple on lavender white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#6d28d9",
+          "ascii-soft": "#7c5cb0",
+          "ascii-text": "#1e1233",
+          "ascii-comment": "#9d92b8",
+          "muted-foreground": "#7b6f99",
+          "background": "#f6f3fc",
+          "ascii-surface": "#fdfcff",
+          "secondary": "#ebe4f7",
+          "ascii-dim": "#d4c8ea",
+          "primary-foreground": "#fdfcff",
+          "destructive": "#be123c",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
+        }
+      }
+    },
+    {
+      "name": "ascii/themes/ink",
+      "type": "registry:style",
+      "title": "Ink",
+      "description": "Black ink on white.",
+      "extends": "none",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "apps/ascii/components/ascii/ascii-box.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-box.tsx"
+        },
+        {
+          "path": "apps/ascii/components/ascii/ascii-chars.tsx",
+          "type": "registry:component",
+          "target": "~/components/ascii/ascii-chars.tsx"
+        },
+        {
+          "path": "apps/ascii/lib/ascii.ts",
+          "type": "registry:lib",
+          "target": "~/lib/ascii.ts"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "text-sm": "16px",
+          "text-sm--line-height": "22px",
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "font-sans": "var(--font-ascii)",
+          "font-mono": "var(--font-ascii)",
+          "font-weight-heading": "700",
+          "font-weight-base": "400",
+          "color-sidebar-ring": "var(--ring)",
+          "color-sidebar-border": "var(--border)",
+          "color-sidebar-accent-foreground": "var(--accent-foreground)",
+          "color-sidebar-accent": "var(--secondary)",
+          "color-sidebar-primary-foreground": "var(--primary-foreground)",
+          "color-sidebar-primary": "var(--primary)",
+          "color-sidebar-foreground": "var(--ascii-soft)",
+          "color-sidebar": "var(--background)",
+          "color-ring": "var(--ring)",
+          "color-input": "var(--input)",
+          "color-border": "var(--border)",
+          "color-destructive": "var(--destructive)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary": "var(--primary)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-popover": "var(--popover)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-card": "var(--card)",
+          "color-ascii-comment": "var(--ascii-comment)",
+          "color-ascii-soft": "var(--ascii-soft)",
+          "animate-skeleton": "skeleton 2s steps(1, end) infinite",
+          "radius-*": "initial"
+        },
+        "light": {
+          "ascii-primary": "#111111",
+          "ascii-soft": "#444444",
+          "ascii-text": "#000000",
+          "ascii-comment": "#8c8c8c",
+          "muted-foreground": "#666666",
+          "background": "#ffffff",
+          "ascii-surface": "#fafafa",
+          "secondary": "#eeeeee",
+          "ascii-dim": "#d4d4d4",
+          "primary-foreground": "#ffffff",
+          "destructive": "#c81e1e",
+          "foreground": "var(--ascii-text)",
+          "card": "var(--ascii-surface)",
+          "card-foreground": "var(--ascii-text)",
+          "popover": "var(--ascii-surface)",
+          "popover-foreground": "var(--ascii-text)",
+          "primary": "var(--ascii-primary)",
+          "secondary-foreground": "var(--ascii-soft)",
+          "accent-foreground": "var(--ascii-text)",
+          "border": "var(--ascii-dim)",
+          "input": "var(--ascii-dim)",
+          "ring": "var(--ascii-primary)",
+          "font-ascii": "var(--font-ibm-plex-mono, \"IBM Plex Mono\", ui-monospace, monospace)",
+          "ascii-glow": "0 0 8px color-mix(in srgb, var(--ascii-primary) 35%, transparent)"
         }
       }
     },

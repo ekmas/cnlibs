@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "Radio Group component from the ascii UI library.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "apps/ascii/components/ui/radio-group.tsx",
+      "content": "\"use client\";\n\nimport { Radio as RadioPrimitive } from \"@base-ui/react/radio\";\nimport { RadioGroup as RadioGroupPrimitive } from \"@base-ui/react/radio-group\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {\n  return (\n    <RadioGroupPrimitive\n      data-slot=\"radio-group\"\n      className={cn(\"flex flex-col font-mono text-sm\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {\n  return (\n    <RadioPrimitive.Root\n      data-slot=\"radio-group-item\"\n      className={cn(\n        \"peer inline-flex shrink-0 items-center font-mono text-sm text-ascii-comment outline-none\",\n        \"hover:text-primary focus-visible:text-primary\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"data-checked:text-primary\",\n        className\n      )}\n      {...props}\n    >\n      <span aria-hidden>(</span>\n      <RadioPrimitive.Indicator\n        keepMounted\n        className=\"w-[1ch] text-center text-primary opacity-0 data-checked:opacity-100\"\n      >\n        •\n      </RadioPrimitive.Indicator>\n      <span aria-hidden>)</span>\n    </RadioPrimitive.Root>\n  );\n}\n\nexport { RadioGroup, RadioGroupItem };\n",
+      "type": "registry:ui",
+      "target": "~/components/ui/radio-group.tsx"
+    }
+  ]
+}

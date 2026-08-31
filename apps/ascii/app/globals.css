@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Global type scale — the whole app declares text-sm, so resizing
+   * it here resizes every text instance (and, via ch/lh units, the
+   * entire ASCII grid). */
+  --text-sm: var(--ascii-font-size);
+  --text-sm--line-height: var(--ascii-line-height);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Both families resolve to --font-ascii, which the theme page
+   * overrides at runtime with any Google mono font (see
+   * components/ascii/ascii-theme.tsx). */
+  --font-sans: var(--font-ascii);
+  --font-mono: var(--font-ascii);
+  /* The library's two font-weight dials: headings/emphasis (titles,
+   * active states, anything that was hardcoded bold) and everything
+   * else. Tailwind derives the font-heading / font-base utilities from
+   * them — retune here instead of editing components. */
+  --font-weight-heading: 700;
+  --font-weight-base: 400;
+  /* The sidebar has no palette of its own — its utilities
+   * (bg-sidebar, text-sidebar-* in components/ui/sidebar.tsx)
+   * alias the base tokens. */
+  --color-sidebar-ring: var(--ring);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-accent: var(--secondary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-foreground: var(--ascii-soft);
+  --color-sidebar: var(--background);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  /* --color-destructive-foreground: var(--destructive-foreground); (unused) */
+  --color-accent-foreground: var(--accent-foreground);
+  /* --color-accent: var(--accent); (unused) */
+  --color-muted-foreground: var(--muted-foreground);
+  /* --color-muted: var(--muted); (unused) */
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-ascii-comment: var(--ascii-comment);
+  --color-ascii-soft: var(--ascii-soft);
+  --animate-skeleton: skeleton 2s steps(1, end) infinite;
+  /* No border radius anywhere — kills the whole rounded-* scale, so
+   * the rounded-md/-xl classes in vendored components render square. */
+  --radius-*: initial;
+
+  @keyframes skeleton {
+    0% {
+      opacity: 0;
+    }
+    33.33% {
+      opacity: 0.5;
+    }
+    66.66% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  /* The cell size. text-sm reads these, and since every length in the
+   * app is in ch/lh, changing them rescales the whole grid — which is
+   * how small screens get a smaller cell below the md breakpoint. */
+  --ascii-font-size: 16px;
+  --ascii-line-height: 22px;
+
+  /* The mono family. next/font supplies the default; the theme page
+   * writes an inline override on <html>. */
+  --font-ascii: var(--font-ibm-plex-mono);
+
+  /* palette — single source for every color used in more than one
+   * token, named by role (not hue) so alternate schemes can swap the
+   * values wholesale: ascii-primary is the scheme's signature color,
+   * ascii-soft / ascii-dim its softer and darker steps, ascii-text
+   * the reading text, ascii-surface raised panels. */
+  --ascii-primary: #39ff6a;
+  --ascii-soft: #8fe6aa;
+  --ascii-dim: #1e3a28;
+  --ascii-text: #f4fff7;
+  --ascii-surface: #0e1512;
+
+  --background: #0b0f0c;
+  --foreground: var(--ascii-text);
+  --card: var(--ascii-surface);
+  --card-foreground: var(--ascii-text);
+  --popover: var(--ascii-surface);
+  --popover-foreground: var(--ascii-text);
+  --primary: var(--ascii-primary);
+  --primary-foreground: #05130a;
+  --secondary: #13251a;
+  --secondary-foreground: var(--ascii-soft);
+  /* --muted: #101b15; (unused) */
+  --muted-foreground: #6b8577;
+  /* --accent: #16281d; (unused) */
+  --accent-foreground: var(--ascii-text);
+  --destructive: #ffb000;
+  /* --destructive-foreground: #1a1200; (unused — destructive renders as
+   * text on transparent, never as a filled surface) */
+  --border: var(--ascii-dim);
+  --input: var(--ascii-dim);
+  --ring: var(--ascii-primary);
+
+  /* ascii-specific tokens */
+  --ascii-comment: #4a5f52;
+  --ascii-glow: 0 0 8px
+    color-mix(in srgb, var(--ascii-primary) 35%, transparent);
+  @media (width < 48rem) {
+    --ascii-font-size: 12px;
+    --ascii-line-height: 16px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    font-weight: var(--font-weight-base);
+    @apply bg-background text-foreground text-sm;
+  }
+  html {
+    @apply font-sans;
+  }
+  ::selection {
+    color: var(--primary-foreground);
+    background: var(--primary);
+  }
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Native scrollbars sized to the character grid — one cell: 1ch wide, 1lh tall —
+ * for scroll boxes that should keep the browser's scrolling (code
+ * blocks) but still sit on the grid. Re-enables what the base layer
+ * hides on every element. */
+@utility ascii-scrollbar {
+  /* The thumb color lives in a custom property flipped on hover. The
+   * scrollbar pseudo-elements inherit it, and a change to an inherited
+   * property is what reliably makes Chromium repaint them — a plain
+   * `:hover::-webkit-scrollbar-thumb` rule is often applied late or not
+   * at all. Transparent at rest, so the track keeps its space and
+   * nothing shifts when the thumb appears. */
+  --ascii-thumb: transparent;
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
+  &:hover {
+    --ascii-thumb: color-mix(in oklab, var(--primary) 50%, transparent);
+  }
+  /* Chromium ignores the ::-webkit-scrollbar rules once scrollbar-color
+   * is set, so the standard property is for Firefox only. */
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: var(--ascii-thumb) transparent;
+  }
+  &::-webkit-scrollbar {
+    display: block;
+    width: 1ch;
+    height: 1lh;
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  /* The horizontal track stays a full row tall, but its thumb paints
+   * only a 1ch-thick bar centred in that row — transparent borders eat
+   * the rest, and background-clip keeps the color inside them. */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ascii-thumb);
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-thumb:horizontal {
+    border-block: calc((1lh - 1ch) / 2) solid transparent;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
+  }
+}
