@@ -8,6 +8,13 @@ const REPO_ROOT = path.resolve(
   ".."
 );
 
+// The generated artifacts are committed with LF, but a Windows checkout
+// (core.autocrlf) may hold CRLF working-copy sources — normalize so the
+// inlined `content` strings are byte-identical across platforms.
+function readSource(absolutePath) {
+  return fs.readFileSync(absolutePath, "utf8").replace(/\r\n/g, "\n");
+}
+
 // registry.json and public/r/**/*.json are committed artifacts served to
 // real users, so the default run always bakes in the production SITE_URL
 // regardless of the ambient shell's NODE_ENV — only an explicit `--dev` flag
@@ -738,7 +745,7 @@ async function writeTestChartRegistryItem(ditherKitRegistry, slug) {
       ? {
           files: item.files.map((file) => ({
             path: file.path,
-            content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+            content: readSource(path.join(REPO_ROOT, file.path)),
             type: file.type,
             target: file.target,
           })),
@@ -851,7 +858,7 @@ async function writeAsciiTestRegistryItem() {
     // early exit skips that step, so do it here.
     files: bundled.map((file) => ({
       ...file,
-      content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+      content: readSource(path.join(REPO_ROOT, file.path)),
     })),
   };
   const outPath = path.join(
@@ -917,7 +924,7 @@ for (const item of builtItems) {
     ...(item.dependencies ? { dependencies: item.dependencies } : {}),
     files: item.files.map((file) => ({
       path: file.path,
-      content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+      content: readSource(path.join(REPO_ROOT, file.path)),
       type: file.type,
       target: file.target,
     })),
@@ -954,7 +961,7 @@ for (const item of builtThemeItems) {
       ? {
           files: item.files.map((file) => ({
             path: file.path,
-            content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+            content: readSource(path.join(REPO_ROOT, file.path)),
             type: file.type,
             target: file.target,
           })),
@@ -1000,7 +1007,7 @@ for (const item of builtDitherKitItems) {
       ? {
           files: item.files.map((file) => ({
             path: file.path,
-            content: fs.readFileSync(path.join(REPO_ROOT, file.path), "utf8"),
+            content: readSource(path.join(REPO_ROOT, file.path)),
             type: file.type,
             target: file.target,
           })),
