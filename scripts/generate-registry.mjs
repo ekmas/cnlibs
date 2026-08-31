@@ -176,11 +176,12 @@ const THEME_REGISTRIES = [
     cssExport: "ASCII_THEME_CSS",
     // Scaffolding installs the frame primitives (components/ascii/
     // ascii-box.tsx, ascii-chars.tsx, lib/ascii.ts) — the modules every
-    // ui component imports — and no ui component itself. Their files are
-    // bundled straight into each theme item (copied from the standalone
-    // ascii-primitives item above), so `shadcn init` writes them without
-    // having to resolve a second registry request.
-    registryDependencyNames: [],
+    // ui component imports — plus Button, so `shadcn init` on a theme
+    // scaffolds a project with something already on the page. The
+    // primitives' files are bundled straight into each theme item (copied
+    // from the standalone ascii-primitives item above), so `shadcn init`
+    // writes them without having to resolve a second registry request.
+    registryDependencyNames: ["button"],
     bundleItemFiles: ["ascii-primitives"],
     // A palette is the whole theme, so `shadcn init` starts from the item
     // alone instead of layering it over shadcn's default style; "utils"

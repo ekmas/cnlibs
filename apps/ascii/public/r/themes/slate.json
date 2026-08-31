@@ -9,7 +9,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils"
+    "utils",
+    "https://ascii.cnlibs.com/r/button.json"
   ],
   "files": [
     {
