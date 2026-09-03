@@ -2,7 +2,12 @@
 
 cnlibs is a collection of ui libraries based on shadcn/ui.
 
-## List of libraries
+## Libraries
 
-- [8bit](https://8bit.cnlibs.com)
-- [ascii](https://ascii.cnlibs.com)
+| ![8bit preview](.github/8bit.png) | ![ascii preview](.github/ascii.png) |
+| :---: | :---: |
+| [8bit.cnlibs.com](https://8bit.cnlibs.com) | [ascii.cnlibs.com](https://ascii.cnlibs.com) |
+
+## License
+
+MIT
